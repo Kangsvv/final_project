@@ -1,5 +1,0 @@
-package kh.spring.controller;
-
-public class test {
-
-}
