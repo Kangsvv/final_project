@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
@@ -195,7 +196,7 @@ h5 {
   
   <section class="box" id="box1">
     <figure class="flip">
-      <a href="https://www.facebook.com/cafelakulaku" target="_blank"><img src="https://2.bp.blogspot.com/-ywv6LaSnjgE/Uh9GGzWaFbI/AAAAAAAAA64/fLVMc7_xFAU/s1600/where.jpg" /></a>
+      <a href="#"><img src="https://2.bp.blogspot.com/-ywv6LaSnjgE/Uh9GGzWaFbI/AAAAAAAAA64/fLVMc7_xFAU/s1600/where.jpg" /></a>
       <figcaption class="bar">
         <h3>FEED</h3>
 	    </figcaption>
@@ -213,7 +214,7 @@ h5 {
   
   <section class="box" id="box3">
     <figure class="flip">
-     <a href="https://gangsofguro.com/cafedrink/"><img src="https://1.bp.blogspot.com/-BfbEpyEtmgk/Uh9GGNwLN6I/AAAAAAAAA6k/gxHsPPGjIcc/s1600/cake.jpg" /></a>
+     <a href="https://gangsofguro.com/cafedrink/" target="_blank"><img src="https://1.bp.blogspot.com/-BfbEpyEtmgk/Uh9GGNwLN6I/AAAAAAAAA6k/gxHsPPGjIcc/s1600/cake.jpg" /></a>
       <figcaption class="bar">
         <h3>COFFEE TEST</h3>
 	    </figcaption>
