@@ -170,13 +170,15 @@ h5 {
   30% {transform: translate(0px, -30px) scale(0.98);}
   100% {transform: translate(0px, 0px) scale(1);}
 }
-#feed{
+.text{
   text-align: center;
   color: white;
   font-size: 30px;
   margin-top: 3%;
-  
+  display: none;
 }
+
+
 
 .container{
   text-align: center;
@@ -196,7 +198,7 @@ h5 {
       <a href="https://www.facebook.com/cafelakulaku" target="_blank"><img src="https://2.bp.blogspot.com/-ywv6LaSnjgE/Uh9GGzWaFbI/AAAAAAAAA64/fLVMc7_xFAU/s1600/where.jpg" /></a>
       <figcaption class="bar">
         <h3>FEED</h3>
-       </figcaption>
+	    </figcaption>
     </figure>
   </section>
   
@@ -205,16 +207,16 @@ h5 {
       <img src="https://2.bp.blogspot.com/-lNmcHj4MqOM/Uh9GFylK6vI/AAAAAAAAA6g/v3JuP6rfWKU/s1600/coffee.jpg" />
       <figcaption class="bar">
         <h3>CAFE-IN</h3>
-       </figcaption>
+	    </figcaption>
     </figure>
   </section>
   
   <section class="box" id="box3">
     <figure class="flip">
-      <img src="https://1.bp.blogspot.com/-BfbEpyEtmgk/Uh9GGNwLN6I/AAAAAAAAA6k/gxHsPPGjIcc/s1600/cake.jpg" />
+     <a href="https://gangsofguro.com/cafedrink/"><img src="https://1.bp.blogspot.com/-BfbEpyEtmgk/Uh9GGNwLN6I/AAAAAAAAA6k/gxHsPPGjIcc/s1600/cake.jpg" /></a>
       <figcaption class="bar">
         <h3>COFFEE TEST</h3>
-       </figcaption>
+	    </figcaption>
     </figure>
   </section>
   
@@ -223,16 +225,47 @@ h5 {
       <img src="https://2.bp.blogspot.com/-XD5AjJLD0Qs/Uh9GGA_yXQI/AAAAAAAAA6s/uZNjG-XOAYw/s1600/contact.jpg" />
       <figcaption class="bar">
         <h3>NOTICE</h3>
-       </figcaption>
+	    </figcaption>
     </figure>
   </section>
 </article>
 </div>
 
 
-<div id="feed">
+<div id="feed" class="text">
   나의 FEED를 올려 예쁜카페를 다같이 공유해보세요~~ 
 </div>
-
+<div id="cafein" class="text">
+  사장님들의 카페를 둘러보세요~~
+</div>
+<div id="test" class="text">
+  자신의 커피취향을 알아보세요~~
+</div>
+<div id="notice" class="text">
+ 궁금하면 드루와~
+</div>
 </body>
+<script>
+  $("#box1").hover(function(){
+    $("#feed").css("display","block");
+  },function(){
+    $("#feed").css("display","none");
+  })
+  $("#box2").hover(function(){
+    $("#cafein").css("display","block");
+  },function(){
+    $("#cafein").css("display","none");
+  })
+  $("#box3").hover(function(){
+    $("#test").css("display","block");
+  },function(){
+    $("#test").css("display","none");
+  })
+  $("#box4").hover(function(){
+    $("#notice").css("display","block");
+  },function(){
+    $("#notice").css("display","none");
+  })
+    
+</script>
 </html>
