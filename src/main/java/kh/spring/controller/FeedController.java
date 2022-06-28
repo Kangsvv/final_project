@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FeedController {
 
 	
+	@RequestMapping("goFeed")
+	public String goFeed() {
+		return "/feed/feedMain";
+	}
+	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
 		e.printStackTrace();
