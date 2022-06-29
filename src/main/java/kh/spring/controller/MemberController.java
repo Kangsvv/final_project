@@ -13,4 +13,10 @@ public class MemberController {
 		e.printStackTrace();
 		return "error";
 	}
+	
+	// 로그인 페이지이동
+	@RequestMapping("login")
+	public String login() {
+		return "/member/login";
+	}
 }
