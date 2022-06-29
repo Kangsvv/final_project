@@ -10,115 +10,173 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
-  	
+     
     <title>FeedMain</title>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <style>
-    	body {
-    		
-		    background-color: black;
-		    min-height: 100vh;
-		    font: normal 16px sans-serif;
-		    padding: 40px 0;
-		}
-		
-		.container.gallery-container {
-		    background-color: black;
-		    color: white;
-		    min-height: 100vh;
-		    padding: 30px 50px;
-		}
-		
-		.gallery-container h1 {
-		    text-align: center;
-		    margin-top: 50px;
-		    font-family: 'Droid Sans', sans-serif;
-		    font-weight: bold;
-		}
-		
-		.gallery-container p.page-description {
-		    text-align: center;
-		    margin: 25px auto;
-		    font-size: 18px;
-		    color: #999;
-		}
-		
-		.tz-gallery {
-		    padding: 40px;
-		}
-		
-		/* Override bootstrap column paddings */
-		.tz-gallery .row > div {
-		    padding: 2px;
-		}
-		
-		.tz-gallery .lightbox img {
-		    width: 100%;
-		    border-radius: 0;
-		    position: relative;
-		}
-		
-		.tz-gallery .lightbox:before {
-		    position: absolute;
-		    top: 50%;
-		    left: 50%;
-		    margin-top: -13px;
-		    margin-left: -13px;
-		    opacity: 0;
-		    color: #fff;
-		    font-size: 26px;
-		    font-family: 'Glyphicons Halflings';
-		    content: '\e003'; /* 돋보기 */
-		    pointer-events: none;
-		    z-index: 9000;
-		    transition: 0.4s;
-		}
-		
-		
-		.tz-gallery .lightbox:after {
-		    position: absolute;
-		    top: 0;
-		    left: 0;
-		    width: 100%;
-		    height: 100%;
-		    opacity: 0;
-		    background-color: rgba(0, 0, 0, 0.3);
-		    content: '';
-		    transition: 0.4s;
-		}
-		
-		.tz-gallery .lightbox:hover:after,
-		.tz-gallery .lightbox:hover:before {
-		    opacity: 1;
-		}
-		
-		.baguetteBox-button {
-		    background-color: transparent !important;
-		}
-		
-		@media(max-width: 768px) {
-		    body {
-		        padding: 0;
-		    }
-		}
+       body {
+          
+          background-color: black;
+          min-height: 100vh;
+          font: normal 16px sans-serif;
+          padding: 40px 0;
+      }
+      
+      .container.gallery-container {
+          background-color: black;
+          color: white;
+          min-height: 100vh;
+          padding: 30px 50px;
+      }
+      
+      .gallery-container h1 {
+          text-align: center;
+          margin-top: 50px;
+          font-family: 'Droid Sans', sans-serif;
+          font-weight: bold;
+      }
+      
+      .gallery-container p.page-description {
+          text-align: center;
+          margin: 25px auto;
+          font-size: 18px;
+          color: #999;
+      }
+      
+      .tz-gallery {
+          padding: 40px;
+          padding-top:0px;
+      }
+      
+      /* Override bootstrap column paddings */
+      .tz-gallery .row > div {
+          padding: 2px;
+      }
+      
+      .tz-gallery .lightbox img {
+          width: 100%;
+          border-radius: 0;
+          position: relative;
+      }
+      
+      .tz-gallery .lightbox:before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          margin-top: -13px;
+          margin-left: -13px;
+          opacity: 0;
+          color: #fff;
+          font-size: 26px;
+          font-family: 'Glyphicons Halflings';
+          content: '\e003'; /* 돋보기 */
+          pointer-events: none;
+          z-index: 9000;
+          transition: 0.4s;
+      }
+      
+      
+      .tz-gallery .lightbox:after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          background-color: rgba(0, 0, 0, 0.3);
+          content: '';
+          transition: 0.4s;
+      }
+      
+      .tz-gallery .lightbox:hover:after,
+      .tz-gallery .lightbox:hover:before {
+          opacity: 1;
+      }
+      
+      .baguetteBox-button {
+          background-color: transparent !important;
+      }
+      
+      @media(max-width: 768px) {
+          body {
+              padding: 0;
+          }
+      }
+      
+      #search{
+         color:black;
+         background-color: gray;
+         border-radius: 8px;
+         height:50px;
+         padding:5px;
+         font-weight : bold;
+         border:0 solid black;
+         width:80%;
+      }
+      input:focus {outline:none;}
+      input::placeholder {
+      color: #ccc;
+      }
+      #write{
+         width:50px;
+      }
+      #search2{
+         width:40px;
+      }
+      #writebtn{
+         background-color:transparent;
+         float: right;
+         margin-right:5%;
+      }
+      #searchbtn{
+         background-color:transparent;
+      }
+      #select option, #select{
+         color:black;
+         background-color:#ccc;
+      }
+      #select{
+         height:50px;
+         margin-left:5%;
+         border-radius: 8px;
+         width:100px;
+      }
+      
+      
     </style>
 </head>
 <body>
 
 <div class="container gallery-container">
+ <div class="row">
+    <div class="col-12">
+    <input id="search" type="text" placeholder="작성자 / 제목 으로 검색해보세요.">
+    <button id="searchbtn"><img id="search2" src="/resources/img/66.png"></button>
+    </div>
+</div>
+   <div class="row">
+     <div class="col-6">
+     <select id="select">
+    <option>최신순</option>
+    <option>조회순</option>
+    <option>추천순</option>
+  </select>
+     </div>
+     <div class="col-6">
+    <button id="writebtn"><img id="write" src="/resources/img/123.png"></button>
+    </div>
 
-    <h1>Feed Main</h1>
-
-    <p class="page-description text-center">다양한 카페를 만나보세요</p>
+     </div>
     
     <div class="tz-gallery">
 
         <div class="row">
+
             <div class="col-sm-6 col-md-4">
-                <a class="lightbox" href="/feed/detailView">
+                <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg">
                     <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg" alt="Bridge">
                 </a>
             </div>
@@ -147,8 +205,11 @@
                     <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/coast.jpg" alt="Rails">
                 </a>
             </div>
+
         </div>
+
     </div>
+   
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
