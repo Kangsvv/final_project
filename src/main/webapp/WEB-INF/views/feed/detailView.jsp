@@ -20,8 +20,39 @@
 			margin : auto;
 			width:65%;
 		}
-		.carousel-item{
+		.carousel-item img{
 			height: 500px;
+		}
+		span{
+			color: white;
+		}
+		#title{
+			font-size:10px;
+		}
+		#nickname{
+			font-size:5px;
+		}
+		.carousel-inner {
+		    position: relative;
+		    width: 100%;
+		    overflow: hidden;
+		}
+		.carousel-item {
+		    position: relative;
+		    display: none;
+		    float: left;
+		    width: 100%;
+		    margin-right: -100%;
+		    -webkit-backface-visibility: hidden;
+		    backface-visibility: hidden;
+		    transition: transform .6s ease-in-out;
+		}
+		.carousel-item-next, .carousel-item-prev, .carousel-item.active {
+		    display: block;
+		}
+		.card img {
+		    height: 350px;
+		    object-fit: cover;
 		}
 	</style>
 </head>
