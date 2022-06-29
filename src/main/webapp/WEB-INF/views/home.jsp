@@ -208,7 +208,7 @@
   
   <section class="box" id="box2">
     <figure class="flip">
-      <img src="https://2.bp.blogspot.com/-lNmcHj4MqOM/Uh9GFylK6vI/AAAAAAAAA6g/v3JuP6rfWKU/s1600/coffee.jpg" />
+      <a href="/cafein/goCafein"><img src="https://2.bp.blogspot.com/-lNmcHj4MqOM/Uh9GFylK6vI/AAAAAAAAA6g/v3JuP6rfWKU/s1600/coffee.jpg" /></a>
       <figcaption class="bar">
         <h3>CAFE-IN</h3>
 	    </figcaption>
