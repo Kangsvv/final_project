@@ -226,7 +226,7 @@
   
     <section class="box" id="box4">
     <figure class="flip">
-      <img src="https://2.bp.blogspot.com/-XD5AjJLD0Qs/Uh9GGA_yXQI/AAAAAAAAA6s/uZNjG-XOAYw/s1600/contact.jpg" />
+      <a href="/notice/FAQ"><img src="https://2.bp.blogspot.com/-XD5AjJLD0Qs/Uh9GGA_yXQI/AAAAAAAAA6s/uZNjG-XOAYw/s1600/contact.jpg" /></a>
       <figcaption class="bar">
         <h3>NOTICE</h3>
 	    </figcaption>
