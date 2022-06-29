@@ -74,13 +74,18 @@ button:hover{
 
 
 /* footer 부분 */
-
-#footer1, #footer2, #footer3 {
-   margin-top: 38.43px;
+#foot{
+    border-top: 1px solid gray;
+    background-color: rgba(32, 31, 31, 0.532);
+    
 }
+/* rgba(32, 31, 31, 0.532) */
 
-#footer2 {
-   font-family: 'Noto Sans KR';
+.footer2{
+    line-height: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px ;
+    font-family: 'Noto Sans KR';
    font-style: normal;
    font-weight: 700;
    font-size: 14px;
@@ -162,16 +167,17 @@ button:hover{
     </div>
 
 
-         <!-------------------------------------------------------Footer------------------------------------------------->
-<div class="col-12 d-none d-md-block">
+      <!-------------------------------------------------------Footer------------------------------------------------->
+ 
+    <div class="col-12 d-none d-md-block">
   <div id="foot" align=center>
      <div class="container">
         <div class="row">
           <div class="col-4" id="footicon"> </div>
-           <div class="col-2" id="footer2">회사소개</div>
-           <div class="col-2" id="footer2">이용약관</div>
-           <div class="col-2" id="footer2">1:1 문의</div>
-           <div class="col-2" id="footer2">©2022 CAFEIN</div>
+           <div class="col-2 footer2">회사소개</div>
+           <div class="col-2 footer2">이용약관</div>
+           <div class="col-2 footer2">1:1 문의</div>
+           <div class="col-2 footer2">©2022 CAFEIN</div>
         </div>
      </div>
   </div>
