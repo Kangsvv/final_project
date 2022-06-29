@@ -44,13 +44,13 @@ nav a{
     background-color: white;
     color: black;
 }
-button{
+nav button{
     background-color: rgba(0, 0, 0, 0.128);
     border-radius: 5px;
     color: white;
 }
 
-button:hover{
+nav button:hover{
     border-radius: 5px;
     color: black;
     background-color: white;
@@ -58,6 +58,7 @@ button:hover{
 /*board UI출력부분----------------------------*/
 .tz-gallery {
     padding: 40px;
+    padding-top:0px;
 }
 
 /* Override bootstrap column paddings */
@@ -82,60 +83,77 @@ button:hover{
 
 /* footer 부분 */
 
-#footer1, #footer2, #footer3 {
-   margin-top: 38.43px;
+#foot{
+    border-top: 1px solid gray;
+    background-color: rgba(24, 24, 24, 0.532);
+    
 }
 
-#footer2 {
-   font-family: 'Noto Sans KR';
+
+.footer2{
+    line-height: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px ;
+    font-family: 'Noto Sans KR';
    font-style: normal;
    font-weight: 700;
    font-size: 14px;
    line-height: 20px;
    color: #FFFFFF;
 }
+
 /*------------------------ 헤더 부분 스타일 ------------------------ */
-      #search{
+      .search{
          color:black;
          background-color: gray;
          border-radius: 8px;
          height:50px;
          padding:5px;
+         padding-left:15px;
          font-weight : bold;
          border:0 solid black;
-         width:80%;
+         width:60%;
+         display:block;
+         margin:auto;
+         
       }
       input:focus {outline:none;}
       input::placeholder {
       color: #ccc;
       }
-      #write{
-         width:50px;
-      }
-      #search2{
+      .write{
          width:40px;
       }
-      #writebtn{
-         background-color:transparent;
+      .search2{
+         width:40px;
+         position:absolute;
+         right:17%;
+         bottom:30px;
+      }
+      .writebtn{
+      	 background-color:transparent;
          float: right;
          margin-right:5%;
+         margin-bottom:2%;
       }
-      #searchbtn{
+      .searchbtn{
          background-color:transparent;
       }
-      #select option, #select{
+      .select option, #select{
          color:black;
          background-color:#ccc;
       }
-      #select{
-         height:50px;
+      .select{
+         height:30px;
          margin-left:5%;
          border-radius: 8px;
+         margin-top:10px;
          width:100px;
       }
       
-      
-
+      .searchdiv{
+      	position:relative;
+      }
 
 </style>
 <body>
@@ -162,24 +180,24 @@ button:hover{
             <button>Signup</button>
         
           </nav>
-          <h1>Feed Main</h1>
+          <h1>카페리뷰</h1>
 <!-----------------------------------------------검색 DIV------------------------------------------->
        <div class="row">
-		    <div class="col-12">
-			    <input id="search" type="text" placeholder="작성자 / 제목 으로 검색해보세요.">
-			    <button id="searchbtn"><img id="search2" src="/resources/img/search.png"></button>
+		    <div class="col-12 searchdiv">
+			    <input class="search" type="text" placeholder="작성자 / 제목 으로 검색해보세요.">
+			    <button class="searchbtn" type="button"><img class="search2" src="/resources/img/search.png"></button>
 		    </div>
 		</div>
 		 <div class="row">
 		     <div class="col-6">
-			     <select id="select">
+			     <select class="select">
 			    	<option>최신순</option>
 			    	<option>조회순</option>
 			    	<option>추천순</option>
 			  	</select>
 		     </div>
 		    <div class="col-6">
-		    	<button id="writebtn"><img id="write" src="/resources/img/write.png"></button>
+		    	<button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
 		    </div>
 		
 		   </div>
@@ -231,22 +249,20 @@ button:hover{
 
 
          <!-------------------------------------------------------Footer------------------------------------------------->
-<div class="col-12 d-none d-md-block">
+    <div class="col-12 d-none d-md-block">
   <div id="foot" align=center>
      <div class="container">
         <div class="row">
           <div class="col-4" id="footicon"> </div>
-           <div class="col-2" id="footer2">회사소개</div>
-           <div class="col-2" id="footer2">이용약관</div>
-           <div class="col-2" id="footer2">1:1 문의</div>
-           <div class="col-2" id="footer2">©2022 CAFEIN</div>
+           <div class="col-2 footer2">회사소개</div>
+           <div class="col-2 footer2">이용약관</div>
+           <div class="col-2 footer2">1:1 문의</div>
+           <div class="col-2 footer2">©2022 CAFEIN</div>
         </div>
      </div>
   </div>
 </div>
 
           
-</body>
-</html>
 </body>
 </html>
