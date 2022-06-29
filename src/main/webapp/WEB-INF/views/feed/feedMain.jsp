@@ -61,15 +61,22 @@ button:hover{
 }
 
 /* Override bootstrap column paddings */
-.tz-gallery .row > div {
-    padding: 2px;
-}
+	.tz-gallery .row > div {
+	    padding: 2px;
+	}
+	
+	.tz-gallery .lightbox img {
+	    width: 100%;
+	    border-radius: 0;
+	    position: relative;
+	}
+		.container h1 {
+		    text-align: center;
+		    margin-top: 50px;
+		    font-family: 'Droid Sans', sans-serif;
+		    font-weight: bold;
+		}
 
-.tz-gallery .lightbox img {
-    width: 100%;
-    border-radius: 0;
-    position: relative;
-}
 /*---------------------기능 구현 후 Hover 예정------------------*/
 
 
@@ -155,8 +162,8 @@ button:hover{
             <button>Signup</button>
         
           </nav>
-          
-<!---------------------------------------------------------------------------------------------------------------------->
+          <h1>Feed Main</h1>
+<!-----------------------------------------------검색 DIV------------------------------------------->
        <div class="row">
 		    <div class="col-12">
 			    <input id="search" type="text" placeholder="작성자 / 제목 으로 검색해보세요.">
@@ -179,6 +186,7 @@ button:hover{
           
 
   <!-------------------------------------------------------인스타 Board------------------------------------------------->
+
           <div class="tz-gallery">
 
             <div class="row">
