@@ -13,6 +13,10 @@ public class FeedController {
 	public String goFeed() {
 		return "/feed/feedMain";
 	}
+	@RequestMapping("detailView")
+	public String detailView() {
+		return "/feed/detailView";
+	}
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
