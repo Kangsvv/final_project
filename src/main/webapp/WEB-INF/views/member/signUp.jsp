@@ -80,12 +80,12 @@
 				id = false;
 			}else{
 				// 임시 허용
-				$("#checkId").text("사용 가능한 아이디입니다.").css("color","white");
-				id = true;
+				/* $("#checkId").text("사용 가능한 아이디입니다.").css("color","white");
+				id = true; */
 				
 				// ajax 기본형태 $.ajax 
-				/* $.ajax({
-					url : "memberIdCheck", 
+				$.ajax({
+					url : "/member/memberIdCheck", 
 					type : "post",
 					data : {"id":memId},
 					success : function(result){
@@ -101,10 +101,9 @@
 					error : function(err){
 						alert("인터넷 연결이 불안정하거나, 서버와 통신이 불가능합니다.");
 					}
-				}) */
+				})
 			}
-			
 		});
-	</script>	
+	</script>
 </body>
 </html>

@@ -40,6 +40,7 @@ public class MemberController {
 	public int memberIdCheck(String id) {
 		int result = 0;
 		result = memberService.memberIdCheck(id);
+		System.out.println("실패?");
 		return result;
 	}
 }
