@@ -79,13 +79,11 @@ public class MemberController {
 	}
 	
 	// 인증번호 전송
-	// ajax기 때문에 리스폰스바디
 	@ResponseBody
 	@RequestMapping("emailCheck")
 	public int emailCheck(HttpServletRequest request, String email, HttpServletResponse response) {
-		int result = 1;
+		int result = 0;
 		try {
-			System.out.println(email);
 			String num = "";
 			Random rand = new Random();
 			for(int i=0; i<6; i++) {
@@ -98,5 +96,26 @@ public class MemberController {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	// 인증번호 확인
+	@ResponseBody
+	@RequestMapping("emailNumCheck")
+	public int emailNumCheck(String email, int num) {
+		int result = 0;
+		// 현재 가져온 이메일과 인증번호를 이용해서 select후 존재하는지 체크 후 존재하면 처리, 존재하지않으면 실패
+		result = memberService.emailNumCheck(email,num);
+		// 가져와서 정상이면 인증번호 삭제 ( 중복 인증 방지용)
+		memberService.emailNumDelete(email,num);
+		return result;
+	}
+	
+	// 회원가입 처리
+	@RequestMapping("joinAction")
+	public String joinAction(MemberDTO member) {
+		System.out.println(member);
+		// 회원가입 처리
+		int result = memberService.joinAction(member);
+		return "/";
 	}
 }

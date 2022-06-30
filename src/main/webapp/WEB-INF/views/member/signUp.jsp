@@ -13,7 +13,7 @@
 <body style="background-color: black;">
 	<div class='signUp wrap'>
 		<h1 style="color: white;">회원가입</h1>
-		<form action="loginAction" class='loginFrom max-W360'>
+		<form action="joinAction" class='loginFrom max-W360'>
 			<ul style="padding: 0px 0px 20px 0px;">
 				<li>
 					<input class="form_main" type="text" id='memId' name='memId' placeholder="아이디" maxlength="12" required="required">
@@ -53,7 +53,7 @@
 				</li>
 				<li id='emailLi' style="display: none;">
 					<input class="form_main" style="width:70%" id='emailNum' name='emailNum' placeholder="인증번호" maxlength="6" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
-					<button id='emailcheck' type="button" class='bt_1' style="width: 25%; display: inline-block;">확인</button>
+					<button id='emailNumcheck' type="button" class='bt_1' style="width: 25%; display: inline-block;">확인</button>
 				</li>				
 			</ul>
 			<input type='hidden' id='memPhone' name='memPhone' maxlength="12">
@@ -195,7 +195,6 @@
 		
 		$("#emailcheck").on("click",function(){
 			var emailset = $("#memEmail").val()
-			// show() 숨겨져있는 항목을 보이게하다 
 			if(email){
 				$.ajax({
 					url : "emailCheck",
@@ -218,6 +217,32 @@
 			}else{
 				alert("이메일을 확인해주세요.");
 			}
+		});
+
+		$("#emailNumcheck").on("click",function(){
+			emailCheck = false;
+			var emailset = $("#memEmail").val();
+			var num = $("#emailNum").val();
+			$.ajax({
+				url : "emailNumCheck",
+				type : "post",
+				data : {"num":num,"email":emailset},
+				success : function(result){
+					if(result > 0){
+						alert("인증 되었습니다.");
+						emailCheck = true;
+						$("#emailLi").hide();
+						$("#memEmail").hide();
+					}else{
+						alert("인증번호를 확인해주세요. 3분이 초과된경우 다시 전송 후 인증해주세요.");
+						emailCheck = false;
+					} 
+				},
+				error : function(err){
+					alert("인터넷 연결이 불안정하거나, 서버와 통신이 불가능합니다.");
+				}
+			
+			});
 		});
 	</script>
 </body>

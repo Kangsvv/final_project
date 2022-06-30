@@ -14,4 +14,19 @@
 	<insert id="emailCheck">
 		insert into member_email_num values(#{email}, #{num}, default)
 	</insert>
+	
+	<!-- 이메일 인증 확인 -->
+	<select id="emailNumcheck" resultType="int">
+		select count(*) from member_email_num where me_email = #{email} and me_num = #{num} and me_time >= SYSDATE - (4/1440)
+	</select>
+	
+	<!-- 이메일 인증 삭제 -->
+	<delete id="emailNumDelete">
+		delete from member_email_num where me_email = #{email} and me_num = #{num} and me_time >= SYSDATE - (5/1440)
+	</delete>
+	
+	<!-- 회원가입 처리 -->
+	<insert id="joinActionjoinAction">
+		insert into member values(mem_seq.nextVal)
+	</insert>
 </mapper> 
