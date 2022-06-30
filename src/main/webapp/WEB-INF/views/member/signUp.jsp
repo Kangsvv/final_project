@@ -79,8 +79,12 @@
 				$("#checkId").text("아이디는 소문자 + 숫자 , 4~12글자 내외로 작성해주세요.").css("color","red");
 				id = false;
 			}else{
+				// 임시 허용
+				$("#checkId").text("사용 가능한 아이디입니다.").css("color","white");
+				id = true;
+				
 				// ajax 기본형태 $.ajax 
-				$.ajax({
+				/* $.ajax({
 					url : "memberIdCheck", 
 					type : "post",
 					data : {"id":memId},
@@ -89,7 +93,7 @@
 							$("#checkId").text("이미 사용중인 아이디입니다.").css("color","red");
 							id = false;
 						}else{
-							$("#checkId").text("사용 가능한 아이디입니다.").css("color","green");
+							$("#checkId").text("사용 가능한 아이디입니다.").css("color","white");
 							id = true;
 						}
 					},
@@ -97,7 +101,7 @@
 					error : function(err){
 						alert("인터넷 연결이 불안정하거나, 서버와 통신이 불가능합니다.");
 					}
-				})
+				}) */
 			}
 			
 		});
