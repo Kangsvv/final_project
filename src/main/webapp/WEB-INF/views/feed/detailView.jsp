@@ -13,6 +13,66 @@
    <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
    
    <style>
+   /* Header Style */
+       nav {
+   background-color: black;
+   color: white;
+   border-radius: 5px;
+    border-bottom: 1px solid white;
+}
+nav a{
+    color: white;
+}
+.navbar-nav a{
+    color: white;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+.navbar-nav a:hover{
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    text-decoration-line: none;
+}
+#btn{
+    text-align: right;
+}
+.navbar-toggler{
+    background-color: white;
+    color: black;
+}
+button{
+    background-color: rgba(0, 0, 0, 0.128);
+    border-radius: 5px;
+    color: white;
+}
+
+button:hover{
+    border-radius: 5px;
+    color: black;
+    background-color: white;
+}
+/*-----------------------------------------Footer부분----------------------------*/
+/* footer 부분 */
+#foot{
+    border-top: 1px solid gray;
+    background-color: rgba(32, 31, 31, 0.532);
+    
+}
+/* rgba(32, 31, 31, 0.532) */
+
+.footer2{
+    line-height: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px ;
+    font-family: 'Noto Sans KR';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 14px;
+   line-height: 20px;
+   color: #FFFFFF;
+}
+   
       body {
             max-width: 900px;
             background-color: #222;
@@ -137,16 +197,11 @@
             font-weight: bold;
         }
 
-       .ididid{
+       .id{
        overflow:hidden;
        text-overflow:ellipsis;
        white-space:nowrap;
        
-       }
-
-       
-       #btn{
-          width: 100%;
        }
 
 
@@ -158,27 +213,59 @@
          text-align: right;
          padding:0px;
         }
+        #contents-container{
+			border-bottom: 2px 5px white;
+        }
+        .contentsBox{
+        	text-align: center;
+        	font-size: 20px;
+        }
+        
    </style>
 </head>
 <body>
-   <!-- --------------------Header--------------------------- -->
-   <div id="header">
+	     <!------------------------------------------------------------header----------------------------------------------------->
+    
+     <div class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">CAFEIN</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link" href="#">HOME</a>
+                  <a class="nav-link" href="#">FEED</a>
+                  <a class="nav-link" href="#">CAFE-IN</a>
+                  <a class="nav-link" href="#">NOTICE</a>
+                </div>
+              </div>
+              <button>Login</button>
+              <button>Signup</button>
+            </div>
+        
+         
+        
+          </nav>
+
+   <!-- --------------------contentsHeader--------------------------- -->
+   
+   
+   <div id="contentsHeader">
       <div class="row border-bottom border-2 rounded h-100" id="conMenu">
                    <div class="col-12 col-md-12 ellipsis "  style="padding-left:7px" id="title">다들 하이요!!</div>
                     <div class="row">
-                        <div class="col-3 col-md-3 ellipsis ididid " style="padding-left:8px;">hihiyoyo</div>
+                        <div class="col-3 col-md-3 ellipsis id" style="padding-left:8px;">hihiyoyo</div>
                         <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;2022.06.29</div>
                     
                         <div class="col-3 " style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;10</div>
                         <div class="col-6 like"><i class="fa-solid fa-heart"></i>&nbsp;3000</div>
-                        <div class="col-3 bookmark"><i class="fa-solid fa-border fa-bookmark"></i></div>
+                        <div class="col-3 bookmark"><i class="fa-solid fa-user-group"></i></div>
 
-   
-
-                     
                      </div>
                 </div>
-   </div>
+   			</div>
    <div class="container">
       <div class="row">
       <!-- Main Contents Container -->
@@ -204,10 +291,37 @@
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
+            <span>
+            	<i class="fa-regular fa-heart "></i>
+            </span>
+            <span>
+            	<i class="fa-solid fa-bookmark "></i>
+            </span>
+            <div class="contentsBox">
+            	화이팅!
+            </div>
          </div>
-         <hr>
+
+         
       </div>
    </div>
+       <!-------------------------------------------------------Footer------------------------------------------------->
+ 
+    <div class="col-12 d-none d-md-block">
+      <div id="foot" align=center>
+         <div class="container">
+            <div class="row">
+              <div class="col-4" id="footicon"> </div>
+               <div class="col-2 footer2">회사소개</div>
+               <div class="col-2 footer2">이용약관</div>
+               <div class="col-2 footer2">1:1 문의</div>
+               <div class="col-2 footer2">©2022 CAFEIN</div>
+            </div>
+         </div>
+      </div>
+    </div>
+
+   
 
 </body>
 </html>
