@@ -14,4 +14,9 @@ public class MemberService {
 		return memberDAO.memberIdCheck(id);
 	}
 
+	// 이메일 인증
+	public int emailCheck(String email, String num) {
+		return memberDAO.emailcheck(email,num);
+	}
+
 }
