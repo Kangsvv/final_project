@@ -214,56 +214,49 @@ h4 {
 	margin-right: 5px;
 }
 
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-.dropdown{
-  position : relative;
-  display : inline-block;
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
-.dropbtn_icon{
-  font-family : 'Material Icons';
-}
-.dropbtn{
-  border : 1px solid #222;
-  border-radius : 4px;
-  background-color: #222;
-  font-weight: 400;
-  color : white;
-  padding : 12px;
-  width :100px;
-  text-align: left;
-  cursor : pointer;
-  font-size : 12px;
-}
-.dropdown-content{
-  display : none;
-  position : absolute;
-  z-index : 1; /*다른 요소들보다 앞에 배치*/
-  font-weight: 400;
-  background-color: white;
-  width : 100%;
-  border-radius: 5%;
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: white;
+    color: black;
 }
 
-.dropdown-content a{
-  display : block;
-  text-decoration : none;
-  color : black;
-  background-color:white;
-  font-size: 12px;
-  padding : 12px 20px;
-  margin: 0%;
+li.dropdown {
+    display: inline-block;
 }
 
-.dropdown-content a:hover{
-  background-color : #760c0c;
-  color: white;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 4%;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.dropdown-content a {
+    font-size :13px;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    margin: 0%;
 }
+
+.dropdown-content a:hover {
+	background-color: #760c0c;
+	color: white;
+}
+
+.show {display:block;}
+
 
 
 </style>
@@ -271,95 +264,115 @@ h4 {
 <body>
 
 <!------------------------------------------------------------header----------------------------------------------------->
-    
-     <div class="container">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">CAFEIN</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link" href="#" style="padding-top: 3.3%;">HOME</a>
-                  <a class="nav-link" href="#" style="padding-top: 3.3%;">FEED</a>
-                  <a class="nav-link" href="#" style="padding-top: 3.3%;">CAFE-IN</a>
-                   <div class="dropdown">
-					 <button class="dropbtn" style="font-size: 16.5px; text-align: center;">NOTICE</button>
-				   <div class="dropdown-content">
-					  <a href="#">이벤트 및 공지사항</a> <a href="#">1:1 문의</a>
-					</div>
+
+	<div class="container">
+		<nav class="navbar navbar-expand-lg">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">CAFEIN</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-link" href="#" style="padding-top: 3.3%;">HOME</a> <a
+							class="nav-link" href="#" style="padding-top: 3.3%;">FEED</a> <a
+							class="nav-link" href="#" style="padding-top: 3.3%;">CAFE-IN</a>
+						<div class="dropdown">
+							<a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">NOTICE</a>
+							<div class="dropdown-content" id="myDropdown">
+								<a href="#">이벤트 및 공지사항</a> <a href="#">1:1 문의</a>
+							</div>
 						</div>
 					</div>
-              </div>
-            </div>
-        
-            <button>Login</button>
-            <button>Signup</button>
-        
-          </nav>
+				</div>
+			</div>
+
+			<button>Login</button>
+			<button>Signup</button>
+
+		</nav>
 
 
-         <h1 class="main">Notice Main</h1>
-<!------------------------------------------------------------header----------------------------------------------------->
-          
-    <div id="Box">
-    
-    <div class="title">FAQ</div>
-    	
-	<div id="Accordion_wrap">
-		<div class="que">
-			<span>사장 게시판은 일반회원은 작성할 수 없나요?</span>
-		</div>
-		<div class="anw">
-			<span>사장 게시판의 경우 사장 회원으로 가입한 회원님만 이용이 가능합니다.</span>
-		</div>
-		<div class="que">
-			<span>일반 게시판은 사장님 회원도 사용할 수 있나요?</span>
-		</div>
-		<div class="anw">
-			<span>This is second answer.</span>
-		</div>
-		<div class="que">
-			<span>문제 혹은 궁금한게 있다면 어디로 가야 하나요?</span>
-		</div>
-		<div class="anw">
-			<span>답변을 고민중.....</span>
-		</div>
-		<div class="que">
-			<span>아이디 / 비밀번호를 잊어 버렸어요..ㅠ</span>
-		</div>
-		<div class="anw">
-			<span>답변을 고민중.....</span>
-		</div>
-	</div>
-</div>
+		<h1 class="main">Notice Main</h1>
+		<!------------------------------------------------------------header----------------------------------------------------->
 
-<!-------------------------------------------------------Footer------------------------------------------------->
- 
-    <div class="col-12 d-none d-md-block">
-      <div id="foot" align=center>
-         <div class="container">
-            <div class="row">
-              <div class="col-4" id="footicon"> </div>
-               <div class="col-2 footer2">회사소개</div>
-               <div class="col-2 footer2">이용약관</div>
-               <div class="col-2 footer2">1:1 문의</div>
-               <div class="col-2 footer2">©2022 CAFEIN</div>
-            </div>
-         </div>
-      </div>
-    </div>
+		<div id="Box">
 
-<!-------------------------------------------------------Footer------------------------------------------------->
+			<div class="title">FAQ</div>
 
-	<script>
+			<div id="Accordion_wrap">
+				<div class="que">
+					<span>사장 게시판은 일반회원은 작성할 수 없나요?</span>
+				</div>
+				<div class="anw">
+					<span>사장 게시판의 경우 사장 회원으로 가입한 회원님만 이용이 가능합니다.</span>
+				</div>
+				<div class="que">
+					<span>일반 게시판은 사장님 회원도 사용할 수 있나요?</span>
+				</div>
+				<div class="anw">
+					<span>This is second answer.</span>
+				</div>
+				<div class="que">
+					<span>문제 혹은 궁금한게 있다면 어디로 가야 하나요?</span>
+				</div>
+				<div class="anw">
+					<span>답변을 고민중.....</span>
+				</div>
+				<div class="que">
+					<span>아이디 / 비밀번호를 잊어 버렸어요..ㅠ</span>
+				</div>
+				<div class="anw">
+					<span>답변을 고민중.....</span>
+				</div>
+			</div>
+		</div>
+
+		<!-------------------------------------------------------Footer------------------------------------------------->
+
+		<div class="col-12 d-none d-md-block">
+			<div id="foot" align=center>
+				<div class="container">
+					<div class="row">
+						<div class="col-4" id="footicon"></div>
+						<div class="col-2 footer2">회사소개</div>
+						<div class="col-2 footer2">이용약관</div>
+						<div class="col-2 footer2">1:1 문의</div>
+						<div class="col-2 footer2">©2022 CAFEIN</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-------------------------------------------------------Footer------------------------------------------------->
+
+		<script>
 		$(".que").click(function() {
 			$(this).next(".anw").stop().slideToggle(300);
 			$(this).toggleClass('on').siblings().removeClass('on');
 			$(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
 		});
-	</script>
+		
+		function myFunction() {
+		    document.getElementById("myDropdown").classList.toggle("show");
+		}
+		
+		window.onclick = function(e) {
+			  if (!e.target.matches('.dropbtn')) {
 
+			    var dropdowns = document.getElementsByClassName("dropdown-content");
+			    for (var d = 0; d < dropdowns.length; d++) {
+			      var openDropdown = dropdowns[d];
+			      if (openDropdown.classList.contains('show')) {
+			        openDropdown.classList.remove('show');
+					}
+				}
+			}			
+		}
+		
+	</script>
 </body>
 </html>
