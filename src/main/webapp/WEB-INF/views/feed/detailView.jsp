@@ -6,89 +6,208 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<style>
-		body{
-			background-color:black;
-		}
-		#container{
-			padding-top: 30%;
-		}
-		#carouselExampleControls{
-			margin : auto;
-			width:65%;
-		}
-		.carousel-item img{
-			height: 500px;
-		}
-		span{
-			color: white;
-		}
-		#title{
-			font-size:10px;
-		}
-		#nickname{
-			font-size:5px;
-		}
-		.carousel-inner {
-		    position: relative;
-		    width: 100%;
-		    overflow: hidden;
-		}
-		.carousel-item {
-		    position: relative;
-		    display: none;
-		    float: left;
-		    width: 100%;
-		    margin-right: -100%;
-		    -webkit-backface-visibility: hidden;
-		    backface-visibility: hidden;
-		    transition: transform .6s ease-in-out;
-		}
-		.carousel-item-next, .carousel-item-prev, .carousel-item.active {
-		    display: block;
-		}
-		.card img {
-		    height: 350px;
-		    object-fit: cover;
-		}
-	</style>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+   <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
+   
+   <style>
+      body {
+            max-width: 900px;
+            background-color: #222;
+            position: relative;
+            margin: auto;
+            padding: 0 1rem;
+            font-family: var(--body-font);
+            color: white;
+            font-size: var(--normal-font-size);
+            transition: .5s;
+        }
+      #container{
+         padding-top: 30%;
+      }
+      #carouselExampleControls{
+         margin : auto;
+         width:65%;
+      }
+      .carousel-item img{
+         height: 500px;
+      }
+      span{
+         color: white;
+      }
+      #title{
+         font-size:10px;
+      }
+      #nickname{
+         font-size:5px;
+      }
+      .carousel-inner {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+      }
+      .carousel-item {
+          position: relative;
+          display: none;
+          float: left;
+          width: 100%;
+          margin-right: -100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          transition: transform .6s ease-in-out;
+      }
+      .carousel-item-next, .carousel-item-prev, .carousel-item.active {
+          display: block;
+      }
+      .card img {
+          height: 350px;
+          object-fit: cover;
+      }
+
+        #conMenu {
+            height: 50px;
+             margin: 40px;
+           
+        }
+
+
+       #heart{
+           width: 87%;
+           padding-top: 20px;
+           padding-left: 20px;
+           flex-wrap: nowrap; 
+       } 
+       #ht{
+         float: left;
+      }       
+      
+        #ht2{
+        float: left;  
+        text-align: right;
+       
+        vertical-align: right; 
+
+      } 
+      
+       #count{
+           padding-top: 5px;
+            width: 87%;
+           text-align: center;
+           padding-left:20px;
+       }
+       #jjimcol{
+           font-size: 27px;
+           color: #b1b1b1;
+           text-align: center;
+           padding: 0px;
+           max-width: 56px;
+           min-width: 56px; 
+           float: right;   
+       }
+       #goodcol{
+           font-size: 27px;
+           color: #b1b1b1;
+           text-align: center;
+           padding: 0px;
+           max-width: 56px;
+           min-width: 56px; 
+           float: left;
+           text-align: center;
+           
+       }
+       #likecnt{
+           padding: 0px;
+           max-width: 56px;
+           min-width: 56px;
+       }
+       #jjimcnt{
+           padding: 0px;
+           max-width: 56px;
+           min-width: 56px;
+       }
+
+
+        .padding{
+            padding-bottom:10px ;
+
+        }
+         .writer{
+            font-weight: bold;
+        }
+
+       .ididid{
+       overflow:hidden;
+       text-overflow:ellipsis;
+       white-space:nowrap;
+       
+       }
+
+       
+       #btn{
+          width: 100%;
+       }
+
+
+         #title{
+            font-size: 15px;
+           
+        }
+        .bookmark{
+         text-align: right;
+         padding:0px;
+        }
+   </style>
 </head>
 <body>
-	<div id="navi-bar"></div>
-	<div id="header">
-		<span id="title">title입니다.</span>
-		<span id="nickname">닉네임입니다.</span>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-				  <div class="carousel-inner">
-				    <div class="carousel-item active">
-				      <img src="/resources/img/cafe1.jpg" class="d-block w-100 h-100" alt="...">
-				    </div>
-				    <div class="carousel-item">
-				      <img src="/resources/img/cafe2.jpg" class="d-block w-100 h-100" alt="...">
-				    </div>
-				    <div class="carousel-item">
-				      <img src="/resources/img/cafe3.jpg" class="d-block w-100 h-100" alt="...">
-				    </div>
-				  </div>
-				  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				    <span class="visually-hidden">Previous</span>
-				  </button>
-				  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-				    <span class="visually-hidden">Next</span>
-				  </button>
-				</div>
-			</div>
-		</div>
-	</div>
+   <!-- --------------------Header--------------------------- -->
+   <div id="header">
+      <div class="row border-bottom border-2 rounded h-100" id="conMenu">
+                   <div class="col-12 col-md-12 ellipsis "  style="padding-left:7px" id="title">다들 하이요!!</div>
+                    <div class="row">
+                        <div class="col-3 col-md-3 ellipsis ididid " style="padding-left:8px;">hihiyoyo</div>
+                        <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;2022.06.29</div>
+                    
+                        <div class="col-3 " style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;10</div>
+                        <div class="col-6 like"><i class="fa-solid fa-heart"></i>&nbsp;3000</div>
+                        <div class="col-3 bookmark"><i class="fa-solid fa-border fa-bookmark"></i></div>
+
+   
+
+                     
+                     </div>
+                </div>
+   </div>
+   <div class="container">
+      <div class="row">
+      <!-- Main Contents Container -->
+         <div class="col-12 contents-container">
+         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="/resources/img/cafe1.jpg" class="d-block w-100 h-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="/resources/img/cafe2.jpg" class="d-block w-100 h-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="/resources/img/cafe3.jpg" class="d-block w-100 h-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+         </div>
+         <hr>
+      </div>
+   </div>
 
 </body>
 </html>
