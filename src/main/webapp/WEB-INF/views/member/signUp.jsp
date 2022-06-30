@@ -85,7 +85,11 @@
 				
 				// ajax 기본형태 $.ajax 
 				$.ajax({
+<<<<<<< HEAD
 					url : "/member/memberIdCheck", 
+=======
+					url : "memberIdCheck", 
+>>>>>>> cfcdd030ff9c24bd89369596540332885e6756b0
 					type : "post",
 					data : {"id":memId},
 					success : function(result){
