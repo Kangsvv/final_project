@@ -25,49 +25,7 @@
 
 <style>
 
-  /*HEADer부분----------------------------*/
-  body{
-    background-color: black;
-  }
-    nav {
-   background-color: black;
-   color: white;
-   border-radius: 5px;
-  
-}
-nav a{
-    color: white;
-}
-.navbar-nav a{
-    color: white;
-    border-radius: 5px;
-    margin-right: 20px;
-    text-align: center;
-}
-.navbar-nav a:hover{
-    color: black;
-    background-color: white;
-    border-radius: 5px;
-    text-decoration-line: none;
-}
-#btn{
-    text-align: right;
-}
-.navbar-toggler{
-    background-color: white;
-    color: black;
-}
-button{
-    background-color: rgba(0, 0, 0, 0.128);
-    border-radius: 5px;
-    color: white;
-}
 
-button:hover{
-    border-radius: 5px;
-    color: black;
-    background-color: white;
-}
 /*board UI출력부분----------------------------*/
 .tz-gallery {
     padding: 40px;
@@ -95,10 +53,10 @@ button:hover{
 
 /*---------------------------------------HEADer부분----------------------------*/
   body{
-    background-color: black;
+    background-color: #222;
   }
     nav {
-   background-color: black;
+   background-color: #222;
    color: white;
    border-radius: 5px;
   
@@ -112,7 +70,7 @@ nav a{
     margin-right: 20px;
 }
 .navbar-nav a:hover{
-    color: black;
+    color: #222;
     background-color: white;
     border-radius: 5px;
     text-decoration-line: none;
@@ -122,17 +80,18 @@ nav a{
 }
 .navbar-toggler{
     background-color: white;
-    color: black;
+    color: #222;
 }
 button{
-    background-color: rgba(0, 0, 0, 0.128);
+    background-color: #222;
     border-radius: 5px;
     color: white;
+    border: solid 1px #222;
 }
 
 button:hover{
     border-radius: 5px;
-    color: black;
+    color: #222;
     background-color: white;
 }
 
@@ -143,8 +102,8 @@ button:hover{
 /*-----------------------------------------Footer부분----------------------------*/
 /* footer 부분 */
 #foot{
-    border-top: 1px solid gray;
-    background-color: rgba(32, 31, 31, 0.532);
+    border-top: 1px solid #222;
+    background-color: #222;
     
 }
 /* rgba(32, 31, 31, 0.532) */
@@ -158,7 +117,7 @@ button:hover{
    font-weight: 700;
    font-size: 14px;
    line-height: 20px;
-   color: #FFFFFF;
+   color: white;
 }
 
 /* 헤더 푸터 완료 */
@@ -185,12 +144,6 @@ button:hover{
   border-radius: 10%;
 }
 
-html, body{
-  height:100%;
-  font-family: 'Open Sans Condensed', sans-serif;
-  background: #000;
-}
-
 h2, h4 {
   letter-spacing:4px;
   text-align:center;
@@ -209,7 +162,7 @@ h4 {
 }
 
 .title {
-  color: black;
+  color: #222;
   margin: 2%;
   font-size: 40px;
   font-weight: bold;
@@ -220,7 +173,7 @@ h4 {
 }
 
 .que:first-child {
-	border-top: 1px solid black;
+	border-top: 1px solid #222;
 }
 
 .que {
@@ -261,7 +214,6 @@ h4 {
 	margin-right: 5px;
 }
 
-
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 .dropdown{
@@ -273,55 +225,9 @@ h4 {
   font-family : 'Material Icons';
 }
 .dropbtn{
-  border : 1px solid white;;
+  border : 1px solid #222;
   border-radius : 4px;
-  background-color: black;
-  font-weight: 400;
-  color : white;
-  padding : 12px;
-  width :200px;
-  text-align: left;
-  cursor : pointer;
-  font-size: 20px;
-}
-.dropdown-content{
-  display : none;
-  position : absolute;
-  z-index : 1; /*다른 요소들보다 앞에 배치*/
-  font-weight: 400;
-  background-color: white;
-  min-width : 200px;
-}
-
-.dropdown-content a{
-  display : block;
-  text-decoration : none;
-  color : white;
-  font-size: 12px;
-  padding : 12px 20px;
-}
-
-.dropdown-content a:hover{
-  background-color : #ececec
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-.dropdown{
-  position : relative;
-  display : inline-block;
-}
-
-.dropbtn_icon{
-  font-family : 'Material Icons';
-}
-.dropbtn{
-  border : 1px solid black;
-  border-radius : 4px;
-  background-color: black;
+  background-color: #222;
   font-weight: 400;
   color : white;
   padding : 12px;
@@ -359,53 +265,6 @@ h4 {
   display: block;
 }
 
-@-webkit-keyframes flipout {
-  0% {-webkit-transform: translate(0px, 0px) scale(1);}
-  30% {-webkit-transform: translate(0px, -30px) scale(0.98);}
-  100% {-webkit-transform: translate(0px, 0px) scale(0.9);}
-}
-
-@-o-keyframes flipout {
-  0% {-o-transform: translate(0px, 0px) scale(1);}
-  30% {-o-transform: translate(0px, -30px) scale(0.98);}
-  100% {-o-transform: translate(0px, 0px) scale(0.9);}
-}
-
-@-moz-keyframes flipout {
-  0% {-moz-transform: translate(0px, 0px) scale(1);}
-  30% {-moz-transform: translate(0px, -30px) scale(0.98);}
-  100% {-moz-transform: translate(0px, 0px) scale(0.9);}
-}
-
-@keyframes flipout {
-  0% {transform: translate(0px, 0px) scale(1);}
-  30% {transform: translate(0px, -30px) scale(0.98);}
-  100% {transform: translate(0px, 0px) scale(0.9);}
-}
-
-@-webkit-keyframes flipin {
-  0% {-webkit-transform: translate(0px, 0px) scale(0.9);}
-  30% {-webkit-transform: translate(0px, -30px) scale(0.98);}
-  100% {-webkit-transform: translate(0px, 0px) scale(1);}
-}
-
-@-o-keyframes flipin {
-  0% {-o-transform: translate(0px, 0px) scale(0.9);}
-  30% {-o-transform: translate(0px, -30px) scale(0.98);}
-  100% {-o-transform: translate(0px, 0px) scale(1);}
-}
-
-@-moz-keyframes flipin {
-  0% {-moz-transform: translate(0px, 0px) scale(0.9);}
-  30% {-moz-transform: translate(0px, -30px) scale(0.98);}
-  100% {-moz-transform: translate(0px, 0px) scale(1);}
-}
-
-@keyframes flipin {
-  0% {transform: translate(0px, 0px) scale(0.9);}
-  30% {transform: translate(0px, -30px) scale(0.98);}
-  100% {transform: translate(0px, 0px) scale(1);}
-}
 
 </style>
 </head>
@@ -439,8 +298,7 @@ h4 {
             <button>Signup</button>
         
           </nav>
-<div class="tz-gallery">
-  <div class="row">
+
 
          <h1 class="main">Notice Main</h1>
 <!------------------------------------------------------------header----------------------------------------------------->
