@@ -21,7 +21,7 @@
    background-color: black;
    color: white;
    border-radius: 5px;
-  
+  border-bottom: 1px solid white;
 }
 nav a{
     color: white;
