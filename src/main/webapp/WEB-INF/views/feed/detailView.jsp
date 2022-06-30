@@ -228,6 +228,12 @@ nav button:hover{
         	color : white;
         	font-weight:bold;
         }
+        #clickEventsBox{
+        	border-top: 2px solid white;
+        	border-bottom: 2px solid white;
+        	padding:10px;
+        	margin-top:5px;
+        }
    </style>
 </head>
 <body>
@@ -298,15 +304,17 @@ nav button:hover{
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-            <span>
-            	<i class="fa-regular fa-heart fa-xl buttonIcon"></i>
-            </span>
-            <span>
-            	<i class="fa-regular fa-comment fa-xl buttonIcon"></i>
-            </span>
-            <span style="align:right">
-            	<i class="fa-solid fa-bookmark fa-xl buttonIcon"></i>
-            </span>
+            <div id="clickEventsBox">
+	            <span>
+	            	<i class="fa-regular fa-heart fa-xl buttonIcon"></i>
+	            </span>
+	            <span>
+	            	<i class="fa-regular fa-comment fa-xl buttonIcon"></i>
+	            </span>
+	            <span>
+	            	<i class="fa-solid fa-bookmark fa-xl buttonIcon"></i>
+	            </span>
+            </div>
             <div class="contentsBox">
             	화이팅!
             </div>
@@ -318,7 +326,7 @@ nav button:hover{
        <!-------------------------------------------------------Footer------------------------------------------------->
  
     <div class="col-12 d-none d-md-block">
-      <div id="foot" align=center>
+      <div ="foot" align=center>
          <div class="container">
             <div class="row">
               <div class="col-4" id="footicon"> </div>
