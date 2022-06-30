@@ -10,15 +10,20 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-   <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--    <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script> -->
    
    <style>
-   /* Header Style */
-       nav {
+  /*HEADer부분----------------------------*/
+ body{
+    background-color: #222;
+  }
+    nav {
    background-color: black;
    color: white;
-   border-radius: 5px;
-    border-bottom: 1px solid white;
+   padding-left:10%;
+   padding-right:10%;
+   border-bottom: 1px solid gray;
 }
 nav a{
     color: white;
@@ -37,17 +42,13 @@ nav a{
 #btn{
     text-align: right;
 }
-.navbar-toggler{
-    background-color: white;
-    color: black;
-}
-button{
+nav button{
     background-color: rgba(0, 0, 0, 0.128);
     border-radius: 5px;
     color: white;
 }
 
-button:hover{
+nav button:hover{
     border-radius: 5px;
     color: black;
     background-color: white;
@@ -74,7 +75,6 @@ button:hover{
 }
    
       body {
-            max-width: 900px;
             background-color: #222;
             position: relative;
             margin: auto;
@@ -220,7 +220,14 @@ button:hover{
         	text-align: center;
         	font-size: 20px;
         }
-        
+        #followButton{
+        	padding:10px;
+        	border:none;
+        	border-radius: 10px;
+        	background-color:#760c0c;
+        	color : white;
+        	font-weight:bold;
+        }
    </style>
 </head>
 <body>
@@ -258,10 +265,10 @@ button:hover{
                     <div class="row">
                         <div class="col-3 col-md-3 ellipsis id" style="padding-left:8px;">hihiyoyo</div>
                         <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;2022.06.29</div>
-                    
+                    	
                         <div class="col-3 " style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;10</div>
                         <div class="col-6 like"><i class="fa-solid fa-heart"></i>&nbsp;3000</div>
-                        <div class="col-3 bookmark"><i class="fa-solid fa-user-group"></i></div>
+                        <div class="col-3 bookmark"><button id="followButton">Follow</button></div>
 
                      </div>
                 </div>
@@ -292,10 +299,13 @@ button:hover{
               </button>
             </div>
             <span>
-            	<i class="fa-regular fa-heart "></i>
+            	<i class="fa-regular fa-heart fa-xl buttonIcon"></i>
             </span>
             <span>
-            	<i class="fa-solid fa-bookmark "></i>
+            	<i class="fa-regular fa-comment fa-xl buttonIcon"></i>
+            </span>
+            <span style="align:right">
+            	<i class="fa-solid fa-bookmark fa-xl buttonIcon"></i>
             </span>
             <div class="contentsBox">
             	화이팅!
