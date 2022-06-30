@@ -210,7 +210,7 @@ nav button:hover{
             <div class="row">
     
                 <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.naver.com">
+                    <a class="lightbox" href="/feed/detailView">
                         <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg" alt="Bridge">
                     </a>
                 </div>
