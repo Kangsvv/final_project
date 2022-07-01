@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>카페리뷰 게시판</title>
 <!-- Bootstrap ver 5.1  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -56,6 +56,7 @@
       .select option, #select{
          color:black;
          background-color:#ccc;
+          text-align: center;
       }
       .select{
          height:30px;
@@ -63,6 +64,7 @@
          border-radius: 8px;
          margin-top:10px;
          width:100px;
+         border:none;
       }
       
       button{
@@ -276,7 +278,7 @@ nav button:hover{
   <div id="foot" align=center>
      <div class="container">
         <div class="row">
-          <div class="col-4" id="footicon"> </div>
+          <div class="col-4" id="footicon"><a href="#" style="color:white; padding-top:20px; text-decoration-line: none;">CAFEIN</a></div>
            <div class="col-2 footer2"><a href="#">회사소개</a></div>
            <div class="col-2 footer2"><a href="#">이용약관</a></div>
            <div class="col-2 footer2"><a href="#">1:1 문의</a></div>

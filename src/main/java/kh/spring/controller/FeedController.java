@@ -28,7 +28,6 @@ public class FeedController {
 		return "/feed/feedWrite";
 	}
 	
-	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
 		e.printStackTrace();
