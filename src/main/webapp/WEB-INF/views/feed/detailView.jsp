@@ -74,16 +74,17 @@ nav button:hover{
    color: #FFFFFF;
 }
    
-      body {
-            background-color: #222;
-            position: relative;
-            margin: auto;
-            padding: 0 1rem;
-            font-family: var(--body-font);
-            color: white;
-            font-size: var(--normal-font-size);
-            transition: .5s;
-        }
+   body {
+   		
+        background-color: #222;
+        position: relative;
+        margin: auto;
+        padding: 0 1rem;
+        font-family: var(--body-font);
+        color: white;
+        font-size: var(--normal-font-size);
+        transition: .5s;
+      }
       #container{
          padding-top: 30%;
       }
@@ -142,7 +143,9 @@ nav button:hover{
        #ht{
          float: left;
       }       
-      
+      #imgbox1{
+      	
+      }
         #ht2{
         float: left;  
         text-align: right;
@@ -229,17 +232,24 @@ nav button:hover{
         	font-weight:bold;
         }
         #clickEventsBox{
+        	margin:40px;
         	border-top: 2px solid white;
         	border-bottom: 2px solid white;
         	padding:10px;
         	margin-top:5px;
+        }
+        #bookmark{
+        	text-align:right;
+        }
+        .heartBtn{
+        	padding-right:10px;
         }
    </style>
 </head>
 <body>
 	     <!------------------------------------------------------------header----------------------------------------------------->
     
-     <div class="container">
+     <div class="Allcontainer">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">CAFEIN</a>
@@ -261,7 +271,7 @@ nav button:hover{
          
         
           </nav>
-
+	
    <!-- --------------------contentsHeader--------------------------- -->
    
    
@@ -283,51 +293,50 @@ nav button:hover{
       <div class="row">
       <!-- Main Contents Container -->
          <div class="col-12 contents-container">
-         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="/resources/img/cafe1.jpg" class="d-block w-100 h-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="/resources/img/cafe2.jpg" class="d-block w-100 h-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="/resources/img/cafe3.jpg" class="d-block w-100 h-100" alt="...">
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+         	<div class="imgbox1">
+	         	<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+	              <div class="carousel-inner">
+	                <div class="carousel-item active">
+	                  <img src="/resources/img/cafe1.jpg" class="d-block w-100 h-100" alt="...">
+	                </div>
+	                <div class="carousel-item">
+	                  <img src="/resources/img/cafe2.jpg" class="d-block w-100 h-100" alt="...">
+	                </div>
+	                <div class="carousel-item">
+	                  <img src="/resources/img/cafe3.jpg" class="d-block w-100 h-100" alt="...">
+	                </div>
+	              </div>
+	              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+	                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	                <span class="visually-hidden">Previous</span>
+	              </button>
+	              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+	                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	                <span class="visually-hidden">Next</span>
+	              </button>
+	            </div>
             </div>
-            <div id="clickEventsBox">
-	            <span>
-	            	<i class="fa-regular fa-heart fa-xl buttonIcon"></i>
-	            </span>
-	            <span>
-	            	<i class="fa-regular fa-comment fa-xl buttonIcon"></i>
-	            </span>
-	            <span>
+            <div class="row" id="clickEventsBox">
+	            <div class="col-6">
+	            	<span class="heartBtn"><i class="fa-regular fa-heart fa-xl buttonIcon"></i></span>
+	            	<span><i class="fa-regular fa-comment fa-xl buttonIcon"></i></span>
+	            </div>
+	            <div id="bookmark" class="col-6">
 	            	<i class="fa-solid fa-bookmark fa-xl buttonIcon"></i>
-	            </span>
+	            </div>
             </div>
             <div class="contentsBox">
             	화이팅!
             </div>
          </div>
-
-         
-      </div>
+       </div>
+     </div>
    </div>
        <!-------------------------------------------------------Footer------------------------------------------------->
  
     <div class="col-12 d-none d-md-block">
-      <div ="foot" align=center>
-         <div class="container">
+      <div id="foot" align=center>
+         <div class="footcontainer">
             <div class="row">
               <div class="col-4" id="footicon"> </div>
                <div class="col-2 footer2">회사소개</div>
