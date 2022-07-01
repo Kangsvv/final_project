@@ -8,7 +8,7 @@ public class MemberDTO {
 	private String memPw;
 	private String memName;
 	private String memEmail;
-	private int memPhone;
+	private String memPhone;
 	private int memLevel;
 	private int memStatus;
 	private Timestamp memJoinDate;
@@ -17,7 +17,7 @@ public class MemberDTO {
 	public MemberDTO() {
 	}
 
-	public MemberDTO(int memSeq, String memId, String memPw, String memName, String memEmail, int memPhone,
+	public MemberDTO(int memSeq, String memId, String memPw, String memName, String memEmail, String memPhone,
 			int memLevel, int memStatus, Timestamp memJoinDate, Timestamp memDeleteDate) {
 		super();
 		this.memSeq = memSeq;
@@ -72,11 +72,11 @@ public class MemberDTO {
 		this.memEmail = memEmail;
 	}
 
-	public int getMemPhone() {
+	public String getMemPhone() {
 		return memPhone;
 	}
 
-	public void setMemPhone(int memPhone) {
+	public void setMemPhone(String memPhone) {
 		this.memPhone = memPhone;
 	}
 

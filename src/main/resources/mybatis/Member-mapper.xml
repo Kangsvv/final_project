@@ -26,7 +26,7 @@
 	</delete>
 	
 	<!-- 회원가입 처리 -->
-	<insert id="joinActionjoinAction">
-		insert into member values(mem_seq.nextVal)
+	<insert id="joinAction">
+		insert into member values(mem_seq.nextVal,#{memId},#{memPw},#{memName},#{memEmail},#{memPhone},0,0,sysdate,'')
 	</insert>
 </mapper> 

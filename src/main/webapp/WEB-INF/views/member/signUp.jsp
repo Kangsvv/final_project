@@ -40,8 +40,8 @@
 						<option value="018">018</option>
 						<option value="019">019</option>
 						<option value="031">031</option>
-						<option value="070">070</option>
-					</select>-
+						<option value="070">070</option> 
+					</select>
 					<input class='form_main phoneSet' id='phone_center' maxlength="4" required oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">-
 					<input class='form_main phoneSet' id='phone_right' maxlength="4" required="required" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 					<span id='checkPhone'></span>
