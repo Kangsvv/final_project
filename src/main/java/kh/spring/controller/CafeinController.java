@@ -9,9 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CafeinController {
 	
 	@RequestMapping("goCafein")
-	public String goFeed() {
+	public String goCafein() {
 		return "/cafein/cafeinMain";
 	}
+	@RequestMapping("writeCafein")
+	public String wrtieCafein() {
+		return "/cafein/cafeinWrite";
+	}
+	
+	@RequestMapping("detailCafein")
+	public String detailCafein() {
+		return "/cafein/cafeinDetail";
+	}
+	
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
