@@ -3,7 +3,6 @@ package kh.spring.controller;
 import java.io.IOException;
 import java.util.Random;
 
-import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
