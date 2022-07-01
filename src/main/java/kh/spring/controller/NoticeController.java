@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/notice/")
 public class NoticeController {
 
+	@RequestMapping("FAQ")
+	public String FAQ() {
+		return "/notice/noticeMain";
+	}
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
