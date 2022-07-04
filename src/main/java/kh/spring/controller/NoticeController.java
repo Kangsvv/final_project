@@ -13,6 +13,16 @@ public class NoticeController {
 		return "/notice/noticeMain";
 	}
 	
+	@RequestMapping("notic")
+	public String notic() {
+		return "/notice/notic";
+	}
+	
+	@RequestMapping("notic_Write")
+	public String notic_Write() {
+		return "/notice/notic_Write";
+	}
+	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
 		e.printStackTrace();
