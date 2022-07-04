@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kh.spring.dto.QuestionDTO;
+import kh.spring.dto.NoticeDTO;
 import kh.spring.service.NoticeService;
 
 
@@ -26,14 +26,15 @@ public class NoticeController {
 		return "/notice/noticeMain";
 	}
 	
-	@RequestMapping()
+	@RequestMapping("list")
 	public String question(Model model) throws Exception {
 		
-		List<QuestionDTO> dto = bServ.selectAll();
+		List<NoticeDTO> dto = bServ.selectAll();
 		model.addAttribute("list",dto);
 		
-		return "/notice/questionLsit";
+		return "/notice/notice";
 	}
+	
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class

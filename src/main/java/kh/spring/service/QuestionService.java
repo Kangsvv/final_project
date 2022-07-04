@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kh.spring.dao.NoticeDAO;
-import kh.spring.dto.NoticeDTO;
+import kh.spring.dao.QuestionDAO;
+import kh.spring.dto.QuestionDTO;
 
 @Service
-public class NoticeService {
+public class QuestionService {
 
-	
 	@Autowired
-	private NoticeDAO dao;
+	private QuestionDAO dao;
 	
-	public List<NoticeDTO> selectAll() throws Exception{
+	public List<QuestionDTO> selectAll() throws Exception{
 		return dao.selectAll();
-		
-	}
+	
+}
+
 }

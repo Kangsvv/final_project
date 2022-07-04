@@ -6,17 +6,16 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kh.spring.dto.NoticeDTO;
+import kh.spring.dto.QuestionDTO;
 
 @Repository
-public class NoticeDAO {
+public class QuestionDAO {
 
+	
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public List<NoticeDTO> selectAll() throws Exception{
-		return mybatis.selectList("Notice.selectAll");
+	public List<QuestionDTO> selectAll() throws Exception{
+		return mybatis.selectList("question.selectAll");
 	}
-	
-	
 }
