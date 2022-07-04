@@ -5,9 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
 <!-- Bootstrap ver 5.1  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
@@ -93,8 +95,53 @@ nav button:hover{
   height: 300px;
   color: black;
   text-align: center;
-  background-color: aliceblue;
   margin: auto;
+  margin-bottom: 9%;
+}
+#preview{
+  border: 1px solid white;
+  width: 300px;
+  height: 300px;
+  color:white;
+  text-align: center;
+  margin: auto;
+}
+#file label {
+  display: inline-block;
+  padding: .5em .75em;
+  color: #fff;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #5cb85c;
+  cursor: pointer;
+  border: 1px solid #4cae4c;
+  border-radius: .25em;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+#file label:hover {
+  background-color: #6ed36e;
+}
+
+#file label:active {
+  background-color: #367c36;
+}
+
+#file input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+#file img{
+  width: 300px;
+  height: 300px;
 }
 #my-button{
   width: 150px;
@@ -106,6 +153,7 @@ nav button:hover{
   color: white;
   margin: auto;
   text-align: center;
+  margin-bottom: 9%;
 }
 input[type=text] {
 	width: 300px;
@@ -185,9 +233,10 @@ input[type=text] {
   <div class="col-12" id="text">카페 등록</div>
 </div>
 <div class="row" style="margin-top: 5%;margin-bottom: 5%;">
-  <div class="col-12 col-sm-6" id="file"><input id="my-input" type="file" style="display: none;" />
-    <button id="my-button" onclick="onClickUpload();">메인사진 등록</button><br>
-  <span style="color: black;">여러사진등록시 첫번째사진은 메인으로 들어갑니다.</span></div>
+  <div class="col-12 col-sm-6" id="file"><img id="preview" />
+    <label for="ex_file">업로드</label>
+    <input type="file" id="ex_file" onchange="readURL(this);">
+</div>
   <div class="col-12 col-sm-6" id="table">
 <table>
   <tr>
@@ -255,6 +304,18 @@ input[type=text] {
             let myInput = document.getElementById("my-input");
             myInput.click();
         }
+        function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('preview').src = e.target.result;
+    };
+    
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById('preview').src = "";
+  }
+}
       </script>    
 </body>
 </html>
