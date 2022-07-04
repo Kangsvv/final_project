@@ -152,13 +152,15 @@ nav button:hover{
   margin-top: 3%;
   color: white;
   margin: auto;
-  text-align: center;
   margin-bottom: 9%;
 }
 input[type=text] {
 	width: 300px;
 	height: 40px;
 	border-radius: 5px;
+}
+label{
+  color: white;
 }
 .tableTitle{
   min-width: 76px;
@@ -177,6 +179,7 @@ input[type=text] {
   background-color: #760c0c;
   color: white;
 }
+
 /*-------------------------------------------------------------*/
 /* footer 부분 */
 #foot{
@@ -236,30 +239,103 @@ input[type=text] {
   <div class="col-12 col-sm-6" id="file"><img id="preview" />
     <label for="ex_file">업로드</label>
     <input type="file" id="ex_file" onchange="readURL(this);">
+   
 </div>
   <div class="col-12 col-sm-6" id="table">
 <table>
   <tr>
     <td class="tableTitle">카페이름 : </td>
-    <td><input type="text" placeholder="카페명" name="name"></td>
+    <td><input type="text" placeholder="카페명"></td>
   </tr>
   <tr>
     <td class="tableTitle">주소 : </td>
-    <td><input type="text" placeholder="카페주소" name="address"></td>
+    <td><input type="text" placeholder="카페주소"></td>
   </tr>
   <tr>
-    <td class="tableTitle">요일 : </td>
-    <td><input type="text" placeholder="오픈요일/휴일" name="day"></td>
+    <td class="tableTitle">휴무일 : </td>
+    <td><input type="checkbox" value="mon" name="day"><label>월</label>
+      <input type="checkbox" value="tue" name="day"><label>화</label>
+      <input type="checkbox" value="wed" name="day"><label>수</label>
+      <input type="checkbox" value="thu" name="day"><label>목</label>
+      <input type="checkbox" value="fri" name="day"><label>금</label>
+      <input type="checkbox" value="sat" name="day"><label>토</label>
+      <input type="checkbox" value="sun" name="day"><label>일</label>
+      <input type="checkbox" value="hol" name="day"><label>공휴일</label></td>
   </tr>
   <tr>
-    <td class="tableTitle">시간 : </td>
-    <td><input type="text" placeholder="오픈/마감시간" name="time"></td>
+    <td class="tableTitle">오픈시간 : </td>
+    <td>
+      <select name="m">
+        <option value='' selected>-- 선택 --</option>
+        <option value='am'>am</option>
+        <option value='pm'>pm</option>
+      </select>
+      <select name="hour">
+        <option value='' selected>-- 선택 --</option>
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+        <option value='6'>6</option>
+        <option value='7'>7</option>
+        <option value='8'>8</option>
+        <option value='9'>9</option>
+        <option value='10'>10</option>
+        <option value='11'>11</option>
+        <option value='12'>12</option>
+      </select>
+      <select name="minute">
+        <option value='' selected>-- 선택 --</option>
+        <option value='00'>00</option>
+        <option value='10'>10</option>
+        <option value='20'>20</option>
+        <option value='30'>30</option>
+        <option value='40'>40</option>
+        <option value='50'>50</option>
+      </select>
+      
+    </td>
+  </tr>
+  <tr>
+    <td class="tableTitle">마감시간 : </td>
+    <td>
+      <select name="m">
+        <option value='' selected>-- 선택 --</option>
+        <option value='am'>am</option>
+        <option value='pm'>pm</option>
+      </select>
+      <select name="hour">
+        <option value='' selected>-- 선택 --</option>
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+        <option value='6'>6</option>
+        <option value='7'>7</option>
+        <option value='8'>8</option>
+        <option value='9'>9</option>
+        <option value='10'>10</option>
+        <option value='11'>11</option>
+        <option value='12'>12</option>
+      </select>
+      <select name="minute">
+        <option value='' selected>-- 선택 --</option>
+        <option value='00'>00</option>
+        <option value='10'>10</option>
+        <option value='20'>20</option>
+        <option value='30'>30</option>
+        <option value='40'>40</option>
+        <option value='50'>50</option>
+      </select>
+      
+    </td>
   </tr>
   <tr>
     <td class="tableTitle">주차장 : </td>
     <td class="parkingRaido">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="parking" value="yes">O&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="parking" value="yes">O&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="radio" name="parking" value="no">X&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="radio" name="parking" value="park">공영주차장이용
     </td>
@@ -270,6 +346,8 @@ input[type=text] {
 </table>
 
 </div>
+
+
 </div> 
 <!---------------------------------상세설명------------------------------->
 <div class="row">

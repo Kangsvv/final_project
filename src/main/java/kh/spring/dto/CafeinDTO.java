@@ -7,10 +7,10 @@ public class CafeinDTO {
   private String address;
   private String day;
   private String time;
-  private String parking;
+  private int parking;
   
  public CafeinDTO() {}
-public CafeinDTO(int seq, String writer, String name, String address, String day, String time, String parking) {
+public CafeinDTO(int seq, String writer, String name, String address, String day, String time, int parking) {
 	super();
 	this.seq = seq;
 	this.writer = writer;
@@ -56,10 +56,10 @@ public String getTime() {
 public void setTime(String time) {
 	this.time = time;
 }
-public String getParking() {
+public int getParking() {
 	return parking;
 }
-public void setParking(String parking) {
+public void setParking(int parking) {
 	this.parking = parking;
 }
 }
