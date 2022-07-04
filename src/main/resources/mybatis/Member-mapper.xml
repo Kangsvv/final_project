@@ -17,7 +17,7 @@
 	
 	<!-- 이메일 인증 확인 -->
 	<select id="emailNumcheck" resultType="int">
-		select count(*) from member_email_num where me_email = #{email} and me_num = #{num} and me_time >= SYSDATE - (4/1440)
+		select count(*) from member_emaill_num where me_email = #{email} and me_num = #{num} and me_time >= SYSDATE - (4/1440)
 	</select>
 	
 	<!-- 이메일 인증 삭제 -->

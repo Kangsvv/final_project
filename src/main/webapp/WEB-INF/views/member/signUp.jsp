@@ -233,6 +233,7 @@
 						emailCheck = true;
 						$("#emailLi").hide();
 						$("#memEmail").hide();
+						$("#emailcheck").hide();
 					}else{
 						alert("인증번호를 확인해주세요. 3분이 초과된경우 다시 전송 후 인증해주세요.");
 						emailCheck = false;
