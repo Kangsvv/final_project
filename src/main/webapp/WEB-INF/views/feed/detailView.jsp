@@ -4,16 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>카페리뷰 디테일 뷰</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!--    <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script> -->
-   
-   <style>
+   <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
+</head>
+<style>
+      body {
+            background-color: #222;
+            position: relative;
+            font-family: var(--body-font);
+            color: white;
+        }
   /*HEADer부분----------------------------*/
  body{
     background-color: #222;
@@ -27,6 +33,9 @@
 }
 nav a{
     color: white;
+}
+.navbar-nav{
+   min-width:450px;
 }
 .navbar-nav a{
     color: white;
@@ -55,12 +64,13 @@ nav button:hover{
 }
 /*-----------------------------------------Footer부분----------------------------*/
 /* footer 부분 */
+
 #foot{
     border-top: 1px solid gray;
-    background-color: rgba(32, 31, 31, 0.532);
+    background-color: black;
     
 }
-/* rgba(32, 31, 31, 0.532) */
+
 
 .footer2{
     line-height: 20px;
@@ -73,18 +83,12 @@ nav button:hover{
    line-height: 20px;
    color: #FFFFFF;
 }
-   
-   body {
-   		
-        background-color: #222;
-        position: relative;
-        margin: auto;
-        padding: 0 1rem;
-        font-family: var(--body-font);
-        color: white;
-        font-size: var(--normal-font-size);
-        transition: .5s;
-      }
+.footer2 a{
+   text-decoration : none;
+   color:white;
+   }
+
+/* main */
       #container{
          padding-top: 30%;
       }
@@ -94,6 +98,9 @@ nav button:hover{
       }
       .carousel-item img{
          height: 500px;
+         margin: auto;
+         margin-top:20px;
+         margin-bottom:20px;
       }
       span{
          color: white;
@@ -122,44 +129,11 @@ nav button:hover{
       .carousel-item-next, .carousel-item-prev, .carousel-item.active {
           display: block;
       }
-      .card img {
+      .carousel-item img {
           height: 350px;
           object-fit: cover;
       }
 
-        #conMenu {
-            height: 50px;
-             margin: 40px;
-           
-        }
-
-
-       #heart{
-           width: 87%;
-           padding-top: 20px;
-           padding-left: 20px;
-           flex-wrap: nowrap; 
-       } 
-       #ht{
-         float: left;
-      }       
-      #imgbox1{
-      	
-      }
-        #ht2{
-        float: left;  
-        text-align: right;
-       
-        vertical-align: right; 
-
-      } 
-      
-       #count{
-           padding-top: 5px;
-            width: 87%;
-           text-align: center;
-           padding-left:20px;
-       }
        #jjimcol{
            font-size: 27px;
            color: #b1b1b1;
@@ -185,17 +159,12 @@ nav button:hover{
            max-width: 56px;
            min-width: 56px;
        }
-       #jjimcnt{
+       #jjimcnt
            padding: 0px;
            max-width: 56px;
            min-width: 56px;
        }
 
-
-        .padding{
-            padding-bottom:10px ;
-
-        }
          .writer{
             font-weight: bold;
         }
@@ -212,50 +181,33 @@ nav button:hover{
             font-size: 15px;
            
         }
-        .bookmark{
-         text-align: right;
-         padding:0px;
-        }
-        #contents-container{
-			border-bottom: 2px 5px white;
-        }
         .contentsBox{
-        	text-align: center;
-        	font-size: 20px;
+           font-size: 16px;
+           margin-top:20px;
         }
-        #followButton{
-        	padding:10px;
-        	border:none;
-        	border-radius: 10px;
-        	background-color:#760c0c;
-        	color : white;
-        	font-weight:bold;
+        #maincon{
+           margin-left: 12%;
+           margin-right: 12%;
         }
-        #clickEventsBox{
-        	margin:40px;
-        	border-top: 2px solid white;
-        	border-bottom: 2px solid white;
-        	padding:10px;
-        	margin-top:5px;
+        
+        #mainfoot{
+           border-top: 2px solid white;
+           border-bottom: 2px solid white;
         }
-        #bookmark{
-        	text-align:right;
-        }
-        .heartBtn{
-        	padding-right:10px;
+        #conMenu>div{
+           margin-left:5%;
         }
    </style>
 
 </head>
 <body>
-	     <!------------------------------------------------------------header----------------------------------------------------->
-    
-     <div class="Allcontainer">
-        <nav class="navbar navbar-expand-lg">
+    <!------------------------------------------------------------header----------------------------------------------------->
+     
+        <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">CAFEIN</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+              <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">▼</span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
@@ -263,93 +215,93 @@ nav button:hover{
                   <a class="nav-link" href="#">FEED</a>
                   <a class="nav-link" href="#">CAFE-IN</a>
                   <a class="nav-link" href="#">NOTICE</a>
+                  <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
+              <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
                 </div>
               </div>
-              <button>Login</button>
-              <button>Signup</button>
+              <button id="login" type="button"
+                    class="mx-1 d-none d-lg-inline btn navbar-btn" style="color:white;">Login</button>
+                    <button id="signup" type="button"
+                    class="mx-1 d-none d-lg-inline btn navbar-btn" style="color:white;">Signup</button>
             </div>
-        
-         
-        
           </nav>
-	
    <!-- --------------------contentsHeader--------------------------- -->
    
    
-   <div id="contentsHeader">
-      <div class="row border-bottom border-2 rounded h-100" id="conMenu">
-                   <div class="col-12 col-md-12 ellipsis "  style="padding-left:7px" id="title">다들 하이요!!</div>
+   <div id="maincon">
+      <div class="row border-bottom border-2" id="conMenu">
+                   <div class="col-12 col-md-12 ellipsis" style="padding-left:10px; font-size:28px;" id="title">다들 하이요!!</div>
                     <div class="row">
-                        <div class="col-3 col-md-3 ellipsis id" style="padding-left:8px;">hihiyoyo</div>
-                        <div class="col-9"><i class="fa-solid fa-calendar"></i>&nbsp;2022.06.29</div>
-                    	
-                        <div class="col-3 " style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;10</div>
-                        <div class="col-6 like"><i class="fa-solid fa-heart"></i>&nbsp;3000</div>
-                        <div class="col-3 bookmark"><button id="followButton">Follow</button></div>
+                        <div class="col-12 ellipsis id" style="padding-left:8px;">hihiyoyo</div>
+                        <div class="col-6 col-md-3" style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;10</div>
+                        <div class="col-6 col-md-3 like"><i class="fa-solid fa-heart"></i>&nbsp;3000</div>
+                        <div class="col-6 col-md-3"><i class="fa-solid fa-calendar"></i>&nbsp;2022.06.29</div>
+                        <div class="col-6 col-md-3 bookmark"><i class="fa-solid fa-user-group"></i></div>
 
                      </div>
                 </div>
-   			</div>
-   <div class="container">
+
+
       <div class="row">
       <!-- Main Contents Container -->
          <div class="col-12 contents-container">
-         	<div class="imgbox1">
-	         	<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-	              <div class="carousel-inner">
-	                <div class="carousel-item active">
-	                  <img src="/resources/img/cafe1.jpg" class="d-block w-100 h-100" alt="...">
-	                </div>
-	                <div class="carousel-item">
-	                  <img src="/resources/img/cafe2.jpg" class="d-block w-100 h-100" alt="...">
-	                </div>
-	                <div class="carousel-item">
-	                  <img src="/resources/img/cafe3.jpg" class="d-block w-100 h-100" alt="...">
-	                </div>
-	              </div>
-	              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-	                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	                <span class="visually-hidden">Previous</span>
-	              </button>
-	              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-	                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	                <span class="visually-hidden">Next</span>
-	              </button>
-	            </div>
+         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="/resources/img/cafe1.jpg" class="d-block">
+                </div>
+                <div class="carousel-item">
+                  <img src="/resources/img/cafe2.jpg" class="d-block">
+                </div>
+                <div class="carousel-item">
+                  <img src="/resources/img/cafe3.jpg" class="d-block" >
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             </div>
-            <div class="row" id="clickEventsBox">
-	            <div class="col-6">
-	            	<span class="heartBtn"><i class="fa-regular fa-heart fa-xl buttonIcon"></i></span>
-	            	<span><i class="fa-regular fa-comment fa-xl buttonIcon"></i></span>
-	            </div>
-	            <div id="bookmark" class="col-6">
-	            	<i class="fa-solid fa-bookmark fa-xl buttonIcon"></i>
-	            </div>
+            <div id="mainfoot">
+            <span>
+               <i class="fa-regular fa-heart"></i>
+            </span>
+            
+            <span><i class="fa-regular fa-comment"></i></span>
+            
+            <span>
+               <i class="fa-solid fa-bookmark"></i>
+            </span>
             </div>
-            <div class="contentsBox">
-            	화이팅!
-            </div>
-         </div>
-       </div>
-     </div>
-   </div>
-       <!-------------------------------------------------------Footer------------------------------------------------->
- 
-    <div class="col-12 d-none d-md-block">
-      <div id="foot" align=center>
-         <div class="footcontainer">
-            <div class="row">
-              <div class="col-4" id="footicon"> </div>
-               <div class="col-2 footer2">회사소개</div>
-               <div class="col-2 footer2">이용약관</div>
-               <div class="col-2 footer2">1:1 문의</div>
-               <div class="col-2 footer2">©2022 CAFEIN</div>
+            <div class="contentsBox" style="margin-left:5%;">
+               화이팅!<br>
+               화이팅!<br>
+               화이팅!<br>
+               화이팅!<br>
+               화이팅!
+
             </div>
          </div>
       </div>
-    </div>
-
-   
-
+      <br>
+   </div>
+      <!-------------------------------------------------------Footer------------------------------------------------->
+    <div class="col-12">
+  <div id="foot" align=center>
+     <div class="container">
+        <div class="row">
+          <div class="col-4" id="footicon"><a href="#" style="color:white; padding-top:20px; text-decoration-line: none;">CAFEIN</a></div>
+           <div class="col-2 footer2"><a href="#">회사소개</a></div>
+           <div class="col-2 footer2"><a href="#">이용약관</a></div>
+           <div class="col-2 footer2"><a href="#">1:1 문의</a></div>
+           <div class="col-2 footer2"><a href="#">©2022 CAFEIN</a></div>
+        </div>
+     </div>
+  </div>
+</div>
 </body>
 </html>
