@@ -11,7 +11,6 @@
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 </head>
-<body>
 <style>
   /*HEADer부분----------------------------*/
  body{
@@ -26,6 +25,9 @@
 }
 nav a{
     color: white;
+}
+.navbar-nav{
+   min-width:450px;
 }
 .navbar-nav a{
     color: white;
@@ -149,7 +151,7 @@ nav button:hover{
       button{
         border:none;
       }
- 		.btn{
+       #row4 .btn{
          font-family: 'Noto Sans KR';
          font-style: normal;
          font-weight: 700;
@@ -162,15 +164,23 @@ nav button:hover{
             width:120px;
             border: none;
             margin-left:10px;
-   	   }
+         }
+         #title,#contents{
+            background-color:#222;
+            border:none;
+         }
+         
+         textarea:focus {
+    outline: none;
+}
 </style>
 <body>
-     <!------------------------------------------------------------header----------------------------------------------------->
+   <!------------------------------------------------------------header----------------------------------------------------->
      
-        <nav class="navbar navbar-expand-md" style="margin-bottom:50px;">
+        <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">CAFEIN</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">▼</span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -179,24 +189,27 @@ nav button:hover{
                   <a class="nav-link" href="#">FEED</a>
                   <a class="nav-link" href="#">CAFE-IN</a>
                   <a class="nav-link" href="#">NOTICE</a>
+                  <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
+              <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
                 </div>
               </div>
+              <button id="login" type="button"
+                    class="mx-1 d-none d-lg-inline btn navbar-btn" style="color:white;">Login</button>
+                    <button id="signup" type="button"
+                    class="mx-1 d-none d-lg-inline btn navbar-btn" style="color:white;">Signup</button>
             </div>
-        
-            <button>Login</button>
-            <button>Signup</button>
           </nav>
 <!-------------------------------------------------------Main------------------------------------------------->
 <div class="container" id="main">
-	<div class="col-12">
-		<a style="color: black; font-size: 40px;">카페리뷰 글쓰기</a>
+   <div class="col-12" style="margin-bottom:40px;">
+      <a style="color: white; font-size: 40px;">카페리뷰 글쓰기</a>
     </div>
     <form>
-    	<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
-            <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid #121212;" align=left>
+       <div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
+            <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
             <input type=text name=title id=title placeholder="제목" style="width:97%;">
             </div>
-            <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid #121212; overflow: hidden;" align=left>
+            <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
             <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용"></textarea>
             </div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>

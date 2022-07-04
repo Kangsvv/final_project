@@ -23,8 +23,8 @@ public class FeedController {
 		return "/feed/detailView";
 	}
 	
-	@RequestMapping("feedWrite")
-	public String feedWrite() {
+	@RequestMapping("goFeedWrite")
+	public String goFeedWrite() {
 		return "/feed/feedWrite";
 	}
 	
