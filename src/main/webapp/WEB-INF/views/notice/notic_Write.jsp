@@ -262,8 +262,8 @@ li.dropdown {
 
 </style>
 <body>
-   <!------------------------------------------------------------header----------------------------------------------------->
-     
+<!--  ------------------------------------------------------------header-----------------------------------------------------  -->
+
       <nav class="navbar navbar-expand-lg">
          <div class="container-fluid">
             <a class="navbar-brand" href="#">CAFEIN</a>
@@ -293,6 +293,7 @@ li.dropdown {
                     class="mx-1 d-none d-lg-inline btn navbar-btn">Signup</button>
         </div>
       </nav>
+      
       
 <!-------------------------------------------------------Main------------------------------------------------->
 <div class="container" id="main">
@@ -329,29 +330,34 @@ li.dropdown {
   </div>
 </div>
 
-      <script>
-      $(".que").click(function() {
-         $(this).next(".anw").stop().slideToggle(300);
-         $(this).toggleClass('on').siblings().removeClass('on');
-         $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
-      });
-      
-      function myFunction() {
-          document.getElementById("myDropdown").classList.toggle("show");
-      }
-      
-      window.onclick = function(e) {
-           if (!e.target.matches('.dropbtn')) {
+<script>
+$(".que").click(function() {
+   $(this).next(".anw").stop().slideToggle(300);
+   $(this).toggleClass('on').siblings().removeClass('on');
+   $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
+});
 
-             var dropdowns = document.getElementsByClassName("dropdown-content");
-             for (var d = 0; d < dropdowns.length; d++) {
-               var openDropdown = dropdowns[d];
-               if (openDropdown.classList.contains('show')) {
-                 openDropdown.classList.remove('show');
-               }
-            }
-         }         
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+window.onclick = function(e) {
+     if (!e.target.matches('.dropbtn')) {
+
+       var dropdowns = document.getElementsByClassName("dropdown-content");
+       for (var d = 0; d < dropdowns.length; d++) {
+         var openDropdown = dropdowns[d];
+         if (openDropdown.classList.contains('show')) {
+           openDropdown.classList.remove('show');
+         }
       }
+   }         
+}
+
+$(".cbtn").click(function() {
+	location.href = "/notice/notic_Write";
+})
+</script>
           
 </body>
 </html>
