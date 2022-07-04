@@ -242,35 +242,36 @@ label{
    
 </div>
   <div class="col-12 col-sm-6" id="table">
+  <form action="/cafein/cafein_insert">
 <table>
   <tr>
     <td class="tableTitle">카페이름 : </td>
-    <td><input type="text" placeholder="카페명"></td>
+    <td><input type="text" placeholder="카페명" name="name"></td>
   </tr>
   <tr>
     <td class="tableTitle">주소 : </td>
-    <td><input type="text" placeholder="카페주소"></td>
+    <td><input type="text" placeholder="카페주소" name="address"></td>
   </tr>
   <tr>
     <td class="tableTitle">휴무일 : </td>
-    <td><input type="checkbox" value="mon" name="day"><label>월</label>
-      <input type="checkbox" value="tue" name="day"><label>화</label>
-      <input type="checkbox" value="wed" name="day"><label>수</label>
-      <input type="checkbox" value="thu" name="day"><label>목</label>
-      <input type="checkbox" value="fri" name="day"><label>금</label>
-      <input type="checkbox" value="sat" name="day"><label>토</label>
-      <input type="checkbox" value="sun" name="day"><label>일</label>
-      <input type="checkbox" value="hol" name="day"><label>공휴일</label></td>
+    <td><input type="checkbox" value="월" name="day"><label>월</label>
+      <input type="checkbox" value="화" name="day"><label>화</label>
+      <input type="checkbox" value="수" name="day"><label>수</label>
+      <input type="checkbox" value="목" name="day"><label>목</label>
+      <input type="checkbox" value="금" name="day"><label>금</label>
+      <input type="checkbox" value="토" name="day"><label>토</label>
+      <input type="checkbox" value="일" name="day"><label>일</label>
+      <input type="checkbox" value="공휴일" name="day"><label>공휴일</label></td>
   </tr>
   <tr>
     <td class="tableTitle">오픈시간 : </td>
     <td>
-      <select name="m">
+      <select name="open">
         <option value='' selected>-- 선택 --</option>
         <option value='am'>am</option>
         <option value='pm'>pm</option>
       </select>
-      <select name="hour">
+      <select name="open">
         <option value='' selected>-- 선택 --</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
@@ -285,7 +286,7 @@ label{
         <option value='11'>11</option>
         <option value='12'>12</option>
       </select>
-      <select name="minute">
+      <select name="open">
         <option value='' selected>-- 선택 --</option>
         <option value='00'>00</option>
         <option value='10'>10</option>
@@ -300,12 +301,12 @@ label{
   <tr>
     <td class="tableTitle">마감시간 : </td>
     <td>
-      <select name="m">
+      <select name="finish">
         <option value='' selected>-- 선택 --</option>
         <option value='am'>am</option>
         <option value='pm'>pm</option>
       </select>
-      <select name="hour">
+      <select name="finish">
         <option value='' selected>-- 선택 --</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
@@ -320,7 +321,7 @@ label{
         <option value='11'>11</option>
         <option value='12'>12</option>
       </select>
-      <select name="minute">
+      <select name="finish">
         <option value='' selected>-- 선택 --</option>
         <option value='00'>00</option>
         <option value='10'>10</option>
@@ -335,9 +336,9 @@ label{
   <tr>
     <td class="tableTitle">주차장 : </td>
     <td class="parkingRaido">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="parking" value="yes">O&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="parking" value="no">X&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="parking" value="park">공영주차장이용
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="parking" value="0">O&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="parking" value="1">X&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="parking" value="2">공영주차장이용
     </td>
   </tr>
   <tr>
@@ -360,7 +361,7 @@ label{
 <div class="row">
   <div class="col-12" id="btn"><button>등록</button><button>취소</button></div>
 </div>
-       
+       </form>
     <!-------------------------------------------------------Footer------------------------------------------------->
  
     <div class="col-12 d-none d-md-block">
