@@ -241,24 +241,25 @@ input[type=text] {
 <table>
   <tr>
     <td class="tableTitle">카페이름 : </td>
-    <td><input type="text" placeholder="카페명"></td>
+    <td><input type="text" placeholder="카페명" name="name"></td>
   </tr>
   <tr>
     <td class="tableTitle">주소 : </td>
-    <td><input type="text" placeholder="카페주소"></td>
+    <td><input type="text" placeholder="카페주소" name="address"></td>
   </tr>
   <tr>
     <td class="tableTitle">요일 : </td>
-    <td><input type="text" placeholder="오픈요일/휴일"></td>
+    <td><input type="text" placeholder="오픈요일/휴일" name="day"></td>
   </tr>
   <tr>
     <td class="tableTitle">시간 : </td>
-    <td><input type="text" placeholder="오픈/마감시간"></td>
+    <td><input type="text" placeholder="오픈/마감시간" name="time"></td>
   </tr>
   <tr>
     <td class="tableTitle">주차장 : </td>
     <td class="parkingRaido">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="parking" value="yes">O&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="parking" value="yes">O&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="radio" name="parking" value="no">X&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="radio" name="parking" value="park">공영주차장이용
     </td>
