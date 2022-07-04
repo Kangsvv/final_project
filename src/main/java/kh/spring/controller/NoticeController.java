@@ -28,7 +28,9 @@ public class NoticeController {
 	
 	@RequestMapping()
 	public String question(Model model) throws Exception {
+		
 		List<QuestionDTO> dto = bServ.selectAll();
+		model.addAttribute("list",dto);
 		
 		return "/notice/questionLsit";
 	}
