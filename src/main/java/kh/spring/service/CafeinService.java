@@ -44,8 +44,8 @@ public class CafeinService {
 		dto.setOpen(open);
 		dto.setFinish(finish);
 		dto.setParking(parking);
-		int seq=dao.insert(dto);
-		fdao.insert(new Cafein_imgDTO(0,oriName,sysName,seq));
+		int cafein_seq=dao.insert(dto);
+		fdao.insert(new Cafein_imgDTO(0,oriName,sysName,cafein_seq));
 
 	}
 }
