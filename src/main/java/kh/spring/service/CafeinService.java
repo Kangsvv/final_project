@@ -26,15 +26,15 @@ public class CafeinService {
 	private Cafein_imgDAO fdao;
 	
 	@Transactional
-	public void insert(String name,String address1,String address2,String day,String open,String finish,String parking) throws Exception{
+	public void insert(String name,String address1,String address2,String day,String open,String finish,String parking,String realPath,MultipartFile file) throws Exception{
 		
-//		realPath = session.getServletContext().getRealPath("Cafein-files");
-//		File realPathFile = new File(realPath);
-//		if(!realPathFile.exists())realPathFile.mkdir();
-//		
-//		String oriName =file.getOriginalFilename();
-//		String sysName = UUID.randomUUID() + "_"+oriName; //UUID.randomUUID()중복되지 임의값을 만들어 리턴 oriname 
-//		file.transferTo(new File(realPath + "/"+sysName));
+		realPath = session.getServletContext().getRealPath("Cafein-files");
+		File realPathFile = new File(realPath);
+		if(!realPathFile.exists())realPathFile.mkdir();
+		
+		String oriName =file.getOriginalFilename();
+		String sysName = UUID.randomUUID() + "_"+oriName; //UUID.randomUUID()중복되지 임의값을 만들어 리턴 oriname 
+		file.transferTo(new File(realPath + "/"+sysName));
 		
 		CafeinDTO dto=new CafeinDTO();
 		dto.setName(name);
@@ -44,8 +44,8 @@ public class CafeinService {
 		dto.setOpen(open);
 		dto.setFinish(finish);
 		dto.setParking(parking);
-		dao.insert(dto);
-//		fdao.insert(new Cafein_imgDTO(0,oriName,sysName,seq));
-//		int seq=dao.insert(name,address1,address2,day,open,finish,parking);
+		int seq=dao.insert(dto);
+		fdao.insert(new Cafein_imgDTO(0,oriName,sysName,seq));
+
 	}
 }
