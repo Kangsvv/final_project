@@ -268,8 +268,8 @@ h5 {
 
 
 <div id="btn"> 
-    <button>Login</button> 
-    <button>Signup</button>
+    <button type="button" onclick="location.href='/member/login' ">login</button>
+    <button type="button" onclick="location.href='/member/signUp' ">signUp</button>
 </div>
 
 </body>

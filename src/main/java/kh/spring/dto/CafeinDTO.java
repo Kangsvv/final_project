@@ -4,7 +4,8 @@ public class CafeinDTO {
   private int seq;
   private String writer;
   private String name;
-  private String address;
+  private String address1;
+  private String address2;
   private String day;
   private String open;
   private String finish;
@@ -27,11 +28,17 @@ public String getName() {
 public void setName(String name) {
 	this.name = name;
 }
-public String getAddress() {
-	return address;
+public String getAddress1() {
+	return address1;
 }
-public void setAddress(String address) {
-	this.address = address;
+public void setAddress1(String address1) {
+	this.address1 = address1;
+}
+public String getAddress2() {
+	return address2;
+}
+public void setAddress2(String address2) {
+	this.address2 = address2;
 }
 public String getDay() {
 	return day;
@@ -57,19 +64,20 @@ public String getParking() {
 public void setParking(String parking) {
 	this.parking = parking;
 }
-public CafeinDTO(int seq, String writer, String name, String address, String day, String open, String finish,
-		String parking) {
+public CafeinDTO(int seq, String writer, String name, String address1, String address2, String day, String open,
+		String finish, String parking) {
 	super();
 	this.seq = seq;
 	this.writer = writer;
 	this.name = name;
-	this.address = address;
+	this.address1 = address1;
+	this.address2 = address2;
 	this.day = day;
 	this.open = open;
 	this.finish = finish;
 	this.parking = parking;
 }
-public CafeinDTO() {}
-  
-  
+public  CafeinDTO () {}
+	
+
 }
