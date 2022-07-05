@@ -6,6 +6,7 @@ public class Cafein_imgDTO {
 	private String ori_name;
 	private String sys_name;
 	private int cafein_seq;
+	
 	public Cafein_imgDTO() {}
 	public Cafein_imgDTO(int seq, String ori_name, String sys_name, int cafein_seq) {
 		super();

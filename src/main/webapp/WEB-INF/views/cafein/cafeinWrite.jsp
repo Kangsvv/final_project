@@ -234,18 +234,21 @@ label{
       </nav>
           
 <!---------------------------------------------------------------------------------------------------------------------->
+<form action="/cafein/cafein_insert" method="post" enctype="multipart/form-data" >
+
+
 <div class="row" id="contents">
   <div class="col-12" id="text">카페 등록</div>
 </div>
 <div class="row" style="margin-top: 5%;margin-bottom: 5%;">
   <div class="col-12 col-sm-6" id="file"><img id="preview" />
     <label for="ex_file">업로드</label>
-    <input type="file" name="file" id="ex_file" onchange="readURL(this);">
+    <input type="file" name="file" id="ex_file" value="파일첨부" onchange="readURL(this);">
    
 </div>
   <div class="col-12 col-sm-6" id="table">
   
- <form action="/cafein/cafein_insert">
+ 
 <table>
   <tr>
     <td class="tableTitle">카페이름 : </td>
@@ -370,7 +373,8 @@ label{
 
 
 <div class="row">
-  <div class="col-12" id="btn"><button id="add">등록</button><button>취소</button></div>
+  <div class="col-12" id="btn"><button id="add">등록</button>
+  <a href="/cafein/goCafein"><button type="button">취소</button></a></div>
 </div>
        </form>
    <!----------------------------------------------------- script------------------------------------------------ -->
