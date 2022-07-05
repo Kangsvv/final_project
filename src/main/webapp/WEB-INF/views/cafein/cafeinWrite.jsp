@@ -9,13 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <!-- Jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!-- Bootstrap ver 5.1  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
-
+<!-- 지도 api -->
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <style>
   /*------------------------ 헤더 부분 스타일 ------------------------ */
@@ -242,35 +244,46 @@ label{
    
 </div>
   <div class="col-12 col-sm-6" id="table">
+  <form action="/cafein/cafein_insert">
 <table>
   <tr>
     <td class="tableTitle">카페이름 : </td>
-    <td><input type="text" placeholder="카페명"></td>
+    <td><input type="text" placeholder="카페명" name="name" id="name"></td>
   </tr>
   <tr>
     <td class="tableTitle">주소 : </td>
-    <td><input type="text" placeholder="카페주소"></td>
+    <td>
+   <input type="hidden" name="zipcode" id="zipcode"  />
+   <input type="text" name="address1" id="address1" id="address1">
+	<button type="button" onclick="execDaumPostcode()" class="btn btn-success" id="zipcode_find">
+								찾기</button></td>
+  </tr>
+  <tr>
+    <td class="tableTitle">상세주소 : </td>
+    <td><input type="text" placeholder="상세주소" name="address2" id="address2"></td>
   </tr>
   <tr>
     <td class="tableTitle">휴무일 : </td>
-    <td><input type="checkbox" value="mon" name="day"><label>월</label>
-      <input type="checkbox" value="tue" name="day"><label>화</label>
-      <input type="checkbox" value="wed" name="day"><label>수</label>
-      <input type="checkbox" value="thu" name="day"><label>목</label>
-      <input type="checkbox" value="fri" name="day"><label>금</label>
-      <input type="checkbox" value="sat" name="day"><label>토</label>
-      <input type="checkbox" value="sun" name="day"><label>일</label>
-      <input type="checkbox" value="hol" name="day"><label>공휴일</label></td>
+    <td><input type="checkbox" value="월" name="day" class="day"><label>월</label>
+      <input type="checkbox" value="화" name="day" class="day"><label>화</label>
+      <input type="checkbox" value="수" name="day" class="day"><label>수</label>
+      <input type="checkbox" value="목" name="day" class="day"><label>목</label>
+      <input type="checkbox" value="금" name="day" class="day"><label>금</label>
+      <input type="checkbox" value="토" name="day" class="day"><label>토</label>
+      <input type="checkbox" value="일" name="day" class="day"><label>일</label>
+      <input type="checkbox" value="공휴일" name="day" class="day"><label>공휴일</label>
+      <input type="checkbox" value="연중무휴" name="day" class="day"><label>연중무휴</label>
+      </td>
   </tr>
   <tr>
     <td class="tableTitle">오픈시간 : </td>
     <td>
-      <select name="m">
+      <select name="open">
         <option value='' selected>-- 선택 --</option>
         <option value='am'>am</option>
         <option value='pm'>pm</option>
       </select>
-      <select name="hour">
+      <select name="open">
         <option value='' selected>-- 선택 --</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
@@ -285,7 +298,7 @@ label{
         <option value='11'>11</option>
         <option value='12'>12</option>
       </select>
-      <select name="minute">
+      <select name="open">
         <option value='' selected>-- 선택 --</option>
         <option value='00'>00</option>
         <option value='10'>10</option>
@@ -300,12 +313,12 @@ label{
   <tr>
     <td class="tableTitle">마감시간 : </td>
     <td>
-      <select name="m">
+      <select name="finish">
         <option value='' selected>-- 선택 --</option>
         <option value='am'>am</option>
         <option value='pm'>pm</option>
       </select>
-      <select name="hour">
+      <select name="finish">
         <option value='' selected>-- 선택 --</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
@@ -320,7 +333,7 @@ label{
         <option value='11'>11</option>
         <option value='12'>12</option>
       </select>
-      <select name="minute">
+      <select name="finish">
         <option value='' selected>-- 선택 --</option>
         <option value='00'>00</option>
         <option value='10'>10</option>
@@ -335,9 +348,9 @@ label{
   <tr>
     <td class="tableTitle">주차장 : </td>
     <td class="parkingRaido">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="parking" value="yes">O&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="parking" value="no">X&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="parking" value="park">공영주차장이용
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="parking" value="0">O&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="parking" value="1">X&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="parking" value="2">공영주차장이용
     </td>
   </tr>
   <tr>
@@ -346,7 +359,6 @@ label{
 </table>
 
 </div>
-
 
 </div> 
 <!---------------------------------상세설명------------------------------->
@@ -358,9 +370,47 @@ label{
 
 
 <div class="row">
-  <div class="col-12" id="btn"><button>등록</button><button>취소</button></div>
+  <div class="col-12" id="btn"><button id="add">등록</button><button>취소</button></div>
 </div>
-       
+       </form>
+   <!----------------------------------------------------- script------------------------------------------------ -->
+   <script>
+ //---------------------------------------우편번호-------------------------------
+	function execDaumPostcode() {
+		new daum.Postcode(
+				{
+					oncomplete : function(data) {
+						var addr = "";
+
+						if (data.userSelectedType === "R") {
+							addr = data.roadAddress;
+						}
+
+						document.getElementById("zipcode").value = data.zonecode;
+						document.getElementById("address1").value = addr;
+						document.getElementById("address2").focus();
+					},
+				}).open();
+	}
+ 
+ //---------------------------------공백시 return false--------------------------------
+ $("#add").on("click",function(){
+	 if($("#name").val() == ''){
+		 alert("카페이름을 입력해주세요");
+		 return false;
+	 }
+	 else if($("#address1").val() == '' || $("#address2").val() == ''){
+		 alert("주소를 입력해주세요.");
+		 return false;
+	 }
+
+	 
+ })
+ 
+ 
+   </script>
+   
+   
     <!-------------------------------------------------------Footer------------------------------------------------->
  
     <div class="col-12 d-none d-md-block">
