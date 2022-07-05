@@ -7,7 +7,7 @@
 
 <!-- 이벤트 및 공지 사항 게시글 작성 -->
 	<insert id="insert">
-		insert into Event values(Event_seq.nextVal,#{title},#{contents},#{writer},sysdate,0})
+		insert into Event values(Event_seq.nextVal,#{title},#{contents},#{writer},sysdate)
 	</insert>
 	
 </mapper>

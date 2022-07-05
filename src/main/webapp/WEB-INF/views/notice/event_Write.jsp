@@ -300,7 +300,7 @@ li.dropdown {
    <div class="col-12" style="margin-bottom:40px;">
       <a style="color: white; font-size: 40px;">Event</a>
     </div>
-    <form>
+    <form action="event_insert">
 			<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
             <input type=text name=title id=title placeholder="제목" style="width:97%;">

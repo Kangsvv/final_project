@@ -2,7 +2,7 @@ package kh.spring.dto;
 
 import java.security.Timestamp;
 
-public class EventDTO {
+public class NoticDTO {
 	
 	private int seq;
 	private String title;
@@ -10,10 +10,10 @@ public class EventDTO {
 	private String writer;
 	private Timestamp write_date;
 	
-	public EventDTO() {
+	public NoticDTO() {
 		super();
 	}
-	public EventDTO(int seq, String title, String contents, String writer, Timestamp write_date) {
+	public NoticDTO(int seq, String title, String contents, String writer, Timestamp write_date) {
 		this.seq = seq;
 		this.title = title;
 		this.contents = contents;

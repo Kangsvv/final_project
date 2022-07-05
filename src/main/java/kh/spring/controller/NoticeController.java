@@ -1,10 +1,14 @@
 package kh.spring.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kh.spring.dto.EventDTO;
+import kh.spring.dto.NoticDTO;
 import kh.spring.service.EventService;
 import kh.spring.service.NoticService;
 
@@ -13,10 +17,13 @@ import kh.spring.service.NoticService;
 public class NoticeController {
 	
 	@Autowired
-	private EventService eservice;
+	private EventService Eservice;
 	
 	@Autowired 
-	private NoticService nservice; 
+	private NoticService Nservice; 
+	
+	@Autowired
+	private HttpSession session;
 
 	@RequestMapping("FAQ")
 	public String FAQ() {
@@ -34,6 +41,23 @@ public class NoticeController {
 		return "/notice/event_Write";
 	}
 	
+	@RequestMapping("event_insert")
+	public String event_insert(EventDTO dto) throws Exception{
+		dto.setWriter((String)session.getAttribute("loginID"));
+		Eservice.insert(dto);
+		
+		return "redirect:/notice/event";
+	}
+	
+	
+	@RequestMapping("notic_insert")
+	public String notic_insert(NoticDTO dto) throws Exception{
+		dto.setWriter((String)session.getAttribute("loginID"));
+		Nservice.insert(dto);
+		
+		return "redirect:/notice/event";
+	}
+	
 	@RequestMapping("notic")
 	public String notic() {
 		
@@ -49,8 +73,6 @@ public class NoticeController {
 	public String notic_Detail() {
 		return "/notice/notic_Detail";
 	}
-	
-	
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
