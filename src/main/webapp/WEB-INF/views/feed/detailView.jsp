@@ -14,6 +14,7 @@
    <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
 </head>
 <style>
+	*{box-sizing: border-box;}
       body {
             background-color: #222;
             position: relative;
@@ -170,9 +171,9 @@ nav button:hover{
         }
 
        .id{
-       overflow:hidden;
-       text-overflow:ellipsis;
-       white-space:nowrap;
+ 	      overflow:hidden;
+ 	      text-overflow:ellipsis;
+ 	      white-space:nowrap;
        
        }
 
@@ -182,8 +183,9 @@ nav button:hover{
            
         }
         .contentsBox{
+     	   padding:20px;
            font-size: 16px;
-           margin-top:20px;
+/*            margin-top:20px;  */
         }
         #maincon{
            margin-left: 12%;
@@ -193,9 +195,83 @@ nav button:hover{
         #mainfoot{
            border-top: 2px solid white;
            border-bottom: 2px solid white;
+           padding:10px;
         }
         #conMenu>div{
            margin-left:5%;
+        }
+        .marginSet{
+        	padding-left:20px;
+        	padding-right:20px;
+        }
+        #bookmark{
+        	text-align:right;
+        	padding-right:30px;
+        }
+        /* -------------댓글 관련 스타일 -----------------*/
+        .replyWriteBox{
+         	padding:20px;
+        	border-top: 2px solid white;
+			border-bottom: 2px solid white;
+        }
+        #replyContents{
+        	border-radius:10px;
+        	max-height: 100px;
+        	min-height: 100px;
+        }
+        #replyContentsBox{
+        	float: left;
+        	width:90%;
+        	height:100px;
+        }
+        #replyWriteBtnBox{
+       		float: left;
+        	width:10%;
+        	height:100px;
+        }
+        #replyWriteBtn{
+        	border-radius:10px;
+        	width:100%;
+        	height:100%;
+        }
+        .replycontainer {
+            border: 1px solid black;
+            margin: auto;
+            width: 600px;
+            height: 150px;
+            margin-top: 10px;   
+        }
+
+        .replywriterName{
+            margin: 4px 4px;
+            width: 98%;
+            height: 15%;
+            background-color: rgb(84, 84, 84);
+            color: white;
+            padding-left: 10px;
+        }
+
+        .replycontent{
+            margin: 4px 4px;
+            width: 98%;
+            height: 78%;
+            padding-left: 10px;
+        }
+
+        .replydel {
+            margin-top: 60px;
+        }
+        #left{
+            float: left;
+            width: 80%;
+            height: 100%;
+        }
+
+        #right{
+            float: left;
+            width: 20%;
+            height: 100%;
+            text-align: center;
         }
    </style>
 </head>
@@ -232,8 +308,7 @@ nav button:hover{
                    <div class="col-12 col-md-12 ellipsis" style="padding-left:10px; font-size:28px;" id="title">다들 하이요!!</div>
                     <div class="row">
                         <div class="col-12 ellipsis id" style="padding-left:8px;">hihiyoyo</div>
-                        <div class="col-6 col-md-3" style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;10</div>
-                        <div class="col-6 col-md-3 like"><i class="fa-solid fa-heart"></i>&nbsp;3000</div>
+                        <div class="col-12 col-md-6" style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;10</div>
                         <div class="col-6 col-md-3"><i class="fa-solid fa-calendar"></i>&nbsp;2022.06.29</div>
                         <div class="col-6 col-md-3 bookmark"><i class="fa-solid fa-user-group"></i></div>
 
@@ -266,17 +341,27 @@ nav button:hover{
               </button>
             </div>
             <div id="mainfoot">
-            <span>
-               <i class="fa-regular fa-heart"></i>
-            </span>
-            
-            <span><i class="fa-regular fa-comment"></i></span>
-            
-            <span>
-               <i class="fa-solid fa-bookmark"></i>
-            </span>
+	            <div class="row">
+	            	<div class="col-6">
+	            		<span class="marginSet">
+			               <i class="fa-regular fa-xl fa-heart"></i>&nbsp;&nbsp;3000
+			            </span>
+			            
+			            <span>
+			            	<i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;54
+			            </span>
+	            	</div>
+	            	<div class="col-6" id="bookmark">
+	            		<span>
+		            		<i class="fa-solid fa-xl fa-bookmark"></i>
+		            	</span>
+	            	</div>
+	            </div>
+	           
+
             </div>
-            <div class="contentsBox" style="margin-left:5%;">
+            <div class="contentsBox">
+<!--              style="margin-left:5%; -->
                화이팅!<br>
                화이팅!<br>
                화이팅!<br>
@@ -284,10 +369,70 @@ nav button:hover{
                화이팅!
 
             </div>
+            <div class="replyWriteBox">
+            	<div id="row" style="font-size : 15px; width: 100%; height: 100%; overflow: hidden;" align=left>
+	            	<div id="replyContentsBox">
+	            		<textarea name="replyContents" id="replyContents" style="width: 100%;" rows="30" placeholder="내용"></textarea>
+	            	</div>
+	            	<div id="replyWriteBtnBox">
+	            		<input type="button" id="replyWriteBtn" value="작성하기">
+	            	</div>
+            	</div>
+            </div>
+          	<div class="replyBox">
+				<div>
+				</div>
+            </div>
          </div>
       </div>
       <br>
    </div>
+   <script>
+        $(function(){
+            $("#replyWriteBtn").on("click", function(){
+                
+                let article = $("#replyContents").val();
+
+                let container = $("<div>");
+                container.attr("class","replycontainer");
+
+                let left = $("<div>");
+                left.attr("id","replyleft");
+                
+                
+                let right = $("<div>");
+                right.attr("id","replyright");
+				
+                let writerName = $("<div>");
+                writerName.attr("id", "replyWriter")
+
+                let contents = $("<div>");
+                contents.attr("class","replycontents2");
+                contents.text(article);
+
+                let delBtn = $("<button>");
+                delBtn.attr("class","replydel");
+                delBtn.text("삭제");
+
+                left.append(contents);
+
+                right.append(delBtn);
+
+                container.append(left);
+                container.append(right);
+
+                $(".replyBox").prepend(container);
+
+                $("#replyContents").val("");
+                $("#replyContents").focus();
+            });
+        
+            $("body").on("click", ".del", function(){
+                $(this).closest(".replycontainer").remove();
+            });
+
+        });
+    </script>
       <!-------------------------------------------------------Footer------------------------------------------------->
     <div class="col-12">
   <div id="foot" align=center>
@@ -302,5 +447,7 @@ nav button:hover{
      </div>
   </div>
 </div>
+
+
 </body>
 </html>
