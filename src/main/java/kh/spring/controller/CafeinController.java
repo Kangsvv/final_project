@@ -1,12 +1,11 @@
 package kh.spring.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kh.spring.service.CafeinService;
 
@@ -35,21 +34,25 @@ public class CafeinController {
 		return "/cafein/cafeinDetail";
 	}
 	//----------------------Cafein 등록---------------------
-	@RequestMapping("cafein_insert")
-	public String cafein_insert(HttpServletRequest request) throws Exception {
-		String name =request.getParameter("name");
-		String address1 = request.getParameter("address1");
-		String address2 = request.getParameter("address2");
-		String[] dayarr =request.getParameterValues("day");
-		String [] openarr = request.getParameterValues("open");
-		String [] finisharr = request.getParameterValues("finish");
-		String parking = request.getParameter("parking");
-		String day = String.join("/", dayarr);
-		String open = String.join(":", openarr);
-		String finish = String.join(":", finisharr);
+	@RequestMapping(value="cafein_insert",produces="application/text;charset=utf-8")
+	public String cafein_insert(String name,String address1,String address2,String[] day,String[] open,String[] finish,String parking,String realPath,MultipartFile file) throws Exception {
+//		String name =request.getParameter("name");
+//		String address1 = request.getParameter("address1");
+//		String address2 = request.getParameter("address2");
+//		String[] dayarr =request.getParameterValues("day");
+//		String [] openarr = request.getParameterValues("open");
+//		String [] finisharr = request.getParameterValues("finish");
+//		String parking = request.getParameter("parking");
+		System.out.println(name);
+		System.out.println(address1);
+		System.out.println(address2);
+		System.out.println(day);
+		String dayR = String.join("/", day);
+		String openR = String.join(":", open);
+		String finishR = String.join(":", finish);
 		
 		
-		serv.insert(name,address1,address2,day,open,finish,parking);
+		serv.insert(name,address1,address2,dayR,openR,finishR,parking,realPath,file);
 		return "redirect: /cafein/goCafein";
 	}
 	

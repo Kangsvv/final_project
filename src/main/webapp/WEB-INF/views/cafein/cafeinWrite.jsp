@@ -234,17 +234,18 @@ label{
       </nav>
           
 <!---------------------------------------------------------------------------------------------------------------------->
+<form action="/cafein/cafein_insert" method="post" enctype="multipart/form-data">
 <div class="row" id="contents">
   <div class="col-12" id="text">카페 등록</div>
 </div>
 <div class="row" style="margin-top: 5%;margin-bottom: 5%;">
   <div class="col-12 col-sm-6" id="file"><img id="preview" />
     <label for="ex_file">업로드</label>
-    <input type="file" id="ex_file" onchange="readURL(this);">
+    <input type="file" name="file" id="ex_file" onchange="readURL(this);">
    
 </div>
   <div class="col-12 col-sm-6" id="table">
-  <form action="/cafein/cafein_insert">
+  
 <table>
   <tr>
     <td class="tableTitle">카페이름 : </td>
@@ -348,9 +349,9 @@ label{
   <tr>
     <td class="tableTitle">주차장 : </td>
     <td class="parkingRaido">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="parking" value="0">O&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="parking" value="1">X&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="parking" value="2">공영주차장이용
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="parking" value="O">O&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="parking" value="X">X&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="parking" value="공영주차장 이용">공영주차장이용
     </td>
   </tr>
   <tr>
