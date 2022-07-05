@@ -1,12 +1,13 @@
 package kh.spring.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.service.CafeinService;
 
@@ -36,18 +37,10 @@ public class CafeinController {
 	}
 	//----------------------Cafein 등록---------------------
 	@RequestMapping("cafein_insert")
-	public String cafein_insert(HttpServletRequest request) throws Exception {
-		String name =request.getParameter("name");
-		String address1 = request.getParameter("address1");
-		String address2 = request.getParameter("address2");
-		String[] dayarr =request.getParameterValues("day");
-		String [] openarr = request.getParameterValues("open");
-		String [] finisharr = request.getParameterValues("finish");
-		String parking = request.getParameter("parking");
+	public String cafein_insert(String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking) throws Exception {
 		String day = String.join("/", dayarr);
 		String open = String.join(":", openarr);
 		String finish = String.join(":", finisharr);
-		
 		
 		serv.insert(name,address1,address2,day,open,finish,parking);
 		return "redirect: /cafein/goCafein";

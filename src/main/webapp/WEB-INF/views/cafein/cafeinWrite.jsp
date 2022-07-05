@@ -240,11 +240,12 @@ label{
 <div class="row" style="margin-top: 5%;margin-bottom: 5%;">
   <div class="col-12 col-sm-6" id="file"><img id="preview" />
     <label for="ex_file">업로드</label>
-    <input type="file" id="ex_file" onchange="readURL(this);">
+    <input type="file" name="file" id="ex_file" onchange="readURL(this);">
    
 </div>
   <div class="col-12 col-sm-6" id="table">
-  <form action="/cafein/cafein_insert">
+  
+ <form action="/cafein/cafein_insert">
 <table>
   <tr>
     <td class="tableTitle">카페이름 : </td>
@@ -264,26 +265,26 @@ label{
   </tr>
   <tr>
     <td class="tableTitle">휴무일 : </td>
-    <td><input type="checkbox" value="월" name="day" class="day"><label>월</label>
-      <input type="checkbox" value="화" name="day" class="day"><label>화</label>
-      <input type="checkbox" value="수" name="day" class="day"><label>수</label>
-      <input type="checkbox" value="목" name="day" class="day"><label>목</label>
-      <input type="checkbox" value="금" name="day" class="day"><label>금</label>
-      <input type="checkbox" value="토" name="day" class="day"><label>토</label>
-      <input type="checkbox" value="일" name="day" class="day"><label>일</label>
-      <input type="checkbox" value="공휴일" name="day" class="day"><label>공휴일</label>
-      <input type="checkbox" value="연중무휴" name="day" class="day"><label>연중무휴</label>
+    <td><input type="checkbox" value="월" name="dayarr" class="day"><label>월</label>
+      <input type="checkbox" value="화" name="dayarr" class="day"><label>화</label>
+      <input type="checkbox" value="수" name="dayarr" class="day"><label>수</label>
+      <input type="checkbox" value="목" name="dayarr" class="day"><label>목</label>
+      <input type="checkbox" value="금" name="dayarr" class="day"><label>금</label>
+      <input type="checkbox" value="토" name="dayarr" class="day"><label>토</label>
+      <input type="checkbox" value="일" name="dayarr" class="day"><label>일</label>
+      <input type="checkbox" value="공휴일" name="dayarr" class="day"><label>공휴일</label>
+      <input type="checkbox" value="연중무휴" name="dayarr" class="day"><label>연중무휴</label>
       </td>
   </tr>
   <tr>
     <td class="tableTitle">오픈시간 : </td>
     <td>
-      <select name="open">
+      <select name="openarr">
         <option value='' selected>-- 선택 --</option>
         <option value='am'>am</option>
         <option value='pm'>pm</option>
       </select>
-      <select name="open">
+      <select name="openarr">
         <option value='' selected>-- 선택 --</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
@@ -298,7 +299,7 @@ label{
         <option value='11'>11</option>
         <option value='12'>12</option>
       </select>
-      <select name="open">
+      <select name="openarr">
         <option value='' selected>-- 선택 --</option>
         <option value='00'>00</option>
         <option value='10'>10</option>
@@ -313,12 +314,12 @@ label{
   <tr>
     <td class="tableTitle">마감시간 : </td>
     <td>
-      <select name="finish">
+      <select name="finisharr">
         <option value='' selected>-- 선택 --</option>
         <option value='am'>am</option>
         <option value='pm'>pm</option>
       </select>
-      <select name="finish">
+      <select name="finisharr">
         <option value='' selected>-- 선택 --</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
@@ -333,7 +334,7 @@ label{
         <option value='11'>11</option>
         <option value='12'>12</option>
       </select>
-      <select name="finish">
+      <select name="finisharr">
         <option value='' selected>-- 선택 --</option>
         <option value='00'>00</option>
         <option value='10'>10</option>
@@ -348,9 +349,8 @@ label{
   <tr>
     <td class="tableTitle">주차장 : </td>
     <td class="parkingRaido">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="parking" value="0">O&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="parking" value="1">X&nbsp;&nbsp;&nbsp;&nbsp;
-      <input type="radio" name="parking" value="2">공영주차장이용
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="parking" value="O">O&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="parking" value="X">X&nbsp;&nbsp;&nbsp;&nbsp;
     </td>
   </tr>
   <tr>
