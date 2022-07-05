@@ -38,7 +38,8 @@ public class CafeinController {
 	@RequestMapping("cafein_insert")
 	public String cafein_insert(HttpServletRequest request) throws Exception {
 		String name =request.getParameter("name");
-		String address = request.getParameter("address");
+		String address1 = request.getParameter("address1");
+		String address2 = request.getParameter("address2");
 		String[] dayarr =request.getParameterValues("day");
 		String [] openarr = request.getParameterValues("open");
 		String [] finisharr = request.getParameterValues("finish");
@@ -48,11 +49,7 @@ public class CafeinController {
 		String finish = String.join(":", finisharr);
 		
 		
-		System.out.println(day);
-		System.err.println(open);
-		System.out.println(finish);
-		
-		serv.insert(name,address,day,open,finish,parking);
+		serv.insert(name,address1,address2,day,open,finish,parking);
 		return "redirect: /cafein/goCafein";
 	}
 	

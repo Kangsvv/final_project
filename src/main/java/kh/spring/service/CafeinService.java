@@ -10,8 +10,8 @@ public class CafeinService {
 	@Autowired
 	private CafeinDAO dao;
 	
-	public void insert(String name,String address,String day,String open,String finish,String parking) throws Exception{
+	public void insert(String name,String address1,String address2,String day,String open,String finish,String parking) throws Exception{
 		
-		dao.insert(name,address,day,open,finish,parking);
+		dao.insert(name,address1,address2,day,open,finish,parking);
 	}
 }
