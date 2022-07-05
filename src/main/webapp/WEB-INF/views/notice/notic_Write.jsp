@@ -281,7 +281,7 @@ li.dropdown {
                   <div class="dropdown">
                      <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">NOTICE</a>
                      <div class="dropdown-content" id="myDropdown">
-                        <a href="/notice/notic">이벤트 및 공지사항</a> <a href="#">1:1 문의</a>
+                        <a href="/notice/FAQ">FAQ</a> <a href="/notice/event">이벤트 및 공지사항</a> <a href="#">1:1 문의</a> 
                      </div>
                   </div>
                </div>
@@ -298,10 +298,10 @@ li.dropdown {
 <!-------------------------------------------------------Main------------------------------------------------->
 <div class="container" id="main">
    <div class="col-12" style="margin-bottom:40px;">
-      <a style="color: white; font-size: 40px;">이벤트 및 공지사항</a>
+      <a style="color: white; font-size: 40px;">Notic</a>
     </div>
     <form>
-       <div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
+			<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
             <input type=text name=title id=title placeholder="제목" style="width:97%;">
             </div>
@@ -309,7 +309,7 @@ li.dropdown {
             <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용"></textarea>
             </div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
-                <a href="/list.board?cpage=1"><button class="btn" type="button">뒤로</button></a>
+                <a href="/notice/notic"><button class="btn" type="button">뒤로</button></a>
                 <button type="submit" class="btn" style="margin-left:10px;">작성</button>
             </div>
         </div>
@@ -355,7 +355,7 @@ window.onclick = function(e) {
 }
 
 $(".cbtn").click(function() {
-	location.href = "/notice/notic_Write";
+	location.href = "/notice/notic";
 })
 </script>
           

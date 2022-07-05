@@ -339,7 +339,7 @@ li.dropdown {
 <!-- ------------------------------------------------------------header----------------------------------------------------- -->
 
 <br>
-      <h1 class="main" style="color:white; text-align: center;">Notic</h1>
+      <h1 class="main" style="color:white; text-align: center;">Event</h1>
       <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
 	<div id="Box">
@@ -443,7 +443,7 @@ window.onclick = function(e) {
 }
 
 $(".cbtn").click(function() {
-	location.href = "/notice/notic_Write";
+	location.href = "/notice/event_Write";
 })
 
 </script>
