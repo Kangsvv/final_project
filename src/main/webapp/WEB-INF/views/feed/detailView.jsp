@@ -12,6 +12,7 @@
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <style>
 	*{box-sizing: border-box;}
@@ -230,18 +231,24 @@ nav button:hover{
         	height:100px;
         }
         #replyWriteBtn{
+        	background-color:#760c0c;
+        	color:white;
         	border-radius:10px;
         	width:100%;
         	height:100%;
         }
         .replycontainer {
-            border: 1px solid black;
             margin: auto;
-            width: 600px;
-            height: 150px;
-            margin-top: 10px;   
+            width: 95%;
+            margin-top: 10px;
+            border-bottom: 1px solid gray;
         }
-
+ 		.replycontents2{
+ 			margin-left: 10px;
+			word-wrap: break-word;      /* IE 5.5-7 */
+			white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+			white-space: pre-wrap;      /* current browsers */
+ 		}
         .replywriterName{
             margin: 4px 4px;
             width: 98%;
@@ -259,20 +266,23 @@ nav button:hover{
         }
 
         .replydel {
-            margin-top: 60px;
+/*             margin-top: 60px; */
         }
-        #left{
-            float: left;
-            width: 80%;
-            height: 100%;
+        .replyleft{
+/*             float: left; */
+            width: 100%;
         }
 
-        #right{
-            float: left;
-            width: 20%;
-            height: 100%;
-            text-align: center;
-        }
+         .replyright{
+/*              float: left;  */
+             width: 100%; 
+/*             height: 100%; */
+             text-align: right;
+             padding-bottom:5px;
+         }
+         .replymodify{
+         	margin-right:5px;
+         }
    </style>
 </head>
 <body>
@@ -380,8 +390,7 @@ nav button:hover{
             	</div>
             </div>
           	<div class="replyBox">
-				<div>
-				</div>
+
             </div>
          </div>
       </div>
@@ -393,29 +402,63 @@ nav button:hover{
                 
                 let article = $("#replyContents").val();
 
+                if(article==""){
+                	const Toast = Swal.mixin({
+                	    toast: true,
+                	    position: 'center-center',
+                	    showConfirmButton: false,
+                	    timer: 3000,
+                	    timerProgressBar: true,
+                	    didOpen: (toast) => {
+                	        toast.addEventListener('mouseenter', Swal.stopTimer)
+                	        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                	    }
+                	})
+                	 
+                	Toast.fire({
+                	    icon: 'error',
+                	    title: '댓글 내용을 입력해주세요.'
+                	})
+                	$("#replyContents").focus();
+                	return false;
+                }
+                
+                
                 let container = $("<div>");
-                container.attr("class","replycontainer");
+                container.attr("class","row replycontainer");
 
                 let left = $("<div>");
-                left.attr("id","replyleft");
+                left.attr("class","col-12 replyleft");
                 
                 
                 let right = $("<div>");
-                right.attr("id","replyright");
+                right.attr("class","col-12 replyright");
 				
                 let writerName = $("<div>");
-                writerName.attr("id", "replyWriter")
+                writerName.attr("id", "replyWriter");
+                writerName.attr("class", "col-12");
+                writerName.text("Writer");
 
                 let contents = $("<div>");
-                contents.attr("class","replycontents2");
+                contents.attr("class","col-12 replycontents2");
                 contents.text(article);
 
+                
+                let modifyBtn = $("<button>");
+                modifyBtn.attr("type","button");
+                modifyBtn.attr("class","replymodify btn btn-secondary");
+                modifyBtn.text("수정");
+                
                 let delBtn = $("<button>");
-                delBtn.attr("class","replydel");
+                delBtn.attr("type","button");
+                delBtn.attr("class","replydel btn btn-secondary");
                 delBtn.text("삭제");
-
+                
+                
+                left.append(writerName);
                 left.append(contents);
 
+                right.append(modifyBtn);
                 right.append(delBtn);
 
                 container.append(left);
@@ -427,11 +470,31 @@ nav button:hover{
                 $("#replyContents").focus();
             });
         
-            $("body").on("click", ".del", function(){
+            $("body").on("click", ".replydel", function(){
                 $(this).closest(".replycontainer").remove();
             });
 
         });
+        
+        $("#replyContents").keyup(function(e) {
+            let content = $(this).val();
+            
+            // 글자수 계산
+            if (content.length == 0 || content == ''){
+               $(".textCount").text("0자");
+            } else {
+               $(".textCount").text(content.length + "자");
+               
+            }
+            
+            // 글자수 제한
+                 if($(this).val().length > 250) {
+                  $(this).val($(this).val().substring(0, 250));
+                  alert("250자까지만 입력가능합니다")
+                 }
+            
+            
+         });
     </script>
       <!-------------------------------------------------------Footer------------------------------------------------->
     <div class="col-12">
