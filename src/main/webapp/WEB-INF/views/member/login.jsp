@@ -9,7 +9,7 @@
 <style type="text/css">
 </style>
 </head>
-<body style="background-color: #222;">
+<body style="background-color: #222; margin: 0px;">
 	<div class='loginDiv wrap'>
 		<div style="background-color: white; max-width: 450px; height: 100vmin; margin: 0px auto;">
 			<div class='center_row'>

@@ -103,9 +103,16 @@ public class MemberController {
 	public int emailNumCheck(String email, int num) {
 		int result = 0;
 		// 현재 가져온 이메일과 인증번호를 이용해서 select후 존재하는지 체크 후 존재하면 처리, 존재하지않으면 실패
-		result = memberService.emailNumCheck(email,num);
-		// 가져와서 정상이면 인증번호 삭제 ( 중복 인증 방지용)
-		memberService.emailNumDelete(email,num);
+		int checkNum = memberService.emailNumCheck(email,num);
+		System.out.println(checkNum);
+		System.out.println(num);
+		if(checkNum==num) {
+			result = 1;
+		}
+		if(result > 0) {
+			// 가져와서 정상이면 인증번호 삭제 ( 중복 인증 방지용)
+			memberService.emailNumDelete(email,num);
+		}
 		return result;
 	}
 	

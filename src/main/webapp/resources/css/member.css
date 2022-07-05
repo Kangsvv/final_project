@@ -39,7 +39,6 @@ ul {
 .max-W360 {
 	max-width: 360px;
 	margin: 0px auto;
-	padding: 0px 0px 0px 20px;
 }
 
 .form_main {
@@ -97,4 +96,36 @@ ul {
 	margin: 3px 0.5%;
 	font-size: 1em;
 	padding: 0px 3px;	
+}
+
+.modal-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    z-index: 99;
+}
+
+.modal-background .modal-content {
+	position: fixed;
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 100px 20px;
+    background-color: rgba(0, 0, 0, .75);
+    overflow: auto;
+    height: auto;
+}
+
+.ceoDivClass{
+	position: relative;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 auto;
+    z-index: 99;
 }
