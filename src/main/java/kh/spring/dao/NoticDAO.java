@@ -8,14 +8,14 @@ import kh.spring.dto.NoticDTO;
 
 @Repository
 public class NoticDAO {
-	
+
 	@Autowired 
 	private SqlSessionTemplate mybatice;
 
-public int insert (NoticDTO dto) throws Exception{
-	
-	return mybatice.insert("notic.insert",dto);
-}
+	public int insert (NoticDTO dto) throws Exception{
+
+		return mybatice.insert("notic.insert",dto);
+	}
 
 }
 

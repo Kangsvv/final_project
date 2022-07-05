@@ -14,14 +14,7 @@ public class CafeinDAO {
 	
 	
 	public int insert(CafeinDTO dto)throws Exception{
-//		CafeinDTO dto=new CafeinDTO();
-//		dto.setName(name);
-//		dto.setAddress1(address1);
-//		dto.setAddress2(address2);
-//		dto.setDay(day);
-//		dto.setOpen(open);
-//		dto.setFinish(finish);
-//		dto.setParking(parking);
+
 		 return mybatis.insert("Cafein.cafein-insert",dto);
 			 
 	}
