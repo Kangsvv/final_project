@@ -10,15 +10,15 @@ import kh.spring.dto.EventDTO;
 
 @Service
 public class EventService {
-	
-@Autowired
-private EventDAO dao; 
 
-public void insert (EventDTO dto) throws Exception{
+	@Autowired
+	private EventDAO dao; 
 
-	int seq = dao.insert(dto);
+	public void insert (EventDTO dto) throws Exception{
 
-}
+		int seq = dao.insert(dto);
+
+	}
 
 public List<EventDTO> event_selectAll() throws Exception {
 	

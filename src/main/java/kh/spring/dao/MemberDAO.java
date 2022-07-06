@@ -11,7 +11,9 @@ import kh.spring.dto.MemberDTO;
 
 @Repository
 public class MemberDAO {
-	@Autowired private SqlSession mybatis;
+	
+	@Autowired 
+	private SqlSession mybatis;
 
 	// 아이디 중복 조회
 	public int memberIdCheck(String id) {

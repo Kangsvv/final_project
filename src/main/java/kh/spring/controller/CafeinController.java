@@ -2,6 +2,7 @@ package kh.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -45,6 +46,12 @@ public class CafeinController {
 		return "redirect: /cafein/goCafein";
 	}
 	
+	//------------------------Cafein 리스트 출력(사진리스트)---------------
+	@RequestMapping("cafein_imglist")
+	public String cafein_imglist(Model model) throws Exception {
+		serv.cafein_imglist(model);
+		return "/cafein/cafeinMain";
+	}
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class

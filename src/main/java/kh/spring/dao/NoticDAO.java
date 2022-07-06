@@ -10,7 +10,7 @@ import kh.spring.dto.NoticDTO;
 
 @Repository
 public class NoticDAO {
-	
+
 	@Autowired 
 	private SqlSessionTemplate mybatis;
 

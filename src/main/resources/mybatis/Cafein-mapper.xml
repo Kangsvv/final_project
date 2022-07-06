@@ -4,14 +4,24 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="Cafein">
+
 	<insert id="cafein-insert">
 		insert into cafein values(cafein_seq.nextval,'loginID',#{name},#{address1},#{address2},#{day},#{open},#{finish},#{parking})
 		<selectKey order="AFTER" keyProperty="seq" resultType="int">
 			select cafein_seq.currval from dual
 		</selectKey>
 	</insert>
+	
 	<insert id="cafein_img-insert">
 		insert into cafein_img values(cafein_img_seq.nextval,#{ori_name},#{sys_name},#{cafein_seq})
 	</insert>
+	
+	
+	<select id="cafein-select" resultType="kh.spring.dto.CafeinDTO">
+ 	select * from cafein
+ 	</select>
+ 	<select id="cafein_img-select" resultType="kh.spring.dto.Cafein_imgDTO">
+ 	select * from cafein_img
+ 	</select>
 	
 </mapper>
