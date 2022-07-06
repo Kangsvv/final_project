@@ -1,7 +1,8 @@
 package kh.spring.dao;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import java.util.List;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,11 +12,15 @@ import kh.spring.dto.EventDTO;
 public class EventDAO {
 	
 	@Autowired 
-	private SqlSessionTemplate mybatice;
+	private SqlSessionTemplate mybatis;
 
 public int insert (EventDTO dto) throws Exception{
 	
-	return mybatice.insert("event.insert",dto);
+	return mybatis.insert("event.insert",dto);
+}
+
+public List<EventDTO> event_selectAll() {
+	return mybatis.selectList("event.event_selectAll");
 }
 
 }

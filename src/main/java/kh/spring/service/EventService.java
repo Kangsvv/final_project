@@ -1,5 +1,7 @@
 package kh.spring.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +20,13 @@ public class EventService {
 
 	}
 
+public List<EventDTO> event_selectAll() throws Exception {
+	
+	 return dao.event_selectAll(); 
+	
 }
+
+}
+
+
+/* 순서 : Mepper > DAO > Service > Controller > Service */
