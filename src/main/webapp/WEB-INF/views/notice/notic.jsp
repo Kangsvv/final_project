@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -323,7 +325,7 @@ li.dropdown {
                   <div class="dropdown">
                      <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">NOTICE</a>
                      <div class="dropdown-content" id="myDropdown">
-                        <a href="/notice/FAQ">FAQ</a> <a href="/notice/event">이벤트 및 공지사항</a> <a href="#">1:1 문의</a>
+                        <a href="/notice/FAQ">FAQ</a> <a href="/notice/event_selectAll">이벤트 및 공지사항</a> <a href="#">1:1 문의</a>
                      </div>
                   </div>
                </div>
@@ -348,8 +350,8 @@ li.dropdown {
 
          <div class="row noticbtn">
             <div class= "col-3">
-               <a href="/notice/event" class="nbtn">Event</a> | 
-               <a href="/notice/notic" class="nbtn">Notice</a>
+               <a href="/notice/event_selectAll" class="nbtn">Event</a> | 
+               <a href="/notice/notic_selectAll" class="nbtn">Notice</a>
             </div>
       
          </div>
@@ -360,35 +362,31 @@ li.dropdown {
             <div class="col-2 title_head">글쓴이</div>
             <div class="col-2 title_head">작성일</div>
          </div>
-         
-         <div class="row col-12 noticbox">
-            <div class="col-1 notice">1</div>
-            <div class="col-7 notice1">디자인 보기용</div>
-            <div class="col-2 notice">김한중</div>
-            <div class="col-2 notice">22.07.01</div>
-         </div>
 
-         <div class="row col-12 noticbox">
-            <div class="col-1 notice">2</div>
-            <div class="col-7 notice1">디자인 보기용</div>
-            <div class="col-2 notice">김한중</div>
-            <div class="col-2 notice">22.07.01</div>
-         </div>
+			<c:choose>
+				<c:when test="${empty nlist}">
+					<div>현재 등록된 게시글이 없습니다.</div>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="i" items="${nlist}">
+						<div class="row col-12 noticbox">
+							<div class="col-1 notice">${i.seq }</div>
+							<div class="col-7 notice1">${i.title }</div>
+							<div class="col-2 notice">${i.writer }</div>
+							<div class="col-2 notice">
+								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
+							</div>
+						</div>
+					</c:forEach>
+				</c:otherwise>
+				</c:choose>
 
-         <div class="row col-12 noticbox">
-            <div class="col-1 notice">3</div>
-            <div class="col-7 notice1">디자인 보기용</div>
-            <div class="col-2 notice">김한중</div>
-            <div class="col-2 notice">22.07.01</div>
-         </div>
-         
-         <div class="row">
-            <div class="col-12 create">
-               <input type="button" class="cbtn" value="작성하기">
-            </div>
-         </div>
-         
-      </div>
+					<div class="row">
+						<div class="col-12 create">
+							<input type="button" class="cbtn" value="작성하기">
+						</div>
+					</div>
+		</div>
 </div>
 
 <!-------------------------------------------------------Footer------------------------------------------------->
