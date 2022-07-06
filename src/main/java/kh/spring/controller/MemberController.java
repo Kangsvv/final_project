@@ -128,31 +128,31 @@ public class MemberController {
 		if(result > 0) {
 			model.addAttribute("loginMember", member);
 		}
-		return "home";
+		return "redirect:/";
 	}
 	
 	// 로그인 작동
-		@RequestMapping("loginAction")
-		public String loginAction(MemberDTO member, Model model, RedirectAttributes rdAttr,
-								  String saveId, HttpServletResponse response, HttpServletRequest request) {
-			String result ="";
-			MemberDTO loginMember = memberService.login(member);
-			if(loginMember == null) {
-				rdAttr.addFlashAttribute("status", "error");
-				rdAttr.addFlashAttribute("msg", "로그인 실패");
-				rdAttr.addFlashAttribute("text", "아이디 또는 비밀번호를 확인해주세요.");
+	@RequestMapping("loginAction")
+	public String loginAction(MemberDTO member, Model model, RedirectAttributes rdAttr,
+							  String saveId, HttpServletResponse response, HttpServletRequest request) {
+		String result ="";
+		MemberDTO loginMember = memberService.login(member);
+		if(loginMember == null) {
+			rdAttr.addFlashAttribute("status", "error");
+			rdAttr.addFlashAttribute("msg", "로그인 실패");
+			rdAttr.addFlashAttribute("text", "아이디 또는 비밀번호를 확인해주세요.");
+		}else {
+			model.addAttribute("loginMember", loginMember);
+			member.setmem_seq(loginMember.getmem_seq());
+			Cookie cookie = new Cookie("saveId", member.getmem_id()); 
+			if(saveId != null) {
+				cookie.setMaxAge(60 * 60 * 24 * 7);
 			}else {
-				model.addAttribute("loginMember", loginMember);
-				member.setmem_seq(loginMember.getmem_seq());
-				Cookie cookie = new Cookie("saveId", member.getmem_id()); 
-				if(saveId != null) {
-					cookie.setMaxAge(60 * 60 * 24 * 7);
-				}else {
-					cookie.setMaxAge(0);
-				}
-				
-				response.addCookie(cookie);
+				cookie.setMaxAge(0);
 			}
-			return "home";
+			
+			response.addCookie(cookie);
 		}
+		return "redirect:/";
+	}
 }
