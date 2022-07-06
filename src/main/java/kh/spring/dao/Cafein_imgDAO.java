@@ -2,6 +2,7 @@ package kh.spring.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,4 +23,9 @@ public class Cafein_imgDAO {
 	public void insert(Cafein_imgDTO dto)throws Exception{
 		mybatis.insert("Cafein.cafein_img-insert",dto);
 	}
+	
+	public List<Cafein_imgDTO> cafein_imglist() throws Exception{
+		return mybatis.selectList("Cafein.cafein_img-select");
+	}
+
 }

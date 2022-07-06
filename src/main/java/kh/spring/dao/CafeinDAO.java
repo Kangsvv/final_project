@@ -15,7 +15,8 @@ public class CafeinDAO {
 	
 	public int insert(CafeinDTO dto)throws Exception{
 
-		 return mybatis.insert("Cafein.cafein-insert",dto);
+		  mybatis.insert("Cafein.cafein-insert",dto);
+		  return dto.getSeq();
 			 
 	}
 }
