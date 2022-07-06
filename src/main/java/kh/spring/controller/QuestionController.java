@@ -8,27 +8,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kh.spring.dto.NoticeDTO;
-import kh.spring.service.NoticeService;
+import kh.spring.dto.QuestionDTO;
+import kh.spring.service.QuestionService;
 
-public class QuestionController {
 
-	
 	
 	@Controller
 	@RequestMapping("/question/")
-	public class NoticeController {
+	public class QuestionController {
 		
 		@Autowired
-		private NoticeService bServ;
+		private QuestionService bServ;
 		
-		@RequestMapping("list")
+		@RequestMapping("questionList")
 		public String question(Model model) throws Exception {
 			
-			List<NoticeDTO> dto = bServ.selectAll();
+			List<QuestionDTO> dto = bServ.selectAll();
 			model.addAttribute("list",dto);
 			
-			return "/question/questionLsit";
+			return "/question/questionList";
+			
 		}
 		
 		
@@ -37,5 +36,4 @@ public class QuestionController {
 			e.printStackTrace();
 			return "error";
 		}
-}
 }

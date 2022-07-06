@@ -27,20 +27,16 @@ public class NoticeController {
 	}
 	
 
-//	@RequestMapping("list")
-//	public String question(Model model) throws Exception {
-//		
-//		List<NoticeDTO> dto = bServ.selectAll();
-//		model.addAttribute("list",dto);
-//		
-//		return "/notice/notice";
-//	}
-	
-
 	@RequestMapping("notic")
-	public String notic() {
+	public String question(Model model) throws Exception {
+		
+//		List<NoticeDTO> dto = bServ.selectAll();
+//		model.addAttribute("notic",dto);
+		
 		return "/notice/notic";
 	}
+	
+
 	
 	@RequestMapping("notic_Write")
 	public String notic_Write() {

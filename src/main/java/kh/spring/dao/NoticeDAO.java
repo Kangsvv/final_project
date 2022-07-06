@@ -15,7 +15,7 @@ public class NoticeDAO {
 	private SqlSessionTemplate mybatis;
 	
 	public List<NoticeDTO> selectAll() throws Exception{
-		return mybatis.selectList("Notice.selectAll");
+		return mybatis.selectList("notice.selectAll");
 	}
 	
 	
