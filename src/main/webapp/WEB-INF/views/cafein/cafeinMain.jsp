@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- jstl  -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- j쿼리 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!--  Bootstrap ver 5.1  -->
@@ -247,10 +249,10 @@ nav button:hover{
                     </a>
                 </div>
                 
-                <c:forEach var="i" items="${list }">
+                <c:forEach var="i" items="${list}">
                 <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.daum.net">
-                        <img src="\springWorkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\final_project\Cafein-files?sys_name=${i.sys_name}">
+                    <a class="lightbox" href="/cafein/detailCafein?seq=${i.cafein_seq }">
+                        <img src="/resources/cafein/${i.sys_name }">
                     </a>
                 </div>
                 </c:forEach>

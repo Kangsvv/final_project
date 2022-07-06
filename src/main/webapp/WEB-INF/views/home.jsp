@@ -223,7 +223,7 @@ h5 {
   
   <section class="box" id="box2">
     <figure class="flip">
-      <a href="/cafein/goCafein"><img src="https://2.bp.blogspot.com/-lNmcHj4MqOM/Uh9GFylK6vI/AAAAAAAAA6g/v3JuP6rfWKU/s1600/coffee.jpg" /></a>
+      <a href="/cafein/cafein_imglist"><img src="https://2.bp.blogspot.com/-lNmcHj4MqOM/Uh9GFylK6vI/AAAAAAAAA6g/v3JuP6rfWKU/s1600/coffee.jpg" /></a>
       <figcaption class="bar">
         <h3>CAFE-IN</h3>
        </figcaption>
