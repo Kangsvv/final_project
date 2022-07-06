@@ -60,4 +60,14 @@ public class CafeinService {
 		model.addAttribute("list",list);
 	}
 	
+	@Transactional
+	public void selectBySeq(Model model,int cafein_seq) throws Exception {
+		CafeinDTO dto = dao.selectBySeq(cafein_seq);
+		model.addAttribute("dto",dto);
+		Cafein_imgDTO fdto = fdao.selectBySeq(cafein_seq);
+		model.addAttribute("fdto",fdto);
+		
+		
+	}
+
 }

@@ -251,32 +251,13 @@ nav button:hover{
                 
                 <c:forEach var="i" items="${list}">
                 <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="/cafein/detailCafein?seq=${i.cafein_seq }">
+                    <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
                         <img src="/resources/cafein/${i.sys_name }">
                     </a>
                 </div>
                 </c:forEach>
                 
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.naver.com">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.kakao.com">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.daum.net">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
+               
                 
     
             </div>

@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import kh.spring.dto.CafeinDTO;
 import kh.spring.dto.Cafein_imgDTO;
 
 
@@ -27,5 +28,8 @@ public class Cafein_imgDAO {
 	public List<Cafein_imgDTO> cafein_imglist() throws Exception{
 		return mybatis.selectList("Cafein.cafein_img-select");
 	}
-
+	
+	public Cafein_imgDTO selectBySeq(int cafein_seq) {
+		return mybatis.selectOne("Cafein.cafein_img-detail",cafein_seq);
+	}
 }
