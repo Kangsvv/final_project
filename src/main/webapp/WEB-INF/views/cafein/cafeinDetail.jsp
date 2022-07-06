@@ -94,16 +94,15 @@ nav button:hover{
 
 #file{
   border-radius: 5px;
-  width: 300px;
-  height: 300px;
   color: white;
   text-align: center;
 
   margin: auto;
 }
 #file img{
- width: 300px;
-  height: 300px;
+border-radius: 5px;
+ width: 500px;
+  height: 500px;
 }
 #my-button{
   width: 150px;
