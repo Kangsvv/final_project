@@ -52,6 +52,15 @@ public class CafeinController {
 		serv.cafein_imglist(model);
 		return "/cafein/cafeinMain";
 	}
+	//------------------------Cafein 상세보기---------------------------
+	@RequestMapping("selectBySeq")
+	public String selectBySeq(Model model,int cafein_seq) throws Exception {
+		serv.selectBySeq(model, cafein_seq);
+		return "cafein/cafeinDetail";
+	}
+	
+	
+	
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
