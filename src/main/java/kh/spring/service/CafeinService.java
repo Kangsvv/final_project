@@ -29,6 +29,8 @@ public class CafeinService {
 	@Autowired
 	private Cafein_imgDAO fdao;
 
+	
+	//--------------------Cafe 등록------------------------------
 	@Transactional
 	public void insert(String name,String address1,String address2,String day,String open,String finish,String parking,String realPath,MultipartFile file) throws Exception{
 		realPath ="C:\\springWorkspace\\final_project\\src\\main\\webapp\\resources\\cafein";
@@ -54,20 +56,28 @@ public class CafeinService {
 
 	}
 	
-	
+	//--------------------Cafe 리스트------------------------------
 	public void cafein_imglist(Model model) throws Exception {
 		List<Cafein_imgDTO> list = fdao.cafein_imglist();
 		model.addAttribute("list",list);
 	}
-	
+	//--------------------Cafe 상세정보------------------------------
 	@Transactional
 	public void selectBySeq(Model model,int cafein_seq) throws Exception {
+		//-------------cafe정보----------------------
 		CafeinDTO dto = dao.selectBySeq(cafein_seq);
 		model.addAttribute("dto",dto);
+		//-------------cafe이미지----------------------
 		Cafein_imgDTO fdto = fdao.selectBySeq(cafein_seq);
 		model.addAttribute("fdto",fdto);
 		
-		
 	}
+	
+	public void delete(int cafein_seq) throws Exception {
+	
+		 dao.delete(cafein_seq);
+		 fdao.delete(cafein_seq);
+	}
+
 
 }

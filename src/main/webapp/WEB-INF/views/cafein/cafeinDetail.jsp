@@ -324,6 +324,10 @@ table td{
           <i class="fa-regular fa-envelope"></i></button>
           <button id="like" class="btn btn-primary"><i class="fa-regular fa-heart  buttonIcon"></i></button></div>
 
+
+		<div class="col-12" id="" style="text-align: right;margin-top:5%">
+		<button type="button" class="btn btn-primary" id="update">수정</button>&nbsp;<button type="button" class="btn btn-danger" id="delete">삭제</button>
+		</div>
       </div>
     
   
@@ -407,6 +411,7 @@ table td{
   </div>
 
       <script>
+      //--------------------파일업로드시 이미지 미리보기------------------------------
        function onClickUpload() {
             let myInput = document.getElementById("my-input");
             myInput.click();
@@ -425,7 +430,18 @@ table td{
             $("#like").css("color","white");
     }
          });
-
+//-------------------------------삭제버튼--------------------------------
+		
+		$("#delete").on("click", function() {
+			let result = confirm("정말 탈퇴하시겠습니까?");
+			if(result){
+				alert("탈퇴 완료되었습니다.");
+				location.href = "/cafein/delete?seq=${dto.seq}";
+			}else{
+				
+			}
+			
+		})
       </script>    
 </body>
 </html>

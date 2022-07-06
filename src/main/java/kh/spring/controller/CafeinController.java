@@ -43,7 +43,7 @@ public class CafeinController {
 		String finish = String.join(":", finisharr);
 		
 		serv.insert(name,address1,address2,day,open,finish,parking,realPath,file);
-		return "redirect: /cafein/goCafein";
+		return "redirect: /cafein/cafein_imglist";
 	}
 	
 	//------------------------Cafein 리스트 출력(사진리스트)---------------
@@ -57,6 +57,12 @@ public class CafeinController {
 	public String selectBySeq(Model model,int cafein_seq) throws Exception {
 		serv.selectBySeq(model, cafein_seq);
 		return "cafein/cafeinDetail";
+	}
+	//------------------------Cafe삭제----------------------------------
+	@RequestMapping("delete") 
+	public String delete(int seq) throws Exception {
+		serv.delete(seq);
+		return "redirect:/cafein/cafein_imglist";
 	}
 	
 	
