@@ -17,11 +17,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.spring.dto.MemberDTO;
 import kh.spring.service.MemberService;
 
+@SessionAttributes({"loginMember"})
 @Controller
 @RequestMapping("/member/")
 public class MemberController {
@@ -134,14 +137,16 @@ public class MemberController {
 	// 로그인 작동
 	@RequestMapping("loginAction")
 	public String loginAction(MemberDTO member, Model model, RedirectAttributes rdAttr,
-							  String saveId, HttpServletResponse response, HttpServletRequest request) {
-		String result ="";
-		MemberDTO loginMember = memberService.login(member);
+							  String saveId, HttpServletResponse response, HttpServletRequest request) throws Exception{
+		MemberDTO loginMember = null;
+		if(member.getmem_id().indexOf("kakao_") == -1) {
+			loginMember = memberService.login(member);
+		}
+		
 		if(loginMember == null) {
-			rdAttr.addFlashAttribute("status", "error");
-			rdAttr.addFlashAttribute("msg", "로그인 실패");
-			rdAttr.addFlashAttribute("text", "아이디 또는 비밀번호를 확인해주세요.");
-		}else {
+			rdAttr.addFlashAttribute("status", "success");
+			rdAttr.addFlashAttribute("msg", "알림");
+			rdAttr.addFlashAttribute("text", "로그인 성공");
 			model.addAttribute("loginMember", loginMember);
 			member.setmem_seq(loginMember.getmem_seq());
 			Cookie cookie = new Cookie("saveId", member.getmem_id()); 
@@ -152,7 +157,46 @@ public class MemberController {
 			}
 			
 			response.addCookie(cookie);
+		}else {
+			rdAttr.addFlashAttribute("status", "error");
+			rdAttr.addFlashAttribute("msg", "알림");
+			rdAttr.addFlashAttribute("text", "아이디 또는 비밀번호를 확인해주세요.");
 		}
+		
 		return "redirect:/";
+	}
+	
+	// 로그아웃
+	@RequestMapping("logout")
+	public String logout(SessionStatus status, RedirectAttributes rdAttr) {
+		status.setComplete();
+		rdAttr.addFlashAttribute("status", "success");
+		rdAttr.addFlashAttribute("msg", "알림");
+		rdAttr.addFlashAttribute("text", "로그아웃이 되었습니다.");
+		return "redirect:/";
+	}
+	
+	// 카카오 회원가입 및 로그인
+	@ResponseBody
+	@RequestMapping("kakaoLogin")
+	public int kakaoLogin(String email, String name, Model model, RedirectAttributes rdAttr) {
+		int result = 0;
+		MemberDTO member = new MemberDTO();
+		member.setmem_id("kakao_" + email.split("@")[0]);
+		member.setmem_name(name);
+		member.setmem_email(email);
+		
+		MemberDTO loginMember = memberService.kakaoLoginCheck(member);
+		if(loginMember == null) {
+			loginMember = memberService.kakaoSingUp(member);
+		}
+		if(loginMember != null) {
+			result = 1;
+		}
+		model.addAttribute("loginMember", loginMember);
+		rdAttr.addFlashAttribute("status", "success");
+		rdAttr.addFlashAttribute("msg", "알림");
+		rdAttr.addFlashAttribute("text", "로그인 성공");
+		return result;
 	}
 }

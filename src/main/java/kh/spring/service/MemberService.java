@@ -79,4 +79,20 @@ public class MemberService {
 		return loginMember;
 	}
 
+	// 카카오톡 계정 생성 여부 확인 및 로그인 처리
+	public MemberDTO kakaoLoginCheck(MemberDTO member) {
+		return memberDAO.kakaoLoginCheck(member);
+	}
+
+	// 카카오 계정 생성
+	public MemberDTO kakaoSingUp(MemberDTO member) {
+		MemberDTO loginMember = new MemberDTO();
+		int result = memberDAO.kakaoJoinAction(member);
+		if(result > 0) {
+			loginMember = memberDAO.kakaoLoginCheck(member);
+			System.out.println(loginMember);
+		}
+		return loginMember;
+	}
+
 }

@@ -62,6 +62,9 @@
 						<li><input type="checkbox" id='ceoCheck'><label
 							for='ceoCheck'>사업자 등록 시 체크해주세요.</label></li>
 					</ul>
+					<input type="file" id='mem_ceocheckimg' name='mem_ceocheckimg' style="display: none;">
+					<input id='mem_level' name='mem_level' style="display: none;" value='0'>
+					<input id='mem_status' name='mem_status' style="display: none;" value='0'>
 					<input type='hidden' id='mem_phone' name='mem_phone' maxlength="12">
 					<button class='btn_main bt_1' id='signUpBtn'>회원가입</button>
 				</form>
@@ -74,13 +77,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="modal-background">
-		<div class="modal-content">
-			<div class="ceoDivClass"></div>
-		</div>
-	</div>
-		
 		
 	<script>
 		var id = false;
@@ -208,6 +204,10 @@
 				return false;
 			}
 			
+			if($("#mem_ceocheckimg").val() != null){
+				$("#mem_status").val(2);
+				$("#mem_level").val(1);
+			}
 		});
 		
 		$("#emailcheck").on("click",function(){
@@ -265,17 +265,22 @@
 		});
 		
 		$("#ceoCheck").on("click",function(){
-			$(".modal-background").show();
+			$("#mem_ceocheckimg").click();
 			return false;
-		})
-		
-		$(document).on("click",".ceoDivClass",function(event){
-			event.stopPropagation();
-		})
-		
-		$(document).on("click",".modal-background",function(){
-			$(this).hide();
 		});
+		
+		$(document).on("change","#mem_ceocheckimg",function(){
+			var ext = $('#mem_ceocheckimg').val().split('.').pop().toLowerCase();
+			if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1 && ext!="") {
+				alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
+				$('#mem_ceocheckimg').val('');
+				$("#ceoCheck").prop("checked", false);
+				return false;
+			}else{
+				$("#ceoCheck").prop("checked", true);
+			}
+		});
+		
 	</script>
 </body>
 </html>

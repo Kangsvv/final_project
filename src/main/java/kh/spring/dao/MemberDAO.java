@@ -54,4 +54,13 @@ public class MemberDAO {
 		return mybatis.selectOne("Member.login",member);
 	}
 
+	// 카카오로그인 계정 생성 여부 확인 및 로그인
+	public MemberDTO kakaoLoginCheck(MemberDTO member) {
+		return mybatis.selectOne("Member.kakaoLoginCheck",member);
+	}
+
+	// 카카오 계정 생성
+	public int kakaoJoinAction(MemberDTO member) {
+		return mybatis.insert("Member.kakaoJoinAction",member);
+	}
 }
