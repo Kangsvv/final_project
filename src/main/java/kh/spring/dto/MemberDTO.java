@@ -13,7 +13,7 @@ public class MemberDTO {
 	private int memStatus;
 	private Timestamp memJoinDate;
 	private Timestamp memDeleteDate;
-	
+
 	public MemberDTO() {
 	}
 
@@ -118,5 +118,5 @@ public class MemberDTO {
 				+ ", memEmail=" + memEmail + ", memPhone=" + memPhone + ", memLevel=" + memLevel + ", memStatus="
 				+ memStatus + ", memJoinDate=" + memJoinDate + ", memDeleteDate=" + memDeleteDate + "]";
 	}
-	
+
 }

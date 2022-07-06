@@ -54,15 +54,25 @@
 				<li id='emailLi' style="display: none;">
 					<input class="form_main" style="width:70%" id='emailNum' name='emailNum' placeholder="인증번호" maxlength="6" autocomplete="off" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
 					<button id='emailNumcheck' type="button" class='bt_1' style="width: 25%; display: inline-block;">확인</button>
+				</li>
+				<li>
+					<input type="checkbox" id='ceoCheck'><label for='ceoCheck' style="color: white">사업자 등록 시 체크해주세요.</label>
 				</li>				
 			</ul>
 			<input type='hidden' id='memPhone' name='memPhone' maxlength="12">
 			<button class='btn_main bt_1' id='signUpBtn'>회원가입</button>
 		</form>
 		
+		<div class="modal-background">
+			<div class="modal-content">
+				<div class="ceoDivClass">
+				</div>
+			</div>
+		</div>
+		
 		<br>
 		<div>
-			<a class='c-white'>이미 가입되어있다면?</a><a class='non_text' href='member/login'> 로그인</a><br><br>
+			<a class='c-white'>이미 가입되어있다면?</a><a class='non_text' href='/member/login'> 로그인</a><br><br>
 		</div>
 	</div>	
 	
@@ -233,6 +243,7 @@
 						emailCheck = true;
 						$("#emailLi").hide();
 						$("#memEmail").hide();
+						$("#emailcheck").hide();
 					}else{
 						alert("인증번호를 확인해주세요. 3분이 초과된경우 다시 전송 후 인증해주세요.");
 						emailCheck = false;
@@ -243,6 +254,19 @@
 				}
 			
 			});
+		});
+		
+		$("#ceoCheck").on("click",function(){
+			$(".modal-background").show();
+			return false;
+		})
+		
+		$(document).on("click",".ceoDivClass",function(event){
+			event.stopPropagation();
+		})
+		
+		$(document).on("click",".modal-background",function(){
+			$(this).hide();
 		});
 	</script>
 </body>
