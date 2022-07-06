@@ -398,6 +398,7 @@ label{
 	}
  
  //---------------------------------공백시 return false--------------------------------
+ 
  $("#add").on("click",function(){
 	 if($("#name").val() == ''){
 		 alert("카페이름을 입력해주세요");
@@ -407,7 +408,22 @@ label{
 		 alert("주소를 입력해주세요.");
 		 return false;
 	 }
-
+	 else if($("input[name='parking']:checked").val()== ''){
+		 alert("주차장유무를 체크해주세요.")
+		 return false;
+	 }
+	 else if($("input[name='dayarr']:checked").val()== ''){
+		 alert("휴무일을 체크해주세요.")
+		 return false;
+	 }
+	 else if($("input[name='openarr']:checked").val()== ''){
+		 alert("오픈시간을 선택해주세요.")
+		 return false;
+	 }
+	 else if($("input[name='finisharr']:checked").val()== ''){
+		 alert("마감시간을 선택해주세요.")
+		 return false;
+	 }
 	 // file
      let fileVal = $("#ex_file").val();
      

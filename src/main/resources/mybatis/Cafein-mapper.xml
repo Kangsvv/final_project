@@ -18,10 +18,11 @@
 	
 	
 	<select id="cafein-select" resultType="kh.spring.dto.CafeinDTO">
- 	select * from cafein
+ 	select *from cafein
  	</select>
+ 	
  	<select id="cafein_img-select" resultType="kh.spring.dto.Cafein_imgDTO">
- 	select * from cafein_img
+ 	select *from cafein_img
  	</select>
 	
 </mapper>

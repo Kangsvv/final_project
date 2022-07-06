@@ -30,20 +30,17 @@ public class CafeinService {
 	private Cafein_imgDAO fdao;
 
 	@Transactional
-	public void insert(String name,String address1,String address2,String day,String open,String finish,String parking,String savePath,MultipartFile file) throws Exception{
+	public void insert(String name,String address1,String address2,String day,String open,String finish,String parking,String realPath,MultipartFile file) throws Exception{
+		realPath ="C:\\springWorkspace\\final_project\\src\\main\\webapp\\resources\\cafein";
 
-		savePath = session.getServletContext().getRealPath("cafe/");
-		System.out.println(savePath);
-		File filePath = new File(savePath);
-		if(!filePath.exists()) {filePath .mkdir();}; //폴더 없을시 생성
-		
+		System.out.println(realPath);
+		File filePath = new File(realPath);
+		if(!filePath.exists())filePath .mkdir();
+		System.out.println(realPath);
 		String oriName =file.getOriginalFilename();
 		String sysName = UUID.randomUUID() + "_"+oriName; //UUID.randomUUID()중복되지 임의값을 만들어 리턴 oriname 
-		file.transferTo(new File(savePath + "/"+sysName));
+		file.transferTo(new File(realPath + "/"+sysName));
 
-		System.out.println(oriName);
-		System.out.println(sysName);
-		
 		CafeinDTO dto=new CafeinDTO();
 		dto.setName(name);
 		dto.setAddress1(address1);
@@ -62,4 +59,5 @@ public class CafeinService {
 		List<Cafein_imgDTO> list = fdao.cafein_imglist();
 		model.addAttribute("list",list);
 	}
+	
 }
