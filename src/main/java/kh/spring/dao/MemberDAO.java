@@ -11,7 +11,9 @@ import kh.spring.dto.MemberDTO;
 
 @Repository
 public class MemberDAO {
-	@Autowired private SqlSession mybatis;
+	
+	@Autowired 
+	private SqlSession mybatis;
 
 	// 아이디 중복 조회
 	public int memberIdCheck(String id) {
@@ -45,6 +47,11 @@ public class MemberDAO {
 	// 회원가입 처리
 	public int joinAction(MemberDTO member) {
 		return mybatis.insert("Member.joinAction",member);
+	}
+
+	// 로그인
+	public MemberDTO login(MemberDTO member) {
+		return mybatis.selectOne("Member.login",member);
 	}
 
 }

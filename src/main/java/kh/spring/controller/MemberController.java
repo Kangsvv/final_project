@@ -3,8 +3,8 @@ package kh.spring.controller;
 import java.io.IOException;
 import java.util.Random;
 
-import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,10 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kh.spring.dto.MemberDTO;
 import kh.spring.service.MemberService;
@@ -104,18 +106,53 @@ public class MemberController {
 	public int emailNumCheck(String email, int num) {
 		int result = 0;
 		// 현재 가져온 이메일과 인증번호를 이용해서 select후 존재하는지 체크 후 존재하면 처리, 존재하지않으면 실패
-		result = memberService.emailNumCheck(email,num);
-		// 가져와서 정상이면 인증번호 삭제 ( 중복 인증 방지용)
-		memberService.emailNumDelete(email,num);
+		int checkNum = memberService.emailNumCheck(email,num);
+		System.out.println(checkNum);
+		System.out.println(num);
+		if(checkNum==num) {
+			result = 1;
+		}
+		if(result > 0) {
+			// 가져와서 정상이면 인증번호 삭제 ( 중복 인증 방지용)
+			memberService.emailNumDelete(email,num);
+		}
 		return result;
 	}
 
 	// 회원가입 처리
 	@RequestMapping("joinAction")
-	public String joinAction(MemberDTO member) {
-		System.out.println(member);
+	public String joinAction(MemberDTO member, Model model) {
 		// 회원가입 처리
 		int result = memberService.joinAction(member);
-		return "/";
+		member.setmem_pw(null);
+		if(result > 0) {
+			model.addAttribute("loginMember", member);
+		}
+		return "home";
 	}
+	
+	// 로그인 작동
+		@RequestMapping("loginAction")
+		public String loginAction(MemberDTO member, Model model, RedirectAttributes rdAttr,
+								  String saveId, HttpServletResponse response, HttpServletRequest request) {
+			String result ="";
+			MemberDTO loginMember = memberService.login(member);
+			if(loginMember == null) {
+				rdAttr.addFlashAttribute("status", "error");
+				rdAttr.addFlashAttribute("msg", "로그인 실패");
+				rdAttr.addFlashAttribute("text", "아이디 또는 비밀번호를 확인해주세요.");
+			}else {
+				model.addAttribute("loginMember", loginMember);
+				member.setmem_seq(loginMember.getmem_seq());
+				Cookie cookie = new Cookie("saveId", member.getmem_id()); 
+				if(saveId != null) {
+					cookie.setMaxAge(60 * 60 * 24 * 7);
+				}else {
+					cookie.setMaxAge(0);
+				}
+				
+				response.addCookie(cookie);
+			}
+			return "home";
+		}
 }

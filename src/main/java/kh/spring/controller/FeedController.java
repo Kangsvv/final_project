@@ -2,6 +2,7 @@ package kh.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,6 +17,9 @@ public class FeedController {
 	
 	@RequestMapping("goFeed")
 	public String goFeed() {
+		
+		System.out.println("12341234");
+		
 		return "/feed/feedMain";
 	}
 	@RequestMapping("detailView")
@@ -23,8 +27,8 @@ public class FeedController {
 		return "/feed/detailView";
 	}
 	
-	@RequestMapping("feedWrite")
-	public String feedWrite() {
+	@RequestMapping("goFeedWrite")
+	public String goFeedWrite() {
 		return "/feed/feedWrite";
 	}
 	
@@ -35,3 +39,5 @@ public class FeedController {
 		return "error";
 	}
 }
+
+

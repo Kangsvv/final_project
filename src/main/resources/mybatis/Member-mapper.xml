@@ -12,21 +12,26 @@
 	
 	<!-- 이메일 인증 -->
 	<insert id="emailCheck">
-		insert into member_email_num values(#{email}, #{num}, default)
+		insert into member_email_num values(me_seqNum.nextVal,#{email}, #{num}, default)
 	</insert>
 	
 	<!-- 이메일 인증 확인 -->
 	<select id="emailNumcheck" resultType="int">
-		select count(*) from member_email_num where me_email = #{email} and me_num = #{num} and me_time >= SYSDATE - (4/1440)
+		select * from (select me_num from member_email_num where me_email = #{email} and me_time >= SYSDATE - (3/1440) order by me_seq desc) where rownum = 1 
 	</select>
 	
 	<!-- 이메일 인증 삭제 -->
 	<delete id="emailNumDelete">
-		delete from member_email_num where me_email = #{email} and me_num = #{num} and me_time >= SYSDATE - (5/1440)
+		delete from member_email_num where me_email = #{email}
 	</delete>
 	
 	<!-- 회원가입 처리 -->
 	<insert id="joinAction">
-		insert into member values(mem_seq.nextVal,#{memId},#{memPw},#{memName},#{memEmail},#{memPhone},0,0,sysdate,'')
+		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},0,0,'','',sysdate,'')
 	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="kh.spring.dto.MemberDTO">
+		select * from member where mem_Id = #{mem_id}
+	</select>
 </mapper> 

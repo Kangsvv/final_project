@@ -21,6 +21,7 @@ public class HomeController {
 
 		return "home";
 	}
+	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
 		e.printStackTrace();

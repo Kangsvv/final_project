@@ -3,120 +3,143 @@ package kh.spring.dto;
 import java.sql.Timestamp;
 
 public class MemberDTO {
-	private int memSeq;
-	private String memId; 
-	private String memPw;
-	private String memName;
-	private String memEmail;
-	private String memPhone;
-	private int memLevel;
-	private int memStatus;
-	private Timestamp memJoinDate;
-	private Timestamp memDeleteDate;
+	private int mem_seq;
+	private String mem_id; 
+	private String mem_pw;
+	private String mem_name;
+	private String mem_email;
+	private String mem_phone;
+	private int mem_level;
+	private int mem_status;
+	private String mem_img;
+	private String mem_ceocheckimg; 
+	private Timestamp mem_joindate;
+	private Timestamp mem_deletedate;
 
 	public MemberDTO() {
 	}
 
-	public MemberDTO(int memSeq, String memId, String memPw, String memName, String memEmail, String memPhone,
-			int memLevel, int memStatus, Timestamp memJoinDate, Timestamp memDeleteDate) {
+	public MemberDTO(int mem_seq, String mem_id, String mem_pw, String mem_name, String mem_email, String mem_phone,
+			int mem_level, int mem_status, String mem_img, String mem_ceocheckimg, Timestamp mem_joindate,
+			Timestamp mem_deletedate) {
 		super();
-		this.memSeq = memSeq;
-		this.memId = memId;
-		this.memPw = memPw;
-		this.memName = memName;
-		this.memEmail = memEmail;
-		this.memPhone = memPhone;
-		this.memLevel = memLevel;
-		this.memStatus = memStatus;
-		this.memJoinDate = memJoinDate;
-		this.memDeleteDate = memDeleteDate;
+		this.mem_seq = mem_seq;
+		this.mem_id = mem_id;
+		this.mem_pw = mem_pw;
+		this.mem_name = mem_name;
+		this.mem_email = mem_email;
+		this.mem_phone = mem_phone;
+		this.mem_level = mem_level;
+		this.mem_status = mem_status;
+		this.mem_img = mem_img;
+		this.mem_ceocheckimg = mem_ceocheckimg;
+		this.mem_joindate = mem_joindate;
+		this.mem_deletedate = mem_deletedate;
 	}
 
-	public int getMemSeq() {
-		return memSeq;
+	public int getmem_seq() {
+		return mem_seq;
 	}
 
-	public void setMemSeq(int memSeq) {
-		this.memSeq = memSeq;
+	public void setmem_seq(int mem_seq) {
+		this.mem_seq = mem_seq;
 	}
 
-	public String getMemId() {
-		return memId;
+	public String getmem_id() {
+		return mem_id;
 	}
 
-	public void setMemId(String memId) {
-		this.memId = memId;
+	public void setmem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 
-	public String getMemPw() {
-		return memPw;
+	public String getmem_pw() {
+		return mem_pw;
 	}
 
-	public void setMemPw(String memPw) {
-		this.memPw = memPw;
+	public void setmem_pw(String mem_pw) {
+		this.mem_pw = mem_pw;
 	}
 
-	public String getMemName() {
-		return memName;
+	public String getmem_name() {
+		return mem_name;
 	}
 
-	public void setMemName(String memName) {
-		this.memName = memName;
+	public void setmem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 
-	public String getMemEmail() {
-		return memEmail;
+	public String getmem_email() {
+		return mem_email;
 	}
 
-	public void setMemEmail(String memEmail) {
-		this.memEmail = memEmail;
+	public void setmem_email(String mem_email) {
+		this.mem_email = mem_email;
 	}
 
-	public String getMemPhone() {
-		return memPhone;
+	public String getmem_phone() {
+		return mem_phone;
 	}
 
-	public void setMemPhone(String memPhone) {
-		this.memPhone = memPhone;
+	public void setmem_phone(String mem_phone) {
+		this.mem_phone = mem_phone;
 	}
 
-	public int getMemLevel() {
-		return memLevel;
+	public int getmem_level() {
+		return mem_level;
 	}
 
-	public void setMemLevel(int memLevel) {
-		this.memLevel = memLevel;
+	public void setmem_level(int mem_level) {
+		this.mem_level = mem_level;
 	}
 
-	public int getMemStatus() {
-		return memStatus;
+	public int getmem_status() {
+		return mem_status;
 	}
 
-	public void setMemStatus(int memStatus) {
-		this.memStatus = memStatus;
+	public void setmem_status(int mem_status) {
+		this.mem_status = mem_status;
 	}
 
-	public Timestamp getMemJoinDate() {
-		return memJoinDate;
+	public String getmem_img() {
+		return mem_img;
 	}
 
-	public void setMemJoinDate(Timestamp memJoinDate) {
-		this.memJoinDate = memJoinDate;
+	public void setmem_img(String mem_img) {
+		this.mem_img = mem_img;
 	}
 
-	public Timestamp getMemDeleteDate() {
-		return memDeleteDate;
+	public String getmem_ceocheckimg() {
+		return mem_ceocheckimg;
 	}
 
-	public void setMemDeleteDate(Timestamp memDeleteDate) {
-		this.memDeleteDate = memDeleteDate;
+	public void setmem_ceocheckimg(String mem_ceocheckimg) {
+		this.mem_ceocheckimg = mem_ceocheckimg;
+	}
+
+	public Timestamp getmem_joindate() {
+		return mem_joindate;
+	}
+
+	public void setmem_joindate(Timestamp mem_joindate) {
+		this.mem_joindate = mem_joindate;
+	}
+
+	public Timestamp getmem_deletedate() {
+		return mem_deletedate;
+	}
+
+	public void setmem_deletedate(Timestamp mem_deletedate) {
+		this.mem_deletedate = mem_deletedate;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberDTO [memSeq=" + memSeq + ", memId=" + memId + ", memPw=" + memPw + ", memName=" + memName
-				+ ", memEmail=" + memEmail + ", memPhone=" + memPhone + ", memLevel=" + memLevel + ", memStatus="
-				+ memStatus + ", memJoinDate=" + memJoinDate + ", memDeleteDate=" + memDeleteDate + "]";
+		return "MemberDTO [mem_seq=" + mem_seq + ", mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name
+				+ ", mem_email=" + mem_email + ", mem_phone=" + mem_phone + ", mem_level=" + mem_level + ", mem_status="
+				+ mem_status + ", mem_img=" + mem_img + ", mem_ceocheckimg=" + mem_ceocheckimg + ", mem_joindate="
+				+ mem_joindate + ", mem_deletedate=" + mem_deletedate + "]";
 	}
+
 
 }

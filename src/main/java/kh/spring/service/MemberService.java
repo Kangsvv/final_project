@@ -11,8 +11,9 @@ import kh.spring.dto.MemberDTO;
 
 @Service
 public class MemberService {
-	@Autowired private MemberDAO memberDAO;
-	
+	@Autowired 
+	private MemberDAO memberDAO;
+
 	// 암호화 메서드
 	public static String SHA256(String pw) {
 		try{
@@ -27,12 +28,12 @@ public class MemberService {
 				hexString.append(hex);
 			}
 			return hexString.toString();
-			
+
 		} catch(Exception ex){
 			throw new RuntimeException(ex);
 		}
 	}
-	
+
 	// 아이디 중복 조회
 	public int memberIdCheck(String id) {
 		return memberDAO.memberIdCheck(id);
@@ -56,8 +57,26 @@ public class MemberService {
 
 	// 회원가입처리
 	public int joinAction(MemberDTO member) {
-		member.setMemPw(SHA256(member.getMemPw()));
+		member.setmem_pw(SHA256(member.getmem_pw()));
 		return memberDAO.joinAction(member);
+	}
+
+	// 로그인 처리
+	public MemberDTO login(MemberDTO member) {
+		MemberDTO loginMember = memberDAO.login(member);
+		if(loginMember != null) {
+			if(member.getmem_pw().length()<=14) {
+				member.setmem_pw(SHA256(member.getmem_pw()));
+				if(!member.getmem_pw().equals(loginMember.getmem_pw())) {
+					loginMember = null;
+				}else {
+					loginMember.setmem_pw(null);
+				}
+			}else {
+				loginMember.setmem_pw(null);
+			}
+		}
+		return loginMember;
 	}
 
 }
