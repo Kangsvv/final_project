@@ -34,6 +34,10 @@ public class CafeinController {
 	public String detailCafein() {
 		return "/cafein/cafeinDetail";
 	}
+	@RequestMapping("updateCafein")
+	public String updateCafein() {
+		return "/cafein/cafeinUpdate";
+	}
 	//----------------------Cafein 등록---------------------
 	@RequestMapping(value="cafein_insert",produces="application/text;charset=utf-8")
 	public String cafein_insert(String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking,String realPath,MultipartFile file) throws Exception {
@@ -65,19 +69,11 @@ public class CafeinController {
 		return "redirect:/cafein/cafein_imglist";
 	}
 	//------------------------Cafe수정----------------------------------
-//	@RequestMapping("update") 
-//	public String update(int cafein_seq,String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking,String realPath,MultipartFile file) throws Exception {
-//		
-//		String day = String.join("/", dayarr);
-//		String open = String.join(":", openarr);
-//		String finish = String.join(":", finisharr);
-//		serv.update(cafein_seq,name,address1,address2,day,open,finish,parking,realPath,file);
-//		return "redirect:/cafein/cafein_imglist";
-//	}
+
 	
 	
 	@ExceptionHandler //예외 공동 처리
-	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
+	public String exceptionHandler(Exception e) {
 		e.printStackTrace();
 		return "error";
 	}

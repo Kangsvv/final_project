@@ -444,6 +444,9 @@ table td{
 			} 
 			
 		})
+		$("#update").on("click",function(){
+			location.href="/cafein/updateCafein";
+		})
       </script>    
 </body>
 </html>

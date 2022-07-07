@@ -1,6 +1,8 @@
 package kh.spring.service;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,16 +35,28 @@ public class CafeinService {
 	//--------------------Cafe 등록------------------------------
 	@Transactional
 	public void insert(String name,String address1,String address2,String day,String open,String finish,String parking,String realPath,MultipartFile file) throws Exception{
-		realPath ="C:\\springWorkspace\\final_project\\src\\main\\webapp\\resources\\cafein";
 
+		// 실시간으로 데이터를 만질려고
+		realPath = session.getServletContext().getRealPath("/resources/cafein"); // 서버 경로 불러오는 거
 		System.out.println(realPath);
 		File filePath = new File(realPath);
 		if(!filePath.exists())filePath .mkdir();
 		System.out.println(realPath);
-		String oriName =file.getOriginalFilename();
+		String oriName =file.getOriginalFilename(); // DB용
 		String sysName = UUID.randomUUID() + "_"+oriName; //UUID.randomUUID()중복되지 임의값을 만들어 리턴 oriname 
-		file.transferTo(new File(realPath + "/"+sysName));
-
+		file.transferTo(new File(realPath + "/"+sysName)); // 서버 경로 저장하기
+		
+		// 영구적으로 로컬 환경에도 옮겨야됨.
+		String  localPath ="C:/springWorkspace/final_project/src/main/webapp/resources/cafein";
+		File realFile = new File(realPath + "/"+sysName); // 파일 객체를 만든거예요 - 파일 데이터가 들어가 있음
+		File localFile = new File(localPath + "/"+sysName); // 파일 객체를 만든거고 - 빈 껍데기
+		// 실제 메모리상에 이 파일 객체 있는 거임.
+		
+		// 로컬 경로 복사
+		Files.copy(realFile.toPath(), localFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+		// toPath() : 객체 안에 저장된 경로를 불러오는거
+		// StandardCopyOption.REPLACE_EXISTING : 저장 옵션 - 덮어쓰기
+		
 		CafeinDTO dto=new CafeinDTO();
 		dto.setName(name);
 		dto.setAddress1(address1);
@@ -72,9 +86,9 @@ public class CafeinService {
 		model.addAttribute("fdto",fdto);
 		
 	}
-	
+	//----------------------Cafe 삭제---------------------------------
 	public void delete(int cafein_seq,String realPath,MultipartFile file) throws Exception {
-		
+		//해당 경로에 이미지파일 있으면 삭제
 		realPath ="C:\\springWorkspace\\final_project\\src\\main\\webapp\\resources\\cafein";
 		String sys_name = fdao.deletefile(cafein_seq);
 		File filePath = new File(realPath+"\\"+sys_name);
