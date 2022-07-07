@@ -104,8 +104,6 @@ public class MemberController {
 		int result = 0;
 		// 현재 가져온 이메일과 인증번호를 이용해서 select후 존재하는지 체크 후 존재하면 처리, 존재하지않으면 실패
 		int checkNum = memberService.emailNumCheck(email,num);
-		System.out.println(checkNum);
-		System.out.println(num);
 		if(checkNum==num) {
 			result = 1;
 		}
