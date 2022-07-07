@@ -247,7 +247,7 @@ nav button:hover{
                 <c:forEach var="i" items="${list}">
                 <div class="col-sm-6 col-md-4">
                     <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
-                        <img src="/resources/cafein/${i.sys_name }">
+                        <img src="/cafein/${i.sys_name }">
                     </a>
                 </div>
                 </c:forEach>
