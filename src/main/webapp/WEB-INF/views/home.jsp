@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
@@ -206,7 +208,14 @@ h5 {
 
 </style>
 <body>
-  
+  <c:if test="${!empty msg}">
+		<script>
+			swal({icon : "${status}",
+				 title : "${msg}",
+				 text : "${text}"});
+		</script>
+		<c:remove var="msg"/>
+	</c:if>
   <h2> CAFEIN </h2>
 <h4>감성카페를 손쉽게 찾아보세요~ </h4>
 <div class="container">
@@ -221,7 +230,7 @@ h5 {
     </figure>
   </section>
   
-  <section class="box" id="box2">
+  <section class="box" id="box2">	
     <figure class="flip">
       <a href="/cafein/cafein_imglist"><img src="https://2.bp.blogspot.com/-lNmcHj4MqOM/Uh9GFylK6vI/AAAAAAAAA6g/v3JuP6rfWKU/s1600/coffee.jpg" /></a>
       <figcaption class="bar">
@@ -268,8 +277,16 @@ h5 {
 
 
 <div id="btn"> 
-    <button type="button" onclick="location.href='/member/login' ">login</button>
-    <button type="button" onclick="location.href='/member/signUp' ">signUp</button>
+	<c:choose>
+		<c:when test="${empty loginMember}">
+		    <button type="button" onclick="location.href='/member/login' ">login</button>
+		    <button type="button" onclick="location.href='/member/signUp' ">signUp</button>
+	    </c:when>
+	    <c:otherwise>
+	    	<button type="button" onclick="location.href='/member/myPage' ">myPage</button>
+	    	<button type="button" onclick="location.href='/member/logout' ">logout</button>
+	    </c:otherwise>
+    </c:choose>
 </div>
 
 </body>
