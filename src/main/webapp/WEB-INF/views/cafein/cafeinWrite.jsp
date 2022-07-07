@@ -282,13 +282,13 @@ label{
   <tr>
     <td class="tableTitle">오픈시간 : </td>
     <td>
-      <select name="openarr">
-        <option value='' selected>-- 선택 --</option>
+      <select id='openarr1' name="openarr">
+        <option value='' selected>오전/오후</option>
         <option value='am'>am</option>
         <option value='pm'>pm</option>
       </select>
-      <select name="openarr">
-        <option value='' selected>-- 선택 --</option>
+      <select id='openarr2' name="openarr">
+        <option value='' selected>시</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>
@@ -302,8 +302,8 @@ label{
         <option value='11'>11</option>
         <option value='12'>12</option>
       </select>
-      <select name="openarr">
-        <option value='' selected>-- 선택 --</option>
+      <select id='openarr3' name="openarr">
+        <option value='' selected>분</option>
         <option value='00'>00</option>
         <option value='10'>10</option>
         <option value='20'>20</option>
@@ -317,13 +317,13 @@ label{
   <tr>
     <td class="tableTitle">마감시간 : </td>
     <td>
-      <select name="finisharr">
-        <option value='' selected>-- 선택 --</option>
+      <select id='finisharr1' name="finisharr">
+        <option value='' selected>오전/오후</option>
         <option value='am'>am</option>
         <option value='pm'>pm</option>
       </select>
-      <select name="finisharr">
-        <option value='' selected>-- 선택 --</option>
+      <select id='finisharr2' name="finisharr">
+        <option value='' selected>시</option>
         <option value='1'>1</option>
         <option value='2'>2</option>
         <option value='3'>3</option>
@@ -337,8 +337,8 @@ label{
         <option value='11'>11</option>
         <option value='12'>12</option>
       </select>
-      <select name="finisharr">
-        <option value='' selected>-- 선택 --</option>
+      <select id='finisharr3' name="finisharr">
+        <option value='' selected>분</option>
         <option value='00'>00</option>
         <option value='10'>10</option>
         <option value='20'>20</option>
@@ -374,7 +374,7 @@ label{
 
 <div class="row">
   <div class="col-12" id="btn"><button id="add">등록</button>
-  <a href="/cafein/goCafein"><button type="button">취소</button></a></div>
+  <a href="/cafein/cafein_imglist"><button type="button">취소</button></a></div>
 </div>
        </form>
    <!----------------------------------------------------- script------------------------------------------------ -->
@@ -408,20 +408,24 @@ label{
 		 alert("주소를 입력해주세요.");
 		 return false;
 	 }
-	 else if($("input[name='parking']:checked").val()== ''){
-		 alert("주차장유무를 체크해주세요.")
-		 return false;
-	 }
-	 else if($("input[name='dayarr']:checked").val()== ''){
+	 else if($("input:checkbox[name='dayarr']").is(":checked") == false){
 		 alert("휴무일을 체크해주세요.")
 		 return false;
 	 }
-	 else if($("input[name='openarr']:checked").val()== ''){
+	 else if(!$('#openarr1 > option:selected').val()||!$('#openarr2 > option:selected').val()||!$('#openarr3 > option:selected').val()){
 		 alert("오픈시간을 선택해주세요.")
 		 return false;
 	 }
-	 else if($("input[name='finisharr']:checked").val()== ''){
+	 else if(!$('#finisharr1 > option:selected').val()||!$('#finisharr2 > option:selected').val()||!$('#finisharr3 > option:selected').val()){
 		 alert("마감시간을 선택해주세요.")
+		 return false;
+	 }
+	 else if($("input[name='parking']:checked").is(":checked") == false){
+		 alert("주차장유무를 체크해주세요.")
+		 return false;
+	 }
+	 else if(!$("#ex_file").val()){
+		 alert("사진을 첨부해주세요.")
 		 return false;
 	 }
 	 // file
