@@ -73,8 +73,13 @@ public class CafeinService {
 		
 	}
 	
-	public void delete(int cafein_seq) throws Exception {
-	
+	public void delete(int cafein_seq,String realPath,MultipartFile file) throws Exception {
+		
+		realPath ="C:\\springWorkspace\\final_project\\src\\main\\webapp\\resources\\cafein";
+		String sys_name = fdao.deletefile(cafein_seq);
+		File filePath = new File(realPath+"\\"+sys_name);
+		if(filePath.exists())filePath .delete();
+
 		 dao.delete(cafein_seq);
 		 fdao.delete(cafein_seq);
 	}

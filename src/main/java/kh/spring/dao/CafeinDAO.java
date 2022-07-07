@@ -31,4 +31,5 @@ public class CafeinDAO {
 	public void delete(int cafein_seq) {
 	 mybatis.delete("Cafein.cafein-delete",cafein_seq);
 	}
+	
 }
