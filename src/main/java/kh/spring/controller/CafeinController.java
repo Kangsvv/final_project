@@ -60,12 +60,20 @@ public class CafeinController {
 	}
 	//------------------------Cafe삭제----------------------------------
 	@RequestMapping("delete") 
-	public String delete(int seq) throws Exception {
-		serv.delete(seq);
+	public String delete(int seq,String realPath,MultipartFile file) throws Exception {
+		serv.delete(seq,realPath,file);
 		return "redirect:/cafein/cafein_imglist";
 	}
-	
-	
+	//------------------------Cafe수정----------------------------------
+//	@RequestMapping("update") 
+//	public String update(int cafein_seq,String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking,String realPath,MultipartFile file) throws Exception {
+//		
+//		String day = String.join("/", dayarr);
+//		String open = String.join(":", openarr);
+//		String finish = String.join(":", finisharr);
+//		serv.update(cafein_seq,name,address1,address2,day,open,finish,parking,realPath,file);
+//		return "redirect:/cafein/cafein_imglist";
+//	}
 	
 	
 	@ExceptionHandler //예외 공동 처리

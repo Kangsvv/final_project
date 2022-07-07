@@ -36,5 +36,7 @@ public class Cafein_imgDAO {
 	public void delete(int cafein_seq)throws Exception{
 		mybatis.delete("Cafein.cafein_img-delete",cafein_seq);
 	}
-
+	public String deletefile(int cafein_seq) {
+		return mybatis.selectOne("Cafein.cafein_imgfile",cafein_seq);
+	}
 }

@@ -4,6 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="Cafein">
+
 	<insert id="cafein-insert">
 		insert into cafein values(cafein_seq.nextval,'loginID',#{name},#{address1},#{address2},#{day},#{open},#{finish},#{parking})
 		<selectKey order="AFTER" keyProperty="seq" resultType="int">
@@ -13,6 +14,8 @@
 	<insert id="cafein_img-insert">
 		insert into cafein_img values(cafein_img_seq.nextval,#{ori_name},#{sys_name},#{cafein_seq})
 	</insert>
+ 	
+ 	
  	
  	<select id="cafein_img-select" resultType="kh.spring.dto.Cafein_imgDTO">
  	select *from cafein_img
@@ -26,6 +29,10 @@
 	select *from cafein_img where cafein_seq=#{cafein_seq}
 	</select>
 	
+	
+	
+	
+	
 	<delete id="cafein_img-delete">
 	delete from cafein_img where cafein_seq=#{cafein_seq}
 	</delete>
@@ -33,4 +40,7 @@
 	<delete id="cafein-delete">
 	delete from cafein where seq=#{cafein_seq}
 	</delete>
+	<select id="cafein_imgfile" resultType="String">
+	select sys_name from cafein_img where cafein_seq=#{cafein_seq}
+	</select>
 </mapper>
