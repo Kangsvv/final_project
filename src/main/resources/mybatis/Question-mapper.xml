@@ -9,6 +9,21 @@
 		select * from question 
 	</select> 
 	
+	<insert id="insert">
+		insert into question values(question_seq.nextval, #{title}, #{contents}, #{writer}, default, default) 
+<selectKey resultType="int" keyProperty="seq" order="AFTER"> select question_seq.currval from dual </selectKey>
+</insert>
+
+	
+<delete id="delete">
+	delete from question where seq= #{seq}
+</delete>
+
+<update id="modify">
+	update question set title = #{title}, contents = #{contents} where seq = #{seq}
+</update>
+
+	
 	
 	
 </mapper>
