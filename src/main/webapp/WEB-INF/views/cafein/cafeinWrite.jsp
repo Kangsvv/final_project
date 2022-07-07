@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   
 <!DOCTYPE html>
 <html>
@@ -234,18 +234,21 @@ label{
       </nav>
           
 <!---------------------------------------------------------------------------------------------------------------------->
+<form action="/cafein/cafein_insert" method="post" enctype="multipart/form-data" >
+
+
 <div class="row" id="contents">
   <div class="col-12" id="text">카페 등록</div>
 </div>
 <div class="row" style="margin-top: 5%;margin-bottom: 5%;">
   <div class="col-12 col-sm-6" id="file"><img id="preview" />
     <label for="ex_file">업로드</label>
-    <input type="file" name="file" id="ex_file" onchange="readURL(this);">
+    <input type="file" name="file" id="ex_file" value="파일첨부" onchange="readURL(this);">
    
 </div>
   <div class="col-12 col-sm-6" id="table">
   
- <form action="/cafein/cafein_insert">
+ 
 <table>
   <tr>
     <td class="tableTitle">카페이름 : </td>
@@ -370,7 +373,8 @@ label{
 
 
 <div class="row">
-  <div class="col-12" id="btn"><button id="add">등록</button><button>취소</button></div>
+  <div class="col-12" id="btn"><button id="add">등록</button>
+  <a href="/cafein/goCafein"><button type="button">취소</button></a></div>
 </div>
        </form>
    <!----------------------------------------------------- script------------------------------------------------ -->
@@ -394,6 +398,7 @@ label{
 	}
  
  //---------------------------------공백시 return false--------------------------------
+ 
  $("#add").on("click",function(){
 	 if($("#name").val() == ''){
 		 alert("카페이름을 입력해주세요");
@@ -403,10 +408,42 @@ label{
 		 alert("주소를 입력해주세요.");
 		 return false;
 	 }
-
-	 
+	 else if($("input[name='parking']:checked").val()== ''){
+		 alert("주차장유무를 체크해주세요.")
+		 return false;
+	 }
+	 else if($("input[name='dayarr']:checked").val()== ''){
+		 alert("휴무일을 체크해주세요.")
+		 return false;
+	 }
+	 else if($("input[name='openarr']:checked").val()== ''){
+		 alert("오픈시간을 선택해주세요.")
+		 return false;
+	 }
+	 else if($("input[name='finisharr']:checked").val()== ''){
+		 alert("마감시간을 선택해주세요.")
+		 return false;
+	 }
+	 // file
+     let fileVal = $("#ex_file").val();
+     
+     let maxSize = 10 * 1024 * 1024; // 10MB
+     let fileSize = $("#ex_file")[0].files[0].size;
+    // 파일 확장자 체크
+    if (fileVal != ""){
+        	let ext = fileVal.split('.').pop().toLowerCase();
+        	
+        	if($.inArray(ext, ['jpg', 'jpeg', 'png']) == -1){
+        		alert('jpg, jpeg, png 파일만 업로드 할 수 있습니다.');
+        		
+        		return false;
+        		
+        	}
+        	
+        }
  })
- 
+ // -------------------------파일 업로드 시, 검수 ( 가로 X 세로 사이즈 체크 ) ------------------------
+	
  
    </script>
    

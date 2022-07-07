@@ -267,6 +267,36 @@ nav button:hover{
                         <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
                     </a>
                 </div>
+                <div class="col-sm-6 col-md-4">
+                    <a class="lightbox" href="www.kakao.com">
+                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <a class="lightbox" href="www.daum.net">
+                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg">
+                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <a class="lightbox" href="www.kakao.com">
+                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <a class="lightbox" href="www.daum.net">
+                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg">
+                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
+                    </a>
+                </div>
                 
     
             </div>
@@ -291,6 +321,35 @@ nav button:hover{
 	$(".writebtn").on("click", function(){
 		location.href = "/feed/goFeedWrite";
 	})
+	
+         
+		let page = 2;  //페이징과 같은 방식이라고 생각하면 된다.
+//          getFeedList(page);
+//          page++;
+      
+         $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+              if($(window).scrollTop() >= $(document).height() - $(window).height()){
+//               alert(page)
+                 getFeedList(page);
+                 page++;   
+//               console.log(page);
+              } 
+         });
+   
+   
+   
+    function getFeedList(pape){
+      let page = pape;
+      
+      $.ajax({
+          url : '/feed/goFeed',
+          type : 'POST',
+          data : {page : page},
+          dataType : 'json'
+     }).done(function(resp){
+    	 $(".contents").append("<div class='col-sm-6 col-md-4'><a class='lightbox' href='https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg'><img src='https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg' alt='Tunnel'><div>);
+   })
+};
 </script>
 </body>
 </html>

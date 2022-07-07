@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <title>Insert title here</title>
+<!-- jstl  -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <!-----------------------J쿼리-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap ver 5.1  -->
@@ -96,8 +98,12 @@ nav button:hover{
   height: 300px;
   color: white;
   text-align: center;
-  background-color: aliceblue;
+
   margin: auto;
+}
+#file img{
+ width: 300px;
+  height: 300px;
 }
 #my-button{
   width: 150px;
@@ -271,38 +277,41 @@ table td{
           
 <!---------------------------------------------------------------------------------------------------------------------->
 <div class="row" id="contents">
-  <div class="col-12" id="text">${dto.title}</div>
+  <div class="col-12" id="text">${dto.name}</div>
 </div>
 <div class="row" style="margin-top: 5%;margin-bottom: 5%;">
-  <div class="col-12 col-sm-6" id="file"></div>
+  <div class="col-12 col-sm-6" id="file">
+  <img src="/resources/cafein/${fdto.sys_name }">
+  </div>
   <div class="col-12 col-sm-6" id="table">
 <table>
-  <tr>
-    <td class="asd">카페이름 : </td>
-    <td></td>
-  </tr>
+ 
   <tr>
     <td class="asd">주소 : </td>
-    <td>sadadasd</td>
+    <td>${dto.address1}	&nbsp; ${dto.address2 }</td>
   </tr>
   <tr>
-    <td class="asd">요일 : </td>
-    <td>asdasdasdsa</td>
+    <td class="asd">휴무일 : </td>
+    <td>${dto.day}</td>
   </tr>
   <tr>
-    <td class="asd">시간 : </td>
-    <td>dasdasdasdasd</td>
+    <td class="asd">오픈시간 : </td>
+    <td>${dto.open }</td>
+  </tr>
+  <tr>
+    <td class="asd">마감시간 : </td>
+    <td>${dto.finish }</td>
   </tr>
   <tr>
     <td class="asd">주차장 : </td>
     <td>
-     공영주차장이용
+     ${dto.parking }
     </td>
   </tr>
   <tr>
     <td  class="asd">작성자 : </td>
     <td>
-     sadasdas 
+     ${dto.writer }
     </td>
   </tr>
   <tr>
@@ -315,6 +324,10 @@ table td{
           <i class="fa-regular fa-envelope"></i></button>
           <button id="like" class="btn btn-primary"><i class="fa-regular fa-heart  buttonIcon"></i></button></div>
 
+
+		<div class="col-12" id="" style="text-align: right;margin-top:5%">
+		<button type="button" class="btn btn-primary" id="update">수정</button>&nbsp;<button type="button" class="btn btn-danger" id="delete">삭제</button>
+		</div>
       </div>
     
   
@@ -398,6 +411,7 @@ table td{
   </div>
 
       <script>
+      //--------------------파일업로드시 이미지 미리보기------------------------------
        function onClickUpload() {
             let myInput = document.getElementById("my-input");
             myInput.click();
@@ -416,7 +430,18 @@ table td{
             $("#like").css("color","white");
     }
          });
-
+//-------------------------------삭제버튼--------------------------------
+		
+		$("#delete").on("click", function() {
+			let result = confirm("정말 탈퇴하시겠습니까?");
+			if(result){
+				alert("탈퇴 완료되었습니다.");
+				location.href = "/cafein/delete?seq=${dto.seq}";
+			}else{
+				
+			}
+			
+		})
       </script>    
 </body>
 </html>

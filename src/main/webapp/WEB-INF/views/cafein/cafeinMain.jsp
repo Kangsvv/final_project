@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- jstl  -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- j쿼리 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!--  Bootstrap ver 5.1  -->
@@ -246,31 +248,16 @@ nav button:hover{
                         <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg" alt="Bridge">
                     </a>
                 </div>
+                
+                <c:forEach var="i" items="${list}">
                 <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.daum.net">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg" alt="Park">
+                    <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
+                        <img src="/resources/cafein/${i.sys_name }">
                     </a>
                 </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.naver.com">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.kakao.com">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.daum.net">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
+                </c:forEach>
+                
+               
                 
     
             </div>

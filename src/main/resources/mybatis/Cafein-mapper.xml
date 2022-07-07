@@ -11,7 +11,26 @@
 		</selectKey>
 	</insert>
 	<insert id="cafein_img-insert">
-		insert into cafein values(cafein_img_seq.nextval#{ori_name},#{sys_name},#{seq})
+		insert into cafein_img values(cafein_img_seq.nextval,#{ori_name},#{sys_name},#{cafein_seq})
 	</insert>
+ 	
+ 	<select id="cafein_img-select" resultType="kh.spring.dto.Cafein_imgDTO">
+ 	select *from cafein_img
+ 	</select>
 	
+	<select id="cafein-detail" resultType="kh.spring.dto.CafeinDTO">
+	select *from cafein where seq=#{cafein_seq}
+	</select>
+	
+	<select id="cafein_img-detail" resultType="kh.spring.dto.Cafein_imgDTO">
+	select *from cafein_img where cafein_seq=#{cafein_seq}
+	</select>
+	
+	<delete id="cafein_img-delete">
+	delete from cafein_img where cafein_seq=#{cafein_seq}
+	</delete>
+	
+	<delete id="cafein-delete">
+	delete from cafein where seq=#{cafein_seq}
+	</delete>
 </mapper>

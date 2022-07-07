@@ -27,6 +27,21 @@
 	
 	<!-- 회원가입 처리 -->
 	<insert id="joinAction">
-		insert into member values(mem_seq.nextVal,#{memId},#{memPw},#{memName},#{memEmail},#{memPhone},0,0,sysdate,'')
+		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},0,0,'','',sysdate,'')
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="kh.spring.dto.MemberDTO">
+		select * from member where mem_Id = #{mem_id}
+	</select>
+	
+	<!-- 카카오 계정 생성 확인 -->
+	<select id="kakaoLoginCheck" resultType="kh.spring.dto.MemberDTO">
+		select * from member where mem_id = #{mem_id}
+	</select>
+	
+	<!-- 카카오 계정 생성 -->
+	<insert id="kakaoJoinAction">
+		insert into member (mem_seq,mem_id,mem_name,mem_email) values(mem_seq.nextval,#{mem_id},#{mem_name},#{mem_email})
 	</insert>
 </mapper> 

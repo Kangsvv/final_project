@@ -341,7 +341,7 @@ li.dropdown {
 <!-- ------------------------------------------------------------header----------------------------------------------------- -->
 
 <br>
-      <h1 class="main" style="color:white; text-align: center;">Notic</h1>
+      <h1 class="main" style="color:white; text-align: center;">Event</h1>
       <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
 	<div id="Box">
@@ -364,11 +364,11 @@ li.dropdown {
          </div>
 
 			<c:choose>
-				<c:when test="${empty nlist}">
+				<c:when test="${empty elist}">
 					<div>현재 등록된 게시글이 없습니다.</div>
 				</c:when>
 				<c:otherwise>
-					<c:forEach var="i" items="${nlist}">
+					<c:forEach var="i" items="${elist}">
 						<div class="row col-12 noticbox">
 							<div class="col-1 notice">${i.seq }</div>
 							<div class="col-7 notice1">${i.title }</div>
@@ -379,9 +379,9 @@ li.dropdown {
 						</div>
 					</c:forEach>
 				</c:otherwise>
-				</c:choose>
+			</c:choose>
 
-					<div class="row">
+			<div class="row">
 						<div class="col-12 create">
 							<input type="button" class="cbtn" value="작성하기">
 						</div>
@@ -441,7 +441,7 @@ window.onclick = function(e) {
 }
 
 $(".cbtn").click(function() {
-	location.href = "/notice/notic_Write";
+	location.href = "/notice/event_Write";
 })
 
 </script>
