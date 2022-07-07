@@ -43,7 +43,7 @@ public class CafeinController {
 		String finish = String.join(":", finisharr);
 		
 		serv.insert(name,address1,address2,day,open,finish,parking,realPath,file);
-		return "redirect: /cafein/cafein_imglist";
+		return "redirect:/cafein/cafein_imglist";
 	}
 	
 	//------------------------Cafein 리스트 출력(사진리스트)---------------

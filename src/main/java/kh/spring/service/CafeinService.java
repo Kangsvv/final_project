@@ -74,7 +74,6 @@ public class CafeinService {
 	}
 	
 	public void delete(int cafein_seq) throws Exception {
-	
 		 dao.delete(cafein_seq);
 		 fdao.delete(cafein_seq);
 	}

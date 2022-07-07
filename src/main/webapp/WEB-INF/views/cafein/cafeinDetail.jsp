@@ -101,8 +101,8 @@ nav button:hover{
 }
 #file img{
 border-radius: 5px;
- width: 500px;
-  height: 500px;
+ width: 600px;
+  height: 600px;
 }
 #my-button{
   width: 150px;
@@ -279,10 +279,10 @@ table td{
   <div class="col-12" id="text">${dto.name}</div>
 </div>
 <div class="row" style="margin-top: 5%;margin-bottom: 5%;">
-  <div class="col-12 col-sm-6" id="file">
+  <div class="col-12 col-sm-12" id="file">
   <img src="/resources/cafein/${fdto.sys_name }">
   </div>
-  <div class="col-12 col-sm-6" id="table">
+  <div class="col-12 col-sm-12" id="table">
 <table>
  
   <tr>
@@ -318,14 +318,16 @@ table td{
    
   </tr>
         </table>
+        </div>
         <div class="col-12" style="text-align: right;" > 
           <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="fa-regular fa-envelope"></i></button>
           <button id="like" class="btn btn-primary"><i class="fa-regular fa-heart  buttonIcon"></i></button></div>
 
 
-		<div class="col-12" id="" style="text-align: right;margin-top:5%">
-		<button type="button" class="btn btn-primary" id="update">수정</button>&nbsp;<button type="button" class="btn btn-danger" id="delete">삭제</button>
+		<div class="col-12 text-center"  style="text-align: right;margin-top:5%;margin-top: 140px;">
+		<button type="button" class="btn btn-primary" id="update">수정</button>&nbsp;
+		<button type="button" class="btn btn-danger" id="delete"><i class="glyphicon glyphicon-trash"></i> 삭제</button>
 		</div>
       </div>
     
@@ -432,13 +434,14 @@ table td{
 //-------------------------------삭제버튼--------------------------------
 		
 		$("#delete").on("click", function() {
-			let result = confirm("정말 탈퇴하시겠습니까?");
+			
+			 let result = confirm("정말 삭제하시겠습니까?");
 			if(result){
-				alert("탈퇴 완료되었습니다.");
+				alert("삭제 완료되었습니다.");
 				location.href = "/cafein/delete?seq=${dto.seq}";
 			}else{
 				
-			}
+			} 
 			
 		})
       </script>    
