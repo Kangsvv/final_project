@@ -44,4 +44,14 @@
 	<insert id="kakaoJoinAction">
 		insert into member (mem_seq,mem_id,mem_name,mem_email) values(mem_seq.nextval,#{mem_id},#{mem_name},#{mem_email})
 	</insert>
+	
+	<!-- 아이디 및 패스워드 찾기 -->
+	<select id="idSearch" resultType="kh.spring.dto.MemberDTO">
+		select mem_seq, mem_id from member where mem_email = #{email} 
+	</select>
+	
+	<!-- 패스워드변경 -->
+	<update id="passwordCheange">
+		update from member set mem_pw = #{mem_pw} where mem_seq = #{mem_seq}
+	</update>
 </mapper> 

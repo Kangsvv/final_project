@@ -110,8 +110,6 @@ public class MemberController {
 		int result = 0;
 		// 현재 가져온 이메일과 인증번호를 이용해서 select후 존재하는지 체크 후 존재하면 처리, 존재하지않으면 실패
 		int checkNum = memberService.emailNumCheck(email,num);
-		System.out.println(checkNum);
-		System.out.println(num);
 		if(checkNum==num) {
 			result = 1;
 		}
@@ -143,7 +141,7 @@ public class MemberController {
 			loginMember = memberService.login(member);
 		}
 		
-		if(loginMember == null) {
+		if(loginMember != null) {
 			rdAttr.addFlashAttribute("status", "success");
 			rdAttr.addFlashAttribute("msg", "알림");
 			rdAttr.addFlashAttribute("text", "로그인 성공");
@@ -197,6 +195,42 @@ public class MemberController {
 		rdAttr.addFlashAttribute("status", "success");
 		rdAttr.addFlashAttribute("msg", "알림");
 		rdAttr.addFlashAttribute("text", "로그인 성공");
+		return result;
+	}
+	
+	// 아이디 비밀번호 찾기 이동
+	@RequestMapping("loginSearch")
+	public String loginSearch() {
+		return "/member/loginSearch";
+	}
+	
+	// 아이디 및 패스워드 찾기
+	@ResponseBody
+	@RequestMapping("idSearch")
+	public MemberDTO idSerach(String email, int num, String id) {
+		MemberDTO member = new MemberDTO();
+		int checkNum = memberService.emailNumCheck(email,num);
+		if(checkNum == num) {
+			member = memberService.idSearch(email);
+		}else {
+			member.setmem_seq(-1);
+		}
+		if(id != null || id != "") {
+			if(!member.getmem_id().equals(id)) {
+				member.setmem_seq(-2);
+			}
+		}
+		return member;
+	}
+	
+	// 패스워드 변경
+	@ResponseBody
+	@RequestMapping("passwordCheange")
+	public int passwordCheange(String pw, int num) {
+		MemberDTO member = new MemberDTO();
+		member.setmem_seq(num);
+		member.setmem_pw(pw);
+		int result = memberService.passwordCheange(member);
 		return result;
 	}
 }

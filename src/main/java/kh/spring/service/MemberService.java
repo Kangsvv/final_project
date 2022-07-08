@@ -90,9 +90,19 @@ public class MemberService {
 		int result = memberDAO.kakaoJoinAction(member);
 		if(result > 0) {
 			loginMember = memberDAO.kakaoLoginCheck(member);
-			System.out.println(loginMember);
 		}
 		return loginMember;
+	}
+
+	// 아이디 및 패스워드찾기
+	public MemberDTO idSearch(String email) {
+		return memberDAO.idSearch(email);
+	}
+
+	// 패스워드 변경
+	public int passwordCheange(MemberDTO member) {
+		member.setmem_pw(SHA256(member.getmem_pw()));
+		return memberDAO.passwordCheange(member);
 	}
 
 }
