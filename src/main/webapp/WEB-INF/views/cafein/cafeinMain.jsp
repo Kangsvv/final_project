@@ -243,16 +243,11 @@ nav button:hover{
 
             <div class="row contents">
     
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="/cafein/detailCafein">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg" alt="Bridge">
-                    </a>
-                </div>
                 
                 <c:forEach var="i" items="${list}">
                 <div class="col-sm-6 col-md-4">
                     <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
-                        <img src="/resources/cafein/${i.sys_name }">
+                        <img src="/cafein/${i.sys_name }">
                     </a>
                 </div>
                 </c:forEach>
