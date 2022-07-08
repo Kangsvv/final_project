@@ -147,6 +147,34 @@ nav button:hover{
           font-family: 'Droid Sans', sans-serif;
           font-weight: bold;
       }
+      
+      .cafeinimg{
+      	height:300px;
+      	overflow: hidden;
+      }
+      .cafeinimg img{
+      width: 100%;
+      height: 100%;
+      -webkit-transform:scale(1);
+	-moz-transform:scale(1);
+	-ms-transform:scale(1);	
+	-o-transform:scale(1);	
+	transform:scale(1);
+	-webkit-transition:.3s;
+	-moz-transition:.3s;
+	-ms-transition:.3s;
+	-o-transition:.3s;
+	transition:.3s;
+      }
+      .cafeinimg:hover img{
+      -webkit-transform:scale(1.2);
+	-moz-transform:scale(1.2);
+	-ms-transform:scale(1.2);	
+	-o-transform:scale(1.2);
+	transform:scale(1.2);
+	opacity:0.7;
+
+      }
 /*---------------------기능 구현 후 Hover 예정------------------*/
 
 
@@ -245,7 +273,7 @@ nav button:hover{
     
                 
                 <c:forEach var="i" items="${list}">
-                <div class="col-sm-6 col-md-4">
+                <div class="col-sm-6 col-md-4 cafeinimg">
                     <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
                         <img src="/cafein/${i.sys_name }">
                     </a>

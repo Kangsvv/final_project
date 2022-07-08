@@ -18,7 +18,7 @@
  	
  	
  	<select id="cafein_img-select" resultType="kh.spring.dto.Cafein_imgDTO">
- 	select *from cafein_img
+ 	select *from cafein_img order by seq desc
  	</select>
 	
 	<select id="cafein-detail" resultType="kh.spring.dto.CafeinDTO">

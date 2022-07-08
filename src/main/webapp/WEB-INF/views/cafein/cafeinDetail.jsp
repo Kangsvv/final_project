@@ -445,7 +445,7 @@ table td{
 			
 		})
 		$("#update").on("click",function(){
-			location.href="/cafein/updateCafein";
+			location.href="/cafein/UpdateSeq?seq=${dto.seq}";
 		})
       </script>    
 </body>
