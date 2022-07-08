@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -339,20 +341,20 @@ li.dropdown {
 <!-- ------------------------------------------------------------header----------------------------------------------------- -->
 
 <br>
-      <h1 class="main" style="color:white; text-align: center;">Notice Main</h1>
+      <h1 class="main" style="color:white; text-align: center;">Question</h1>
       <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
 	<div id="Box">
 	
       <div id="Noticecontainer">
 
-         <div class="row noticbtn" >
-            <div class= "col-3">
-               <a href="http://www.naver.com" class="nbtn">Event</a> | 
-               <a href="http://www.naver.com" class="nbtn">Notice</a>
-            </div>
+<!--          <div class="row noticbtn" > -->
+<!--             <div class= "col-3"> -->
+<!--                <a href="http://www.naver.com" class="nbtn">Event</a> |  -->
+<!--                <a href="http://www.naver.com" class="nbtn">Notice</a> -->
+<!--             </div> -->
       
-         </div>
+<!--          </div> -->
 
          <div class="row col-12 titlebox">
             <div class="col-1 title_head">No.</div>
@@ -361,12 +363,12 @@ li.dropdown {
             <div class="col-2 title_head">작성일</div>
          </div>
          
-       <c:forEach var="i" items="${list }"> 
+       <c:forEach var="i" items="${qlist }"> 
          <div class="row col-12 noticbox">
             <div class="col-1 notice">${i.seq }</div>
             <div class="col-7 notice1">${i.title }</div>
             <div class="col-2 notice">${i.writer }</div>
-            <div class="col-2 notice">${i.wirte_date }</div>
+            <div class="col-2 notice">${i.write_date }</div>
          </div>
 	   </c:forEach> 
 	   
@@ -446,7 +448,7 @@ window.onclick = function(e) {
 }
 
 $(".cbtn").click(function() {
-	location.href = "/notice/notic_Write";
+	location.href = "/question/question_write";
 })
 
 </script>

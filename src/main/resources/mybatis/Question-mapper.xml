@@ -6,13 +6,12 @@
   <mapper namespace="question">
 	
 	<select id="selectAll" resultType="kh.spring.dto.QuestionDTO">
-		select * from question 
+		select * from question order by 1 desc
 	</select> 
 	
 	<insert id="insert">
-		insert into question values(question_seq.nextval, #{title}, #{contents}, #{writer}, default, default) 
-<selectKey resultType="int" keyProperty="seq" order="AFTER"> select question_seq.currval from dual </selectKey>
-</insert>
+		insert into question values(question_seq.nextval, #{title}, #{contents},'1234', sysdate) 
+	</insert>
 
 	
 <delete id="delete">

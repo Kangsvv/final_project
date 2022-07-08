@@ -18,4 +18,19 @@ public class QuestionDAO {
 	public List<QuestionDTO> selectAll() throws Exception{
 		return mybatis.selectList("question.selectAll");
 	}
+	
+	public int insert(QuestionDTO dto) throws Exception {
+		return mybatis.insert("question.insert",dto);
+	
+	}
+
+	public int delete(String seq) throws Exception {
+		return mybatis.delete("question.delete",seq);
+		
+	}
+
+	public int modify(QuestionDTO dto) throws Exception{
+		return mybatis.update("question.modify",dto);
+	}
+
 }

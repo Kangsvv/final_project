@@ -19,4 +19,15 @@ public class QuestionService {
 	
 }
 
+	public void insert(QuestionDTO dto) throws Exception {
+		int seq = dao.insert(dto);
+
+}
+
+
+	public int delete(String seq) throws Exception{
+		return dao.delete(seq);
+	}
+
+	
 }
