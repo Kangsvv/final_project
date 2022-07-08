@@ -5,5 +5,13 @@
     
 <mapper namespace="Feed">
 
+	<!-- 최신순 무한스크롤 출력 -->
+	<select id="selectAllrs" resultType="kh.spring.dto.FeedDTO">
+		select * from (select row_number() over(order by cafefeed_seq desc) as line, CafeFeed.* from CafeFeed) where line between #{start} and #{end}
+	</select>
 	
+	<!-- 추천순 무한스크롤 출력 -->
+	<select id="selectAllpp" resultType="kh.spring.dto.FeedDTO">
+		select * from (select row_number() over(order by recommend desc) as line, CafeFeed.* from CafeFeed) where line between #{start} and #{end}
+	</select>
 </mapper>
