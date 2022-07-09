@@ -442,10 +442,10 @@ table td{
 			}else{
 				
 			} 
-			
+		
 		})
 		$("#update").on("click",function(){
-			location.href="/cafein/UpdateSeq?seq=${dto.seq}";
+			location.href="/cafein/UpdateSeq?cafein_seq=${dto.seq}";
 		})
       </script>    
 </body>

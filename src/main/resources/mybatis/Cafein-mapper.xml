@@ -43,4 +43,14 @@
 	<select id="cafein_imgfile" resultType="String">
 	select sys_name from cafein_img where cafein_seq=#{cafein_seq}
 	</select>
+	
+	<update id="cafein-update">
+	update cafein set name=#{name},address1=#{address1},address2=#{address2},day=#{day},open=#{open},finish=#{finish},parking=#{parking} where seq=#{seq}
+	</update>
+	
+	<update id="cafein_img-update">
+ 	update cafein_img set ori_name= #{ori_name}, sys_name=#{sys_name}, where cafein_seq=#{cafein_seq}
+ 	</update>
+ 	
+ 	
 </mapper>

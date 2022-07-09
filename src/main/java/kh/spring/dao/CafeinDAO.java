@@ -31,5 +31,8 @@ public class CafeinDAO {
 	public void delete(int cafein_seq) {
 	 mybatis.delete("Cafein.cafein-delete",cafein_seq);
 	}
-	
+	//-------------------카페정보 수정--------------
+	public int update(CafeinDTO dto)throws Exception{
+		return mybatis.update("Cafein.cafein-update",dto);
+	}
 }

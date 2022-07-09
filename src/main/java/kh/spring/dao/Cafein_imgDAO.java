@@ -40,4 +40,9 @@ public class Cafein_imgDAO {
 	public String deletefile(int cafein_seq) {
 		return mybatis.selectOne("Cafein.cafein_imgfile",cafein_seq);
 	}
+	//----------------------수정-------------------------
+	public int update(Cafein_imgDTO dto)throws Exception{
+		return mybatis.update("Cafein.cafein_img-update",dto);
+	}
+	
 }

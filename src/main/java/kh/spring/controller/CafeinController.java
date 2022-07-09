@@ -62,6 +62,12 @@ public class CafeinController {
 		serv.selectBySeq(model, cafein_seq);
 		return "cafein/cafeinDetail";
 	}
+	//-------------------------Cafein 수정페이지 ------------------------
+	@RequestMapping("UpdateSeq")
+	public String UpdateSeq(Model model,int cafein_seq) throws Exception {
+		serv.selectBySeq(model, cafein_seq);
+		return "cafein/cafeinUpdate";
+	}
 	//------------------------Cafe삭제----------------------------------
 	@RequestMapping("delete") 
 	public String delete(int seq,String realPath,MultipartFile file) throws Exception {
@@ -70,12 +76,12 @@ public class CafeinController {
 	}
 	//------------------------Cafe수정----------------------------------
 	@RequestMapping("update") 
-	public String update(int cafein_seq, String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking,String realPath,MultipartFile file) throws Exception {
-		
+	public String update(int seq, String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking,String realPath,MultipartFile file) throws Exception {
+		System.out.println(seq);
 		String day = String.join("/", dayarr);
 		String open = String.join(":", openarr);
 		String finish = String.join(":", finisharr);
-		serv.update(cafein_seq,name,address1,address2,day,open,finish,parking,realPath,file);
+		serv.update(seq,name,address1,address2,day,open,finish,parking,realPath,file);
 		return "redirect:/cafein/cafeinDetail";
 	}
 	
