@@ -149,7 +149,7 @@
 							alert("해당 이메일과 아이디가 일치하지않습니다.");
 							return false;
 						}
-						$(".seqCheck").val(result.mem_seq);
+						$("#seqCheck").val(result.mem_seq);
 						$(".password_ul").show();
 						$(".password_ul_none").hide();
 						$(".submit").text("변경하기");
@@ -182,7 +182,7 @@
 			$(".id_search_result").hide();
 			$(".center_row").children("h2").remove();
 			$(".submit").text("찾기");
-			$(".seqCheck").val(0);
+			$("#seqCheck").val(0);
 		});
 		
 		$("#idBtn").on("click",function(){
@@ -198,7 +198,7 @@
 			$(".id_search_result").hide();
 			$(".center_row").children("h2").remove();
 			$(".submit").text("찾기");
-			$(".seqCheck").val(0);
+			$("#seqCheck").val(0);
 		});
 		
 		var pwd = $("#mem_pw, #mem_pwCheck");
@@ -225,10 +225,10 @@
 			}
 		})
 		
-		$("submit").on("click",function(){
+		$(".submit").on("click",function(){
 			var check = $("#idPwCheck").val();
 			var pw = $("#mem_pw").val();
-			var num = $(".seqCheck").val();
+			var num = $("#seqCheck").val();
 			if(check == 2){
 				if(!pw){
 					alert("패스워드를 확인해주세요.")

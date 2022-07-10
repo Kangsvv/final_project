@@ -241,6 +241,10 @@
 			emailCheck = false;
 			var emailset = $("#mem_email").val();
 			var num = $("#emailNum").val();
+			if(num.length == 0){
+				alert("인증번호를 입력해주세요.");
+				return;
+			}
 			$.ajax({
 				url : "emailNumCheck",
 				type : "post",
