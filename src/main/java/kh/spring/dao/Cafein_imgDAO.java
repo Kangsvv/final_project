@@ -2,7 +2,9 @@ package kh.spring.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +43,14 @@ public class Cafein_imgDAO {
 		return mybatis.selectOne("Cafein.cafein_imgfile",cafein_seq);
 	}
 	//----------------------수정-------------------------
-	public int update(Cafein_imgDTO dto)throws Exception{
-		return mybatis.update("Cafein.cafein_img-update",dto);
+	public int update(String oriName,String sysName,int cafein_seq)throws Exception{
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("ori_name", oriName);
+		map.put("sys_name", sysName);
+		map.put("cafein_seq",cafein_seq);
+		
+		return mybatis.update("Cafein.cafein_img-update",map);
 	}
 	
 }

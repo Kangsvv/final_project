@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kh.spring.dto.CafeinDTO;
 import kh.spring.dto.Cafein_imgDTO;
+import kh.spring.dto.Cafein_likeDTO;
 
 
 @Repository
@@ -35,4 +36,9 @@ public class CafeinDAO {
 	public int update(CafeinDTO dto)throws Exception{
 		return mybatis.update("Cafein.cafein-update",dto);
 	}
+	//--------------------좋아요-----------------
+	public int cafein_like(Cafein_likeDTO ldto)throws Exception{
+		return mybatis.insert("Cafein.cafein-like",ldto);
+	}
+	
 }

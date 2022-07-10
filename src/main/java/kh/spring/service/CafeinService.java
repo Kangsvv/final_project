@@ -3,7 +3,9 @@ package kh.spring.service;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -20,6 +22,7 @@ import kh.spring.dao.CafeinDAO;
 import kh.spring.dao.Cafein_imgDAO;
 import kh.spring.dto.CafeinDTO;
 import kh.spring.dto.Cafein_imgDTO;
+import kh.spring.dto.Cafein_likeDTO;
 import kh.spring.dto.FeedDTO;
 
 @Service
@@ -135,14 +138,14 @@ public class CafeinService {
 		
 	
 		dao.update(dto);
+		fdao.update(oriName,sysName,cafein_seq);
 		
-		Cafein_imgDTO fdto = new Cafein_imgDTO();
-		fdto.setOri_name(oriName);
-		fdto.setSys_name(sysName);
-		fdto.setCafein_seq(cafein_seq);
-		
-		fdao.update(fdto);
-		
+	}
+	public void cafein_like(int cafein_seq,String id)throws Exception {
+		Cafein_likeDTO ldto = new Cafein_likeDTO();
+		ldto.setCafein_seq(cafein_seq);
+		ldto.setId(id);
+		dao.cafein_like(ldto);
 	}
 
 

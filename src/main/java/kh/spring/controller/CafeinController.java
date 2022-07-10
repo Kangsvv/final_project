@@ -84,7 +84,12 @@ public class CafeinController {
 		serv.update(seq,name,address1,address2,day,open,finish,parking,realPath,file);
 		return "redirect:/cafein/cafeinDetail";
 	}
-	
+	//------------------------좋아요기능----------------------------------
+	@RequestMapping("like")
+	public String cafein_like(int seq,String id) throws Exception {
+		serv.cafein_like(seq,id);
+		return "redirect:/caein/cafeinDetail";
+	}
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {
