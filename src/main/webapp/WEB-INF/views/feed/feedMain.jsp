@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>카페리뷰 게시판</title>
+<!-- jstl  -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Bootstrap ver 5.1  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -177,6 +179,7 @@ nav button:hover{
 
 </style>
 <body>
+
      <!------------------------------------------------------------header----------------------------------------------------->
      
         <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
@@ -238,69 +241,16 @@ nav button:hover{
 
           <div class="tz-gallery">
 
-            <div class="row contents">
-    
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="/feed/detailView">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg" alt="Bridge">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.daum.net">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg" alt="Park">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.naver.com">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.kakao.com">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.daum.net">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.kakao.com">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.daum.net">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.kakao.com">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="www.daum.net">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg">
-                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
-                    </a>
-                </div>
-                
+            <div class="contents">
+             	<div class="row">
+		 		    <c:forEach var="i" items="${list}">
+		                <div class="col-sm-6 col-md-4">
+		                    <a class="lightbox" href="#">
+		                        <img src="${i.img}">
+		                    </a>
+		                </div>
+		            </c:forEach>
+				</div>
     
             </div>
     
@@ -332,26 +282,34 @@ nav button:hover{
       
          $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
               if($(window).scrollTop() >= $(document).height() - $(window).height()){
-//               alert(page)
-                 getFeedList(page);
+            	 getFeedList(page);
                  page++;   
-//               console.log(page);
               } 
          });
    
-   
-   
+
     function getFeedList(pape){
       let page = pape;
       
       $.ajax({
-          url : '/feed/goFeed',
+          url : '/feed/goInfinitiedFeed',
           type : 'POST',
           data : {page : page},
+          async: false,
           dataType : 'json'
      }).done(function(resp){
-    	 $(".contents").append("<div class='col-sm-6 col-md-4'><a class='lightbox' href='https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg'><img src='https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg' alt='Tunnel'><div>);
-   })
+    	let cDiv = $("<div class='row'>");
+    	for(let i=0; i < resp.length; i++){
+    		 
+    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
+    	 
+    	 	cDiv.append(contentsDiv);
+    	 }
+    	$(".contents").append(cDiv);
+	 	cDiv.hide();
+	 	cDiv.fadeIn(800);
+    	 
+    })
 };
 </script>
 </body>

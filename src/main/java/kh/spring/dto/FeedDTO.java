@@ -1,45 +1,41 @@
 package kh.spring.dto;
 
+import java.sql.Date;
+
 public class FeedDTO {
-	private int CafeBoard_seq;
-	private String mem_nickname;
+	private int cafefeed_seq;
+	private String memname;
 	private String cafename;
-	private String address1;
-	private String address2;
-	private String work_date;
-	private String work_time;
-	private String parking;
-	private String main_pt;
-	private String introduce;
-	private int recommend;
+	private String img;
+	private String title;
+	private String contents;
+	private String recommend;
+	private Date write_date;
 	
 	public FeedDTO() {}
-	public FeedDTO(int cafeBoard_seq, String mem_nickname, String cafename, String address1, String address2,
-			String work_date, String work_time, String parking, String main_pt, String introduce, int recommend) {
+	public FeedDTO(int cafefeed_seq, String memname, String cafename, String img, String title, String contents,
+			String recommend, Date write_date) {
 		super();
-		CafeBoard_seq = cafeBoard_seq;
-		this.mem_nickname = mem_nickname;
+		this.cafefeed_seq = cafefeed_seq;
+		this.memname = memname;
 		this.cafename = cafename;
-		this.address1 = address1;
-		this.address2 = address2;
-		this.work_date = work_date;
-		this.work_time = work_time;
-		this.parking = parking;
-		this.main_pt = main_pt;
-		this.introduce = introduce;
+		this.img = img;
+		this.title = title;
+		this.contents = contents;
 		this.recommend = recommend;
+		this.write_date = write_date;
 	}
-	public int getCafeBoard_seq() {
-		return CafeBoard_seq;
+	public int getCafefeed_seq() {
+		return cafefeed_seq;
 	}
-	public void setCafeBoard_seq(int cafeBoard_seq) {
-		CafeBoard_seq = cafeBoard_seq;
+	public void setCafefeed_seq(int cafefeed_seq) {
+		this.cafefeed_seq = cafefeed_seq;
 	}
-	public String getMem_nickname() {
-		return mem_nickname;
+	public String getMemname() {
+		return memname;
 	}
-	public void setMem_nickname(String mem_nickname) {
-		this.mem_nickname = mem_nickname;
+	public void setMemname(String memname) {
+		this.memname = memname;
 	}
 	public String getCafename() {
 		return cafename;
@@ -47,54 +43,36 @@ public class FeedDTO {
 	public void setCafename(String cafename) {
 		this.cafename = cafename;
 	}
-	public String getAddress1() {
-		return address1;
+	public String getImg() {
+		return img;
 	}
-	public void setAddress1(String address1) {
-		this.address1 = address1;
+	public void setImg(String img) {
+		this.img = img;
 	}
-	public String getAddress2() {
-		return address2;
+	public String getTitle() {
+		return title;
 	}
-	public void setAddress2(String address2) {
-		this.address2 = address2;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getWork_date() {
-		return work_date;
+	public String getContents() {
+		return contents;
 	}
-	public void setWork_date(String work_date) {
-		this.work_date = work_date;
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
-	public String getWork_time() {
-		return work_time;
-	}
-	public void setWork_time(String work_time) {
-		this.work_time = work_time;
-	}
-	public String getParking() {
-		return parking;
-	}
-	public void setParking(String parking) {
-		this.parking = parking;
-	}
-	public String getMain_pt() {
-		return main_pt;
-	}
-	public void setMain_pt(String main_pt) {
-		this.main_pt = main_pt;
-	}
-	public String getIntroduce() {
-		return introduce;
-	}
-	public void setIntroduce(String introduce) {
-		this.introduce = introduce;
-	}
-	public int getRecommend() {
+	public String getRecommend() {
 		return recommend;
 	}
-	public void setRecommend(int recommend) {
+	public void setRecommend(String recommend) {
 		this.recommend = recommend;
 	}
-	
+	public Date getWrite_date() {
+		return write_date;
+	}
+	public void setWrite_date(Date write_date) {
+		this.write_date = write_date;
+	}
+
 	
 }

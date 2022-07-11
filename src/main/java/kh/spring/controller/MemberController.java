@@ -215,7 +215,7 @@ public class MemberController {
 		}else {
 			member.setmem_seq(-1);
 		}
-		if(id != null || id != "") {
+		if(id != null || id != "" || member != null) {
 			if(!member.getmem_id().equals(id)) {
 				member.setmem_seq(-2);
 			}
@@ -226,9 +226,9 @@ public class MemberController {
 	// 패스워드 변경
 	@ResponseBody
 	@RequestMapping("passwordCheange")
-	public int passwordCheange(String pw, int num) {
+	public int passwordCheange(String pw, String num) {
 		MemberDTO member = new MemberDTO();
-		member.setmem_seq(num);
+		member.setmem_seq(Integer.parseInt(num));
 		member.setmem_pw(pw);
 		int result = memberService.passwordCheange(member);
 		return result;

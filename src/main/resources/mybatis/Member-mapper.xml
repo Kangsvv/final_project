@@ -52,6 +52,6 @@
 	
 	<!-- 패스워드변경 -->
 	<update id="passwordCheange">
-		update from member set mem_pw = #{mem_pw} where mem_seq = #{mem_seq}
+		update member set mem_pw = #{mem_pw} where mem_seq = #{mem_seq}
 	</update>
 </mapper> 
