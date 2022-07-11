@@ -14,11 +14,13 @@
 	<insert id="cafein_img-insert">
 		insert into cafein_img values(cafein_img_seq.nextval,#{ori_name},#{sys_name},#{cafein_seq})
 	</insert>
- 	
+ 	<insert id="cafein-like">
+ 	insert into cafein_like values(#{cafein_seq},'loginID')
+ 	</insert>
  	
  	
  	<select id="cafein_img-select" resultType="kh.spring.dto.Cafein_imgDTO">
- 	select *from cafein_img
+ 	select *from cafein_img order by seq desc
  	</select>
 	
 	<select id="cafein-detail" resultType="kh.spring.dto.CafeinDTO">
@@ -36,7 +38,21 @@
 	<delete id="cafein-delete">
 	delete from cafein where seq=#{cafein_seq}
 	</delete>
+	<delete id="cafein-like-cancel">
+	delete from cafein_like where seq=#{cafein_seq} and id='loginID';
+	</delete>
+	
 	<select id="cafein_imgfile" resultType="String">
 	select sys_name from cafein_img where cafein_seq=#{cafein_seq}
 	</select>
+	
+	<update id="cafein-update">
+	update cafein set name=#{name},address1=#{address1},address2=#{address2},day=#{day},open=#{open},finish=#{finish},parking=#{parking} where seq=#{seq}
+	</update>
+	
+	<update id="cafein_img-update">
+ 	update cafein_img set ori_name= #{ori_name}, sys_name=#{sys_name} where cafein_seq=#{cafein_seq}
+ 	</update>
+ 	
+ 	
 </mapper>
