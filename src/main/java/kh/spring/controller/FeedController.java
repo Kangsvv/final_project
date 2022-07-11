@@ -1,27 +1,57 @@
 package kh.spring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import kh.spring.dao.FeedDAO;
+import com.google.gson.Gson;
+
+import kh.spring.dto.FeedDTO;
+import kh.spring.service.FeedService;
 
 @Controller
 @RequestMapping("/feed/")
 public class FeedController {
 
 	@Autowired
-	private FeedDAO dao;
+	private FeedService serv;
+	
+	@Autowired
+	Gson g = new Gson();
 	
 	@RequestMapping("goFeed")
-	public String goFeed() {
+	public String goFeed(Model model, int page) throws Exception{
 		
-		System.out.println("12341234");
+		int cpage = page;
+		
+		System.out.println(cpage);
+		List<FeedDTO> list = serv.selectAllrs(model, cpage);
+//		String fList = g.toJson(list);
+		model.addAttribute("list", list);
+//		System.out.println(fist);
 		
 		return "/feed/feedMain";
 	}
+	@ResponseBody
+	@RequestMapping("goInfinitiedFeed")
+	public List<FeedDTO> goInfinitiedFeed(Model model, int page) throws Exception{
+		
+		int cpage = page;
+		
+		System.out.println(cpage);
+		List<FeedDTO> list = serv.selectAllrs(model, cpage);
+//		String fList = g.toJson(list);
+		model.addAttribute("list", list);
+		System.out.println(list);
+		
+		return list;
+	}
+	
 	@RequestMapping("detailView")
 	public String detailView() {
 		return "/feed/detailView";
@@ -31,7 +61,6 @@ public class FeedController {
 	public String goFeedWrite() {
 		return "/feed/feedWrite";
 	}
-	
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class

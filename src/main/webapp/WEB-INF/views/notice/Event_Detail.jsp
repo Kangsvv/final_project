@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Event Detail</title>
 <!-- Bootstrap ver 5.1  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -281,7 +281,7 @@ li.dropdown {
                   <div class="dropdown">
                      <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">NOTICE</a>
                      <div class="dropdown-content" id="myDropdown">
-                        <a href="/notice/FAQ">FAQ</a> <a href="/notice/notic_selectAll">이벤트 및 공지사항</a> <a href="#">1:1 문의</a> 
+                       <a href="/notice/FAQ">FAQ</a> <a href="/notice/event_selectAll">이벤트 및 공지사항</a> <a href="#">1:1 문의</a> 
                      </div>
                   </div>
                </div>
@@ -298,10 +298,13 @@ li.dropdown {
 <!-------------------------------------------------------Main------------------------------------------------->
 <div class="container" id="main">
    <div class="col-12" style="margin-bottom:40px;">
-      <a style="color: white; font-size: 40px;">Notic</a>
+      <a style="color: white; font-size: 40px;">이벤트 및 공지사항</a>
     </div>
-    <form action="notic_insert">
-			<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
+    <form>
+       <div id="selec" align="right" style="color: white; width: 100%; height: 5%;">
+       조회수 : "{}"
+       </div>
+				<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
             <input type=text name=title id=title placeholder="제목" style="width:97%;">
             </div>
@@ -310,7 +313,6 @@ li.dropdown {
             </div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
                 <a href="/notice/notic"><button class="btn" type="button">뒤로</button></a>
-                <button type="submit" class="btn" style="margin-left:10px;">작성</button>
             </div>
         </div>
     </form>
@@ -355,8 +357,9 @@ window.onclick = function(e) {
 }
 
 $(".cbtn").click(function() {
-	location.href = "/notice/notic";
+	location.href = "/notice/notic_Write";
 })
+
 </script>
           
 </body>
