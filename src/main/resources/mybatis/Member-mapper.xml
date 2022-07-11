@@ -24,7 +24,7 @@
 	<delete id="emailNumDelete">
 		delete from member_email_num where me_email = #{email}
 	</delete>
-	
+
 	<!-- 회원가입 처리 -->
 	<insert id="joinAction">
 		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},0,0,'','',sysdate,'')
@@ -54,4 +54,5 @@
 	<update id="passwordCheange">
 		update member set mem_pw = #{mem_pw} where mem_seq = #{mem_seq}
 	</update>
+
 </mapper> 

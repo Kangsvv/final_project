@@ -234,16 +234,18 @@ label{
       </nav>
           
 <!---------------------------------------------------------------------------------------------------------------------->
-<form action="/cafein/cafein_insert" method="post" enctype="multipart/form-data" >
+<form action="/cafein/update" method="post" enctype="multipart/form-data" >
 
 
 <div class="row" id="contents">
-  <div class="col-12" id="text">카페 등록</div>
+  <div class="col-12" id="text">CAFE UPDATE</div>
+  <input type="hidden" name=seq value=${fdto.cafein_seq }>
 </div>
 <div class="row" style="margin-top: 5%;margin-bottom: 5%;">
-  <div class="col-12 col-sm-6" id="file"><img id="preview" />
+  <div class="col-12 col-sm-6" id="file"><img id="preview" src="/resources/cafein/${fdto.sys_name }" />
+
     <label for="ex_file">업로드</label>
-    <input type="file" name="file" id="ex_file" value="파일첨부" onchange="readURL(this);">
+    <input type="file" name="file" id="ex_file" value="파일첨부"  onchange="readURL(this);">
    
 </div>
   <div class="col-12 col-sm-6" id="table">
@@ -252,19 +254,19 @@ label{
 <table>
   <tr>
     <td class="tableTitle">카페이름 : </td>
-    <td><input type="text" placeholder="카페명" name="name" id="name"></td>
+    <td><input type="text" placeholder="카페명" name="name" id="name" value=${dto.name }></td>
   </tr>
   <tr>
     <td class="tableTitle">주소 : </td>
     <td>
    <input type="hidden" name="zipcode" id="zipcode"  />
-   <input type="text" name="address1" id="address1" id="address1">
+   <input type="text" name="address1" id="address1" id="address1" value=${dto.address1 }>
 	<button type="button" onclick="execDaumPostcode()" class="btn btn-success" id="zipcode_find">
 								찾기</button></td>
   </tr>
   <tr>
     <td class="tableTitle">상세주소 : </td>
-    <td><input type="text" placeholder="상세주소" name="address2" id="address2"></td>
+    <td><input type="text" placeholder="상세주소" name="address2" id="address2" value=${dto.address2 }></td>
   </tr>
   <tr>
     <td class="tableTitle">휴무일 : </td>
@@ -373,8 +375,8 @@ label{
 
 
 <div class="row">
-  <div class="col-12" id="btn"><button id="add">등록</button>
-  <a href="/cafein/cafein_imglist"><button type="button">취소</button></a></div>
+  <div class="col-12" id="btn"><button id="update">수정 완료</button>
+  <a href="/cafein/cafein_imglist"><button type="button">뒤로가기</button></a></div>
 </div>
        </form>
    <!----------------------------------------------------- script------------------------------------------------ -->
@@ -399,7 +401,7 @@ label{
  
  //---------------------------------공백시 return false--------------------------------
  
- $("#add").on("click",function(){
+ $("#update").on("click",function(){
 	 if($("#name").val() == ''){
 		 alert("카페이름을 입력해주세요");
 		 return false;
@@ -425,7 +427,7 @@ label{
 		 return false;
 	 }
 	 else if(!$("#ex_file").val()){
-		 alert("사진을 첨부해주세요.")
+		 alert("원래 사진을 다시 첨부하시거나 다른사진을 첨부해주세요.")
 		 return false;
 	 }
 	 // file
@@ -448,8 +450,18 @@ label{
         	
         }
  })
- // -------------------------파일 업로드 시, 검수 ( 가로 X 세로 사이즈 체크 ) ------------------------
-	
+ // ------------------------ DB 정보들 input type 체크되어있기  ------------------------
+// 	$(document).ready(function() {
+		
+//    	var strData = ${dto.day};
+// 	console.log(strData);
+//     var arrDay = strData.split('/'); //배열로 변환
+//     ($("input:checkbox[name='dayarr']").is(":checked") == false)
+//     if($("input:checkbox[name='dayarr']").val()== arrDay){
+//     	$("input:checkbox[name='dayarr']").is(":checked");
+//     }else
+
+// });
  
    </script>
    
@@ -485,7 +497,7 @@ label{
     
     reader.readAsDataURL(input.files[0]);
   } else {
-    document.getElementById('preview').src = "";
+    document.getElementById('preview').src = "/resources/cafein/${fdto.sys_name }";
   }
 }
       </script>    

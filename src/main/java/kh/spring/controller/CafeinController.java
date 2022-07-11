@@ -62,6 +62,12 @@ public class CafeinController {
 		serv.selectBySeq(model, cafein_seq);
 		return "cafein/cafeinDetail";
 	}
+	//-------------------------Cafein 수정페이지 ------------------------
+	@RequestMapping("UpdateSeq")
+	public String UpdateSeq(Model model,int cafein_seq) throws Exception {
+		serv.selectBySeq(model, cafein_seq);
+		return "cafein/cafeinUpdate";
+	}
 	//------------------------Cafe삭제----------------------------------
 	@RequestMapping("delete") 
 	public String delete(int seq,String realPath,MultipartFile file) throws Exception {
@@ -69,9 +75,43 @@ public class CafeinController {
 		return "redirect:/cafein/cafein_imglist";
 	}
 	//------------------------Cafe수정----------------------------------
-
-	
-	
+	@RequestMapping("update") 
+	public String update(int seq, String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking,String realPath,MultipartFile file) throws Exception {
+		System.out.println(seq);
+		String day = String.join("/", dayarr);
+		String open = String.join(":", openarr);
+		String finish = String.join(":", finisharr);
+		serv.update(seq,name,address1,address2,day,open,finish,parking,realPath,file);
+		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
+	}
+	@RequestMapping("update-no")
+	public String update1(int seq, String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking) throws Exception {
+		System.out.println(seq);
+		String day = String.join("/", dayarr);
+		String open = String.join(":", openarr);
+		String finish = String.join(":", finisharr);
+		serv.update1(seq,name,address1,address2,day,open,finish,parking);
+		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
+	}
+	//------------------------좋아요 체크---------------------------------
+//	@RequestMapping("cafein_like_check")
+//	public String cafein_like_check(int seq) throws Exception {
+//		serv.cafein_like_check(seq);
+//		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
+//	}
+	//------------------------좋아요기능----------------------------------
+	@RequestMapping("like")
+	public String cafein_like(int seq) throws Exception {
+		serv.cafein_like(seq);
+		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
+	}
+	//----------------------좋아요 취소----------------------------------
+	@RequestMapping("like-cancel")
+	public String like_cancel(int seq) throws Exception {
+		serv.like_cancel(seq);
+		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
+	}
+	//-----------------------좋아요 수--------------------------------
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {
 		e.printStackTrace();
