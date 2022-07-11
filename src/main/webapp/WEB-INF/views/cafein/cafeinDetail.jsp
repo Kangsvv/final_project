@@ -420,11 +420,26 @@ table td{
        
 
         $("#like").click("on",function() {
+        	//하트 활성화상태
           if($("#like").html() == '<i class="fa-regular fa-heart  buttonIcon"></i>') {
-           $("#like").html('<i class="fa-solid fa-heart"></i>');
-            $("#like").css("background-color","white");
-            $("#like").css("color","rgb(78, 78, 163)");
+            $.ajax({
+            	url:'/cafein/',
+            	data:{"seq":${dto.seq},
+            		  "id":{loginID}},
+            	success : function(result){
+  						if(result > 0){
+  							 $("#like").html('<i class="fa-solid fa-heart"></i>');
+  				            $("#like").css("background-color","white");
+  				            $("#like").css("color","rgb(78, 78, 163)");
+  						}
+//   						else{
+//   							$("#checkId").text("사용 가능한 아이디입니다.").css("color","black");
+//   							id = true;
+//   						}
+  					}
+            })
         }
+        	//하트 비활성화상태
           else {
              $("#like").html('<i class="fa-regular fa-heart  buttonIcon"></i>');
              $("#like").css("background-color","rgb(78, 78, 163)");

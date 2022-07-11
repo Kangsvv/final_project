@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
 <!-- jstl  -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- j쿼리 -->
@@ -208,6 +210,8 @@ nav button:hover{
 <body>
      <!------------------------------------------------------------header----------------------------------------------------->
      
+   
+   
         <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">CAFEIN</a>

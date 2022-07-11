@@ -14,7 +14,9 @@
 	<insert id="cafein_img-insert">
 		insert into cafein_img values(cafein_img_seq.nextval,#{ori_name},#{sys_name},#{cafein_seq})
 	</insert>
- 	
+ 	<insert id="cafein-like">
+ 	insert into cafein_like values(#{cafein_seq},#{id})
+ 	</insert>
  	
  	
  	<select id="cafein_img-select" resultType="kh.spring.dto.Cafein_imgDTO">
@@ -49,7 +51,7 @@
 	</update>
 	
 	<update id="cafein_img-update">
- 	update cafein_img set ori_name= #{ori_name}, sys_name=#{sys_name}, where cafein_seq=#{cafein_seq}
+ 	update cafein_img set ori_name= #{ori_name}, sys_name=#{sys_name} where cafein_seq=#{cafein_seq}
  	</update>
  	
  	

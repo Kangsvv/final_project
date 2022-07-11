@@ -82,12 +82,22 @@ public class CafeinController {
 		String open = String.join(":", openarr);
 		String finish = String.join(":", finisharr);
 		serv.update(seq,name,address1,address2,day,open,finish,parking,realPath,file);
-		return "redirect:/cafein/cafeinDetail";
+		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
+	}
+	@RequestMapping("update-no")
+	public String update1(int seq, String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking) throws Exception {
+		System.out.println(seq);
+		String day = String.join("/", dayarr);
+		String open = String.join(":", openarr);
+		String finish = String.join(":", finisharr);
+		serv.update1(seq,name,address1,address2,day,open,finish,parking);
+		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
 	}
 	//------------------------좋아요기능----------------------------------
 	@RequestMapping("like")
 	public String cafein_like(int seq,String id) throws Exception {
-		serv.cafein_like(seq,id);
+		int result=0;
+		result=serv.cafein_like(seq,id);
 		return "redirect:/caein/cafeinDetail";
 	}
 	

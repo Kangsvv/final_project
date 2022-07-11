@@ -104,6 +104,7 @@ public class CafeinService {
 		fdao.delete(cafein_seq);
 	}
 	//------------------------------------------------------------------
+	@Transactional
 	public void update(int cafein_seq,String name,String address1,String address2,String day,String open,String finish,String parking,String realPath,MultipartFile file) throws Exception{
 		// 실시간으로 데이터를 만질려고
 		realPath = session.getServletContext().getRealPath("/resources/cafein"); // 서버 경로 불러오는 거
@@ -141,11 +142,24 @@ public class CafeinService {
 		fdao.update(oriName,sysName,cafein_seq);
 		
 	}
-	public void cafein_like(int cafein_seq,String id)throws Exception {
+	public void update1(int cafein_seq,String name,String address1,String address2,String day,String open,String finish,String parking) throws Exception {
+		CafeinDTO dto=new CafeinDTO();
+		dto.setSeq(cafein_seq);
+		dto.setName(name);
+		dto.setAddress1(address1);
+		dto.setAddress2(address2);
+		dto.setDay(day);
+		dto.setOpen(open);
+		dto.setFinish(finish);
+		dto.setParking(parking);
+		
+		dao.update(dto);
+	}
+	public int cafein_like(int cafein_seq,String id)throws Exception {
 		Cafein_likeDTO ldto = new Cafein_likeDTO();
 		ldto.setCafein_seq(cafein_seq);
 		ldto.setId(id);
-		dao.cafein_like(ldto);
+		return dao.cafein_like(ldto);
 	}
 
 

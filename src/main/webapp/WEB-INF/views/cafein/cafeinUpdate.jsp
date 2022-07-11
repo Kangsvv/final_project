@@ -243,8 +243,9 @@ label{
 </div>
 <div class="row" style="margin-top: 5%;margin-bottom: 5%;">
   <div class="col-12 col-sm-6" id="file"><img id="preview" src="/resources/cafein/${fdto.sys_name }" />
+
     <label for="ex_file">업로드</label>
-    <input type="file" name="file" id="ex_file" value="파일첨부" onchange="readURL(this);">
+    <input type="file" name="file" id="ex_file" onchange="readURL(this);">
    
 </div>
   <div class="col-12 col-sm-6" id="table">
@@ -425,9 +426,8 @@ label{
 		 alert("주차장유무를 체크해주세요.")
 		 return false;
 	 }
-	 else if(!$("#ex_file").val()){
-		 alert("사진을 첨부해주세요.")
-		 return false;
+	 else if($("#ex_file").val()==null){
+		location.href="/cafein/update-no";
 	 }
 	 // file
      let fileVal = $("#ex_file").val();
@@ -496,7 +496,7 @@ label{
     
     reader.readAsDataURL(input.files[0]);
   } else {
-    document.getElementById('preview').src = "";
+    document.getElementById('preview').src = "/resources/cafein/${fdto.sys_name }";
   }
 }
       </script>    
