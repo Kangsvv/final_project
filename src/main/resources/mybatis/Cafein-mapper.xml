@@ -29,10 +29,6 @@
 	select *from cafein_img where cafein_seq=#{cafein_seq}
 	</select>
 	
-	
-	
-	
-	
 	<delete id="cafein_img-delete">
 	delete from cafein_img where cafein_seq=#{cafein_seq}
 	</delete>
