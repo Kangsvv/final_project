@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import kh.spring.dao.NoticDAO;
 import kh.spring.dto.EventDTO;
@@ -25,5 +26,13 @@ public class NoticService {
 		
 	}
 	
+	public void nselectBySeq(Model model, int seq) throws Exception {
+		NoticDTO dto = dao.nselectBySeq(seq);
+		model.addAttribute("dto",dto);
+	}
+
+	public void delete(int seq) throws Exception {
+		dao.delete(seq);
+	}
 	
 }

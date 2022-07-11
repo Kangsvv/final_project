@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.spring.dto.EventDTO;
 import kh.spring.dto.NoticDTO;
 
 @Repository
@@ -21,6 +22,14 @@ public int insert (NoticDTO dto) throws Exception{
 
 public List<NoticDTO> notic_selectAll() {
 	return mybatis.selectList("notic.notic_selectAll");
+}
+
+public NoticDTO nselectBySeq(int seq) {
+	return mybatis.selectOne("notic.notic_Detail",seq);
+}
+
+public void delete(int seq) {
+	mybatis.delete("notic.notic_delete",seq);
 }
 
 }
