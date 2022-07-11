@@ -93,14 +93,25 @@ public class CafeinController {
 		serv.update1(seq,name,address1,address2,day,open,finish,parking);
 		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
 	}
+	//------------------------좋아요 체크---------------------------------
+	@RequestMapping("cafein_like_check")
+	public String cafein_like_check(int seq) throws Exception {
+		serv.cafein_like_check(seq);
+		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
+	}
 	//------------------------좋아요기능----------------------------------
 	@RequestMapping("like")
-	public String cafein_like(int seq,String id) throws Exception {
-		int result=0;
-		result=serv.cafein_like(seq,id);
-		return "redirect:/caein/cafeinDetail";
+	public String cafein_like(int seq) throws Exception {
+		serv.cafein_like(seq);
+		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
 	}
-	
+	//----------------------좋아요 취소----------------------------------
+	@RequestMapping("like-cancel")
+	public String like_cancel(int seq) throws Exception {
+		serv.like_cancel(seq);
+		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
+	}
+	//-----------------------좋아요 수--------------------------------
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {
 		e.printStackTrace();

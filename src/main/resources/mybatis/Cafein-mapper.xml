@@ -15,7 +15,7 @@
 		insert into cafein_img values(cafein_img_seq.nextval,#{ori_name},#{sys_name},#{cafein_seq})
 	</insert>
  	<insert id="cafein-like">
- 	insert into cafein_like values(#{cafein_seq},#{id})
+ 	insert into cafein_like values(#{cafein_seq},'loginID')
  	</insert>
  	
  	
@@ -31,6 +31,10 @@
 	select *from cafein_img where cafein_seq=#{cafein_seq}
 	</select>
 	
+	<select id="cafein-like-check" resultType="int">
+	select *from cafein_like where cafein_seq=#{cafein_seq} and id='loginID'
+	</select>
+	
 	
 	
 	
@@ -42,6 +46,10 @@
 	<delete id="cafein-delete">
 	delete from cafein where seq=#{cafein_seq}
 	</delete>
+	<delete id="cafein-like-cancel">
+	delete from cafein_like where seq=#{cafein_seq} and id='loginID';
+	</delete>
+	
 	<select id="cafein_imgfile" resultType="String">
 	select sys_name from cafein_img where cafein_seq=#{cafein_seq}
 	</select>

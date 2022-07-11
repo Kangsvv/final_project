@@ -245,7 +245,7 @@ label{
   <div class="col-12 col-sm-6" id="file"><img id="preview" src="/resources/cafein/${fdto.sys_name }" />
 
     <label for="ex_file">업로드</label>
-    <input type="file" name="file" id="ex_file" onchange="readURL(this);">
+    <input type="file" name="file" id="ex_file" value="파일첨부"  onchange="readURL(this);">
    
 </div>
   <div class="col-12 col-sm-6" id="table">
@@ -426,8 +426,9 @@ label{
 		 alert("주차장유무를 체크해주세요.")
 		 return false;
 	 }
-	 else if($("#ex_file").val()==null){
-		location.href="/cafein/update-no";
+	 else if(!$("#ex_file").val()){
+		 alert("원래 사진을 다시 첨부하시거나 다른사진을 첨부해주세요.")
+		 return false;
 	 }
 	 // file
      let fileVal = $("#ex_file").val();

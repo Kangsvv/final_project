@@ -155,12 +155,29 @@ public class CafeinService {
 		
 		dao.update(dto);
 	}
-	public int cafein_like(int cafein_seq,String id)throws Exception {
+	public int cafein_like(int cafein_seq)throws Exception {
 		Cafein_likeDTO ldto = new Cafein_likeDTO();
 		ldto.setCafein_seq(cafein_seq);
-		ldto.setId(id);
-		return dao.cafein_like(ldto);
+		
+		int result=dao.cafein_like_check(ldto);
+		if(result==0) {
+			result=dao.cafein_like(ldto);
+	}else {
+		return result;
 	}
-
-
+		
+		return result;
+}
+	public int like_cancel(int cafein_seq)throws Exception{
+		Cafein_likeDTO ldto = new Cafein_likeDTO();
+		ldto.setCafein_seq(cafein_seq);
+		
+		int result= dao.cafein_like_check(ldto);
+		if(result==1) {
+			 result=dao.cafein_like_cancel(ldto);
+		}else {
+			result =0;
+		}
+		return result;
+	}
 }

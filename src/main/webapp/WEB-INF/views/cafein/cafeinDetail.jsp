@@ -323,7 +323,7 @@ table td{
           <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="fa-regular fa-envelope"></i></button>
           <button id="like" class="btn btn-primary"><i class="fa-regular fa-heart  buttonIcon"></i></button></div>
-
+		
 
 		<div class="col-12 text-center"  style="text-align: right;margin-top:5%;margin-top: 140px;">
 		<button type="button" class="btn btn-primary" id="update">수정</button>&nbsp;
@@ -420,25 +420,28 @@ table td{
        
 
         $("#like").click("on",function() {
+        	$.ajax({
+				url : "/cafein/cafein_like_check", 
+				type : "post",
+				data : {"id":memId},
+				success : function(result){
+					if(result > 0){
+						$("#checkId").text("이미 사용중인 아이디입니다.").css("color","red");
+						id = false;
+					}else{
+						$("#checkId").text("사용 가능한 아이디입니다.").css("color","black");
+						id = true;
+					}
+				}
+        	})
         	//하트 활성화상태
           if($("#like").html() == '<i class="fa-regular fa-heart  buttonIcon"></i>') {
-            $.ajax({
-            	url:'/cafein/',
-            	data:{"seq":${dto.seq},
-            		  "id":{loginID}},
-            	success : function(result){
-  						if(result > 0){
+							
   							 $("#like").html('<i class="fa-solid fa-heart"></i>');
   				            $("#like").css("background-color","white");
   				            $("#like").css("color","rgb(78, 78, 163)");
-  						}
-//   						else{
-//   							$("#checkId").text("사용 가능한 아이디입니다.").css("color","black");
-//   							id = true;
-//   						}
-  					}
-            })
-        }
+  				            location.href="/cafein/like?seq=${dto.seq}";
+            }
         	//하트 비활성화상태
           else {
              $("#like").html('<i class="fa-regular fa-heart  buttonIcon"></i>');
