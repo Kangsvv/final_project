@@ -24,13 +24,19 @@ public class QuestionDAO {
 	
 	}
 
-	public int delete(String seq) throws Exception {
-		return mybatis.delete("question.delete",seq);
+	public QuestionDTO read(int seq) throws Exception{
+		return mybatis.selectOne("question.read",seq);
+	}
+	
+	public void delete(int seq) throws Exception {
+		mybatis.delete("question.delete",seq);
 		
 	}
 
 	public int modify(QuestionDTO dto) throws Exception{
 		return mybatis.update("question.modify",dto);
 	}
+	
+	
 
 }

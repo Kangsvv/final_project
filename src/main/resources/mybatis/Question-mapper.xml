@@ -22,6 +22,10 @@
 	update question set title = #{title}, contents = #{contents} where seq = #{seq}
 </update>
 
+	<select id="read" resultType="kh.spring.dto.QuestionDTO">
+		select * from question where seq = #{seq}
+	</select>
+
 	
 	
 	
