@@ -73,4 +73,9 @@ public class MemberDAO {
 	public int passwordCheange(MemberDTO member) {
 		return mybatis.update("Member.passwordCheange",member);
 	}
+	// 이메일 중복 조회
+	public int memberemailCheck(String email) {
+		return mybatis.selectOne("Member.memberemailCheck",email);
+	}
+
 }

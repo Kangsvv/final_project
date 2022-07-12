@@ -54,4 +54,8 @@
 	<update id="passwordCheange">
 		update member set mem_pw = #{mem_pw} where mem_seq = #{mem_seq}
 	</update>
+	<!-- 이메일 중복 확인 -->
+	<select id="memberemailCheck" resultType="int">
+		select count(*) from member where mem_email = #{email}
+	</select>
 </mapper> 
