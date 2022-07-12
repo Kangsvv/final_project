@@ -81,5 +81,9 @@ public class MemberDAO {
 	public String nickname(String id) {
 		return mybatis.selectOne("Member.membernickname",id);
 	}
+	//public email 가져오기
+	public String email(String id) {
+		return mybatis.selectOne("Member.memberemail",id);
+	}
 
 }
