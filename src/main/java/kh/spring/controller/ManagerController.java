@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.service.ManagerService;
 
@@ -32,9 +31,14 @@ public class ManagerController {
 	
 	@RequestMapping("delete")
 	public String managerCEO(String id) throws Exception{
-		
 		serv.delete(id);
-		return "/manager/managerMain";
+		return "redirect:/manager/goAdmin";
+	}
+	
+	@RequestMapping("deleteCEO")
+	public String deleteCEO(String id) throws Exception{
+		serv.delete(id);
+		return "redirect:/manager/ceoMember";
 	}
 	
 	@ExceptionHandler //예외 공동 처리

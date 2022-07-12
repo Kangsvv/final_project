@@ -12,7 +12,6 @@ import kh.spring.dto.MemberDTO;
 @Service
 public class ManagerService {
 
-	
 	@Autowired
 	private ManagerDAO dao;
 	

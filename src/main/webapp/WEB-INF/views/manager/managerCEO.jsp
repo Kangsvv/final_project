@@ -239,13 +239,16 @@ nav button:hover{
          </div>
 
 					<c:forEach var="i" items="${list}">
+					 <form action="/manager/deleteCEO">
 						<div class="row col-12 noticbox">
 							<div class="col-2 notice">${i.mem_seq }</div>
 							<div class="col-3 notice">${i.mem_id }</div>
 							<div class="col-3 notice">${i.mem_name }</div>
 							<div class="col-2 notice"><fmt:formatDate pattern="yy-MM-dd" value="${i.mem_joindate}" /></div>
-							<div class="col-2 notice"><button>탈퇴</button></div>
+							<div class="col-2 notice"><button id="delete" type="submit">탈퇴</button></div>
 						</div>
+						<input type="hidden" value="${i.mem_id }" name="id">
+						</form>
 					</c:forEach>
 
 		</div>

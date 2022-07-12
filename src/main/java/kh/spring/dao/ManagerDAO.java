@@ -27,9 +27,8 @@ public class ManagerDAO {
 				 
 	}
 	// 관리자권한으로 회원탈퇴
-		public int delete(String id) throws Exception{
-				
-			return mybatis.delete("Manager.delete");
-					 
+		public void delete(String id) throws Exception{
+			
+			 mybatis.delete("Manager.delete",id);
 		}
 }
