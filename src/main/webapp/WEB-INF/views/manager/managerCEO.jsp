@@ -1,21 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카페리뷰 게시판</title>
+<title>관리자 페이지</title>
 <!-- jstl  -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- Bootstrap ver 5.1  -->
+<!-- j쿼리 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--  Bootstrap ver 5.1  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-</head>
-<body>
-<style>
-/*------------------------ 헤더 부분 스타일 ------------------------ */
+   
+   <style>
+	/*------------------------ 헤더 부분 스타일 ------------------------ */
    .loginbox{
       flex:auto;
       float:left;
@@ -39,37 +41,14 @@
       input::placeholder {
       color: #ccc;
       }
-      .write{
-         width:40px;
-      }
-      .search2{
-         width:40px;
-         bottom:30px;
-         float: left;
-      }
+
       .writebtn{
           background-color:transparent;
          float: right;
          margin-right:5%;
          margin-bottom:2%;
       }
-      .searchbtn{
-         background-color:transparent;
-      }
-      .select option, #select{
-         color:black;
-         background-color:#ccc;
-          text-align: center;
-      }
-      .select{
-         height:30px;
-         margin-left:5%;
-         border-radius: 8px;
-         margin-top:10px;
-         width:100px;
-         border:none;
-      }
-      
+
       button{
         border:none;
       }
@@ -79,12 +58,7 @@
       #login:hover,#signup:hover{
          color:black;
       }
-/* container */
 
-#con1{
-   margin-left: 12%;
-   margin-right: 12%;
-}
  body{
     background-color: #222;
   }
@@ -126,30 +100,6 @@ nav button:hover{
     color: black;
     background-color: white;
 }
-/*board UI출력부분----------------------------*/
-.tz-gallery {
-    padding: 40px;
-    padding-top:0px;
-}
-
-/* Override bootstrap column paddings */
-   .tz-gallery .row > div {
-       padding: 2px;
-   }
-   
-   .tz-gallery .lightbox img {
-       width: 100%;
-       border-radius: 0;
-       position: relative;
-   }
-      .container h1 {
-          text-align: center;
-          margin-top: 50px;
-          font-family: 'Droid Sans', sans-serif;
-          font-weight: bold;
-      }
-/*---------------------기능 구현 후 Hover 예정------------------*/
-
 
 /* footer 부분 */
 
@@ -175,12 +125,67 @@ nav button:hover{
    text-decoration : none;
    color:white;
    }
+/*    Main */
+#Box {
+  text-align: center;
+  height: 800px;
+  margin-left:24%;
+  margin-right:24%;
+  margin-bottom:3%;
+  padding: 2%;
+}
 
+#Noticecontainer {
+	margin: auto;
+	background-color: white;
+	width: 100%;
+	height: 800px;
+	padding: 5%;
+	border-radius: 10%;
+}
 
+.titlebox {
+	border: none;
+	padding: 0%;
+	margin: auto;
+	text-align: center;
+}
+
+.title_head {
+	color: white;
+	background-color: black;
+	border: none;
+	text-align: center;
+	height: 30px;
+	padding-top: 0.25%;
+}
+
+.noticbox {
+	background-color: white;
+	border-bottom: 1px solid #222;
+	text-align: center;
+	height: 30px;
+	padding-top: 0.25%;
+	margin: auto;
+}
+
+.notice1 {
+	text-align: left;
+}
+
+.create {
+	margin-top: 1%;
+	text-align: right;
+}
+.cbtn{
+	text-decoration-line: none;
+	color:white;
+	font-size:28px;
+}
 </style>
+</head>
 <body>
-
-     <!------------------------------------------------------------header----------------------------------------------------->
+   <!------------------------------------------------------------header----------------------------------------------------->
      
         <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
             <div class="container-fluid">
@@ -204,59 +209,52 @@ nav button:hover{
                     class="mx-1 d-none d-lg-inline btn navbar-btn">Signup</button>
             </div>
           </nav>
-<!-----------------------------------------------검색 DIV------------------------------------------->
- <div id="con1">
-       <div class="row">
-          <div class="col-3"></div>
-          
-          <div class="col-6 d-none d-md-block searchdiv"style="padding:0px;">
-             <input class="search" type="text" placeholder="작성자 / 제목 으로 검색해보세요.">
-          </div>
-          <div class="col-6 d-md-none searchdiv"style="padding:0px;">
-             <input class="search" type="text" placeholder="작성자 / 제목 검색">
-          </div>
-          
-          <div class="col-3">
-          <button class="searchbtn" type="button" style="padding:0px;"><img class="search2" style="padding:0px; margin-top:5px;"src="/resources/img/search.png"></button>
-          </div>
-      </div>
-       <div class="row">
-           <div class="col-6">
-              <select class="select">
-                <option>최신순</option>
-                <option>조회순</option>
-                <option>추천순</option>
-              </select>
-           </div>
-          
-          <c:if test="${loginMember.memLevel == 0 || loginMember.memLevel == 2 }">
-	          <div class="col-6">
-	             <button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
-	          </div>
-      	  </c:if>
-         </div>
-          
+<!-------------------------------------------------------Main------------------------------------------------->
 
-  <!-------------------------------------------------------인스타 Board------------------------------------------------->
 
-          <div class="tz-gallery">
-
-            <div class="contents">
-             	<div class="row">
-		 		    <c:forEach var="i" items="${list}">
-		                <div class="col-sm-6 col-md-4">
-		                    <a class="lightbox" href="#">
-		                        <img src="${i.img}">
-		                    </a>
-		                </div>
-		            </c:forEach>
-				</div>
-    
+<br>
+      <h1 class="main" style="color:white; text-align: center;">회원관리</h1>
+      <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
+      
+      <div class="container">
+  	 <div class="row">
+            <div class="col-12" style="padding-left:15%;">
+            	<a href="/manager/goAdmin" class="cbtn" >일반회원</a>
+            	<a class="cbtn">|</a>
+            	<a class="cbtn" style="font-weight:bold; color:760c0c;">사장회원</a>
             </div>
-    
-        </div>
+     </div>
+     </div>
+	<div id="Box">
+	
+      <div id="Noticecontainer">
+
+
+         <div class="row col-12 titlebox">
+            <div class="col-2 title_head">No.</div>
+            <div class="col-3 title_head">회원ID</div>
+            <div class="col-3 title_head">닉네임</div>
+            <div class="col-2 title_head">가입일</div>
+            <div class="col-2 title_head">관리</div>
+         </div>
+
+					<c:forEach var="i" items="${list}">
+					 <form action="/manager/deleteCEO">
+						<div class="row col-12 noticbox">
+							<div class="col-2 notice">${i.mem_seq }</div>
+							<div class="col-3 notice">${i.mem_id }</div>
+							<div class="col-3 notice">${i.mem_name }</div>
+							<div class="col-2 notice"><fmt:formatDate pattern="yy-MM-dd" value="${i.mem_joindate}" /></div>
+							<div class="col-2 notice"><button id="delete" type="submit">탈퇴</button></div>
+						</div>
+						<input type="hidden" value="${i.mem_id }" name="id">
+						</form>
+					</c:forEach>
+
+		</div>
 </div>
-         <!-------------------------------------------------------Footer------------------------------------------------->
+
+<!-------------------------------------------------------Footer------------------------------------------------->
     <div class="col-12 d-none d-md-block">
   <div id="foot" align=center>
      <div class="container">
@@ -270,47 +268,6 @@ nav button:hover{
      </div>
   </div>
 </div>
-<script>
-	$(".writebtn").on("click", function(){
-		location.href = "/feed/goFeedWrite";
-	})
-	
-         
-		let page = 2;  //페이징과 같은 방식이라고 생각하면 된다.
-//          getFeedList(page);
-//          page++;
-      
-         $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-              if($(window).scrollTop() >= $(document).height() - $(window).height()){
-            	 getFeedList(page);
-                 page++;   
-              } 
-         });
-   
 
-    function getFeedList(pape){
-      let page = pape;
-      
-      $.ajax({
-          url : '/feed/goInfinitiedFeed',
-          type : 'POST',
-          data : {page : page},
-          async: false,
-          dataType : 'json'
-     }).done(function(resp){
-    	let cDiv = $("<div class='row'>");
-    	for(let i=0; i < resp.length; i++){
-    		 
-    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
-    	 
-    	 	cDiv.append(contentsDiv);
-    	 }
-    	$(".contents").append(cDiv);
-	 	cDiv.hide();
-	 	cDiv.fadeIn(800);
-    	 
-    })
-};
-</script>
 </body>
 </html>
