@@ -63,4 +63,19 @@ public class MemberDAO {
 	public int kakaoJoinAction(MemberDTO member) {
 		return mybatis.insert("Member.kakaoJoinAction",member);
 	}
+
+	// 아이디 및 패스워드찾기
+	public MemberDTO idSearch(String email) {
+		return mybatis.selectOne("Member.idSearch",email);
+	}
+
+	// 패스워드 변경
+	public int passwordCheange(MemberDTO member) {
+		return mybatis.update("Member.passwordCheange",member);
+	}
+	// 이메일 중복 조회
+	public int memberemailCheck(String email) {
+		return mybatis.selectOne("Member.memberemailCheck",email);
+	}
+
 }

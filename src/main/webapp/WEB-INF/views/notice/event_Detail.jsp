@@ -23,7 +23,7 @@
    crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<title>이벤트 및 공지사항</title>
+<title>Event Detail</title>
 
 <style>
 body {
@@ -144,9 +144,9 @@ button {
 
 #Box {
   text-align: center;
-  height: 900px;
-  margin-left:15%;
-  margin-right:15%;
+  height: 800px;
+  margin-left:24%;
+  margin-right:24%;
   margin-bottom:3%;
   padding: 2%;
 }
@@ -176,6 +176,10 @@ button {
 	padding-top: 0.25%;
 }
 
+.noticbtn {
+	margin-bottom: 1%;
+}
+
 .nbtn {
 	color: black;
 	font-size: 20px;
@@ -186,8 +190,8 @@ button {
 	border: none;
 	border-radius: 15%;
 	color: white;
-	font-size: 80%;
-	width: 7%;
+	font-size: smaller;
+	width: 9%;
 	height: 35px;
 	margin-top: 1%;
 	padding: 0.5%;
@@ -197,7 +201,7 @@ button {
 	background-color: white;
 	border-bottom: 1px solid #222;
 	text-align: center;
-	height: 30px;
+	height: 650px;
 	padding-top: 0.25%;
 	margin: auto;
 }
@@ -209,16 +213,6 @@ button {
 .create {
 	margin-top: 1%;
 	text-align: right;
-}
-
-.constyle{
-    color: black;
-    text-decoration: none;
-}
-
-.constyle:hover{
-	color: #760c0c;
-	font-weight : bold;
 }
 
 /* 드록 박스 관련 스타일 */
@@ -307,6 +301,19 @@ li.dropdown {
 
 .show {display:block;}
 
+.con_head {
+	color: white;
+	background-color: black;
+	border: none;
+	text-align: center;
+	height: 30px;
+	padding-top: 0.25%;
+}
+
+.conbox {
+	margin: auto;
+}
+
 </style>
 
 </head>
@@ -344,63 +351,35 @@ li.dropdown {
         </div>
       </nav>
       
-<!-- ------------------------------------------------------------header----------------------------------------------------- -->
+<!-- ------------------------------------------------------------Main----------------------------------------------------- -->
 
 <br>
-      <h1 class="main" style="color:white; text-align: center;">Event</h1>
-      <div style="border-bottom: 3px solid white; width: 70%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
+      <h1 class="main" style="color:white; text-align: center;">${dto.title }</h1>
+      <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
 	<div id="Box">
-	
-      <div id="Noticecontainer">
 
-			<div class="row col-12 noticbtn">
-				<div class="col-1" style="padding: 0%; text-align: center;">
-					<a href="/notice/event_selectAll" class="nbtn">Event</a>
+		<div id="Noticecontainer">
+
+			<div class="row col-12 conbox">
+				<div class="col-3 con_head">${dto.writer }</div>
+				<div class="col-6 con_head">
+					<fmt:formatDate pattern="yy-MM-dd" value="${dto.write_date}" />
 				</div>
-				<div class="col-1" style="padding: 0%; text-align: center;">
-					<a href="/notice/notic_selectAll" class="nbtn">Notice</a>
+				<div class="col-3 con_head">
+					조회수 : <%--  추후 가능하면 넣을 예정 ${dto.count } --%>
 				</div>
-				<div class="col-10" style="padding: 0%;"></div>
 			</div>
 
+			<div class="row col-12 noticbox" style="word-break:break-all; white-space: pre-line; padding: 2%;">${dto.contents }</div>
 
-         <div class="row col-12 titlebox">
-            <div class="col-1 title_head">No.</div>
-            <div class="col-7 title_head">제목</div>
-            <div class="col-2 title_head">글쓴이</div>
-            <div class="col-2 title_head">작성일</div>
-         </div>
-
-			<c:choose>
-				<c:when test="${empty elist}">
-					<div>현재 등록된 게시글이 없습니다.</div>
-				</c:when>
-				<c:otherwise>
-					<c:forEach var="i" items="${elist}">
-						<a class="constyle" href="/notice/selectBySeq?seq=${i.seq }">
-						<div class="row col-12 noticbox">
-							<div class="col-1 notice" >${i.seq }</div>
-							<div class="col-7 notice1">${i.title }</div>
-							<div class="col-2 notice">${i.writer }</div>
-							<div class="col-2 notice">
-								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
-							</div>
-						</div>
-						</a>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-
-			<div class="row">
-						<div class="col-12 create">
-							<input type="button" class="cbtn" value="작성하기">
-						</div>
-					</div>
+			<div class="col-12 create">
+				<input type="button" class="upbtn" value="수정"> 
+				<input type="button" class="delbtn" value="삭제">
+			</div>
 		</div>
-</div>
 
-<!-------------------------------------------------------Footer------------------------------------------------->
+		<!-------------------------------------------------------Footer------------------------------------------------->
 	<div class="col-12 d-none d-md-block">
 		<div id="foot" align=center>
 			<div class="container">
@@ -451,8 +430,15 @@ window.onclick = function(e) {
    }         
 }
 
-$(".cbtn").click(function() {
-	location.href = "/notice/event_Write";
+$(".delbtn").click(function(){
+	let result = confirm("정말 삭제하시겠습니까?")
+	if(result){
+		alert("삭제가 완료되었습니다.")
+		location.href = "/notice/event_delete?seq=${dto.seq}";
+	}else{
+		
+	}
+	
 })
 
 </script>

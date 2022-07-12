@@ -1,13 +1,45 @@
 package kh.spring.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import kh.spring.service.ManagerService;
 
 @Controller
 @RequestMapping("/manager/")
 public class ManagerController {
 
+	@Autowired
+	private ManagerService serv;
+	
+	@RequestMapping("goAdmin")
+	public String goAdmin(Model model) throws Exception {
+		
+		serv.selectNomal(model);
+		return "/manager/managerMain";
+	}
+	
+	@RequestMapping("ceoMember")
+	public String managerCEO(Model model) throws Exception{
+		
+		serv.selectCEO(model);
+		return "/manager/managerCEO";
+	}
+	
+	@RequestMapping("delete")
+	public String managerCEO(String id) throws Exception{
+		serv.delete(id);
+		return "redirect:/manager/goAdmin";
+	}
+	
+	@RequestMapping("deleteCEO")
+	public String deleteCEO(String id) throws Exception{
+		serv.delete(id);
+		return "redirect:/manager/ceoMember";
+	}
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class

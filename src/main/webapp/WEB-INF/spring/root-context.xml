@@ -10,6 +10,7 @@
 		<property name="username" value="final"></property>
 		<property name="password" value="final"></property>
 	</bean>
+
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
@@ -28,6 +29,8 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
+	<bean id="Gson" class="com.google.gson.Gson"/>
+	
 	<!-- 이메일 발송 bean 설정 -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 	    <property name="host" value="smtp.naver.com" />
@@ -45,4 +48,5 @@
 	    </props>
 	    </property>
  	</bean>
+ 	
 </beans>

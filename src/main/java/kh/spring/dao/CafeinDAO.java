@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kh.spring.dto.CafeinDTO;
 import kh.spring.dto.Cafein_imgDTO;
+import kh.spring.dto.Cafein_likeDTO;
 
 
 @Repository
@@ -31,5 +32,20 @@ public class CafeinDAO {
 	public void delete(int cafein_seq) {
 	 mybatis.delete("Cafein.cafein-delete",cafein_seq);
 	}
-	
+	//-------------------카페정보 수정--------------
+	public int update(CafeinDTO dto)throws Exception{
+		return mybatis.update("Cafein.cafein-update",dto);
+	}
+	//--------------------좋아요-----------------
+	public int cafein_like(Cafein_likeDTO ldto)throws Exception{
+		return mybatis.insert("Cafein.cafein-like",ldto);
+	}
+	//--------------------좋아요 체크-------------
+	public int cafein_like_check(Cafein_likeDTO ldto)throws Exception{
+		return mybatis.selectOne("Cafein.cafein-like-check",ldto);
+	}
+	//--------------------좋아요 취소-------------
+	public int cafein_like_cancel(Cafein_likeDTO ldto)throws Exception{
+		return mybatis.delete("Cafein.cafein-like-cancel",ldto);
+	}
 }

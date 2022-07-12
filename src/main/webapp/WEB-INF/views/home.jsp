@@ -223,7 +223,7 @@ h5 {
   
   <section class="box" id="box1">
     <figure class="flip">
-      <a href="/feed/goFeed"><img src="https://2.bp.blogspot.com/-ywv6LaSnjgE/Uh9GGzWaFbI/AAAAAAAAA64/fLVMc7_xFAU/s1600/where.jpg" /></a>
+      <a href="/feed/goFeed?page=1"><img src="https://2.bp.blogspot.com/-ywv6LaSnjgE/Uh9GGzWaFbI/AAAAAAAAA64/fLVMc7_xFAU/s1600/where.jpg" /></a>
       <figcaption class="bar">
         <h3>FEED</h3>
        </figcaption>
@@ -288,6 +288,7 @@ h5 {
 	    </c:otherwise>
     </c:choose>
 </div>
+<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
 
 </body>
 <script>
