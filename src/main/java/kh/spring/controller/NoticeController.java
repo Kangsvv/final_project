@@ -2,7 +2,10 @@ package kh.spring.controller;
 
 import java.util.List;
 
+
+
 import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,17 +13,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import kh.spring.dao.EventDAO;
 import kh.spring.dto.EventDTO;
 import kh.spring.dto.NoticDTO;
 import kh.spring.service.EventService;
 import kh.spring.service.NoticService;
 
+
 @Controller
 @RequestMapping("/notice/")
 public class NoticeController {
 	
 	@Autowired
+
 	private EventDAO dao;
 	
 	@Autowired
@@ -39,6 +45,7 @@ public class NoticeController {
 	}
 	
 	//----------------Notice_EVENT 관련----------------//
+
 	@RequestMapping("event")
 	public String event() {
 		
@@ -105,14 +112,18 @@ public class NoticeController {
 	
 	@RequestMapping("notic")
 	public String notic() {
+
 		
 		return "/notice/notic";
 	}
+	
+
 	
 	@RequestMapping("notic_Write")
 	public String notic_Write() {
 		return "/notice/notic_Write";
 	}
+
 	
 	@RequestMapping("notic_Detail")
 	public String notic_Detail() {

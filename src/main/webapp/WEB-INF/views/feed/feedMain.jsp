@@ -261,11 +261,14 @@ nav button:hover{
   <div id="foot" align=center>
      <div class="container">
         <div class="row">
+
           <div class="col-4" id="footicon"><a href="#" style="color:white; padding-top:20px; text-decoration-line: none;">CAFEIN</a></div>
+
            <div class="col-2 footer2"><a href="#">회사소개</a></div>
            <div class="col-2 footer2"><a href="#">이용약관</a></div>
            <div class="col-2 footer2"><a href="#">1:1 문의</a></div>
            <div class="col-2 footer2"><a href="#">©2022 CAFEIN</a></div>
+
         </div>
      </div>
   </div>
