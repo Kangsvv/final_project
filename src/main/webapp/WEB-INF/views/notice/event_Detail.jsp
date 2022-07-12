@@ -158,6 +158,7 @@ button {
 	height: 800px;
 	padding: 5%;
 	border-radius: 10%;
+	margin-bottom: 3%;
 }
 
 .titlebox {
@@ -197,7 +198,7 @@ button {
 	padding: 0.5%;
 }
 
-.noticbox {
+.eventbox {
 	background-color: white;
 	border-bottom: 1px solid #222;
 	text-align: center;
@@ -371,7 +372,7 @@ li.dropdown {
 				</div>
 			</div>
 
-			<div class="row col-12 noticbox" style="word-break:break-all; white-space: pre-line; padding: 2%;">${dto.contents }</div>
+			<div class="row col-12 eventbox" style="word-break:break-all; white-space: pre-line; padding: 2%; overflow: auto;">${dto.contents }</div>
 
 			<div class="col-12 create">
 				<input type="button" class="upbtn" value="수정"> 
@@ -444,3 +445,4 @@ $(".delbtn").click(function(){
 </script>
 
 </body>
+</html>

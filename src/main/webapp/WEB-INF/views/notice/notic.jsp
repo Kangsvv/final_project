@@ -144,9 +144,9 @@ button {
 
 #Box {
   text-align: center;
-  height: 800px;
-  margin-left:24%;
-  margin-right:24%;
+  height: 900px;
+  margin-left:15%;
+  margin-right:15%;
   margin-bottom:3%;
   padding: 2%;
 }
@@ -176,10 +176,6 @@ button {
 	padding-top: 0.25%;
 }
 
-.noticbtn {
-	margin-bottom: 1%;
-}
-
 .nbtn {
 	color: black;
 	font-size: 20px;
@@ -190,8 +186,8 @@ button {
 	border: none;
 	border-radius: 15%;
 	color: white;
-	font-size: smaller;
-	width: 9%;
+	font-size: 80%;
+	width: 7%;
 	height: 35px;
 	margin-top: 1%;
 	padding: 0.5%;
@@ -213,6 +209,16 @@ button {
 .create {
 	margin-top: 1%;
 	text-align: right;
+}
+
+.constyle{
+    color: black;
+    text-decoration: none;
+}
+
+.constyle:hover{
+	color: #760c0c;
+	font-weight : bold;
 }
 
 /* 드록 박스 관련 스타일 */
@@ -342,19 +348,21 @@ li.dropdown {
 
 <br>
       <h1 class="main" style="color:white; text-align: center;">Notic</h1>
-      <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
+      <div style="border-bottom: 3px solid white; width: 70%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
 	<div id="Box">
 	
       <div id="Noticecontainer">
 
-         <div class="row noticbtn">
-            <div class= "col-3">
-               <a href="/notice/event_selectAll" class="nbtn">Event</a> | 
-               <a href="/notice/notic_selectAll" class="nbtn">Notice</a>
-            </div>
-      
-         </div>
+			<div class="row col-12 noticbtn">
+				<div class="col-1" style="padding: 0%; text-align: center;">
+					<a href="/notice/event_selectAll" class="nbtn">Event</a>
+				</div>
+				<div class="col-1" style="padding: 0%; text-align: center;">
+					<a href="/notice/notic_selectAll" class="nbtn">Notice</a>
+				</div>
+				<div class="col-10" style="padding: 0%;"></div>
+			</div>
 
          <div class="row col-12 titlebox">
             <div class="col-1 title_head">No.</div>

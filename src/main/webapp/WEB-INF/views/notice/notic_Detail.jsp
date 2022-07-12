@@ -158,6 +158,7 @@ button {
 	height: 800px;
 	padding: 5%;
 	border-radius: 10%;
+	margin-bottom: 3%;
 }
 
 .titlebox {
@@ -357,7 +358,7 @@ li.dropdown {
 			</div>
 
 			<div class="row col-12 noticbox">
-				<div class="col-1 notice" style="word-break:break-all; white-space: pre-line; padding: 2%;">${dto.contents }</div>
+				<div class="col-1 notice" style="word-break:break-all; white-space: pre-line; padding: 2%; overflow: auto;">${dto.contents }</div>
 			</div>
 
 			<div class="row">
@@ -434,3 +435,4 @@ $(".delbtn").click(function(){
 </script>
 
 </body>
+</html>

@@ -82,7 +82,8 @@ public class NoticeController {
 	/* 추후 조회수 기능 추가 가능하면 다시 진행
 	 * @RequestMapping("count") 
 	 * public String count (int count) throws Exception {
-	 * Eservice.update(count); return "/"; }
+	 * Eservice.update(count); 
+	 * return "/"; } 
 	 */
 	
 	//----------------Notice_Notic 관련----------------//
