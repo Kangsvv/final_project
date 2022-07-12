@@ -11,21 +11,7 @@ public class CafeinDTO {
   private String finish;
   private String parking;
   private String id;
-
-public CafeinDTO(int seq, String writer, String name, String address1, String address2, String day, String open,
-		String finish, String parking, String id) {
-	super();
-	this.seq = seq;
-	this.writer = writer;
-	this.name = name;
-	this.address1 = address1;
-	this.address2 = address2;
-	this.day = day;
-	this.open = open;
-	this.finish = finish;
-	this.parking = parking;
-	this.id = id;
-}
+  private String email;
 
 public int getSeq() {
 	return seq;
@@ -105,6 +91,30 @@ public String getId() {
 
 public void setId(String id) {
 	this.id = id;
+}
+
+public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
+}
+
+public CafeinDTO(int seq, String writer, String name, String address1, String address2, String day, String open,
+		String finish, String parking, String id, String email) {
+	super();
+	this.seq = seq;
+	this.writer = writer;
+	this.name = name;
+	this.address1 = address1;
+	this.address2 = address2;
+	this.day = day;
+	this.open = open;
+	this.finish = finish;
+	this.parking = parking;
+	this.id = id;
+	this.email = email;
 }
 
 public  CafeinDTO () {}

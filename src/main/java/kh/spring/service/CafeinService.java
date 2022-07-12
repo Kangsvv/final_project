@@ -63,7 +63,7 @@ public class CafeinService {
 
 		String id = (String)session.getAttribute("loginID");
 		String nickname=mdao.nickname(id);
-		
+		String email = mdao.email(id);
 		System.out.println(nickname);
 		CafeinDTO dto=new CafeinDTO();
 		dto.setWriter(nickname);
@@ -75,6 +75,7 @@ public class CafeinService {
 		dto.setFinish(finish);
 		dto.setParking(parking);
 		dto.setId(id);
+		dto.setEmail(email);
 		int cafein_seq=dao.insert(dto);
 		fdao.insert(new Cafein_imgDTO(0,oriName,sysName,cafein_seq));
 
@@ -94,6 +95,7 @@ public class CafeinService {
 		//-------------cafe이미지----------------------
 		Cafein_imgDTO fdto = fdao.selectBySeq(cafein_seq);
 		model.addAttribute("fdto",fdto);
+		
 
 	}
 	//----------------------Cafe 삭제---------------------------------
