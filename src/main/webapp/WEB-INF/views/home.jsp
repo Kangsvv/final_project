@@ -288,6 +288,7 @@ h5 {
 	    </c:otherwise>
     </c:choose>
 </div>
+<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
 
 </body>
 <script>
