@@ -151,7 +151,7 @@ public class MemberDTO {
 		return "MemberDTO [mem_seq=" + mem_seq + ", mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name
 				+ ", mem_email=" + mem_email + ", mem_phone=" + mem_phone + ", mem_level=" + mem_level + ", mem_status="
 				+ mem_status + ", mem_img=" + mem_img + ", mem_ceocheckimg=" + mem_ceocheckimg + ", mem_joindate="
-				+ mem_joindate + ", mem_deletedate=" + mem_deletedate + "]";
+				+ mem_joindate + ", mem_deletedate=" + mem_deletedate + mem_oriname +"]";
 	}
 
 
