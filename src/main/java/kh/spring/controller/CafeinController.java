@@ -93,12 +93,6 @@ public class CafeinController {
 		serv.update1(seq,name,address1,address2,day,open,finish,parking);
 		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
 	}
-	//------------------------좋아요 체크---------------------------------
-//	@RequestMapping("cafein_like_check")
-//	public String cafein_like_check(int seq) throws Exception {
-//		serv.cafein_like_check(seq);
-//		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
-//	}
 	//------------------------좋아요기능----------------------------------
 	@RequestMapping("like")
 	public String cafein_like(int seq) throws Exception {
