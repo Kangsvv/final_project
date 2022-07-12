@@ -1,5 +1,7 @@
 package kh.spring.controller;
 
+import javax.websocket.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import kh.spring.service.CafeinService;
 @Controller
 @RequestMapping("/cafein/")
 public class CafeinController {
+	
+	
 	
 	@Autowired
 	private CafeinService serv;
@@ -41,6 +45,7 @@ public class CafeinController {
 	//----------------------Cafein 등록---------------------
 	@RequestMapping(value="cafein_insert",produces="application/text;charset=utf-8")
 	public String cafein_insert(String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking,String realPath,MultipartFile file) throws Exception {
+		
 		System.out.println(name);
 		String day = String.join("/", dayarr);
 		String open = String.join(":", openarr);
@@ -93,12 +98,6 @@ public class CafeinController {
 		serv.update1(seq,name,address1,address2,day,open,finish,parking);
 		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
 	}
-	//------------------------좋아요 체크---------------------------------
-//	@RequestMapping("cafein_like_check")
-//	public String cafein_like_check(int seq) throws Exception {
-//		serv.cafein_like_check(seq);
-//		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
-//	}
 	//------------------------좋아요기능----------------------------------
 	@RequestMapping("like")
 	public String cafein_like(int seq) throws Exception {
