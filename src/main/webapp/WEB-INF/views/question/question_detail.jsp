@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Notic Detail</title>
+<title>Question</title>
 <!-- Bootstrap ver 5.1  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -260,6 +260,37 @@ li.dropdown {
 
 .show {display:block;}
 
+#modifyBtn{
+font-family: 'Noto Sans KR';
+         font-style: normal;
+         font-weight: 700;
+            height: 45px;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: #760c0c;
+            color: #FFFFFF;
+            border-radius: 12px;
+            width:120px;
+            border: none;
+            margin-left:10px;
+}
+
+#cancelBtn{
+font-family: 'Noto Sans KR';
+         font-style: normal;
+         font-weight: 700;
+            height: 45px;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: #760c0c;
+            color: #FFFFFF;
+            border-radius: 12px;
+            width:120px;
+            border: none;
+            margin-left:10px;
+}
+
+
 </style>
 <body>
 <!--  ------------------------------------------------------------header-----------------------------------------------------  -->
@@ -298,24 +329,39 @@ li.dropdown {
 <!-------------------------------------------------------Main------------------------------------------------->
 <div class="container" id="main">
    <div class="col-12" style="margin-bottom:40px;">
-      <a style="color: white; font-size: 40px;">이벤트 및 공지사항</a>
+      <a style="color: white; font-size: 40px;">1:1 문의</a>
     </div>
-    <form>
+
        <div id="selec" align="right" style="color: white; width: 100%; height: 5%;">
        조회수 : "{}"
        </div>
 				<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
-            <input type=text name=title id=title placeholder="제목" style="width:97%;">
+
+			
+			    <div class="col-7 notice1" id="title">${dto.title }</div>
+			
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
-            <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용"></textarea>
+   
+    		<div class="col-7 notice1" id="contents">${dto.contents }</div>
             </div>
+            
+            
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
-                <a href="/notice/notic"><button class="btn" type="button">뒤로</button></a>
+            
+            	
+            <%-- 로그인 id와 작성자 id가 같을 때만 수정 삭제 버튼 보이게 --%>
+           	<%--<c:if test="${loginID == dto.writer}">--%>	 
+           		  <button class="btn" id="modify" type="button">수정</button>
+           		  <button class="btn" id="delete" type="button">삭제</button>
+           	<%--</c:if>--%>
+           	<button class="btn" id="back" type="button">뒤로</button>
+           
             </div>
+
         </div>
-    </form>
+
 </div>
  <!-------------------------------------------------------Footer------------------------------------------------->
     <div class="col-12 d-none d-md-block">
@@ -331,6 +377,8 @@ li.dropdown {
      </div>
   </div>
 </div>
+
+
 
 <script>
 $(".que").click(function() {
@@ -360,6 +408,72 @@ $(".cbtn").click(function() {
 	location.href = "/notice/notic_Write";
 })
 
+$("#back").on("click", function() {
+	location.href = "/question/question_list";	
+})
+
+
+
+$("#delete").on("click", function() {
+			
+			 let result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				alert("삭제 완료되었습니다.");
+				location.href = "/question/question_delete?seq=${dto.seq}";
+			}else{
+				
+			} 
+			
+		})
+		
+//수정
+			$("#modify").on("click", function() {
+				$("#title").attr("contenteditable", "true").css("border","1px solid #ccc"); //입력 가능하게
+				$("#contents").attr("contenteditable", "true").css("border","1px solid #ccc");
+
+  				$("#modify").css("display", "none"); //수정 버튼 감추기
+  				$("#delete").css("display", "none"); //삭제 버튼 감추기
+					
+  				let ok = $("<button>");//수정완료 버튼
+  				ok.text("수정 완료");
+  				ok.attr("id","modifyBtn")
+				
+  				let cancel = $("<button>");//취소 버튼
+  				cancel.text("취소");
+  				cancel.attr("id", "cancelBtn")
+  				
+  				
+  					
+  					$("#row4").prepend(cancel);//취소 버튼 추가
+  	  				$("#row4").prepend(ok);//수정완료 버튼 추가
+  				
+  	  				
+  	  			$("#cancelBtn").on("click",function() {
+  					location.reload();
+  				})
+  				
+ 			});
+ 			
+ 			
+//수정완료 버튼
+	$("#row4").on("click","#modifyBtn",function(){
+				let seq = "${dto.seq}";//게시글 고유 넘버
+				let title = $("#title").text();
+            	let contents = $("#contents").text(); //댓글내용
+            	
+				$.ajax({
+					url : "/question/question_modify",
+					type : "post",
+					data : {seq:seq, title:title , contents:contents},
+				}).done(function(resp){
+					if(resp == "true"){
+						location.reload();//새로 고침	
+					}
+
+				})
+			})
+
+ 			
 </script>
           
 </body>

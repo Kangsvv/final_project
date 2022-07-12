@@ -274,7 +274,9 @@ li.dropdown {
                   <div class="dropdown">
                      <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">NOTICE</a>
                      <div class="dropdown-content" id="myDropdown">
-                        <a href="/notice/FAQ">FAQ</a> <a href="/notice/event_selectAll">이벤트 및 공지사항</a> <a href="#">1:1 문의</a>
+
+                        <a href="/notice/FAQ">FAQ</a> <a href="/notice/event_selectAll">이벤트 및 공지사항</a> <a href="/question/question_list">1:1 문의</a>
+
                      </div>
                   </div>
                </div>

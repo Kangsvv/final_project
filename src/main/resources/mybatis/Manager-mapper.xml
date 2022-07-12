@@ -5,5 +5,16 @@
     
 <mapper namespace="Manager">
 
-	
+	<select id="selectNomal" resultType="kh.spring.dto.MemberDTO">
+ 	select * from member where mem_level = 0
+ 	</select>
+ 	
+ 	<select id="selectCEO" resultType="kh.spring.dto.MemberDTO">
+ 	select * from member where mem_level = 1
+ 	</select>
+ 	
+ 	<select id="delete">
+ 	delete from member where mem_id=#{mem_id}
+ 	</select>
+ 	
 </mapper>

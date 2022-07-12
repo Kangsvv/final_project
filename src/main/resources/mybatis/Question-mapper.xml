@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="question">
+	
+	<select id="selectAll" resultType="kh.spring.dto.QuestionDTO">
+		select * from question order by 1 desc
+	</select> 
+	
+	<insert id="insert">
+		insert into question values(question_seq.nextval, #{title}, #{contents},'1234', sysdate) 
+	</insert>
+
+	
+<delete id="delete">
+	delete from question where seq= #{seq}
+</delete>
+
+<update id="modify">
+	update question set title = #{title}, contents = #{contents} where seq = #{seq}
+</update>
+
+	<select id="read" resultType="kh.spring.dto.QuestionDTO">
+		select * from question where seq = #{seq}
+	</select>
+
+	
+	
+	
+</mapper>

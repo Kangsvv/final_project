@@ -23,6 +23,20 @@ public List<EventDTO> event_selectAll() {
 	return mybatis.selectList("event.event_selectAll");
 }
 
+public EventDTO selectBySeq(int seq) {
+	return mybatis.selectOne("event.event_Detail",seq);
+}
+
+public void delete(int seq) {
+	mybatis.delete("event.event_delete",seq);
+}
+
+/* 추후 조회수 기능 추가 가능하면 다시 진행
+ * public void update(int count) { 
+ * mybatis.update("event.count", count); }
+ */
+
+
 }
 
 

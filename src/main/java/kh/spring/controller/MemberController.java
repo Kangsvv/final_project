@@ -7,6 +7,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -31,6 +32,9 @@ public class MemberController {
 	// Autowired를 이용해서 service를 이름을 정의하고 호출
 	@Autowired private MemberService memberService;
 	@Autowired JavaMailSender mailSender;
+	
+	@Autowired
+	private HttpSession session;
 
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
@@ -148,6 +152,7 @@ public class MemberController {
 			model.addAttribute("loginMember", loginMember);
 			member.setmem_seq(loginMember.getmem_seq());
 			Cookie cookie = new Cookie("saveId", member.getmem_id()); 
+			session.setAttribute("loginID", member.getmem_id());
 			if(saveId != null) {
 				cookie.setMaxAge(60 * 60 * 24 * 7);
 			}else {
@@ -160,7 +165,6 @@ public class MemberController {
 			rdAttr.addFlashAttribute("msg", "알림");
 			rdAttr.addFlashAttribute("text", "아이디 또는 비밀번호를 확인해주세요.");
 		}
-		
 		return "redirect:/";
 	}
 	
@@ -171,6 +175,7 @@ public class MemberController {
 		rdAttr.addFlashAttribute("status", "success");
 		rdAttr.addFlashAttribute("msg", "알림");
 		rdAttr.addFlashAttribute("text", "로그아웃이 되었습니다.");
+		session.invalidate();
 		return "redirect:/";
 	}
 	
@@ -195,6 +200,11 @@ public class MemberController {
 		rdAttr.addFlashAttribute("status", "success");
 		rdAttr.addFlashAttribute("msg", "알림");
 		rdAttr.addFlashAttribute("text", "로그인 성공");
+		session.setAttribute("loginID", email.split("@")[0]);
+		
+		String id = (String)session.getAttribute("loginID");
+		
+		System.out.println(id);
 		return result;
 	}
 	
@@ -233,4 +243,13 @@ public class MemberController {
 		int result = memberService.passwordCheange(member);
 		return result;
 	}
+	
+	// 이메일 중복 체크
+		@ResponseBody
+		@RequestMapping("memberemailCheck")
+		public int memberemailCheck(String email) {
+			int result = 0;
+			result = memberService.memberemailCheck(email);
+			return result;
+		}
 }
