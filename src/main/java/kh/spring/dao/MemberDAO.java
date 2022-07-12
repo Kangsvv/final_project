@@ -77,5 +77,9 @@ public class MemberDAO {
 	public int memberemailCheck(String email) {
 		return mybatis.selectOne("Member.memberemailCheck",email);
 	}
+	// 로그인시 닉네임값 가져오기
+	public String nickname(String id) {
+		return mybatis.selectOne("Member.membernickname",id);
+	}
 
 }

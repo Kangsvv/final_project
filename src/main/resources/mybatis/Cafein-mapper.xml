@@ -6,7 +6,7 @@
 <mapper namespace="Cafein">
 
 	<insert id="cafein-insert">
-		insert into cafein values(cafein_seq.nextval,'loginID',#{name},#{address1},#{address2},#{day},#{open},#{finish},#{parking})
+		insert into cafein values(cafein_seq.nextval,#{writer},#{name},#{address1},#{address2},#{day},#{open},#{finish},#{parking},#{id})
 		<selectKey order="AFTER" keyProperty="seq" resultType="int">
 			select cafein_seq.currval from dual
 		</selectKey>
