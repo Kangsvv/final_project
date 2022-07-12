@@ -108,5 +108,9 @@ public class MemberService {
 		member.setmem_pw(SHA256(member.getmem_pw()));
 		return memberDAO.passwordCheange(member);
 	}
+	//이메일 중복 
+	public int memberemailCheck(String email) {
+		return memberDAO.memberemailCheck(email);
+	}
 
 }

@@ -233,4 +233,13 @@ public class MemberController {
 		int result = memberService.passwordCheange(member);
 		return result;
 	}
+	
+	// 이메일 중복 체크
+		@ResponseBody
+		@RequestMapping("memberemailCheck")
+		public int memberemailCheck(String email) {
+			int result = 0;
+			result = memberService.memberemailCheck(email);
+			return result;
+		}
 }
