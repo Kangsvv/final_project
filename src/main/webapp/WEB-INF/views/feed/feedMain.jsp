@@ -11,6 +11,7 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>
 <style>
@@ -227,10 +228,12 @@ nav button:hover{
                 <option>추천순</option>
               </select>
            </div>
-          <div class="col-6">
-             <button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
-          </div>
-      
+          
+          <c:if test="${loginMember.memLevel == 0 || loginMember.memLevel == 2 }">
+	          <div class="col-6">
+	             <button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
+	          </div>
+      	  </c:if>
          </div>
           
 

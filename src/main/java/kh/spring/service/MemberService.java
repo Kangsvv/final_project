@@ -51,11 +51,13 @@ public class MemberService {
 	}
 
 	// 이메일 인증 삭제
+	@Transactional
 	public int emailNumDelete(String email, int num) {
 		return memberDAO.emailNumDelete(email,num);
 	}
 
 	// 회원가입처리
+	@Transactional
 	public int joinAction(MemberDTO member) {
 		member.setmem_pw(SHA256(member.getmem_pw()));
 		return memberDAO.joinAction(member);
@@ -85,6 +87,7 @@ public class MemberService {
 	}
 
 	// 카카오 계정 생성
+	@Transactional
 	public MemberDTO kakaoSingUp(MemberDTO member) {
 		MemberDTO loginMember = new MemberDTO();
 		int result = memberDAO.kakaoJoinAction(member);
@@ -100,9 +103,14 @@ public class MemberService {
 	}
 
 	// 패스워드 변경
+	@Transactional
 	public int passwordCheange(MemberDTO member) {
 		member.setmem_pw(SHA256(member.getmem_pw()));
 		return memberDAO.passwordCheange(member);
+	}
+	//이메일 중복 
+	public int memberemailCheck(String email) {
+		return memberDAO.memberemailCheck(email);
 	}
 
 }
