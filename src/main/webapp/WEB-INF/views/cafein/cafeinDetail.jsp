@@ -324,11 +324,12 @@ table td{
           <i class="fa-regular fa-envelope"></i></button>
           <button id="like" class="btn btn-primary"><i class="fa-regular fa-heart  buttonIcon"></i></button></div>
 		
-
+	<c:if	test="${loginID == dto.id }">
 		<div class="col-12 text-center"  style="text-align: right;margin-top:5%;margin-top: 140px;">
 		<button type="button" class="btn btn-primary" id="update">수정</button>&nbsp;
 		<button type="button" class="btn btn-danger" id="delete"><i class="glyphicon glyphicon-trash"></i> 삭제</button>
 		</div>
+	</c:if>
       </div>
     
   

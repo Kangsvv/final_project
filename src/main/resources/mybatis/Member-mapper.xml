@@ -58,4 +58,9 @@
 	<select id="memberemailCheck" resultType="int">
 		select count(*) from member where mem_email = #{email}
 	</select>
+	<!-- 닉네임값 가져오기 -->
+	<select id="membernickname" resultType="String">
+	select mem_name from member where mem_id=#{mem_id}
+	</select>
+
 </mapper> 
