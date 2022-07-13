@@ -260,13 +260,13 @@ label{
     <td class="tableTitle">주소 : </td>
     <td>
    <input type="hidden" name="zipcode" id="zipcode"  />
-   <input type="text" name="address1" id="address1" id="address1" value=${dto.address1 }>
+   <input type="text" name="address1" id="address1" value="${dto.address1 }">
 	<button type="button" onclick="execDaumPostcode()" class="btn btn-success" id="zipcode_find">
 								찾기</button></td>
   </tr>
   <tr>
     <td class="tableTitle">상세주소 : </td>
-    <td><input type="text" placeholder="상세주소" name="address2" id="address2" value=${dto.address2 }></td>
+    <td><input type="text" placeholder="상세주소" name="address2" id="address2" value="${dto.address2 }"></td>
   </tr>
   <tr>
     <td class="tableTitle">휴무일 : </td>

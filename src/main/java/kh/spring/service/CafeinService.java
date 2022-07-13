@@ -3,9 +3,7 @@ package kh.spring.service;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -16,14 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
-
 import kh.spring.dao.CafeinDAO;
 import kh.spring.dao.Cafein_imgDAO;
+import kh.spring.dao.MemberDAO;
 import kh.spring.dto.CafeinDTO;
 import kh.spring.dto.Cafein_imgDTO;
 import kh.spring.dto.Cafein_likeDTO;
-import kh.spring.dto.FeedDTO;
+import kh.spring.dto.MemberDTO;
 
 @Service
 public class CafeinService {
@@ -37,7 +34,8 @@ public class CafeinService {
 	@Autowired
 	private Cafein_imgDAO fdao;
 
-
+	@Autowired
+	private MemberDAO mdao;
 	//--------------------Cafe 등록------------------------------
 	@Transactional
 	public void insert(String name,String address1,String address2,String day,String open,String finish,String parking,String realPath,MultipartFile file) throws Exception{
@@ -63,7 +61,12 @@ public class CafeinService {
 		// toPath() : 객체 안에 저장된 경로를 불러오는거
 		// StandardCopyOption.REPLACE_EXISTING : 저장 옵션 - 덮어쓰기
 
+		String id = (String)session.getAttribute("loginID");
+		String nickname=mdao.nickname(id);
+		String email = mdao.email(id);
+		System.out.println(nickname);
 		CafeinDTO dto=new CafeinDTO();
+		dto.setWriter(nickname);
 		dto.setName(name);
 		dto.setAddress1(address1);
 		dto.setAddress2(address2);
@@ -71,6 +74,8 @@ public class CafeinService {
 		dto.setOpen(open);
 		dto.setFinish(finish);
 		dto.setParking(parking);
+		dto.setId(id);
+		dto.setEmail(email);
 		int cafein_seq=dao.insert(dto);
 		fdao.insert(new Cafein_imgDTO(0,oriName,sysName,cafein_seq));
 
@@ -90,6 +95,7 @@ public class CafeinService {
 		//-------------cafe이미지----------------------
 		Cafein_imgDTO fdto = fdao.selectBySeq(cafein_seq);
 		model.addAttribute("fdto",fdto);
+		
 
 	}
 	//----------------------Cafe 삭제---------------------------------

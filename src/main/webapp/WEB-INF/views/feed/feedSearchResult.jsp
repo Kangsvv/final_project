@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카페리뷰 게시판</title>
+<title>검색 결과</title>
 <!-- jstl  -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Bootstrap ver 5.1  -->
@@ -156,6 +156,9 @@ nav button:hover{
 #foot{
     border-top: 1px solid gray;
     background-color: black;
+    position : absolute;
+    width:100%;
+	bottom : 0;
     
 }
 

@@ -43,11 +43,8 @@ public class FeedController {
 		
 		int cpage = page;
 		
-		System.out.println(cpage);
 		List<FeedDTO> list = serv.selectAllrs(model, cpage);
-//		String fList = g.toJson(list);
 		model.addAttribute("list", list);
-		System.out.println(list);
 		
 		return list;
 	}
@@ -60,6 +57,18 @@ public class FeedController {
 	@RequestMapping("goFeedWrite")
 	public String goFeedWrite() {
 		return "/feed/feedWrite";
+	}
+	
+	@RequestMapping("search")
+	public String feedSearchResult(Model model,String search) throws Exception{
+		int cpage = 1;
+		
+		System.out.println(search);
+		String what = search.replaceAll(" ","");
+		System.out.println(what);
+		List<FeedDTO> list = serv.feedSearchResult(model,what,cpage);
+		model.addAttribute("list", list);
+		return "/feed/feedSearchResult";
 	}
 	
 	@ExceptionHandler //예외 공동 처리

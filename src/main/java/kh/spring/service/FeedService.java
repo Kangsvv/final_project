@@ -16,8 +16,8 @@ public class FeedService {
 	private FeedDAO dao;
 	
 	// 최신순 출력
-	public List<FeedDTO> selectAllrs(Model model, int cpage) throws Exception {
-		System.out.println("goFeed Serv 준비중");
+		public List<FeedDTO> selectAllrs(Model model, int cpage) throws Exception {
+			System.out.println("goFeed Serv 준비중");
 		
 		return dao.selectAllrs(cpage);
 	}
@@ -28,4 +28,11 @@ public class FeedService {
 			List<FeedDTO> list = dao.selectAllpp();
 			model.addAttribute("list",list);
 		}
+		
+	// 피드 검색결과 출력
+		public List<FeedDTO> feedSearchResult(Model model,String search, int cpage) throws Exception{
+			
+			return dao.feedSearchResult(search, cpage);
+		}
+		
 }
