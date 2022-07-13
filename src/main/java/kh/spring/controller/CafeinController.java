@@ -98,6 +98,20 @@ public class CafeinController {
 		serv.update1(seq,name,address1,address2,day,open,finish,parking);
 		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
 	}
+	//-----------------------쪽지보내기-----------------------------------
+	@RequestMapping("message")
+	public String message(int seq,String title,String receiver,String receiver_email,String contents)throws Exception{
+		System.out.println(title);
+		System.out.println(contents);
+		
+		serv.message(title,receiver,receiver_email,contents);
+		
+		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
+		
+	}
+	
+	
+	
 	//------------------------좋아요기능----------------------------------
 	@RequestMapping("like")
 	public String cafein_like(int seq) throws Exception {

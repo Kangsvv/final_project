@@ -11,7 +11,7 @@ import kh.spring.dto.NoticDTO;
 
 @Repository
 public class NoticDAO {
-
+	
 	@Autowired 
 	private SqlSessionTemplate mybatis;
 
@@ -31,6 +31,16 @@ public NoticDTO nselectBySeq(int seq) {
 public void delete(int seq) {
 	mybatis.delete("notic.notic_delete",seq);
 }
+
+public int modify(NoticDTO dto) throws Exception {
+	return mybatis.update("notic.notic_modify",dto);
+}
+
+/* 추후 조회수 기능 추가 가능하면 다시 진행
+ * public void update(int count) { 
+ * mybatis.update("event.count", count); }
+ */
+
 
 }
 

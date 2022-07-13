@@ -67,6 +67,6 @@
 	
 	<!-- 이메일 가져오기 -->
 	<select id="memberemail" resultType="String">
-	select mem_email from member where mem_id=#{id}
+	select mem_email from member where mem_id=#{mem_id}
 	</select>
 </mapper> 

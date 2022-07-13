@@ -158,6 +158,7 @@ button {
 	height: 800px;
 	padding: 5%;
 	border-radius: 10%;
+	margin-bottom: 3%;
 }
 
 .titlebox {
@@ -197,13 +198,16 @@ button {
 	padding: 0.5%;
 }
 
-.noticbox {
+.eventbox {
 	background-color: white;
 	border-bottom: 1px solid #222;
 	text-align: center;
 	height: 650px;
 	padding-top: 0.25%;
 	margin: auto;
+	width: 100%;
+    border: none;
+    resize: none;
 }
 
 .notice1 {
@@ -314,6 +318,51 @@ li.dropdown {
 	margin: auto;
 }
 
+.main{
+	background-color: #222;
+	color: white;
+	border: none;
+	text-align: center;
+	padding: auto;
+}
+
+#modifyBtn{
+	background-color: #760c0c;
+	color: white;
+	border: none;
+	border-radius: 15%;
+	margin: 1%;
+}
+
+#cancelBtn{
+	background-color: #760c0c;
+	color: white;
+	border: none;
+	border-radius: 15%;
+	margin: 1%;
+}
+
+.backbtn{
+	background-color: #760c0c;
+	color: white;
+	border: none;
+	border-radius: 15%;
+}
+
+.delbtn{
+	background-color: #760c0c;
+	color: white;
+	border: none;
+	border-radius: 15%;
+}
+
+.upbtn{
+	background-color: #760c0c;
+	color: white;
+	border: none;
+	border-radius: 15%;
+}
+
 </style>
 
 </head>
@@ -354,7 +403,9 @@ li.dropdown {
 <!-- ------------------------------------------------------------Main----------------------------------------------------- -->
 
 <br>
-      <h1 class="main" style="color:white; text-align: center;">${dto.title }</h1>
+ 	<div class="row col-12 titlebox">
+      <input type="text" class="main" style="color:white; text-align: center; margin: auto;" value="${dto.title }" disabled>
+    </div>
       <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
 	<div id="Box">
@@ -367,19 +418,23 @@ li.dropdown {
 					<fmt:formatDate pattern="yy-MM-dd" value="${dto.write_date}" />
 				</div>
 				<div class="col-3 con_head">
-					조회수 : <%--  추후 가능하면 넣을 예정 ${dto.count } --%>
+					조회수 :
+					<%--  추후 가능하면 넣을 예정 ${dto.count } --%>
 				</div>
 			</div>
 
-			<div class="row col-12 noticbox" style="word-break:break-all; white-space: pre-line; padding: 2%;">${dto.contents }</div>
+			<div> 
+			<textarea class="row col-12 eventbox"
+				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled>${dto.contents }</textarea>
 
 			<div class="col-12 create">
 				<input type="button" class="upbtn" value="수정"> 
 				<input type="button" class="delbtn" value="삭제">
+				<input type="button" class="backbtn" value="뒤로">
 			</div>
 		</div>
-
-		<!-------------------------------------------------------Footer------------------------------------------------->
+	</div>
+	<!-------------------------------------------------------Footer------------------------------------------------->
 	<div class="col-12 d-none d-md-block">
 		<div id="foot" align=center>
 			<div class="container">
@@ -405,6 +460,9 @@ li.dropdown {
 		</div>
 	</div>
 <!-------------------------------------------------------Footer------------------------------------------------->
+
+</body>
+
 
 <script>
 $(".que").click(function() {
@@ -438,10 +496,55 @@ $(".delbtn").click(function(){
 	}else{
 		
 	}
-	
 })
+
+$(".backbtn").on("click", function(){
+	location.href = "/notice/event_selectAll";
+})
+
+$(".upbtn").on("click",function(){
+	$(".main").removeAttr("disabled");
+	$(".eventbox").removeAttr("disabled");
+	
+	$(".upbtn").css("display","none"); // 수정 버튼 감추기
+	$(".delbtn").css("display","none"); // 삭제 버튼 감추기
+	
+		let ok = $("<button>");//수정완료 버튼
+			ok.text("완료");
+			ok.attr("id","modifyBtn")
+		
+			let cancel = $("<button>");//취소 버튼
+			cancel.text("취소");
+			cancel.attr("id", "cancelBtn")
+	
+	$(".create").prepend(cancel); //취소 버튼 추가
+	$(".create").prepend(ok); // 수정완료 버튼 추가
+	
+	$("#cancelBtn").on("click", function(){
+		location.reload();
+	})
+});
+
+// 수정완료 버튼
+$(".create").on("click", "#modifyBtn",function(){
+	
+	let seq = "${dto.seq}"; // 게시글 고유 넘버
+	let title = $(".main").text();
+	let contents = $(".eventbox").text(); // 게시글 내용
+	
+	$.ajax({
+		url : "/notice/event_modify",
+		type : "post",
+		data : {seq:seq, title:title , contents:contents},
+	}).done(function(resp){
+		if(resp == "true"){
+			location.reload();//새로 고침	
+		}
+
+	})
+})
+	
 
 </script>
 
-</body>
 </html>
