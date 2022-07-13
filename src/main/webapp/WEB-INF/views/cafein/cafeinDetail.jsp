@@ -382,6 +382,7 @@ table td{
 </div>
 </div>
  <!--------------------------쪽지모달창------------------------->
+ <form action="/cafein/message">
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -394,21 +395,25 @@ table td{
             
   
               제목:&nbsp; <br>  
-            <input type = "text" id = "title" placeholder = "제목을 입력해주세요"/><br><br>
+            <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요"/><br><br>
               받는사람:&nbsp;  ${dto.writer}&nbsp;(${dto.email}) 
              <br>  
              <br>
-              <textarea placeholder = " Write your message here"/></textarea><br>
-            
-           
+              <textarea placeholder = "내용을 입력해주세요" name="contents"/></textarea><br>
+            <input type="hidden" name="receiver" value="${dto.writer}">
+            <input type="hidden" name="receiver_email" value="${dto.email}">
+            <input type="hidden" name="seq" value="${dto.seq} ">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button  class="btn btn-success" id="message">전송</button> 
+           </form>
           </div>
           
         </div>
       </div>
-      <div class="modal-footer" style="background-color: rgb(86, 81, 81);;">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-success">전송</button> 
-      </div>
+<!--       <div class="modal-footer" style="background-color: rgb(86, 81, 81);;"> -->
+<!--         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button> -->
+<!--         <button type="button" class="btn btn-success" id="message">전송</button>  -->
+<!--       </div> -->
     </div>
   </div>
 
@@ -466,6 +471,8 @@ table td{
 		$("#update").on("click",function(){
 			location.href="/cafein/UpdateSeq?cafein_seq=${dto.seq}";
 		})
+		
+
       </script>    
 </body>
 </html>

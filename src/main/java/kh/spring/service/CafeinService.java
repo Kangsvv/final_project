@@ -21,6 +21,7 @@ import kh.spring.dto.CafeinDTO;
 import kh.spring.dto.Cafein_imgDTO;
 import kh.spring.dto.Cafein_likeDTO;
 import kh.spring.dto.MemberDTO;
+import kh.spring.dto.MessageDTO;
 
 @Service
 public class CafeinService {
@@ -36,6 +37,8 @@ public class CafeinService {
 
 	@Autowired
 	private MemberDAO mdao;
+	
+	
 	//--------------------Cafe 등록------------------------------
 	@Transactional
 	public void insert(String name,String address1,String address2,String day,String open,String finish,String parking,String realPath,MultipartFile file) throws Exception{
@@ -146,6 +149,23 @@ public class CafeinService {
 	
 		dao.update(dto);
 		fdao.update(oriName,sysName,cafein_seq);
+		
+	}
+	//--------------------------------------쪽지보내기-------------------------------
+	public void message(String title,String receiver,String receiver_email,String contents) throws Exception {
+		String id = (String)session.getAttribute("loginID");
+		String nickname=mdao.nickname(id);
+		String email = mdao.email(id);
+		
+		MessageDTO ldto = new MessageDTO();
+		ldto.setTitle(title);
+		ldto.setSender(nickname);
+		ldto.setReceiver(receiver);
+		ldto.setSender_email(email);
+		ldto.setReceiver_email(receiver_email);
+		ldto.setContents(contents);
+		
+		dao.message(ldto);
 		
 	}
 	public void update1(int cafein_seq,String name,String address1,String address2,String day,String open,String finish,String parking) throws Exception {
