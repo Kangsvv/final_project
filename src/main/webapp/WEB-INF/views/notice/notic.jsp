@@ -377,6 +377,7 @@ li.dropdown {
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="i" items="${nlist}">
+					<a class="constyle" href="/notice/nselectBySeq?seq=${i.seq }">
 						<div class="row col-12 noticbox">
 							<div class="col-1 notice">${i.seq }</div>
 							<div class="col-7 notice1">${i.title }</div>
@@ -385,6 +386,7 @@ li.dropdown {
 								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
 							</div>
 						</div>
+						</a>
 					</c:forEach>
 				</c:otherwise>
 				</c:choose>

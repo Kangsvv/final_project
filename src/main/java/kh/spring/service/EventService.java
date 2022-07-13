@@ -36,6 +36,10 @@ public void delete(int seq) throws Exception {
 	dao.delete(seq);
 }
 
+public int modify(EventDTO dto) throws Exception {
+	return dao.modify(dto);
+}
+
 /* 추후 조회수 기능 추가 가능하면 다시 진행
  * public void update(int count) throws Exception { dao.update(count); }
  */
