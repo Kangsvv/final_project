@@ -344,8 +344,9 @@ font-family: 'Noto Sans KR';
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
    
-    		<div class="col-7 notice1" id="contents">${dto.contents }</div>
-            </div>
+    		<div class="col-7 notice1" 
+    		style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" id="contents">
+    		${dto.contents }</div>
             
             
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
@@ -419,7 +420,7 @@ $("#delete").on("click", function() {
 			 let result = confirm("정말 삭제하시겠습니까?");
 			if(result){
 				alert("삭제 완료되었습니다.");
-				location.href = "/question/question_delete?seq=${dto.seq}";
+				location.href = "/question/question_delete?question_seq=${dto.question_seq}";
 			}else{
 				
 			} 
@@ -457,14 +458,14 @@ $("#delete").on("click", function() {
  			
 //수정완료 버튼
 	$("#row4").on("click","#modifyBtn",function(){
-				let seq = "${dto.seq}";//게시글 고유 넘버
+				let question_seq = "${dto.question_seq}";//게시글 고유 넘버
 				let title = $("#title").text();
             	let contents = $("#contents").text(); //댓글내용
             	
 				$.ajax({
 					url : "/question/question_modify",
 					type : "post",
-					data : {seq:seq, title:title , contents:contents},
+					data : {question_seq:question_seq, title:title , contents:contents},
 				}).done(function(resp){
 					if(resp == "true"){
 						location.reload();//새로 고침	
