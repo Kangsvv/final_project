@@ -393,11 +393,11 @@ table td{
           <div id = "top">
             
   
-              Insert Full Name:<br>  
-            <input type = "text" id = "name" placeholder = "Full Name"/><br><br>
-              Insert E-mail:<br>  
-            <input type = "text" placeholder = "E-mail"/><br><br>
-              Write Mail Here:<br>  
+              제목:&nbsp; <br>  
+            <input type = "text" id = "title" placeholder = "제목을 입력해주세요"/><br><br>
+              받는사람:&nbsp;  ${dto.writer}&nbsp;(${dto.email}) 
+             <br>  
+             <br>
               <textarea placeholder = " Write your message here"/></textarea><br>
             
            
