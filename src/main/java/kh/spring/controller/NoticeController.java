@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.spring.dao.EventDAO;
 import kh.spring.dto.EventDTO;
@@ -86,13 +86,35 @@ public class NoticeController {
 		return "/notice/event";
 	}
 	
+	@ResponseBody
+	@RequestMapping("event_modify")
+	public String event_modify(EventDTO dto) throws Exception {
+		int result = Eservice.modify(dto);
+		
+		return "true";
+		
+	}
+	
 	/* 추후 조회수 기능 추가 가능하면 다시 진행
 	 * @RequestMapping("count") 
 	 * public String count (int count) throws Exception {
-	 * Eservice.update(count); return "/"; }
+	 * Eservice.update(count); 
+	 * return "/"; } 
 	 */
 	
 	//----------------Notice_Notic 관련----------------//
+	
+	@RequestMapping("notic")
+	public String notic() {
+		
+		return "/notice/notic";
+	}
+	
+	@RequestMapping("notic_Write")
+	public String notic_Write() {
+		return "/notice/notic_Write";
+	}
+	
 	@RequestMapping("notic_insert")
 	public String notic_insert(NoticDTO dto) throws Exception{
 		dto.setWriter((String)session.getAttribute("loginID"));
@@ -103,38 +125,17 @@ public class NoticeController {
 	
 	@RequestMapping("notic_selectAll")
 	public String nselectAll(Model model) throws Exception{
-		
 		List<NoticDTO> dto = Nservice.notic_selectAll();
 		model.addAttribute("nlist", dto);
 		System.out.println(dto);
 		return "/notice/notic";
 	}
 	
-	@RequestMapping("notic")
-	public String notic() {
-
-		
-		return "/notice/notic";
-	}
-	
-
-	
-	@RequestMapping("notic_Write")
-	public String notic_Write() {
-		return "/notice/notic_Write";
-	}
-
-	
-	@RequestMapping("notic_Detail")
-	public String notic_Detail() {
-		return "/notice/notic_Detail";
-	}
-	
 	@RequestMapping("nselectBySeq")
 	public String nselectBySeq(Model model, int seq) throws Exception {
 		Nservice.nselectBySeq(model, seq);
 		System.out.println(seq);
-		return "/notice/event_Detail";
+		return "/notice/notic_Detail";
 	}
 	
 	@RequestMapping("notic_delete")
@@ -143,7 +144,21 @@ public class NoticeController {
 		return "/notice/notic";
 	}
 	
+	@ResponseBody
+	@RequestMapping("notic_modify")
+	public String notic_modify(NoticDTO dto) throws Exception {
+		int result = Nservice.modify(dto);
+		
+		return "true";
+		
+	}
 	
+	/* 추후 조회수 기능 추가 가능하면 다시 진행
+	 * @RequestMapping("count") 
+	 * public String count (int count) throws Exception {
+	 * Eservice.update(count); 
+	 * return "/"; } 
+	 */
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
