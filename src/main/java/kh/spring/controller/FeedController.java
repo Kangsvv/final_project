@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 
@@ -58,7 +59,14 @@ public class FeedController {
 	public String goFeedWrite() {
 		return "/feed/feedWrite";
 	}
-	
+	@RequestMapping(value="feed_insert",produces="application/text;charset=utf-8")
+	public String feed_insert(String title,String contents, String realPath, MultipartFile file) throws Exception {
+		
+		System.out.println(title);
+		
+		serv.insert(title, contents, realPath, file);
+		return "redirect:/feed/goFeed";
+	}
 	@RequestMapping("search")
 	public String feedSearchResult(Model model,String search) throws Exception{
 		int cpage = 1;

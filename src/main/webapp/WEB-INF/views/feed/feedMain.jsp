@@ -230,11 +230,11 @@ nav button:hover{
               </select>
            </div>
           
-          <c:if test="${loginMember.memLevel == 0 || loginMember.memLevel == 2 }">
+<%--           <c:if test="${loginMember.memLevel == 0 || loginMember.memLevel == 2 }"> --%>
 	          <div class="col-6">
 	             <button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
 	          </div>
-      	  </c:if>
+<%--       	  </c:if> --%>
          </div>
           
 
@@ -244,13 +244,13 @@ nav button:hover{
 
             <div class="contents">
              	<div class="row">
-		 		    <c:forEach var="i" items="${list}">
-		                <div class="col-sm-6 col-md-4">
-		                    <a class="lightbox" href="#">
-		                        <img src="${i.img}">
-		                    </a>
-		                </div>
-		            </c:forEach>
+<%-- 		 		    <c:forEach var="i" items="${list}"> --%>
+<!-- 		                <div class="col-sm-6 col-md-4"> -->
+<!-- 		                    <a class="lightbox" href="#"> -->
+<%-- 		                        <img src="${i.img}"> --%>
+<!-- 		                    </a> -->
+<!-- 		                </div> -->
+<%-- 		            </c:forEach> --%>
 				</div>
     
             </div>

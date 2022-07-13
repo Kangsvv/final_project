@@ -258,7 +258,7 @@ label{
     <td class="tableTitle">주소 : </td>
     <td>
    <input type="hidden" name="zipcode" id="zipcode"  />
-   <input type="text" name="address1" id="address1" id="address1">
+   <input type="text" name="address1" id="address1">
 	<button type="button" onclick="execDaumPostcode()" class="btn btn-success" id="zipcode_find">
 								찾기</button></td>
   </tr>
