@@ -156,16 +156,34 @@
 			}
 		});
  		
-		$("#mem_email").on("input",function(){
+		$("#mem_email").on("input",function(){	
 			email = false;
 			var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-			
+			var mem_email = $("#mem_email").val();
 			if(!regEmail.test($("#mem_email").val())) {
 				$("#checkEmail").text("올바른 이메일이 아닙니다.").css("color","red");
 				eamil = false;
 			}else {
 				$("#checkEmail").text("").css("color","black");
-				email= true;
+				// ajax 기본형태 $.ajax 
+				$.ajax({
+					url : "/member/memberemailCheck", 
+					type : "post",
+					data : {"email":mem_email},
+					success : function(result){
+						if(result > 0){
+							$("#checkEmail").text("이미 사용중인 이메일입니다.").css("color","red");
+							email = false;
+						}else{
+							$("#checkEmail").text("사용 가능한 이메일입니다.").css("color","black");
+							email = true;
+						}
+					},
+					// 에러가 발생했을때
+					error : function(err){
+						alert("인터넷 연결이 불안정하거나, 서버와 통신이 불가능합니다.");
+					}
+				})
 			}
 		});
  	
