@@ -31,9 +31,22 @@ public class FeedDAO {
 
 		return mybatis.selectList("Feed.selectAllrs", map);
 	}
-	// 무한스크롤 최신순
+	// 무한스크롤 인기순 : 미완
 	public List<FeedDTO> selectAllpp(){
 
 		return mybatis.selectList("Feed.selectAllpp");
+	}
+	
+	// 피드 검색결과 출력
+	public List<FeedDTO> feedSearchResult(String search,int cpage){
+		String start = Integer.toString((cpage-1)*18+1);
+		String end = Integer.toString((cpage)*18);
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("title", search);
+		map.put("start", start);
+		map.put("end", end);
+		return mybatis.selectList("Feed.feedSearchResult", map);
 	}
 }

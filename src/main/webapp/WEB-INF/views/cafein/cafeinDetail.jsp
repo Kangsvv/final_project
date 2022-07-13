@@ -324,11 +324,12 @@ table td{
           <i class="fa-regular fa-envelope"></i></button>
           <button id="like" class="btn btn-primary"><i class="fa-regular fa-heart  buttonIcon"></i></button></div>
 		
-
+	<c:if	test="${loginID == dto.id }">
 		<div class="col-12 text-center"  style="text-align: right;margin-top:5%;margin-top: 140px;">
 		<button type="button" class="btn btn-primary" id="update">수정</button>&nbsp;
 		<button type="button" class="btn btn-danger" id="delete"><i class="glyphicon glyphicon-trash"></i> 삭제</button>
 		</div>
+	</c:if>
       </div>
     
   
@@ -338,33 +339,33 @@ table td{
 </div> 
 <hr style="color: white;margin-top: 5%;">
 <!--------------------------------------------캐러셀부분-------------------------------------------------->
-<div class="row" style="margin-top: 5%;text-align:center ;" >
-    <div class="col-12" id="caru">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="카페.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="카페인.jpg" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="카페.jpg" class="d-block w-100" alt="...">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-    </div>
-</div>
+<!-- <div class="row" style="margin-top: 5%;text-align:center ;" > -->
+<!--     <div class="col-12" id="caru"> -->
+<!--         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"> -->
+<!--             <div class="carousel-inner"> -->
+<!--               <div class="carousel-item active"> -->
+<!--                 <img src="카페.jpg" class="d-block w-100" alt="..."> -->
+<!--               </div> -->
+<!--               <div class="carousel-item"> -->
+<!--                 <img src="카페인.jpg" class="d-block w-100" alt="..."> -->
+<!--               </div> -->
+<!--               <div class="carousel-item"> -->
+<!--                 <img src="카페.jpg" class="d-block w-100" alt="..."> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev"> -->
+<!--               <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+<!--               <span class="visually-hidden">Previous</span> -->
+<!--             </button> -->
+<!--             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next"> -->
+<!--               <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+<!--               <span class="visually-hidden">Next</span> -->
+<!--             </button> -->
+<!--           </div> -->
+<!--     </div> -->
+<!-- </div> -->
 
-    <!-------------------------------------------------------Footer------------------------------------------------->
+<!--     -----------------------------------------------------Footer----------------------------------------------- -->
  
     <div class="col-12 d-none d-md-block">
   <div id="foot" align=center>
@@ -381,6 +382,7 @@ table td{
 </div>
 </div>
  <!--------------------------쪽지모달창------------------------->
+ <form action="/cafein/message">
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -392,22 +394,26 @@ table td{
           <div id = "top">
             
   
-              Insert Full Name:<br>  
-            <input type = "text" id = "name" placeholder = "Full Name"/><br><br>
-              Insert E-mail:<br>  
-            <input type = "text" placeholder = "E-mail"/><br><br>
-              Write Mail Here:<br>  
-              <textarea placeholder = " Write your message here"/></textarea><br>
-            
-           
+              제목:&nbsp; <br>  
+            <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요"/><br><br>
+              받는사람:&nbsp;  ${dto.writer}&nbsp;(${dto.email}) 
+             <br>  
+             <br>
+              <textarea placeholder = "내용을 입력해주세요" name="contents"/></textarea><br>
+            <input type="hidden" name="receiver" value="${dto.writer}">
+            <input type="hidden" name="receiver_email" value="${dto.email}">
+            <input type="hidden" name="seq" value="${dto.seq} ">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button  class="btn btn-success" id="message">전송</button> 
+           </form>
           </div>
           
         </div>
       </div>
-      <div class="modal-footer" style="background-color: rgb(86, 81, 81);;">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-        <button type="button" class="btn btn-success">전송</button> 
-      </div>
+<!--       <div class="modal-footer" style="background-color: rgb(86, 81, 81);;"> -->
+<!--         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button> -->
+<!--         <button type="button" class="btn btn-success" id="message">전송</button>  -->
+<!--       </div> -->
     </div>
   </div>
 
@@ -465,6 +471,8 @@ table td{
 		$("#update").on("click",function(){
 			location.href="/cafein/UpdateSeq?cafein_seq=${dto.seq}";
 		})
+		
+
       </script>    
 </body>
 </html>

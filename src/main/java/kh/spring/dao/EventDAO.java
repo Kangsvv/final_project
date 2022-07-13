@@ -31,6 +31,10 @@ public void delete(int seq) {
 	mybatis.delete("event.event_delete",seq);
 }
 
+public int modify(EventDTO dto) throws Exception {
+	return mybatis.update("event.event_modify",dto);
+}
+
 /* 추후 조회수 기능 추가 가능하면 다시 진행
  * public void update(int count) { 
  * mybatis.update("event.count", count); }
