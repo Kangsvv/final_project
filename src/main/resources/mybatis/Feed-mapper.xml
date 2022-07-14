@@ -19,4 +19,15 @@
 	<select id="feedSearchResult" resultType="kh.spring.dto.FeedDTO">
 		select * from (select row_number() over(order by recommend desc) as line, CafeFeed.* from CafeFeed) where (REPLACE(title,' ','') like '%'||#{title}||'%') and (line between #{start} and #{end})
 	</select>
+	<!-- 피드 insert 기능 -->
+	<insert id="feed-insert">
+		insert into cafefeed values(cafefeed_seq.nextval,#{title},#{id},#{contents},default,default,default)
+		<selectKey order="AFTER" keyProperty="cafefeed_seq" resultType="int">
+			select cafefeed_seq.currval from dual
+		</selectKey>
+	</insert>
+	<!-- 피드 사진 insert 기능 -->
+	<insert id="feed_img-insert">
+		insert into feed_img values(feed_img_seq.nextval,#{ori_name},#{sys_name},#{cafefeed_seq})
+	</insert>
 </mapper>

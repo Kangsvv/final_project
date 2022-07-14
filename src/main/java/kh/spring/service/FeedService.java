@@ -1,19 +1,40 @@
 package kh.spring.service;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.dao.FeedDAO;
+import kh.spring.dao.Feed_imgDAO;
+import kh.spring.dao.MemberDAO;
 import kh.spring.dto.FeedDTO;
+import kh.spring.dto.Feed_imgDTO;
 
 @Service
 public class FeedService {
 
 	@Autowired
 	private FeedDAO dao;
+	
+	@Autowired
+	private HttpSession session;
+
+	@Autowired
+	private MemberDAO mdao;
+	
+	@Autowired
+	private Feed_imgDAO fdao;
+	
 	
 	// 최신순 출력
 		public List<FeedDTO> selectAllrs(Model model, int cpage) throws Exception {
@@ -34,5 +55,40 @@ public class FeedService {
 			
 			return dao.feedSearchResult(search, cpage);
 		}
-		
+	//--------------------리뷰 등록------------------------------
+		@Transactional
+		public void insert(String title, String contents,String realPath, MultipartFile file) throws Exception{
+
+			// 실시간으로 데이터를 만질려고
+			realPath = session.getServletContext().getRealPath("/resources/feed"); // 서버 경로 불러오는 거
+			System.out.println(realPath);
+			File filePath = new File(realPath);
+			if(!filePath.exists())filePath .mkdir();
+			System.out.println(realPath);
+			String oriName =file.getOriginalFilename(); // DB용
+			String sysName = UUID.randomUUID() + "_"+oriName; //UUID.randomUUID()중복되지 임의값을 만들어 리턴 oriname 
+			file.transferTo(new File(realPath + "/"+sysName)); // 서버 경로 저장하기
+
+			// 영구적으로 로컬 환경에도 옮겨야됨.
+			String  localPath ="A:/springWorkspace/final_project/src/main/webapp/resources/feed";
+			File realFile = new File(realPath + "/"+sysName); // 파일 객체를 만든거예요 - 파일 데이터가 들어가 있음
+			File localFile = new File(localPath + "/"+sysName); // 파일 객체를 만든거고 - 빈 껍데기
+			// 실제 메모리상에 이 파일 객체 있는 거임.
+
+			// 로컬 경로 복사
+			Files.copy(realFile.toPath(), localFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+			// toPath() : 객체 안에 저장된 경로를 불러오는거
+			// StandardCopyOption.REPLACE_EXISTING : 저장 옵션 - 덮어쓰기
+
+			String id = (String)session.getAttribute("loginID");
+			String nickname = mdao.nickname(id);
+			
+			FeedDTO dto = new FeedDTO();
+			dto.setTitle(title);
+			dto.setId(id);
+			dto.setContents(contents);
+			int cafefeed_seq = dao.insert(dto);
+			fdao.insert(new Feed_imgDTO(0,oriName,sysName,cafefeed_seq));
+
+		}
 }
