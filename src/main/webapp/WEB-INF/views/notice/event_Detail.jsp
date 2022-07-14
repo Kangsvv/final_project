@@ -201,7 +201,6 @@ button {
 .eventbox {
 	background-color: white;
 	border-bottom: 1px solid #222;
-	text-align: center;
 	height: 650px;
 	padding-top: 0.25%;
 	margin: auto;
@@ -529,8 +528,8 @@ $(".upbtn").on("click",function(){
 $(".create").on("click", "#modifyBtn",function(){
 	
 	let seq = "${dto.seq}"; // 게시글 고유 넘버
-	let title = $(".main").text();
-	let contents = $(".eventbox").text(); // 게시글 내용
+	let title = $(".main").val();
+	let contents = $(".eventbox").val(); // 게시글 내용
 	
 	$.ajax({
 		url : "/notice/event_modify",

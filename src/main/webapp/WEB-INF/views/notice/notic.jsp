@@ -179,6 +179,7 @@ button {
 .nbtn {
 	color: black;
 	font-size: 20px;
+	text-decoration : none;
 }
 
 .cbtn {
@@ -354,12 +355,12 @@ li.dropdown {
 	
       <div id="Noticecontainer">
 
-			<div class="row col-12 noticbtn">
+			<div class="row col-12 noticbtn" style="margin-bottom: 15px;">
 				<div class="col-1" style="padding: 0%; text-align: center;">
 					<a href="/notice/event_selectAll" class="nbtn">Event</a>
 				</div>
 				<div class="col-1" style="padding: 0%; text-align: center;">
-					<a href="/notice/notic_selectAll" class="nbtn">Notice</a>
+					<a href="/notice/notic_selectAll" class="nbtn" style="color: #760c0c; font-weight: bold">Notice</a>
 				</div>
 				<div class="col-10" style="padding: 0%;"></div>
 			</div>
@@ -383,7 +384,7 @@ li.dropdown {
 							<div class="col-7 notice1">${i.title }</div>
 							<div class="col-2 notice">${i.writer }</div>
 							<div class="col-2 notice">
-								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
+							<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
 							</div>
 						</div>
 						</a>
@@ -391,11 +392,20 @@ li.dropdown {
 				</c:otherwise>
 				</c:choose>
 
+			<%-- <c:choose>
+				<c:when test="${loginID = admin} "> --%>
 					<div class="row">
 						<div class="col-12 create">
 							<input type="button" class="cbtn" value="작성하기">
 						</div>
 					</div>
+<%-- 				</c:when>
+
+				<c:otherwise>
+			
+				</c:otherwise>
+				
+			</c:choose> --%>
 		</div>
 </div>
 
