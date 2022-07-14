@@ -148,6 +148,33 @@ nav button:hover{
           font-family: 'Droid Sans', sans-serif;
           font-weight: bold;
       }
+            .feedImg{
+      	height:300px;
+      	overflow: hidden;
+      }
+      .feedImg img{
+      width: 100%;
+      height: 100%;
+      -webkit-transform:scale(1);
+	-moz-transform:scale(1);
+	-ms-transform:scale(1);	
+	-o-transform:scale(1);	
+	transform:scale(1);
+	-webkit-transition:.3s;
+	-moz-transition:.3s;
+	-ms-transition:.3s;
+	-o-transition:.3s;
+	transition:.3s;
+      }
+      .feedImg:hover img{
+      -webkit-transform:scale(1.2);
+	-moz-transform:scale(1.2);
+	-ms-transform:scale(1.2);	
+	-o-transform:scale(1.2);
+	transform:scale(1.2);
+	opacity:0.7;
+
+      }
 /*---------------------기능 구현 후 Hover 예정------------------*/
 
 
@@ -244,15 +271,14 @@ nav button:hover{
 
             <div class="contents">
              	<div class="row">
-<%-- 		 		    <c:forEach var="i" items="${list}"> --%>
-<!-- 		                <div class="col-sm-6 col-md-4"> -->
-<!-- 		                    <a class="lightbox" href="#"> -->
-<%-- 		                        <img src="${i.img}"> --%>
-<!-- 		                    </a> -->
-<!-- 		                </div> -->
-<%-- 		            </c:forEach> --%>
+		 		    <c:forEach var="i" items="${imgList }">
+		                <div class="col-sm-6 col-md-4  feedImg">
+		                    <a class="lightbox" href="/feed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
+		                        <img src="/feed/${i.sys_name }">
+		                    </a>
+		                </div>
+		            </c:forEach>
 				</div>
-    
             </div>
     
         </div>
