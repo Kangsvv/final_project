@@ -6,9 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.spring.dto.Cafein_likeDTO;
 import kh.spring.service.CafeinService;
 
 @Controller
@@ -114,18 +115,29 @@ public class CafeinController {
 	
 	
 	//------------------------좋아요기능----------------------------------
+	@ResponseBody
 	@RequestMapping("like")
-	public String cafein_like(int seq) throws Exception {
-		serv.cafein_like(seq);
-		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
+	public int cafein_like(int seq) throws Exception {
+		
+		return serv.cafein_like(seq);
 	}
 	//----------------------좋아요 취소----------------------------------
+	@ResponseBody
 	@RequestMapping("like-cancel")
-	public String like_cancel(int seq) throws Exception {
+	public int like_cancel(int seq) throws Exception {
 		serv.like_cancel(seq);
-		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
+		return serv.like_cancel(seq);
 	}
 	//-----------------------좋아요 수--------------------------------
+	@ResponseBody
+	@RequestMapping("cafein_like_count")
+	public int cafein_like_count(int seq) throws Exception {
+		
+		return serv.cafein_like_count(seq);
+	}
+	
+	
+	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {
 		e.printStackTrace();

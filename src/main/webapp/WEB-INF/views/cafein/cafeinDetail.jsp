@@ -139,11 +139,20 @@ table td{
     color: rgb(78, 78, 163);
     border-radius: 5px;
 }
+
 #like{
   margin-top: 0px;
     color: white;
     background-color: rgb(78, 78, 163);
     border-radius: 5px;
+}
+#like:focus,#like:active{
+/*   margin-top: 0px; */
+/*     color: white; */
+/*     background-color: rgb(78, 78, 163); */
+/*     border-radius: 5px; */
+    outline: none !important;
+    box-shadow: none;
 }
 #like:hover{
     background-color: white;
@@ -316,57 +325,45 @@ table td{
     </td>
   </tr>
   <tr>
-    <td colspan="2">추천수:</td>
+    <td colspan="2" id="like_count" >좋아요: {count}</td>
+   
    
   </tr>
         </table>
         </div>
-       
+     <!-------------------- 작성자와 로그인아이디 다를시 좋아요/쪽지버튼생성 ---------------------------->
+    	<c:if test="${loginID != dto.id && loginID == likeDTO.id}">	
         <div class="col-12" style="text-align: right;" > 
-      
           <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="fa-regular fa-envelope"></i></button>
-          <button id="like" class="btn btn-primary"><i class="fa-regular fa-heart  buttonIcon"></i></button></div>
+          <button type="button" class="btn " style="background-color: white; color:rgb(78, 78, 163)"; id="like"><i class="fa-solid fa-heart"></i></button>
+          </div>
+		</c:if>
+  <!--------------------로그인아이디가 그전 좋아요 눌렀을시 활성화버튼 ---------------------------->		
+	<c:if test="${loginID != dto.id && loginID != likeDTO.id }">	
+        <div class="col-12" style="text-align: right;" > 
+        <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-envelope"></i></button>
+          <button type="button" class="btn " style="background-color: rgb(78, 78, 163); color:white;" id="like"><i class="fa-regular fa-heart  buttonIcon"></i></button>
+          										
+          </div>
+		</c:if>	
+	
 		
-	<c:if	test="${loginID == dto.id }">
+		
+<!-------------------- 작성자 로그인시 수정/삭제버튼 생성 ---------------------------->
+	<c:if test="${loginID == dto.id }">
 		<div class="col-12 text-center"  style="text-align: right;margin-top:5%;margin-top: 140px;">
 		<button type="button" class="btn btn-primary" id="update">수정</button>&nbsp;
 		<button type="button" class="btn btn-danger" id="delete"><i class="glyphicon glyphicon-trash"></i> 삭제</button>
 		</div>
 	</c:if>
       </div>
-   
+ 
   
 
 
 
 </div> 
-<!--------------------------------------------캐러셀부분-------------------------------------------------->
-<!-- <div class="row" style="margin-top: 5%;text-align:center ;" > -->
-<!--     <div class="col-12" id="caru"> -->
-<!--         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"> -->
-<!--             <div class="carousel-inner"> -->
-<!--               <div class="carousel-item active"> -->
-<!--                 <img src="카페.jpg" class="d-block w-100" alt="..."> -->
-<!--               </div> -->
-<!--               <div class="carousel-item"> -->
-<!--                 <img src="카페인.jpg" class="d-block w-100" alt="..."> -->
-<!--               </div> -->
-<!--               <div class="carousel-item"> -->
-<!--                 <img src="카페.jpg" class="d-block w-100" alt="..."> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev"> -->
-<!--               <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
-<!--               <span class="visually-hidden">Previous</span> -->
-<!--             </button> -->
-<!--             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next"> -->
-<!--               <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
-<!--               <span class="visually-hidden">Next</span> -->
-<!--             </button> -->
-<!--           </div> -->
-<!--     </div> -->
-<!-- </div> -->
 
 <!--     -----------------------------------------------------Footer----------------------------------------------- -->
  
@@ -436,25 +433,75 @@ table td{
             let myInput = document.getElementById("my-input");
             myInput.click();
         }
-       
-
+     //------------------좋아요알림(토스트 스크립트)-----------------------------  
+      var toastTrigger = document.getElementById('like')
+       $.ajax({
+       				url:"/cafein/cafein_like_count",
+       				data:{seq:${dto.seq}},
+       				dataType:"json"
+       			}).done(function(resp){
+       				$("#like_count").html('좋아요:&nbsp;&nbsp;' + resp);
+       			})
+	//---------------------------------------------------------------------
         $("#like").click("on",function() {
-   
-        	//하트 활성화상태
-          if($("#like").html() == '<i class="fa-regular fa-heart  buttonIcon"></i>') {
-							
-  							 $("#like").html('<i class="fa-solid fa-heart"></i>');
-  				            $("#like").css("background-color","white");
-  				            $("#like").css("color","rgb(78, 78, 163)");
-  				            location.href="/cafein/like?seq=${dto.seq}";
-            }
-        	//하트 비활성화상태
-          else {
-             $("#like").html('<i class="fa-regular fa-heart  buttonIcon"></i>');
-             $("#like").css("background-color","rgb(78, 78, 163)");
-            $("#like").css("color","white");
-    }
-         });
+        	   if(${loginID == null}){
+        		   Swal.fire({
+        	             icon: 'warning',
+        	             title: '확인해주세요.',
+        	             text: '로그인시 가능합니다.',
+        	         });
+                   return false;
+                }else{
+   			$.ajax({
+   				url:"/cafein/like",
+   				data:{seq:${dto.seq}},
+   				dataType:"json"
+   				
+   			}).done(function(resp){
+   			if($("#like").html() == '<i class="fa-regular fa-heart  buttonIcon"></i>') {
+ 		$.ajax({
+      				url:"/cafein/cafein_like_count",
+      				data:{seq:${dto.seq}},
+      				dataType:"json"
+      			}).done(function(resp){
+      				$("#like_count").html('좋아요:&nbsp;&nbsp;' + resp);
+      			})
+   			 	$("#like").html('<i class="fa-solid fa-heart"></i>');
+	            $("#like").css("background-color","white");
+	            $("#like").css("color","rgb(78, 78, 163)");
+   			} else if($("#like").html() =='<i class="fa-solid fa-heart"></i>'){
+            	$.ajax({
+       				url:"/cafein/like-cancel",
+       				data:{seq:${dto.seq}},
+       				dataType:"json"
+       				
+       			}).done(function(resp){
+       			 $.ajax({
+       				url:"/cafein/cafein_like_count",
+       				data:{seq:${dto.seq}},
+       				dataType:"json"
+       			}).done(function(resp){
+       				$("#like_count").html('좋아요:&nbsp;&nbsp;' + resp);
+       			})
+               $("#like").html('<i class="fa-regular fa-heart  buttonIcon"></i>');
+               $("#like").css("background-color","rgb(78, 78, 163)");
+               $("#like").css("color","white");
+       			})
+       }
+ 			
+   			
+   			})
+           }
+
+        	   
+        });
+   			
+   		
+     
+  
+        	
+            
+      
 //-------------------------------삭제버튼--------------------------------
 		
 		$("#delete").on("click", function() {
@@ -466,7 +513,7 @@ table td{
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: '승인',
+                confirmButtonText: '확인',
                 cancelButtonText: '취소'
             }).then((result) => {
                 if (result.isConfirmed) {

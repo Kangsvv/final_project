@@ -46,9 +46,13 @@ public class CafeinDAO {
 	public int cafein_like(Cafein_likeDTO ldto)throws Exception{
 		return mybatis.insert("Cafein.cafein-like",ldto);
 	}
+	//-------------------좋아요 수---------------
+	public int cafein_like_count(int seq)throws Exception{
+		return mybatis.selectOne("Cafein.like-count",seq);
+	}
 	//--------------------좋아요 체크-------------
-	public int cafein_like_check(Cafein_likeDTO ldto)throws Exception{
-		return mybatis.selectOne("Cafein.cafein-like-check",ldto);
+	public Cafein_likeDTO cafein_like_check(Cafein_likeDTO ldto)throws Exception{
+		return mybatis.selectOne("Cafein.like-check",ldto);
 	}
 	//--------------------좋아요 취소-------------
 	public int cafein_like_cancel(Cafein_likeDTO ldto)throws Exception{

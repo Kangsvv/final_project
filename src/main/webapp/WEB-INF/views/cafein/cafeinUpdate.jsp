@@ -477,7 +477,11 @@ label{
 			 $('#openarr2 > option:selected').val() == $('#finisharr2 > option:selected').val() &&
 			 $('#openarr3 > option:selected').val() == $('#finisharr3 > option:selected').val()
 			 ){
-		 alert("오픈/마감시간이 같습니다.다시 선택해주세요.")
+		 Swal.fire({
+             icon: 'warning',
+             title: '확인해주세요.',
+             text: '오픈/마감시간이 같습니다.다시 선택해주세요.',
+         });
 		 return false;
 	 }
 	 else if($('#openarr1 > option:selected').val() == $('#finisharr1 > option:selected').val() &&
