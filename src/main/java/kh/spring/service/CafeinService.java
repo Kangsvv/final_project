@@ -67,7 +67,7 @@ public class CafeinService {
 		String id = (String)session.getAttribute("loginID");
 		String nickname=mdao.nickname(id);
 		String email = mdao.email(id);
-		System.out.println(nickname);
+		
 		CafeinDTO dto=new CafeinDTO();
 		dto.setWriter(nickname);
 		dto.setName(name);
@@ -98,6 +98,17 @@ public class CafeinService {
 		//-------------cafe이미지----------------------
 		Cafein_imgDTO fdto = fdao.selectBySeq(cafein_seq);
 		model.addAttribute("fdto",fdto);
+		//-------------좋아요체크----------------------
+		String id = (String)session.getAttribute("loginID");
+		System.out.println(id);
+		System.out.println(cafein_seq);
+		Cafein_likeDTO ldto = new Cafein_likeDTO();
+		ldto.setCafein_seq(cafein_seq);
+		ldto.setId(id);
+		
+		Cafein_likeDTO likeDTO = dao.cafein_like_check(ldto);
+		model.addAttribute("likeDTO",likeDTO);
+		
 		
 
 	}
@@ -120,7 +131,7 @@ public class CafeinService {
 		System.out.println(realPath);
 		File filePath = new File(realPath);
 		if(!filePath.exists())filePath .mkdir();
-		System.out.println(realPath);
+	
 		String oriName =file.getOriginalFilename(); // DB용
 		String sysName = UUID.randomUUID() + "_"+oriName; //UUID.randomUUID()중복되지 임의값을 만들어 리턴 oriname 
 		file.transferTo(new File(realPath + "/"+sysName)); // 서버 경로 저장하기
@@ -181,29 +192,30 @@ public class CafeinService {
 		
 		dao.update(dto);
 	}
+	//----------------좋아요----------------------------
 	public int cafein_like(int cafein_seq)throws Exception {
+		
+		String id = (String)session.getAttribute("loginID");
 		Cafein_likeDTO ldto = new Cafein_likeDTO();
 		ldto.setCafein_seq(cafein_seq);
+		ldto.setId(id);
 		
-		int result=dao.cafein_like_check(ldto);
-		if(result==0) {
-			result=dao.cafein_like(ldto);
-	}else {
-		return result;
-	}
-		
-		return result;
+		return dao.cafein_like(ldto);
 }
+	//------------------좋아요 취소-----------------------
 	public int like_cancel(int cafein_seq)throws Exception{
-		Cafein_likeDTO ldto = new Cafein_likeDTO();
-		ldto.setCafein_seq(cafein_seq);
-		
-		int result= dao.cafein_like_check(ldto);
-		if(result==1) {
-			 result=dao.cafein_like_cancel(ldto);
-		}else {
-			result =0;
+		String id = (String)session.getAttribute("loginID");
+			Cafein_likeDTO ldto = new Cafein_likeDTO();
+			ldto.setCafein_seq(cafein_seq);
+			ldto.setId(id);
+			
+			
+			return dao.cafein_like_cancel(ldto);
 		}
-		return result;
+	//------------------좋아요수-------------------------
+	public int cafein_like_count(int cafein_seq)throws Exception{
+		return dao.cafein_like_count(cafein_seq);
+		
 	}
+	
 }

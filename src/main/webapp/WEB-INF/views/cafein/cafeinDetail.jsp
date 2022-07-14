@@ -18,6 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 <!--icons 링크-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--  sweet alert  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <style>
    /*------------------------ 헤더 부분 스타일 ------------------------ */
@@ -137,11 +139,20 @@ table td{
     color: rgb(78, 78, 163);
     border-radius: 5px;
 }
+
 #like{
   margin-top: 0px;
     color: white;
     background-color: rgb(78, 78, 163);
     border-radius: 5px;
+}
+#like:focus,#like:active{
+/*   margin-top: 0px; */
+/*     color: white; */
+/*     background-color: rgb(78, 78, 163); */
+/*     border-radius: 5px; */
+    outline: none !important;
+    box-shadow: none;
 }
 #like:hover{
     background-color: white;
@@ -314,56 +325,45 @@ table td{
     </td>
   </tr>
   <tr>
-    <td colspan="2">추천수:</td>
+    <td colspan="2" id="like_count" >좋아요: {count}</td>
+   
    
   </tr>
         </table>
         </div>
+     <!-------------------- 작성자와 로그인아이디 다를시 좋아요/쪽지버튼생성 ---------------------------->
+    	<c:if test="${loginID != dto.id && loginID == likeDTO.id}">	
         <div class="col-12" style="text-align: right;" > 
           <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="fa-regular fa-envelope"></i></button>
-          <button id="like" class="btn btn-primary"><i class="fa-regular fa-heart  buttonIcon"></i></button></div>
+          <button type="button" class="btn " style="background-color: white; color:rgb(78, 78, 163)"; id="like"><i class="fa-solid fa-heart"></i></button>
+          </div>
+		</c:if>
+  <!--------------------로그인아이디가 그전 좋아요 눌렀을시 활성화버튼 ---------------------------->		
+	<c:if test="${loginID != dto.id && loginID != likeDTO.id }">	
+        <div class="col-12" style="text-align: right;" > 
+        <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-envelope"></i></button>
+          <button type="button" class="btn " style="background-color: rgb(78, 78, 163); color:white;" id="like"><i class="fa-regular fa-heart  buttonIcon"></i></button>
+          										
+          </div>
+		</c:if>	
+	
 		
-	<c:if	test="${loginID == dto.id }">
+		
+<!-------------------- 작성자 로그인시 수정/삭제버튼 생성 ---------------------------->
+	<c:if test="${loginID == dto.id }">
 		<div class="col-12 text-center"  style="text-align: right;margin-top:5%;margin-top: 140px;">
 		<button type="button" class="btn btn-primary" id="update">수정</button>&nbsp;
 		<button type="button" class="btn btn-danger" id="delete"><i class="glyphicon glyphicon-trash"></i> 삭제</button>
 		</div>
 	</c:if>
       </div>
-    
+ 
   
 
 
 
 </div> 
-<hr style="color: white;margin-top: 5%;">
-<!--------------------------------------------캐러셀부분-------------------------------------------------->
-<!-- <div class="row" style="margin-top: 5%;text-align:center ;" > -->
-<!--     <div class="col-12" id="caru"> -->
-<!--         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"> -->
-<!--             <div class="carousel-inner"> -->
-<!--               <div class="carousel-item active"> -->
-<!--                 <img src="카페.jpg" class="d-block w-100" alt="..."> -->
-<!--               </div> -->
-<!--               <div class="carousel-item"> -->
-<!--                 <img src="카페인.jpg" class="d-block w-100" alt="..."> -->
-<!--               </div> -->
-<!--               <div class="carousel-item"> -->
-<!--                 <img src="카페.jpg" class="d-block w-100" alt="..."> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev"> -->
-<!--               <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
-<!--               <span class="visually-hidden">Previous</span> -->
-<!--             </button> -->
-<!--             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next"> -->
-<!--               <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
-<!--               <span class="visually-hidden">Next</span> -->
-<!--             </button> -->
-<!--           </div> -->
-<!--     </div> -->
-<!-- </div> -->
 
 <!--     -----------------------------------------------------Footer----------------------------------------------- -->
  
@@ -395,11 +395,11 @@ table td{
             
   
               제목:&nbsp; <br>  
-            <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요"/><br><br>
+            <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요" required/><br><br>
               받는사람:&nbsp;  ${dto.writer}&nbsp;(${dto.email}) 
              <br>  
              <br>
-              <textarea placeholder = "내용을 입력해주세요" name="contents"/></textarea><br>
+              <textarea placeholder = "내용을 입력해주세요" name="contents" required /></textarea><br>
             <input type="hidden" name="receiver" value="${dto.writer}">
             <input type="hidden" name="receiver_email" value="${dto.email}">
             <input type="hidden" name="seq" value="${dto.seq} ">
@@ -418,54 +418,114 @@ table td{
   </div>
 
       <script>
+      //--------------------쪽지-------------------------
+      $("#message").on("click",function(){
+    	  Swal.fire({
+    		  position: 'top-end',
+    		  icon: 'success',
+    		  title: '쪽지가 전달되었습니다.',
+    		  showConfirmButton: false,
+    		  timer: 7000
+    		})
+      })
       //--------------------파일업로드시 이미지 미리보기------------------------------
        function onClickUpload() {
             let myInput = document.getElementById("my-input");
             myInput.click();
         }
-       
-
+     //------------------좋아요알림(토스트 스크립트)-----------------------------  
+      var toastTrigger = document.getElementById('like')
+       $.ajax({
+       				url:"/cafein/cafein_like_count",
+       				data:{seq:${dto.seq}},
+       				dataType:"json"
+       			}).done(function(resp){
+       				$("#like_count").html('좋아요:&nbsp;&nbsp;' + resp);
+       			})
+	//---------------------------------------------------------------------
         $("#like").click("on",function() {
-        	$.ajax({
-				url : "/cafein/cafein_like_check", 
-				type : "post",
-				data : {"id":memId},
-				success : function(result){
-					if(result > 0){
-						$("#checkId").text("이미 사용중인 아이디입니다.").css("color","red");
-						id = false;
-					}else{
-						$("#checkId").text("사용 가능한 아이디입니다.").css("color","black");
-						id = true;
-					}
-				}
-        	})
-        	//하트 활성화상태
-          if($("#like").html() == '<i class="fa-regular fa-heart  buttonIcon"></i>') {
-							
-  							 $("#like").html('<i class="fa-solid fa-heart"></i>');
-  				            $("#like").css("background-color","white");
-  				            $("#like").css("color","rgb(78, 78, 163)");
-  				            location.href="/cafein/like?seq=${dto.seq}";
-            }
-        	//하트 비활성화상태
-          else {
-             $("#like").html('<i class="fa-regular fa-heart  buttonIcon"></i>');
-             $("#like").css("background-color","rgb(78, 78, 163)");
-            $("#like").css("color","white");
-    }
-         });
+        	   if(${loginID == null}){
+        		   Swal.fire({
+        	             icon: 'warning',
+        	             title: '확인해주세요.',
+        	             text: '로그인시 가능합니다.',
+        	         });
+                   return false;
+                }else{
+   			$.ajax({
+   				url:"/cafein/like",
+   				data:{seq:${dto.seq}},
+   				dataType:"json"
+   				
+   			}).done(function(resp){
+   			if($("#like").html() == '<i class="fa-regular fa-heart  buttonIcon"></i>') {
+ 		$.ajax({
+      				url:"/cafein/cafein_like_count",
+      				data:{seq:${dto.seq}},
+      				dataType:"json"
+      			}).done(function(resp){
+      				$("#like_count").html('좋아요:&nbsp;&nbsp;' + resp);
+      			})
+   			 	$("#like").html('<i class="fa-solid fa-heart"></i>');
+	            $("#like").css("background-color","white");
+	            $("#like").css("color","rgb(78, 78, 163)");
+   			} else if($("#like").html() =='<i class="fa-solid fa-heart"></i>'){
+            	$.ajax({
+       				url:"/cafein/like-cancel",
+       				data:{seq:${dto.seq}},
+       				dataType:"json"
+       				
+       			}).done(function(resp){
+       			 $.ajax({
+       				url:"/cafein/cafein_like_count",
+       				data:{seq:${dto.seq}},
+       				dataType:"json"
+       			}).done(function(resp){
+       				$("#like_count").html('좋아요:&nbsp;&nbsp;' + resp);
+       			})
+               $("#like").html('<i class="fa-regular fa-heart  buttonIcon"></i>');
+               $("#like").css("background-color","rgb(78, 78, 163)");
+               $("#like").css("color","white");
+       			})
+       }
+ 			
+   			
+   			})
+           }
+
+        	   
+        });
+   			
+   		
+     
+  
+        	
+            
+      
 //-------------------------------삭제버튼--------------------------------
 		
 		$("#delete").on("click", function() {
+		
+		    Swal.fire({
+                title: '삭제',
+                text: "정말 삭제하시겠습니까?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '확인',
+                cancelButtonText: '취소'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                	location.href = "/cafein/delete?seq=${dto.seq}";
+                    Swal.fire(
+                        '삭제되었습니다',
+                        '삭제완료',
+                        'success'
+                    )
+                }
+            })
 			
-			 let result = confirm("정말 삭제하시겠습니까?");
-			if(result){
-				alert("삭제 완료되었습니다.");
-				location.href = "/cafein/delete?seq=${dto.seq}";
-			}else{
-				
-			} 
 		
 		})
 		$("#update").on("click",function(){
