@@ -18,6 +18,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 <!--icons 링크-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--  sweet alert  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <style>
    /*------------------------ 헤더 부분 스타일 ------------------------ */
@@ -396,11 +398,11 @@ table td{
             
   
               제목:&nbsp; <br>  
-            <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요"/><br><br>
+            <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요" required/><br><br>
               받는사람:&nbsp;  ${dto.writer}&nbsp;(${dto.email}) 
              <br>  
              <br>
-              <textarea placeholder = "내용을 입력해주세요" name="contents"/></textarea><br>
+              <textarea placeholder = "내용을 입력해주세요" name="contents" required /></textarea><br>
             <input type="hidden" name="receiver" value="${dto.writer}">
             <input type="hidden" name="receiver_email" value="${dto.email}">
             <input type="hidden" name="seq" value="${dto.seq} ">
@@ -419,6 +421,16 @@ table td{
   </div>
 
       <script>
+      //--------------------쪽지-------------------------
+      $("#message").on("click",function(){
+    	  Swal.fire({
+    		  position: 'top-end',
+    		  icon: 'success',
+    		  title: '쪽지가 전달되었습니다.',
+    		  showConfirmButton: false,
+    		  timer: 7000
+    		})
+      })
       //--------------------파일업로드시 이미지 미리보기------------------------------
        function onClickUpload() {
             let myInput = document.getElementById("my-input");
@@ -446,14 +458,27 @@ table td{
 //-------------------------------삭제버튼--------------------------------
 		
 		$("#delete").on("click", function() {
+		
+		    Swal.fire({
+                title: '삭제',
+                text: "정말 삭제하시겠습니까?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '승인',
+                cancelButtonText: '취소'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                	location.href = "/cafein/delete?seq=${dto.seq}";
+                    Swal.fire(
+                        '삭제되었습니다',
+                        '삭제완료',
+                        'success'
+                    )
+                }
+            })
 			
-			 let result = confirm("정말 삭제하시겠습니까?");
-			if(result){
-				alert("삭제 완료되었습니다.");
-				location.href = "/cafein/delete?seq=${dto.seq}";
-			}else{
-				
-			} 
 		
 		})
 		$("#update").on("click",function(){
