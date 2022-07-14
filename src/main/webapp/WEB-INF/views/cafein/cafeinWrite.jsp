@@ -161,6 +161,9 @@ input[type=text] {
 	height: 40px;
 	border-radius: 5px;
 }
+input:disabled {
+  background:white;
+}
 label{
   color: white;
 }
@@ -258,7 +261,7 @@ label{
     <td class="tableTitle">주소 : </td>
     <td>
    <input type="hidden" name="zipcode" id="zipcode"  />
-   <input type="text" name="address1" id="address1" id="address1">
+   <input type="text" name="address1" id="address1" id="address1" disabled>
 	<button type="button" onclick="execDaumPostcode()" class="btn btn-success" id="zipcode_find">
 								찾기</button></td>
   </tr>
@@ -388,6 +391,8 @@ label{
 
 						if (data.userSelectedType === "R") {
 							addr = data.roadAddress;
+						}else {
+							addr = data.jibunAddress;
 						}
 
 						document.getElementById("zipcode").value = data.zonecode;
@@ -398,6 +403,9 @@ label{
 	}
  
  //---------------------------------공백시 return false--------------------------------
+//  $("#address1").on("input",function() {
+// 	alert("주소찾기 버튼으로 ") 
+//  })
  
  $("#add").on("click",function(){
 	 if($("#name").val() == ''){

@@ -141,6 +141,9 @@ nav button:hover{
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+input:disabled {
+  background:white;
+}
 #file img{
   width: 300px;
   height: 300px;
@@ -260,8 +263,8 @@ label{
     <td class="tableTitle">주소 : </td>
     <td>
    <input type="hidden" name="zipcode" id="zipcode"  />
-   <input type="text" name="address1" id="address1" value="${dto.address1 }">
-	<button type="button" onclick="execDaumPostcode()" class="btn btn-success" id="zipcode_find">
+   <input type="text" name="address1" id="address1" value="${dto.address1 }" disabled>
+	<button type="button" onclick="execDaumPostcode()" class="btn btn-success" id="zipcode_find" >
 								찾기</button></td>
   </tr>
   <tr>
@@ -390,6 +393,8 @@ label{
 
 						if (data.userSelectedType === "R") {
 							addr = data.roadAddress;
+						}else {
+							addr = data.jibunAddress;
 						}
 
 						document.getElementById("zipcode").value = data.zonecode;
@@ -402,6 +407,8 @@ label{
  //---------------------------------공백시 return false--------------------------------
  
  $("#update").on("click",function(){
+	 $("#address1").removeAttr("disabled");
+	 
 	 if($("#name").val() == ''){
 		 alert("카페이름을 입력해주세요");
 		 return false;
@@ -422,6 +429,19 @@ label{
 		 alert("마감시간을 선택해주세요.")
 		 return false;
 	 }
+	 else if($('#openarr1 > option:selected').val() == $('#finisharr1 > option:selected').val() && 
+			 $('#openarr2 > option:selected').val() == $('#finisharr2 > option:selected').val() &&
+			 $('#openarr3 > option:selected').val() == $('#finisharr3 > option:selected').val()
+			 ){
+		 alert("오픈/마감시간이 같습니다.다시 선택해주세요.")
+		 return false;
+	 }
+	 else if($('#openarr1 > option:selected').val() == $('#finisharr1 > option:selected').val() &&
+			 $('#openarr2 > option:selected').val() > $('#finisharr2 > option:selected').val() ){
+		 alert("시간을 다시 선택해주세요.")
+		 return false;
+	 }
+	 
 	 else if($("input[name='parking']:checked").is(":checked") == false){
 		 alert("주차장유무를 체크해주세요.")
 		 return false;

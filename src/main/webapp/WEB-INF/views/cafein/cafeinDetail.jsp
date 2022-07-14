@@ -319,7 +319,9 @@ table td{
   </tr>
         </table>
         </div>
+       
         <div class="col-12" style="text-align: right;" > 
+      
           <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="fa-regular fa-envelope"></i></button>
           <button id="like" class="btn btn-primary"><i class="fa-regular fa-heart  buttonIcon"></i></button></div>
@@ -331,13 +333,12 @@ table td{
 		</div>
 	</c:if>
       </div>
-    
+   
   
 
 
 
 </div> 
-<hr style="color: white;margin-top: 5%;">
 <!--------------------------------------------캐러셀부분-------------------------------------------------->
 <!-- <div class="row" style="margin-top: 5%;text-align:center ;" > -->
 <!--     <div class="col-12" id="caru"> -->
@@ -426,20 +427,7 @@ table td{
        
 
         $("#like").click("on",function() {
-        	$.ajax({
-				url : "/cafein/cafein_like_check", 
-				type : "post",
-				data : {"id":memId},
-				success : function(result){
-					if(result > 0){
-						$("#checkId").text("이미 사용중인 아이디입니다.").css("color","red");
-						id = false;
-					}else{
-						$("#checkId").text("사용 가능한 아이디입니다.").css("color","black");
-						id = true;
-					}
-				}
-        	})
+   
         	//하트 활성화상태
           if($("#like").html() == '<i class="fa-regular fa-heart  buttonIcon"></i>') {
 							

@@ -83,6 +83,8 @@ public class CafeinController {
 	@RequestMapping("update") 
 	public String update(int seq, String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking,String realPath,MultipartFile file) throws Exception {
 		System.out.println(seq);
+		System.out.println(address1);
+		System.out.println(address2);
 		String day = String.join("/", dayarr);
 		String open = String.join(":", openarr);
 		String finish = String.join(":", finisharr);
