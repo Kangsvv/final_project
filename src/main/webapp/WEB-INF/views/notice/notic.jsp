@@ -22,6 +22,8 @@
    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
    crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
 
 <title>이벤트 및 공지사항</title>
 
@@ -178,7 +180,7 @@ button {
 
 .nbtn {
 	color: black;
-	font-size: 20px;
+	font-size: 30px;
 	text-decoration : none;
 }
 
@@ -308,6 +310,10 @@ li.dropdown {
 
 .show {display:block;}
 
+#example_length,#example_info{
+display: none;
+}
+
 </style>
 
 </head>
@@ -347,8 +353,9 @@ li.dropdown {
       
 <!-- ------------------------------------------------------------header----------------------------------------------------- -->
 
+
 <br>
-      <h1 class="main" style="color:white; text-align: center;">Notic</h1>
+      <h1 class="main" style="color:white; text-align: center;">Event</h1>
       <div style="border-bottom: 3px solid white; width: 70%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
 	<div id="Box">
@@ -356,16 +363,37 @@ li.dropdown {
       <div id="Noticecontainer">
 
 			<div class="row col-12 noticbtn" style="margin-bottom: 15px;">
-				<div class="col-1" style="padding: 0%; text-align: center;">
+				<div class="col-12" style="padding: 0%; text-align: left; margin-left: 3%;">
 					<a href="/notice/event_selectAll" class="nbtn">Event</a>
-				</div>
-				<div class="col-1" style="padding: 0%; text-align: center;">
 					<a href="/notice/notic_selectAll" class="nbtn" style="color: #760c0c; font-weight: bold">Notice</a>
 				</div>
-				<div class="col-10" style="padding: 0%;"></div>
 			</div>
 
-         <div class="row col-12 titlebox">
+<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th style="text-align: center;">글번호</th>
+                <th style="text-align: center;">제목</th>
+                <th style="text-align: center;">작성자</th>
+                <th style="text-align: center;">작성일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="i" items="${nlist}">
+             <tr>
+                <th>${i.seq}</th>
+                <th><a href="/notice/selectBySeq?seq=${i.seq }" style="text-decoration: none; color: black;" >${i.title}</a></th>
+                <th>${i.writer}</th>
+                <th><fmt:formatDate pattern="yy년 MM월 dd일 HH:mm" value="${i.write_date}"/></th>
+            </tr>
+            
+            </c:forEach>
+        </tbody>
+    </table>
+
+
+
+<%--          <div class="row col-12 titlebox">
             <div class="col-1 title_head">No.</div>
             <div class="col-7 title_head">제목</div>
             <div class="col-2 title_head">글쓴이</div>
@@ -373,39 +401,40 @@ li.dropdown {
          </div>
 
 			<c:choose>
-				<c:when test="${empty nlist}">
+				<c:when test="${empty elist}">
 					<div>현재 등록된 게시글이 없습니다.</div>
 				</c:when>
 				<c:otherwise>
-					<c:forEach var="i" items="${nlist}">
-					<a class="constyle" href="/notice/nselectBySeq?seq=${i.seq }">
+					<c:forEach var="i" items="${elist}">
+						<a class="constyle" href="/notice/selectBySeq?seq=${i.seq }">
 						<div class="row col-12 noticbox">
-							<div class="col-1 notice">${i.seq }</div>
+							<div class="col-1 notice" >${i.seq }</div>
 							<div class="col-7 notice1">${i.title }</div>
 							<div class="col-2 notice">${i.writer }</div>
 							<div class="col-2 notice">
-							<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
+								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
 							</div>
 						</div>
 						</a>
 					</c:forEach>
 				</c:otherwise>
-				</c:choose>
+			</c:choose> --%>
 
-			<%-- <c:choose>
+			<c:choose>
 				<c:when test="${loginID = admin} "> --%>
 					<div class="row">
 						<div class="col-12 create">
 							<input type="button" class="cbtn" value="작성하기">
 						</div>
 					</div>
-<%-- 				</c:when>
+			</c:when>
 
 				<c:otherwise>
 			
 				</c:otherwise>
 				
-			</c:choose> --%>
+			</c:choose>
+			
 		</div>
 </div>
 
@@ -461,8 +490,39 @@ window.onclick = function(e) {
 }
 
 $(".cbtn").click(function() {
-	location.href = "/notice/notic_Write";
+	location.href = "/notice/event_Write";
 })
+
+
+	 var lang_kor = {
+		"decimal" : "",
+		"emptyTable" : "데이터가 없습니다.",
+		"info" : "_START_ - _END_ (총 _TOTAL_ 명)",
+		"infoEmpty" : "0명",
+		"infoFiltered" : "(전체 _MAX_ 명 중 검색결과)",
+		"infoPostFix" : "",
+		"thousands" : ",",
+		"lengthMenu" : "_MENU_ 개씩 보기",
+		"loadingRecords" : "로딩중...",
+		"processing" : "처리중...",
+		"search" : "검색 : ",
+		"zeroRecords" : "검색된 데이터가 없습니다.",
+		"paginate" : {
+			"first" : "첫 페이지",
+			"last" : "마지막 페이지",
+			"next" : "다음",
+			"previous" : "이전" },
+		"aria" : {
+			"sortAscending" : " :  오름차순 정렬",
+			"sortDescending" : " :  내림차순 정렬"
+		}
+	};
+
+$(document).ready(function() {
+		$('#example').DataTable({
+			language : lang_kor
+		});
+	});
 
 </script>
 
