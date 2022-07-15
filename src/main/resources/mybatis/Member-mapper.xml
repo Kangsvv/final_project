@@ -27,7 +27,7 @@
 
 	<!-- 회원가입 처리 -->
 	<insert id="joinAction">
-		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},0,0,'','',sysdate,'')
+		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},0,0,'','',sysdate,'','')
 	</insert>
 	
 	<!-- 로그인 -->
@@ -54,14 +54,17 @@
 	<update id="passwordCheange">
 		update member set mem_pw = #{mem_pw} where mem_seq = #{mem_seq}
 	</update>
+	
 	<!-- 이메일 중복 확인 -->
 	<select id="memberemailCheck" resultType="int">
 		select count(*) from member where mem_email = #{email}
 	</select>
+	
 	<!-- 닉네임값 가져오기 -->
 	<select id="membernickname" resultType="String">
 	select mem_name from member where mem_id=#{mem_id}
 	</select>
+	
 	<!-- 이메일 가져오기 -->
 	<select id="memberemail" resultType="String">
 	select mem_email from member where mem_id=#{mem_id}

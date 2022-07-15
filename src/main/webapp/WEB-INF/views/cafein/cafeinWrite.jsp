@@ -18,6 +18,8 @@
 <!-- 지도 api -->
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!--  sweet alert  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <style>
   /*------------------------ 헤더 부분 스타일 ------------------------ */
@@ -161,6 +163,9 @@ input[type=text] {
 	height: 40px;
 	border-radius: 5px;
 }
+input:disabled {
+  background:white;
+}
 label{
   color: white;
 }
@@ -258,7 +263,9 @@ label{
     <td class="tableTitle">주소 : </td>
     <td>
    <input type="hidden" name="zipcode" id="zipcode"  />
-   <input type="text" name="address1" id="address1" id="address1">
+
+   <input type="text" name="address1" id="address1" disabled>
+
 	<button type="button" onclick="execDaumPostcode()" class="btn btn-success" id="zipcode_find">
 								찾기</button></td>
   </tr>
@@ -388,6 +395,8 @@ label{
 
 						if (data.userSelectedType === "R") {
 							addr = data.roadAddress;
+						}else {
+							addr = data.jibunAddress;
 						}
 
 						document.getElementById("zipcode").value = data.zonecode;
@@ -398,34 +407,69 @@ label{
 	}
  
  //---------------------------------공백시 return false--------------------------------
- 
+
  $("#add").on("click",function(){
+	 $("#address1").removeAttr("disabled");
 	 if($("#name").val() == ''){
-		 alert("카페이름을 입력해주세요");
+		 Swal.fire({
+             icon: 'warning',
+             title: '확인해주세요.',
+             text: '카페이름을 입력해주세요',
+         });
 		 return false;
 	 }
 	 else if($("#address1").val() == '' || $("#address2").val() == ''){
-		 alert("주소를 입력해주세요.");
+		 Swal.fire({
+             icon: 'warning',
+             title: '확인해주세요.',
+             text: '주소를 입력해주세요.',
+         });
+	
 		 return false;
 	 }
 	 else if($("input:checkbox[name='dayarr']").is(":checked") == false){
-		 alert("휴무일을 체크해주세요.")
+		 Swal.fire({
+             icon: 'warning',
+             title: '확인해주세요.',
+             text: '휴무일을 체크해주세요',
+         });
 		 return false;
 	 }
 	 else if(!$('#openarr1 > option:selected').val()||!$('#openarr2 > option:selected').val()||!$('#openarr3 > option:selected').val()){
-		 alert("오픈시간을 선택해주세요.")
+		 Swal.fire({
+             icon: 'warning',
+             title: '확인해주세요.',
+             text: '오픈시간을 선택해주세요.',
+         });
+		
 		 return false;
 	 }
 	 else if(!$('#finisharr1 > option:selected').val()||!$('#finisharr2 > option:selected').val()||!$('#finisharr3 > option:selected').val()){
-		 alert("마감시간을 선택해주세요.")
+		 Swal.fire({
+             icon: 'warning',
+             title: '확인해주세요.',
+             text: '마감시간을 선택해주세요.',
+         });
+		
 		 return false;
 	 }
 	 else if($("input[name='parking']:checked").is(":checked") == false){
-		 alert("주차장유무를 체크해주세요.")
+		 Swal.fire({
+             icon: 'warning',
+             title: '확인해주세요.',
+             text: '주차장유무를 체크해주세요.',
+         });
+		
+	
 		 return false;
 	 }
 	 else if(!$("#ex_file").val()){
-		 alert("사진을 첨부해주세요.")
+		 Swal.fire({
+             icon: 'warning',
+             title: '확인해주세요.',
+             text: '사진을 첨부해주세요.',
+         });
+		
 		 return false;
 	 }
 	 // file

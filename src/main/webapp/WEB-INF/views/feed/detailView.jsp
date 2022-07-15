@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -209,6 +211,10 @@ nav button:hover{
         	text-align:right;
         	padding-right:30px;
         }
+        
+        .editBtn, .deleteBtn, #bookmark, .likecount{
+        	cursor:pointer;
+        }
         /* -------------댓글 관련 스타일 -----------------*/
         .replyWriteBox{
          	padding:20px;
@@ -283,6 +289,8 @@ nav button:hover{
          .replymodify{
          	margin-right:5px;
          }
+        /*-----------------------모달 창 스타일 -----------------------------*/
+		
    </style>
 
 </head>
@@ -315,14 +323,21 @@ nav button:hover{
    
    
    <div id="maincon">
-      <div class="row border-bottom border-2" id="conMenu">
-                   <div class="col-12 col-md-12 ellipsis" style="padding-left:10px; font-size:28px;" id="title">다들 하이요!!</div>
+      <div class="row border-bottom border-2" id="conMenu" style="padding-bottom: 5px;">
+                   <div class="col-12 col-md-12 ellipsis" style="padding-left:10px; font-size:28px;" id="title">${dto.title}</div>
                     <div class="row">
-                        <div class="col-12 ellipsis id" style="padding-left:8px;">hihiyoyo</div>
-                        <div class="col-12 col-md-6" style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;10</div>
-                        <div class="col-6 col-md-3"><i class="fa-solid fa-calendar"></i>&nbsp;2022.06.29</div>
-                        <div class="col-6 col-md-3 bookmark"><i class="fa-solid fa-user-group"></i></div>
-
+                        <div class="col-12 ellipsis id" id="writerId" style="padding-left:8px;">${dto.id }
+                        	<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"	style="background-color:#222; border:none">
+                        		<i class="fa-solid fa-user-group" style="color:white;"></i>
+                        	</button>
+                        </div>
+                        <div class="col-12 col-md-6" style="padding-left:8px;"><i class="fa-solid fa-eye"></i>&nbsp;&nbsp;${dto.view_count }</div>
+                        <div class="col-6 col-md-3"><i class="fa-solid fa-calendar"></i>&nbsp;
+                        	<fmt:formatDate pattern="yy-MM-dd HH:mm:ss" value="${dto.write_date}" />
+                        </div>
+                        <c:if test="${loginID == dto.id }">
+                        	<div class="col-6 col-md-3 mdbtns" style="text-align:center;"><i class="fa-solid fa-xl fa-pen-to-square editBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-regular fa-xl fa-trash-can deleteBtn" style="color:white;"></i></div>
+						</c:if>
                      </div>
                 </div>
 
@@ -333,7 +348,7 @@ nav button:hover{
          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="/resources/img/cafe1.jpg" class="d-block">
+                  <img src="/resources/feed/${fdto.sys_name }" class="d-block">
                 </div>
                 <div class="carousel-item">
                   <img src="/resources/img/cafe2.jpg" class="d-block">
@@ -355,7 +370,7 @@ nav button:hover{
 	            <div class="row">
 	            	<div class="col-6">
 	            		<span class="marginSet">
-			               <i class="fa-regular fa-xl fa-heart"></i>&nbsp;&nbsp;3000
+			               <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count }
 			            </span>
 			            
 			            <span>
@@ -364,7 +379,7 @@ nav button:hover{
 	            	</div>
 	            	<div class="col-6" id="bookmark">
 	            		<span>
-		            		<i class="fa-solid fa-xl fa-bookmark"></i>
+		            		<i class="fa-regular fa-xl fa-bookmark"></i>
 		            	</span>
 	            	</div>
 	            </div>
@@ -373,11 +388,7 @@ nav button:hover{
             </div>
             <div class="contentsBox">
 <!--              style="margin-left:5%; -->
-               화이팅!<br>
-               화이팅!<br>
-               화이팅!<br>
-               화이팅!<br>
-               화이팅!
+               ${dto.contents }
 
             </div>
             <div class="replyWriteBox">
@@ -422,58 +433,72 @@ nav button:hover{
                 	})
                 	$("#replyContents").focus();
                 	return false;
-                }
-                
-                
-                let container = $("<div>");
-                container.attr("class","row replycontainer");
+                }else{
+                	$.ajax({
+                		url:"/feed/replyWrite",
+                		data:{
+                			cafefeed_seq:${dto.cafefeed_seq},
+                			contents:article
+                		},
+                		async:false
+                	}).done(function(resp){
+                		console.log(resp);
+                		$(".replycontainer").remove();
+                		for(let i = 0; i < resp.length; i++){
+                			let container = $("<div>");
+                            container.attr("class","row replycontainer");
 
-                let left = $("<div>");
-                left.attr("class","col-12 replyleft");
-                
-                
-                let right = $("<div>");
-                right.attr("class","col-12 replyright");
-				
-                let writerName = $("<div>");
-                writerName.attr("id", "replyWriter");
-                writerName.attr("class", "col-12");
-                writerName.text("Writer");
+                            let left = $("<div>");
+                            left.attr("class","col-12 replyleft");
+                            
+                            
+                            let right = $("<div>");
+                            right.attr("class","col-12 replyright");
+            				
+                            let writerName = $("<div>");
+                            writerName.attr("id", "replyWriter");
+                            writerName.attr("class", "col-12");
+                            writerName.text(resp[i].id);
 
-                let contents = $("<div>");
-                contents.attr("class","col-12 replycontents2");
-                contents.text(article);
+                            let contents = $("<div>");
+                            contents.attr("class","col-12 replycontents2");
+                            contents.text(resp[i].contents);
 
+                            
+                            let modifyBtn = $("<button>");
+                            modifyBtn.attr("type","button");
+                            modifyBtn.attr("class","replymodify btn btn-secondary");
+                            modifyBtn.text("수정");
+                            
+                            let delBtn = $("<button>");
+                            delBtn.attr("type","button");
+                            delBtn.attr("class","replydel btn btn-secondary");
+                            delBtn.text("삭제");
+                            
+                            
+                            left.append(writerName);
+                            left.append(contents);
+
+                            right.append(modifyBtn);
+                            right.append(delBtn);
+
+                            container.append(left);
+                            container.append(right);
+
+                            $(".replyBox").prepend(container);
+
+                            $("#replyContents").val("");
+                            $("#replyContents").focus();
+                		}
+                        });
+                    	
+                        $("body").on("click", ".replydel", function(){
+                        	location.href = "/feed/deleteReply?seq="+${dto.seq}+"&cafefeed_seq="+${dto.cafefeed_seq};
+                            $(this).closest(".replycontainer").remove();
+                        });
+                	}
+                })
                 
-                let modifyBtn = $("<button>");
-                modifyBtn.attr("type","button");
-                modifyBtn.attr("class","replymodify btn btn-secondary");
-                modifyBtn.text("수정");
-                
-                let delBtn = $("<button>");
-                delBtn.attr("type","button");
-                delBtn.attr("class","replydel btn btn-secondary");
-                delBtn.text("삭제");
-                
-                
-                left.append(writerName);
-                left.append(contents);
-
-                right.append(modifyBtn);
-                right.append(delBtn);
-
-                container.append(left);
-                container.append(right);
-
-                $(".replyBox").prepend(container);
-
-                $("#replyContents").val("");
-                $("#replyContents").focus();
-            });
-        
-            $("body").on("click", ".replydel", function(){
-                $(this).closest(".replycontainer").remove();
-            });
 
         });
         
@@ -496,7 +521,20 @@ nav button:hover{
             
             
          });
+        
+        $(".deleteBtn").on("click", function(){
+        	 var delConfirm = confirm('게시글을 삭제하시겠습니까?');
+        	 if (delConfirm) {
+        		location.href = "/feed/deleteFeed?cafefeed_seq=${dto.cafefeed_seq}";
+        		alert('삭제되었습니다.');
+        	 }else {
+        	   alert('삭제가 취소되었습니다.');
+        	 }
+        })
+        
+        
     </script>
+    
       <!-------------------------------------------------------Footer------------------------------------------------->
     <div class="col-12">
   <div id="foot" align=center>
@@ -511,7 +549,6 @@ nav button:hover{
      </div>
   </div>
 </div>
-
 
 </body>
 </html>

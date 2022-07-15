@@ -12,11 +12,62 @@
 	
 	<!-- 추천순 무한스크롤 출력 -->
 	<select id="selectAllpp" resultType="kh.spring.dto.FeedDTO">
-		select * from (select row_number() over(order by recommend desc) as line, CafeFeed.* from CafeFeed) where line between #{start} and #{end}
+		select * from (select row_number() over(order by like_count desc) as line, CafeFeed.* from CafeFeed) where line between #{start} and #{end}
 	</select>
 
 	<!-- 피드 검색결과 출력 -->
 	<select id="feedSearchResult" resultType="kh.spring.dto.FeedDTO">
 		select * from (select row_number() over(order by recommend desc) as line, CafeFeed.* from CafeFeed) where (REPLACE(title,' ','') like '%'||#{title}||'%') and (line between #{start} and #{end})
 	</select>
+	<!-- 피드 insert 기능 -->
+	<insert id="feed-insert">
+		insert into cafefeed values(cafefeed_seq.nextval,#{title},#{id},#{contents},default,default,default)
+		<selectKey order="AFTER" keyProperty="cafefeed_seq" resultType="int">
+			select cafefeed_seq.currval from dual
+		</selectKey>
+	</insert>
+	<!-- 피드 사진 insert 기능 -->
+	<insert id="feed_img-insert">
+		insert into feed_img values(feed_img_seq.nextval,#{ori_name},#{sys_name},#{cafefeed_seq})
+	</insert>
+	<!-- 피드 사진 select 기능 -->
+	<select id="feed_img-select" resultType="kh.spring.dto.Feed_imgDTO">
+ 		select * from feed_img order by seq desc
+ 	</select>
+ 	<!-- 피드 디테일뷰 -->
+ 	<select id="feed-detail" resultType="kh.spring.dto.FeedDTO">
+		select * from cafefeed where cafefeed_seq=#{cafefeed_seq}
+	</select>
+	<!-- 피드 디테일뷰 사진 -->
+	<select id="feed_img-detail" resultType="kh.spring.dto.Feed_imgDTO">
+		select * from feed_img where cafefeed_seq=#{cafefeed_seq}
+	</select>
+	
+	<!-- 리뷰 게시글 삭제 -->
+	<delete id="feed-delete">
+		delete from cafefeed where cafefeed_seq=#{cafefeed_seq}
+	</delete>
+	
+	<!-- 리뷰 이미지 삭제 -->
+	<delete id="feed_img-delete">
+		delete from feed_img where cafefeed_seq=#{cafefeed_seq}
+	</delete>
+	
+	<!-- 리뷰 이미지 파일 불러오기 -->
+	<select id="feed_imgfile" resultType="String">
+		select sys_name from feed_img where cafefeed_seq=#{cafefeed_seq}
+	</select>
+	
+	<!-- 댓글 쓰기 -->
+	<insert id="reply_insert">
+		insert into cafefeedReply values(cafefeedReply_seq.nextval,#{id},#{contents},default,#{cafefeed_seq})
+	</insert>
+	
+	<!-- 댓글 리스트 불러오기 -->
+	<select id="replylist_select" resultType="kh.spring.dto.ReplyDTO">
+		select * from cafefeedReply where cafefeed_seq=#{cafefeed_seq}
+	</select>
+	<delete id="reply_delete">
+		delete from cafefeedReply where seq=#{seq}
+	</delete>
 </mapper>

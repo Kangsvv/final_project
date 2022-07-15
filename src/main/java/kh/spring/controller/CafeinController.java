@@ -1,15 +1,15 @@
 package kh.spring.controller;
 
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.spring.dto.Cafein_likeDTO;
 import kh.spring.service.CafeinService;
 
 @Controller
@@ -61,12 +61,13 @@ public class CafeinController {
 		serv.cafein_imglist(model);
 		return "/cafein/cafeinMain";
 	}
-	//------------------------Cafein 상세보기---------------------------
+	//------------------------Cafein 상세보기(로그인시)---------------------------
 	@RequestMapping("selectBySeq")
 	public String selectBySeq(Model model,int cafein_seq) throws Exception {
 		serv.selectBySeq(model, cafein_seq);
 		return "cafein/cafeinDetail";
 	}
+
 	//-------------------------Cafein 수정페이지 ------------------------
 	@RequestMapping("UpdateSeq")
 	public String UpdateSeq(Model model,int cafein_seq) throws Exception {
@@ -83,6 +84,8 @@ public class CafeinController {
 	@RequestMapping("update") 
 	public String update(int seq, String name,String address1,String address2,String[] dayarr,String[] openarr,String[] finisharr,String parking,String realPath,MultipartFile file) throws Exception {
 		System.out.println(seq);
+		System.out.println(address1);
+		System.out.println(address2);
 		String day = String.join("/", dayarr);
 		String open = String.join(":", openarr);
 		String finish = String.join(":", finisharr);
@@ -113,18 +116,29 @@ public class CafeinController {
 	
 	
 	//------------------------좋아요기능----------------------------------
+	@ResponseBody
 	@RequestMapping("like")
-	public String cafein_like(int seq) throws Exception {
-		serv.cafein_like(seq);
-		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
+	public int cafein_like(int seq) throws Exception {
+		
+		return serv.cafein_like(seq);
 	}
 	//----------------------좋아요 취소----------------------------------
+	@ResponseBody
 	@RequestMapping("like-cancel")
-	public String like_cancel(int seq) throws Exception {
+	public int like_cancel(int seq) throws Exception {
 		serv.like_cancel(seq);
-		return "redirect:/caein/selectBySeq?cafein_seq="+seq;
+		return serv.like_cancel(seq);
 	}
 	//-----------------------좋아요 수--------------------------------
+	@ResponseBody
+	@RequestMapping("cafein_like_count")
+	public int cafein_like_count(int seq) throws Exception {
+		
+		return serv.cafein_like_count(seq);
+	}
+	
+	
+	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {
 		e.printStackTrace();

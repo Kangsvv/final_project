@@ -201,7 +201,6 @@ button {
 .eventbox {
 	background-color: white;
 	border-bottom: 1px solid #222;
-	text-align: center;
 	height: 650px;
 	padding-top: 0.25%;
 	margin: auto;
@@ -363,6 +362,33 @@ li.dropdown {
 	border-radius: 15%;
 }
 
+#Noticecontainer::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+#Noticecontainer::-webkit-scrollbar-thumb {
+    height: 15%; /* 스크롤바의 길이 */
+    background: none; /* 스크롤바의 색상 */
+}
+
+#Noticecontainer::-webkit-scrollbar-track {
+    background: none;  /*스크롤바 뒷 배경 색상*/
+}
+
+/*타이틀 부분 사이즈에 따른 반응형 처리 적용*/
+
+@media (max-width:1200px) {
+	.bluck2{
+	display: none;
+	}
+}
+
+@media (min-width:1201px) {
+	.bluck1{
+	display: none;
+	}
+}
+
 </style>
 
 </head>
@@ -410,14 +436,15 @@ li.dropdown {
 
 	<div id="Box">
 
-		<div id="Noticecontainer">
+		<div id="Noticecontainer" style="overflow: auto;">
 
 			<div class="row col-12 conbox">
-				<div class="col-3 con_head">${dto.writer }</div>
-				<div class="col-6 con_head">
+				<div class="col-3 con_head bluck2">${dto.writer }</div>
+				<div class="col-12 con_head bluck1">${dto.writer }</div>
+				<div class="col-6 con_head bluck2">
 					<fmt:formatDate pattern="yy-MM-dd" value="${dto.write_date}" />
 				</div>
-				<div class="col-3 con_head">
+				<div class="col-3 con_head bluck2">
 					조회수 :
 					<%--  추후 가능하면 넣을 예정 ${dto.count } --%>
 				</div>
@@ -427,12 +454,24 @@ li.dropdown {
 			<textarea class="row col-12 eventbox"
 				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled>${dto.contents }</textarea>
 
-			<div class="col-12 create">
-				<input type="button" class="upbtn" value="수정"> 
-				<input type="button" class="delbtn" value="삭제">
-				<input type="button" class="backbtn" value="뒤로">
+				<c:choose>
+					<c:when test="${loginID =admin }">
+						<div class="col-12 create">
+							<input type="button" class="upbtn" value="수정"> <input
+								type="button" class="delbtn" value="삭제"> <input
+								type="button" class="backbtn" value="뒤로">
+						</div>
+					</c:when>
+
+					<c:otherwise>
+						<div class="col-12 create">
+							<input type="button" class="backbtn" value="뒤로">
+						</div>
+					</c:otherwise>
+
+				</c:choose>
+
 			</div>
-		</div>
 	</div>
 	<!-------------------------------------------------------Footer------------------------------------------------->
 	<div class="col-12 d-none d-md-block">
@@ -529,8 +568,8 @@ $(".upbtn").on("click",function(){
 $(".create").on("click", "#modifyBtn",function(){
 	
 	let seq = "${dto.seq}"; // 게시글 고유 넘버
-	let title = $(".main").text();
-	let contents = $(".eventbox").text(); // 게시글 내용
+	let title = $(".main").val();
+	let contents = $(".eventbox").val(); // 게시글 내용
 	
 	$.ajax({
 		url : "/notice/event_modify",

@@ -309,7 +309,7 @@ li.dropdown {
             <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용"></textarea>
             </div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
-                <a href="/notice/event"><button class="btn" type="button">뒤로</button></a>
+                <a href="/notice/event_selectAll"><button class="btn" type="button">뒤로</button></a>
                 <button type="submit" class="btn" style="margin-left:10px;">등록</button>
             </div>
         </div>
