@@ -305,11 +305,11 @@ table td{
     <td>${dto.day}</td>
   </tr>
   <tr>
-    <td class="asd">오픈시간 : </td>
+    <td class="asd">오픈시간 :&nbsp;&nbsp; </td>
     <td>${dto.open }</td>
   </tr>
   <tr>
-    <td class="asd">마감시간 : </td>
+    <td class="asd">마감시간 :&nbsp;&nbsp; </td>
     <td>${dto.finish }</td>
   </tr>
   <tr>
@@ -319,13 +319,13 @@ table td{
     </td>
   </tr>
   <tr>
-    <td  class="asd">작성자 : </td>
+    <td  class="asd">작성자 :</td>
     <td>
      ${dto.writer }
     </td>
   </tr>
   <tr>
-    <td colspan="2" id="like_count" >좋아요:${count}</td>
+    <td colspan="2" id="like_count" >좋아요:&nbsp;&nbsp;&nbsp;${count}</td>
    
    
   </tr>
