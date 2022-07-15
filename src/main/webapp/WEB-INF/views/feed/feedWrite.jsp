@@ -171,8 +171,62 @@ nav button:hover{
          }
          
          textarea:focus {
-    outline: none;
-}
+		    outline: none;
+		}
+		#file{
+		  border-radius: 5px;
+		  width: 300px;
+		  height: 300px;
+		  color: black;
+		  text-align: center;
+		  margin: auto;
+		  margin-bottom: 9%;
+		}
+		#preview{
+		  border: 1px solid white;
+		  width: 300px;
+		  height: 300px;
+		  color:white;
+		  text-align: center;
+		  margin: auto;
+		}
+		#file label {
+		  display: inline-block;
+		  padding: .5em .75em;
+		  color: #fff;
+		  font-size: inherit;
+		  line-height: normal;
+		  vertical-align: middle;
+		  background-color: #5cb85c;
+		  cursor: pointer;
+		  border: 1px solid #4cae4c;
+		  border-radius: .25em;
+		  -webkit-transition: background-color 0.2s;
+		  transition: background-color 0.2s;
+		}
+		
+		#file label:hover {
+		  background-color: #6ed36e;
+		}
+		
+		#file label:active {
+		  background-color: #367c36;
+		}
+		
+		#file input[type="file"] {
+		  position: absolute;
+		  width: 1px;
+		  height: 1px;
+		  padding: 0;
+		  margin: -1px;
+		  overflow: hidden;
+		  clip: rect(0, 0, 0, 0);
+		  border: 0;
+		}
+		#file img{
+		  width: 300px;
+		  height: 300px;
+		}
 </style>
 <body>
    <!------------------------------------------------------------header----------------------------------------------------->
@@ -200,20 +254,27 @@ nav button:hover{
             </div>
           </nav>
 <!-------------------------------------------------------Main------------------------------------------------->
+
 <div class="container" id="main">
    <div class="col-12" style="margin-bottom:40px;">
       <a style="color: white; font-size: 40px;">카페리뷰 글쓰기</a>
     </div>
-    <form>
+    <form action="/feed/feed_insert" method="post" enctype="multipart/form-data">
        <div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
-            <input type=text name=title id=title placeholder="제목" style="width:97%;">
+            <input type=text name=title id=title placeholder="제목" style="width:97%; color:white;">
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
-            <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용"></textarea>
+            <textarea name="contents" id="contents" style="width: 98%; color:white;" rows="30" placeholder="내용"></textarea>
             </div>
+            <div class="row" style="margin-top: 5%; margin-bottom: 5%;">
+				<div class="col-12 col-sm-6" id="file"><img id="preview" />
+			   		<label for="ex_file">업로드</label>
+			   		<input type="file" name="file" id="ex_file" value="파일첨부" onchange="readURL(this);" multiple>
+				</div>
+			</div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
-                <a href="/list.board?cpage=1"><button class="btn" type="button">뒤로</button></a>
+                <a href="/feed/goFeed?page=1"><button class="btn" type="button">뒤로</button></a>
                 <button type="submit" class="btn" style="margin-left:10px;">작성</button>
             </div>
         </div>
@@ -233,7 +294,60 @@ nav button:hover{
      </div>
   </div>
 </div>
+<script>
+	$(".writeBtn").on("click",function(){
+		 if($("#title").val() == ''){
+			 alert("제목을 입력해주세요");
+			 $("#contents").focus();
+			 return false;
+		 }
+		 else if($("#contents").val() == ''){
+			 alert("내용를 입력해주세요.");
+			 $("#contents").focus();
+			 return false;
+		}
+	 	// file
+	    let fileVal = $("#ex_file").val();
+	    
+	    let maxSize = 10 * 1024 * 1024; // 10MB
+	    let fileSize = $("#ex_file")[0].files[0].size;
+ 
+			
+	   // 파일 확장자 체크
+	   if (fileVal != ""){
+	       	let ext = fileVal.split('.').pop().toLowerCase();
+	       	
+	       	if($.inArray(ext, ['jpg', 'jpeg', 'png', 'gif']) == -1){
+	       		alert('jpg, jpeg, png, gif 파일만 업로드 할 수 있습니다.');
+	       		
+	       		return false;
+	       		
+	       	}
+       	
+        }
+	})
+// -------------------------파일 업로드 시, 검수 ( 가로 X 세로 사이즈 체크 ) ------------------------
+</script>
 
+					<!-- 파일 업로드 창에 사진 띄어주기 -->
+      <script>
+       function onClickUpload() {
+            let myInput = document.getElementById("my-input");
+            myInput.click();
+        }
+		function readURL(input) {
+		  if (input.files && input.files[0]) {
+		    var reader = new FileReader();
+		    reader.onload = function(e) {
+		      document.getElementById('preview').src = e.target.result;
+		    };
+		    
+		    reader.readAsDataURL(input.files[0]);
+		  } else {
+		    document.getElementById('preview').src = "";
+		  }
+		}
+      </script>  
           
 </body>
 </html>

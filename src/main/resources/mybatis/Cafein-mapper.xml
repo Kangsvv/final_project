@@ -22,10 +22,17 @@
 	
 	
  	<insert id="cafein-like">
- 	insert into cafein_like values(#{cafein_seq},'loginID')
+ 	insert into cafein_like values(#{cafein_seq},#{id})
  	</insert>
  	
- 	
+ 	<select id="like-count" resultType="int">
+			select count(*) from cafein_like where cafein_seq =#{cafein_seq}
+    </select>
+    
+    <select id="like-check" resultType="kh.spring.dto.Cafein_likeDTO">
+    select *from cafein_like where cafein_seq =#{cafein_seq} and id=#{id}
+    </select>
+	
  	<select id="cafein_img-select" resultType="kh.spring.dto.Cafein_imgDTO">
  	select *from cafein_img order by seq desc
  	</select>
@@ -46,7 +53,7 @@
 	delete from cafein where seq=#{cafein_seq}
 	</delete>
 	<delete id="cafein-like-cancel">
-	delete from cafein_like where seq=#{cafein_seq} and id='loginID';
+	delete from cafein_like where cafein_seq=#{cafein_seq} and id=#{id}
 	</delete>
 	
 	<select id="cafein_imgfile" resultType="String">

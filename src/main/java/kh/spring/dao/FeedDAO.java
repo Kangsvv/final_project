@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.spring.dto.CafeinDTO;
 import kh.spring.dto.FeedDTO;
 
 @Repository
@@ -49,4 +50,18 @@ public class FeedDAO {
 		map.put("end", end);
 		return mybatis.selectList("Feed.feedSearchResult", map);
 	}
+	public int insert(FeedDTO dto) throws Exception{
+
+		  mybatis.insert("Feed.feed-insert",dto);
+		  
+		  return dto.getCafefeed_seq();
+	}
+	// 리뷰 정보 가져오기
+	public FeedDTO selectBySeq(int cafefeed_seq) {
+		return mybatis.selectOne("Feed.feed-detail",cafefeed_seq);
+	}
+	public int delete(int cafefeed_seq) throws Exception{
+		return mybatis.delete("Feed.feed-delete", cafefeed_seq);
+	}
+
 }

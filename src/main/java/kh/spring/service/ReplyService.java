@@ -1,0 +1,58 @@
+package kh.spring.service;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import kh.spring.dao.Feed_imgDAO;
+import kh.spring.dao.MemberDAO;
+import kh.spring.dao.ReplyDAO;
+import kh.spring.dto.ReplyDTO;
+
+@Service
+public class ReplyService {
+
+	@Autowired
+	private ReplyDAO dao;
+	
+	@Autowired
+	private HttpSession session;
+
+	@Autowired
+	private MemberDAO mdao;
+	
+	@Autowired
+	private Feed_imgDAO fdao;
+	
+	
+	public void replyWriteProc(int cafefeed_seq, String contents) throws Exception {
+		
+		String id = (String)session.getAttribute("loginID");
+		
+		System.out.println(id);
+		
+		ReplyDTO dto = new ReplyDTO();
+		dto.setId(id);
+		dto.setContents(contents);
+		dto.setCafefeed_seq(cafefeed_seq);
+		
+		dao.replyWriteProc(dto);
+		
+	}
+	public List<ReplyDTO> selectBySeq(Model model, int cafefeed_seq) throws Exception {
+		List<ReplyDTO> list = dao.selectBySeq(cafefeed_seq);
+
+		System.out.println(list);
+		
+//		model.addAttribute("rlist", list);
+		
+		return list;
+	}
+	public void deleteReply(int seq) throws Exception{
+		dao.deleteReply(seq);
+	}
+}
