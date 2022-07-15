@@ -61,13 +61,16 @@ import kh.spring.service.QuestionService;
 		
 		
 		//---------------------- 상세페이지 이동 ---------------------
+	
 		@RequestMapping("question_detail")
 		public String question_detail(int question_seq, Model model) throws Exception {
 			
 			Qservice.read(model, question_seq);
 			
-//			List<QreplyDTO> rlist = Rservice.reply_list(question_seq);
-//			model.addAttribute("rlist", rlist);
+			List<QreplyDTO> rlist = Rservice.reply_list(question_seq);
+			model.addAttribute("rlist", rlist);
+			
+			System.out.println(rlist);
 			
 			return "/question/question_detail";
 		}
@@ -98,6 +101,15 @@ import kh.spring.service.QuestionService;
 //			}else
 //				return "false";
 			
+		}
+		
+		
+		@RequestMapping("reply_insert")
+		public String reply_insert(QreplyDTO dto, int question_seq) throws Exception{
+			
+			Rservice.insert(dto);
+		
+			return "/question/question_detail?question_seq=${i.question_seq }";
 		}
 		
 		

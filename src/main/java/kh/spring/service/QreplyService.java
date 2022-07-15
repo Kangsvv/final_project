@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kh.spring.dao.QreplyDAO;
 import kh.spring.dto.QreplyDTO;
+import kh.spring.dto.QuestionDTO;
 
 
 @Service
@@ -15,8 +16,13 @@ public class QreplyService {
 	@Autowired
 	private QreplyDAO dao;
 	
-	public List<QreplyDTO> reply_list(int parentseq) throws Exception{
-		return dao.reply_list(parentseq);
+	public List<QreplyDTO> reply_list(int question_seq) throws Exception{
+		return dao.reply_list(question_seq);
 	}
 
+
+	public void insert(QreplyDTO dto) throws Exception {
+		   dao.reply_insert(dto);
+	}
+	
 }

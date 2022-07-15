@@ -1,177 +1,222 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Question</title>
-<!-- Bootstrap ver 5.1  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+   crossorigin="anonymous">
+<script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+   integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+   crossorigin="anonymous"></script>
+<script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+   crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<title>Question Detail</title>
+
 <style>
-  /*HEADer부분----------------------------*/
- body{
-    background-color: #222;
-  }
-    nav {
-   background-color: black;
-   color: white;
-   padding-left:10%;
-   padding-right:10%;
-   border-bottom: 1px solid gray;
-}
-nav a{
-    color: white;
-}
-.navbar-nav{
-   min-width:450px;
-}
-.navbar-nav a{
-    color: white;
-    border-radius: 5px;
-    margin-right: 20px;
-}
-.navbar-nav a:hover{
-    color: black;
-    background-color: white;
-    border-radius: 5px;
-    text-decoration-line: none;
-}
-#btn{
-    text-align: right;
-}
-nav button{
-    background-color: rgba(0, 0, 0, 0.128);
-    border-radius: 5px;
-    color: white;
+body {
+	background-color: #222;
 }
 
-nav button:hover{
-    border-radius: 5px;
-    color: black;
-    background-color: white;
-}
-/*board UI출력부분----------------------------*/
-.tz-gallery {
-    padding: 40px;
-    padding-top:0px;
+.container h1 {
+	text-align: center;
+	margin-top: 50px;
+	font-family: 'Droid Sans', sans-serif;
+	font-weight: bold;
+	color: white;
 }
 
-/* Override bootstrap column paddings */
-   .tz-gallery .row > div {
-       padding: 2px;
-   }
-   
-   .tz-gallery .lightbox img {
-       width: 100%;
-       border-radius: 0;
-       position: relative;
-   }
-      .container h1 {
-          text-align: center;
-          margin-top: 50px;
-          font-family: 'Droid Sans', sans-serif;
-          font-weight: bold;
-      }
-     /* footer 부분 */
-
-#foot{
-    border-top: 1px solid gray;
-    background-color: black;
-    
-}
-
-
-.footer2{
-    line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px ;
-    font-family: 'Noto Sans KR';
-   font-style: normal;
-   font-weight: 700;
-   font-size: 14px;
-   line-height: 20px;
-   color: #FFFFFF;
-}
-.footer2 a{
-   text-decoration : none;
-   color:white;
-   }
+/*---------------------기능 구현 후 Hover 예정------------------*/
 
 /*------------------------ 헤더 부분 스타일 ------------------------ */
-      .search{
-         color:black;
-         background-color: gray;
-         border-radius: 8px;
-         height:50px;
-         padding:5px;
-         padding-left:15px;
-         font-weight : bold;
-         border:0 solid black;
-         display:block;
-         width:100%;
-         
-      }
-      input:focus {outline:none;}
-      input::placeholder {
-      color: #ccc;
-      }
-      .write{
-         width:40px;
-      }
-      .search2{
-         width:40px;
-         bottom:30px;
-         float: left;
-      }
-      .writebtn{
-          background-color:transparent;
-         float: right;
-         margin-right:5%;
-         margin-bottom:2%;
-      }
-      .searchbtn{
-         background-color:transparent;
-      }
-      .select option, #select{
-         color:black;
-         background-color:#ccc;
-      }
-      .select{
-         height:30px;
-         margin-left:5%;
-         border-radius: 8px;
-         margin-top:10px;
-         width:100px;
-      }
-      
-      button{
-        border:none;
-      }
-       #row4 .btn{
-         font-family: 'Noto Sans KR';
-         font-style: normal;
-         font-weight: 700;
-            height: 45px;
-            line-height: 30px;
-            font-weight: bold;
-            background-color: #760c0c;
-            color: #FFFFFF;
-            border-radius: 12px;
-            width:120px;
-            border: none;
-            margin-left:10px;
-         }
-         #title,#contents{
-            background-color:#222;
-            border:none;
-         }
-         
-         textarea:focus {
-    outline: none;
+nav {
+	background-color: black;
+	padding-left: 10%;
+	padding-right: 10%;
+	border-bottom: 1px solid gray;
+}
+
+nav a {
+	color: white;
+}
+
+.navbar-nav {
+	min-width: 450px;
+}
+
+.navbar-nav a {
+	color: white;
+	border-radius: 5px;
+	margin-right: 20px;
+}
+
+.navbar-nav a:hover {
+	color: black;
+	background-color: white;
+	border-radius: 5px;
+	text-decoration-line: none;
+}
+
+#btn {
+	text-align: right;
+}
+
+nav button {
+	background-color: rgba(0, 0, 0, 0.128);
+	border-radius: 5px;
+	color: white;
+}
+
+nav button:hover {
+	border-radius: 5px;
+	color: black;
+	background-color: white;
+}
+
+.loginbox {
+	flex: auto;
+	float: left;
+	min-width: 150px;
+	text-align: right;
+}
+
+input:focus {
+	outline: none;
+}
+
+input::placeholder {
+	color: #ccc;
+}
+
+.write {
+	width: 40px;
+}
+
+button {
+	border: none;
+}
+
+#login, #signup {
+	color: white;
+}
+
+#login:hover, #signup:hover {
+	color: black;
+}
+
+/*-----------------------------------------Footer부분----------------------------*/
+/* footer 부분 */
+#foot {
+	border-top: 1px solid gray;
+	background-color: black;
+	margin-bottom: 0px;
+}
+
+.footer2 {
+	line-height: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 20px;
+	color: #FFFFFF;
+}
+
+.footer2 a {
+	text-decoration: none;
+	color: white;
+}
+/* 헤더 푸터 완료 */
+
+#Box {
+  text-align: center;
+  height: 800px;
+  margin-left:24%;
+  margin-right:24%;
+  margin-bottom:3%;
+  padding: 2%;
+}
+
+#Noticecontainer {
+	margin: auto;
+	background-color: white;
+	width: 100%;
+	height: 800px;
+	padding: 5%;
+	border-radius: 10%;
+	margin-bottom: 3%;
+}
+
+.titlebox {
+	border: none;
+	padding: 0%;
+	margin: auto;
+	text-align: center;
+}
+
+.title_head {
+	color: white;
+	background-color: black;
+	border: none;
+	text-align: center;
+	height: 30px;
+	padding-top: 0.25%;
+}
+
+.noticbtn {
+	margin-bottom: 1%;
+}
+
+.nbtn {
+	color: black;
+	font-size: 20px;
+}
+
+.cbtn {
+	background-color: #760c0c;
+	border: none;
+	border-radius: 15%;
+	color: white;
+	font-size: smaller;
+	width: 9%;
+	height: 35px;
+	margin-top: 1%;
+	padding: 0.5%;
+}
+
+.eventbox {
+	background-color: white;
+	border-bottom: 1px solid #222;
+	text-align: center;
+	height: 650px;
+	padding-top: 0.25%;
+	margin: auto;
+	width: 100%;
+    border: none;
+    resize: none;
+}
+
+.notice1 {
+	text-align: left;
+}
+
+.create {
+	margin-top: 1%;
+	text-align: right;
 }
 
 /* 드록 박스 관련 스타일 */
@@ -260,39 +305,69 @@ li.dropdown {
 
 .show {display:block;}
 
+.con_head {
+	color: white;
+	background-color: black;
+	border: none;
+	text-align: center;
+	height: 30px;
+	padding-top: 0.25%;
+}
+
+.conbox {
+	margin: auto;
+}
+
+.main{
+	background-color: #222;
+	color: white;
+	border: none;
+	text-align: center;
+	padding: auto;
+}
+
 #modifyBtn{
-font-family: 'Noto Sans KR';
-         font-style: normal;
-         font-weight: 700;
-            height: 45px;
-            line-height: 30px;
-            font-weight: bold;
-            background-color: #760c0c;
-            color: #FFFFFF;
-            border-radius: 12px;
-            width:120px;
-            border: none;
-            margin-left:10px;
+	background-color: #760c0c;
+	color: white;
+	border: none;
+	border-radius: 15%;
+	margin: 1%;
 }
 
 #cancelBtn{
-font-family: 'Noto Sans KR';
-         font-style: normal;
-         font-weight: 700;
-            height: 45px;
-            line-height: 30px;
-            font-weight: bold;
-            background-color: #760c0c;
-            color: #FFFFFF;
-            border-radius: 12px;
-            width:120px;
-            border: none;
-            margin-left:10px;
+	background-color: #760c0c;
+	color: white;
+	border: none;
+	border-radius: 15%;
+	margin: 1%;
 }
 
+.backbtn{
+	background-color: #760c0c;
+	color: white;
+	border: none;
+	border-radius: 15%;
+}
+
+.delbtn{
+	background-color: #760c0c;
+	color: white;
+	border: none;
+	border-radius: 15%;
+}
+
+.upbtn{
+	background-color: #760c0c;
+	color: white;
+	border: none;
+	border-radius: 15%;
+}
 
 </style>
+
+</head>
 <body>
+
 <!--  ------------------------------------------------------------header-----------------------------------------------------  -->
 
       <nav class="navbar navbar-expand-lg">
@@ -312,7 +387,7 @@ font-family: 'Noto Sans KR';
                   <div class="dropdown">
                      <a href="javascript:void(0)" class="dropbtn" onclick="myFunction()">NOTICE</a>
                      <div class="dropdown-content" id="myDropdown">
-                       <a href="/notice/FAQ">FAQ</a> <a href="/notice/event_selectAll">이벤트 및 공지사항</a> <a href="#">1:1 문의</a> 
+                        <a href="/notice/FAQ">FAQ</a> <a href="/notice/event_selectAll">이벤트 및 공지사항</a> <a href="#">1:1 문의</a>
                      </div>
                   </div>
                </div>
@@ -325,60 +400,109 @@ font-family: 'Noto Sans KR';
         </div>
       </nav>
       
-      
-<!-------------------------------------------------------Main------------------------------------------------->
-<div class="container" id="main">
-   <div class="col-12" style="margin-bottom:40px;">
-      <a style="color: white; font-size: 40px;">1:1 문의</a>
+<!-- ------------------------------------------------------------Main----------------------------------------------------- -->
+
+<br>
+ 	<div class="row col-12 titlebox">
+      <input type="text" class="main" style="color:white; text-align: center; margin: auto;" value="${dto.title }" disabled>
     </div>
+      <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
-       <div id="selec" align="right" style="color: white; width: 100%; height: 5%;">
-       조회수 : "{}"
-       </div>
-				<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
-            <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
+	<div id="Box">
 
-			
-			    <div class="col-7 notice1" id="title">${dto.title }</div>
-			
-            </div>
-            <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
-   
-    		<div class="col-7 notice1" 
-    		style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" id="contents">
-    		${dto.contents }</div>
-            
-            
-            <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
-            
-            	
-            <%-- 로그인 id와 작성자 id가 같을 때만 수정 삭제 버튼 보이게 --%>
-           	<%--<c:if test="${loginID == dto.writer}">--%>	 
-           		  <button class="btn" id="modify" type="button">수정</button>
-           		  <button class="btn" id="delete" type="button">삭제</button>
-           	<%--</c:if>--%>
-           	<button class="btn" id="back" type="button">뒤로</button>
-           
-            </div>
+		<div id="Noticecontainer">
 
-        </div>
+			<div class="row col-12 conbox">
+				<div class="col-3 con_head">${dto.writer }</div>
+				<div class="col-6 con_head">
+					<fmt:formatDate pattern="yy-MM-dd" value="${dto.write_date}" />
+				</div>
+				<div class="col-3 con_head">
+					조회수 :
+					<%--  추후 가능하면 넣을 예정 ${dto.count } --%>
+				</div>
+			</div>
+
+			<div> 
+			<textarea class="row col-12 eventbox"
+				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled>${dto.contents }</textarea>
+
+			<div class="col-12 create">
+				<input type="button" class="upbtn" value="수정"> 
+				<input type="button" class="delbtn" value="삭제">
+				<input type="button" class="backbtn" value="뒤로">
+			</div> 	
+		</div>
+
+	</div>
 
 </div>
- <!-------------------------------------------------------Footer------------------------------------------------->
-    <div class="col-12 d-none d-md-block">
-  <div id="foot" align=center>
-     <div class="container">
-        <div class="row">
-          <div class="col-4" id="footicon"> </div>
-           <div class="col-2 footer2"><a href="#">회사소개</a></div>
-           <div class="col-2 footer2"><a href="#">이용약관</a></div>
-           <div class="col-2 footer2"><a href="#">1:1 문의</a></div>
-           <div class="col-2 footer2"><a href="#">©2022 CAFEIN</a></div>
-        </div>
-     </div>
-  </div>
-</div>
 
+ <div id="reply">
+
+	 		<div class="replyList">
+				<c:forEach var="i" items="${rlist }">
+				<c:if test="${i.question_seq == dto.question_seq}">
+						<div style="color:white">
+						작성 날짜 : <fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
+						</div>
+						<div style="color:white">
+							${i.contents } 
+						</div>
+				 </c:if>
+				</c:forEach>
+				<form action="reply_insert">
+				 <input type="text" class="reply" name="contents" style="color:black; margin: auto;" />
+				 		<button>작성하기</button>
+	 			</form>
+	 		</div>	
+	 	</div>
+	
+	
+	
+
+<style>
+div{border: 1px solid white;}
+
+	#reply{
+	
+	width: 1000px;
+  	height: 300px;
+  	
+	}
+	.replyList{
+		text-align: center;
+	}
+
+</style>
+	<!-------------------------------------------------------Footer------------------------------------------------->
+	<div class="col-12 d-none d-md-block">
+		<div id="foot" align=center>
+			<div class="container">
+				<div class="row">
+					<div class="col-4" id="footicon">
+						<a href="#"
+							style="color: white; padding-top: 20px; text-decoration-line: none;">CAFEIN</a>
+					</div>
+					<div class="col-2 footer2">
+						<a href="#">회사소개</a>
+					</div>
+					<div class="col-2 footer2">
+						<a href="#">이용약관</a>
+					</div>
+					<div class="col-2 footer2">
+						<a href="#">1:1 문의</a>
+					</div>
+					<div class="col-2 footer2">
+						<a href="#">©2022 CAFEIN</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-------------------------------------------------------Footer------------------------------------------------->
+
+</body>
 
 
 <script>
@@ -405,77 +529,69 @@ window.onclick = function(e) {
    }         
 }
 
-$(".cbtn").click(function() {
-	location.href = "/notice/notic_Write";
-})
-
-$("#back").on("click", function() {
-	location.href = "/question/question_list";	
-})
-
-
-
-$("#delete").on("click", function() {
-			
-			 let result = confirm("정말 삭제하시겠습니까?");
-			if(result){
-				alert("삭제 완료되었습니다.");
-				location.href = "/question/question_delete?question_seq=${dto.question_seq}";
-			}else{
-				
-			} 
-			
-		})
+$(".delbtn").click(function(){
+	let result = confirm("정말 삭제하시겠습니까?")
+	if(result){
+		alert("삭제가 완료되었습니다.")
+		location.href = "/question/question_delete?question_seq=${dto.question_seq}";
+	}else{
 		
-//수정
-			$("#modify").on("click", function() {
-				$("#title").attr("contenteditable", "true").css("border","1px solid #ccc"); //입력 가능하게
-				$("#contents").attr("contenteditable", "true").css("border","1px solid #ccc");
+	}
+})
 
-  				$("#modify").css("display", "none"); //수정 버튼 감추기
-  				$("#delete").css("display", "none"); //삭제 버튼 감추기
-					
-  				let ok = $("<button>");//수정완료 버튼
-  				ok.text("수정 완료");
-  				ok.attr("id","modifyBtn")
-				
-  				let cancel = $("<button>");//취소 버튼
-  				cancel.text("취소");
-  				cancel.attr("id", "cancelBtn")
-  				
-  				
-  					
-  					$("#row4").prepend(cancel);//취소 버튼 추가
-  	  				$("#row4").prepend(ok);//수정완료 버튼 추가
-  				
-  	  				
-  	  			$("#cancelBtn").on("click",function() {
-  					location.reload();
-  				})
-  				
- 			});
- 			
- 			
-//수정완료 버튼
-	$("#row4").on("click","#modifyBtn",function(){
-				let question_seq = "${dto.question_seq}";//게시글 고유 넘버
-				let title = $("#title").text();
-            	let contents = $("#contents").text(); //댓글내용
-            	
-				$.ajax({
-					url : "/question/question_modify",
-					type : "post",
-					data : {question_seq:question_seq, title:title , contents:contents},
-				}).done(function(resp){
-					if(resp == "true"){
-						location.reload();//새로 고침	
-					}
+$(".backbtn").on("click", function(){
+	location.href = "/question/question_list";
+})
 
-				})
-			})
+$(".upbtn").on("click",function(){
+	$(".main").removeAttr("disabled");
+	$(".eventbox").removeAttr("disabled");
+	
+	$(".upbtn").css("display","none"); // 수정 버튼 감추기
+	$(".delbtn").css("display","none"); // 삭제 버튼 감추기
+	
+		let ok = $("<button>");//수정완료 버튼
+			ok.text("완료");
+			ok.attr("id","modifyBtn")
+		
+			let cancel = $("<button>");//취소 버튼
+			cancel.text("취소");
+			cancel.attr("id", "cancelBtn")
+	
+	$(".create").prepend(cancel); //취소 버튼 추가
+	$(".create").prepend(ok); // 수정완료 버튼 추가
+	
+	$("#cancelBtn").on("click", function(){
+		location.reload();
+	})
+});
 
- 			
+// 수정완료 버튼
+$(".create").on("click", "#modifyBtn",function(){
+	
+	let question_seq = "${dto.question_seq}"; // 게시글 고유 넘버
+	let title = $(".main").val();
+	let contents = $(".eventbox").val(); // 게시글 내용
+	
+	$.ajax({
+		url : "/question/question_modify",
+		type : "post",
+		data : {question_seq:question_seq, title:title , contents:contents},
+	}).done(function(resp){
+		if(resp == "true"){
+			location.reload();//새로 고침	
+		}
+
+	})
+})
+	
+// $(".reply").on("click", function(){
+	
+// 	location.href = "/question/reply_insert"	
+	
+// })
+
+
 </script>
-          
-</body>
+
 </html>

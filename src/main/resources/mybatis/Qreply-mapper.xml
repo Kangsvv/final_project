@@ -5,12 +5,13 @@
   
   <mapper namespace="qreply">
   
-  <select id = "reply_list"  resultType="kh.spring.dto.QreplyDTO">
-  	select * from question_reply where parentseq = #{seq}
+  <select id = "reply_list" resultType="kh.spring.dto.QreplyDTO">
+  	select * from reply where question_seq = #{question_seq}
   </select>
   
+  
   <insert id = "reply_insert">
-    insert into question_reply values(reply_seq.nextval, parentseq, #{contents}, #{writer}, sysdate)
+    insert into reply values(reply_seq.nextval, #{question_seq}, #{contents}, 123, sysdate)
   </insert>
  
   </mapper>

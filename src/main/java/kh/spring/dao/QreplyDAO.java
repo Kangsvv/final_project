@@ -15,10 +15,13 @@ public class QreplyDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
   
-	public List<QreplyDTO> reply_list(int parentseq) throws Exception {
-		return mybatis.selectList("qreply.reply_list", parentseq);
+	public List<QreplyDTO> reply_list(int question_seq) throws Exception {
+		return mybatis.selectList("qreply.reply_list", question_seq);
 		
 	}
 	
 
+	public int reply_insert(QreplyDTO dto) throws Exception{
+		return mybatis.insert("qreply.reply_insert", dto);
+	}
 }
