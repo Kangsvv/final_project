@@ -61,12 +61,13 @@ public class CafeinController {
 		serv.cafein_imglist(model);
 		return "/cafein/cafeinMain";
 	}
-	//------------------------Cafein 상세보기---------------------------
+	//------------------------Cafein 상세보기(로그인시)---------------------------
 	@RequestMapping("selectBySeq")
 	public String selectBySeq(Model model,int cafein_seq) throws Exception {
 		serv.selectBySeq(model, cafein_seq);
 		return "cafein/cafeinDetail";
 	}
+
 	//-------------------------Cafein 수정페이지 ------------------------
 	@RequestMapping("UpdateSeq")
 	public String UpdateSeq(Model model,int cafein_seq) throws Exception {

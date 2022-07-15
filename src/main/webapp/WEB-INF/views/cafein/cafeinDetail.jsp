@@ -305,11 +305,11 @@ table td{
     <td>${dto.day}</td>
   </tr>
   <tr>
-    <td class="asd">오픈시간 : </td>
+    <td class="asd">오픈시간 :&nbsp;&nbsp; </td>
     <td>${dto.open }</td>
   </tr>
   <tr>
-    <td class="asd">마감시간 : </td>
+    <td class="asd">마감시간 :&nbsp;&nbsp; </td>
     <td>${dto.finish }</td>
   </tr>
   <tr>
@@ -319,20 +319,20 @@ table td{
     </td>
   </tr>
   <tr>
-    <td  class="asd">작성자 : </td>
+    <td  class="asd">작성자 :</td>
     <td>
      ${dto.writer }
     </td>
   </tr>
   <tr>
-    <td colspan="2" id="like_count" >좋아요: {count}</td>
+    <td colspan="2" id="like_count" >좋아요:&nbsp;&nbsp;&nbsp;${count}</td>
    
    
   </tr>
         </table>
         </div>
      <!-------------------- 작성자와 로그인아이디 다를시 좋아요/쪽지버튼생성 ---------------------------->
-    	<c:if test="${loginID != dto.id && loginID == likeDTO.id}">	
+    	<c:if test="${loginID !=null && loginID != dto.id && loginID == likeDTO.id}">	
         <div class="col-12" style="text-align: right;" > 
           <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="fa-regular fa-envelope"></i></button>
@@ -340,15 +340,20 @@ table td{
           </div>
 		</c:if>
   <!--------------------로그인아이디가 그전 좋아요 눌렀을시 활성화버튼 ---------------------------->		
-	<c:if test="${loginID != dto.id && loginID != likeDTO.id }">	
+	<c:if test="${loginID != null && loginID != dto.id && loginID != likeDTO.id }">	
         <div class="col-12" style="text-align: right;" > 
         <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-envelope"></i></button>
-          <button type="button" class="btn " style="background-color: rgb(78, 78, 163); color:white;" id="like"><i class="fa-regular fa-heart  buttonIcon"></i></button>
-          										
+          <button type="button" class="btn " style="background-color: rgb(78, 78, 163); color:white;" id="like"><i class="fa-regular fa-heart  buttonIcon"></i></button>         										
           </div>
 		</c:if>	
-	
-		
+<!---------------------- 비로그인시 버튼 없음 ------------------------------------->	
+	<c:if test="${loginID == null} ">
+	  <div class="col-12" style="text-align: right;" > 
+          <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fa-regular fa-envelope"></i></button>
+          <button type="button" class="btn " style="background-color: white; color:rgb(78, 78, 163)"; id="like"><i class="fa-solid fa-heart"></i></button>
+          </div>
+	</c:if>
 		
 <!-------------------- 작성자 로그인시 수정/삭제버튼 생성 ---------------------------->
 	<c:if test="${loginID == dto.id }">
@@ -382,8 +387,8 @@ table td{
 </div>
 </div>
  <!--------------------------쪽지모달창------------------------->
- <form action="/cafein/message">
- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <form action="/cafein/message" id="send">
+ <div class="modal fade send" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -434,14 +439,7 @@ table td{
             myInput.click();
         }
      //------------------좋아요알림(토스트 스크립트)-----------------------------  
-      var toastTrigger = document.getElementById('like')
-       $.ajax({
-       				url:"/cafein/cafein_like_count",
-       				data:{seq:${dto.seq}},
-       				dataType:"json"
-       			}).done(function(resp){
-       				$("#like_count").html('좋아요:&nbsp;&nbsp;' + resp);
-       			})
+  
 	//---------------------------------------------------------------------
         $("#like").click("on",function() {
         	   if(${loginID == null}){
@@ -495,7 +493,7 @@ table td{
 
         	   
         });
-   			
+
    		
      
   

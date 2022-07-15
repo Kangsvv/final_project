@@ -314,6 +314,19 @@ li.dropdown {
 display: none;
 }
 
+#Noticecontainer::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+#Noticecontainer::-webkit-scrollbar-thumb {
+    height: 15%; /* 스크롤바의 길이 */
+    background: none; /* 스크롤바의 색상 */
+}
+
+#Noticecontainer::-webkit-scrollbar-track {
+    background: none;  /*스크롤바 뒷 배경 색상*/
+}
+
 </style>
 
 </head>
@@ -351,7 +364,7 @@ display: none;
         </div>
       </nav>
       
-<!-- ------------------------------------------------------------header----------------------------------------------------- -->
+<!-- ------------------------------------------------------------Main----------------------------------------------------- -->
 
 <br>
       <h1 class="main" style="color:white; text-align: center;">Event</h1>
@@ -359,7 +372,7 @@ display: none;
 
 	<div id="Box">
 	
-      <div id="Noticecontainer">
+      <div id="Noticecontainer" style="overflow: auto;">
 
 			<div class="row col-12 noticbtn" style="margin-bottom: 15px;">
 				<div class="col-12" style="padding: 0%; text-align: left; margin-left: 3%;">
@@ -368,22 +381,22 @@ display: none;
 				</div>
 			</div>
 
-<table id="example" class="display" style="width:100%">
+<table id="example" class="display" style="width:100%;">
         <thead>
             <tr>
-                <th style="text-align: center;">글번호</th>
+                <th style="text-align: center;" class="bluck">글번호</th>
                 <th style="text-align: center;">제목</th>
                 <th style="text-align: center;">작성자</th>
-                <th style="text-align: center;">작성일</th>
+                <th style="text-align: center;" class="bluck">작성일</th>
             </tr>
         </thead>
         <tbody>
             <c:forEach var="i" items="${elist}">
              <tr>
-                <th>${i.seq}</th>
+                <th class="bluck">${i.seq}</th>
                 <th><a href="/notice/selectBySeq?seq=${i.seq }" style="text-decoration: none; color: black;" >${i.title}</a></th>
                 <th>${i.writer}</th>
-                <th><fmt:formatDate pattern="yy년 MM월 dd일 HH:mm" value="${i.write_date}"/></th>
+                <th class="bluck"><fmt:formatDate pattern="yy년 MM월 dd일 HH:mm" value="${i.write_date}"/></th>
             </tr>
             
             </c:forEach>
@@ -421,7 +434,7 @@ display: none;
 			</c:choose> --%>
 
 			<c:choose>
-				<c:when test="${loginID = admin} "> --%>
+				<c:when test="${loginID = admin} ">
 					<div class="row">
 						<div class="col-12 create">
 							<input type="button" class="cbtn" value="작성하기">

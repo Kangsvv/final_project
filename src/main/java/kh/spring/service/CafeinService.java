@@ -98,17 +98,23 @@ public class CafeinService {
 		//-------------cafe이미지----------------------
 		Cafein_imgDTO fdto = fdao.selectBySeq(cafein_seq);
 		model.addAttribute("fdto",fdto);
+		//-------------좋아요 수----------------------
+		int count=dao.cafein_like_count(cafein_seq);
+		model.addAttribute("count",count);
 		//-------------좋아요체크----------------------
+		
 		String id = (String)session.getAttribute("loginID");
 		System.out.println(id);
 		System.out.println(cafein_seq);
+		//------------로그인시------------------------
+		if(id!=null) {
 		Cafein_likeDTO ldto = new Cafein_likeDTO();
 		ldto.setCafein_seq(cafein_seq);
 		ldto.setId(id);
 		
 		Cafein_likeDTO likeDTO = dao.cafein_like_check(ldto);
 		model.addAttribute("likeDTO",likeDTO);
-		
+		}
 		
 
 	}
