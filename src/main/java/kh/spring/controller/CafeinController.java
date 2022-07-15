@@ -61,12 +61,13 @@ public class CafeinController {
 		serv.cafein_imglist(model);
 		return "/cafein/cafeinMain";
 	}
-	//------------------------Cafein 상세보기---------------------------
+	//------------------------Cafein 상세보기(로그인시)---------------------------
 	@RequestMapping("selectBySeq")
 	public String selectBySeq(Model model,int cafein_seq) throws Exception {
 		serv.selectBySeq(model, cafein_seq);
 		return "cafein/cafeinDetail";
 	}
+
 	//-------------------------Cafein 수정페이지 ------------------------
 	@RequestMapping("UpdateSeq")
 	public String UpdateSeq(Model model,int cafein_seq) throws Exception {
@@ -129,11 +130,11 @@ public class CafeinController {
 		return serv.like_cancel(seq);
 	}
 	//-----------------------좋아요 수--------------------------------
-	@ResponseBody
+	
 	@RequestMapping("cafein_like_count")
-	public int cafein_like_count(int seq) throws Exception {
-		
-		return serv.cafein_like_count(seq);
+	public String cafein_like_count(int seq,Model model) throws Exception {
+		 serv.cafein_like_count(seq,model);
+		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
 	}
 	
 	
