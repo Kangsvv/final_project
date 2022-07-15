@@ -48,7 +48,7 @@ public class ReplyService {
 
 		System.out.println(list);
 		
-//		model.addAttribute("rlist", list);
+		model.addAttribute("rdto", list);
 		
 		return list;
 	}
