@@ -22,9 +22,7 @@ public class NoticService {
 	}
 
 public List<NoticDTO> notic_selectAll() throws Exception {
-	
 	 return dao.notic_selectAll(); 
-	
 }
 
 public void nselectBySeq(Model model, int seq) throws Exception {

@@ -22,6 +22,8 @@
    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
    crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
 
 <title>이벤트 및 공지사항</title>
 
@@ -178,16 +180,17 @@ button {
 
 .nbtn {
 	color: black;
-	font-size: 20px;
+	font-size: 30px;
+	text-decoration:none;
 }
 
 .cbtn {
 	background-color: #760c0c;
 	border: none;
-	border-radius: 15%;
+	border-radius: 5px;
 	color: white;
-	font-size: 80%;
-	width: 7%;
+	font-size: 90%;
+	width: 80px;
 	height: 35px;
 	margin-top: 1%;
 	padding: 0.5%;
@@ -307,6 +310,10 @@ li.dropdown {
 
 .show {display:block;}
 
+#example_length,#example_info{
+display: none;
+}
+
 </style>
 
 </head>
@@ -354,18 +361,39 @@ li.dropdown {
 	
       <div id="Noticecontainer">
 
-			<div class="row col-12 noticbtn">
-				<div class="col-1" style="padding: 0%; text-align: center;">
-					<a href="/notice/event_selectAll" class="nbtn">Event</a>
-				</div>
-				<div class="col-1" style="padding: 0%; text-align: center;">
+			<div class="row col-12 noticbtn" style="margin-bottom: 15px;">
+				<div class="col-12" style="padding: 0%; text-align: left; margin-left: 3%;">
+					<a href="/notice/event_selectAll" class="nbtn" style="color: #760c0c; font-weight: bold">Event</a>
 					<a href="/notice/notic_selectAll" class="nbtn">Notice</a>
 				</div>
-				<div class="col-10" style="padding: 0%;"></div>
 			</div>
 
+<table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th style="text-align: center;">글번호</th>
+                <th style="text-align: center;">제목</th>
+                <th style="text-align: center;">작성자</th>
+                <th style="text-align: center;">작성일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="i" items="${elist}">
+             <tr>
+                <th>${i.seq}</th>
+                <th><a href="/notice/selectBySeq?seq=${i.seq }" style="text-decoration: none; color: black;" >${i.title}</a></th>
+                <th>${i.writer}</th>
+                <th><fmt:formatDate pattern="yy년 MM월 dd일 HH:mm" value="${i.write_date}"/></th>
+            </tr>
+            
+            </c:forEach>
+        </tbody>
 
-         <div class="row col-12 titlebox">
+    </table>
+
+
+
+<%--          <div class="row col-12 titlebox">
             <div class="col-1 title_head">No.</div>
             <div class="col-7 title_head">제목</div>
             <div class="col-2 title_head">글쓴이</div>
@@ -390,13 +418,23 @@ li.dropdown {
 						</a>
 					</c:forEach>
 				</c:otherwise>
-			</c:choose>
+			</c:choose> --%>
 
-			<div class="row">
+			<c:choose>
+				<c:when test="${loginID = admin} "> --%>
+					<div class="row">
 						<div class="col-12 create">
 							<input type="button" class="cbtn" value="작성하기">
 						</div>
 					</div>
+			</c:when>
+
+				<c:otherwise>
+			
+				</c:otherwise>
+				
+			</c:choose>
+			
 		</div>
 </div>
 
@@ -428,6 +466,10 @@ li.dropdown {
 <!-------------------------------------------------------Footer------------------------------------------------->
 
 <script>
+	window.onload = function(){
+		$(".sorting").css("text-align","center");
+	}
+
 $(".que").click(function() {
    $(this).next(".anw").stop().slideToggle(300);
    $(this).toggleClass('on').siblings().removeClass('on');
@@ -455,6 +497,38 @@ $(".cbtn").click(function() {
 	location.href = "/notice/event_Write";
 })
 
+
+	 var lang_kor = {
+		"decimal" : "",
+		"emptyTable" : "데이터가 없습니다.",
+		"info" : "_START_ - _END_ (총 _TOTAL_ 명)",
+		"infoEmpty" : "0명",
+		"infoFiltered" : "(전체 _MAX_ 명 중 검색결과)",
+		"infoPostFix" : "",
+		"thousands" : ",",
+		"lengthMenu" : "_MENU_ 개씩 보기",
+		"loadingRecords" : "로딩중...",
+		"processing" : "처리중...",
+		"search" : "검색 : ",
+		"zeroRecords" : "검색된 데이터가 없습니다.",
+		"paginate" : {
+			"first" : "첫 페이지",
+			"last" : "마지막 페이지",
+			"next" : "다음",
+			"previous" : "이전" },
+		"aria" : {
+			"sortAscending" : " :  오름차순 정렬",
+			"sortDescending" : " :  내림차순 정렬"
+		}
+	};
+
+$(document).ready(function() {
+		$('#example').DataTable({
+			language : lang_kor
+		});
+	});
+
 </script>
 
 </body>
+</html>
