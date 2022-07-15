@@ -130,11 +130,11 @@ public class CafeinController {
 		return serv.like_cancel(seq);
 	}
 	//-----------------------좋아요 수--------------------------------
-	
+	@ResponseBody
 	@RequestMapping("cafein_like_count")
-	public String cafein_like_count(int seq,Model model) throws Exception {
-		 serv.cafein_like_count(seq,model);
-		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
+	public int cafein_like_count(int seq) throws Exception {
+		
+		return serv.cafein_like_count(seq);
 	}
 	
 	

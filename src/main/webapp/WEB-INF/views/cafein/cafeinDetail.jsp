@@ -325,7 +325,7 @@ table td{
     </td>
   </tr>
   <tr>
-    <td colspan="2" id="like_count" >좋아요: {count}</td>
+    <td colspan="2" id="like_count" >좋아요:${count}</td>
    
    
   </tr>
@@ -340,7 +340,7 @@ table td{
           </div>
 		</c:if>
   <!--------------------로그인아이디가 그전 좋아요 눌렀을시 활성화버튼 ---------------------------->		
-	<c:if test="${loginID !=null && loginID != dto.id && loginID != likeDTO.id }">	
+	<c:if test="${loginID != null && loginID != dto.id && loginID != likeDTO.id }">	
         <div class="col-12" style="text-align: right;" > 
         <button type="button" id="letter" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-envelope"></i></button>
           <button type="button" class="btn " style="background-color: rgb(78, 78, 163); color:white;" id="like"><i class="fa-regular fa-heart  buttonIcon"></i></button>         										

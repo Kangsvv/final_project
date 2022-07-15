@@ -98,6 +98,9 @@ public class CafeinService {
 		//-------------cafe이미지----------------------
 		Cafein_imgDTO fdto = fdao.selectBySeq(cafein_seq);
 		model.addAttribute("fdto",fdto);
+		//-------------좋아요 수----------------------
+		int count=dao.cafein_like_count(cafein_seq);
+		model.addAttribute("count",count);
 		//-------------좋아요체크----------------------
 		
 		String id = (String)session.getAttribute("loginID");
@@ -216,9 +219,8 @@ public class CafeinService {
 			return dao.cafein_like_cancel(ldto);
 		}
 	//------------------좋아요수-------------------------
-	public void cafein_like_count(int cafein_seq,Model model)throws Exception{
-		int count= dao.cafein_like_count(cafein_seq);
-		model.addAttribute("count",count);
+	public int cafein_like_count(int cafein_seq)throws Exception{
+		return dao.cafein_like_count(cafein_seq);
 		
 	}
 	
