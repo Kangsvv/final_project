@@ -30,11 +30,11 @@
 	<context:component-scan base-package="kh.spring." />
 	
 	<!-- 파일 업로드 관련  -->
-		<!-- 업로드 패스 설정 --> 
-		<beans:bean class="java.lang.String" id="uploadPath">
-		 <beans:constructor-arg value="D:\springWorkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\final_project\resources" />
-		</beans:bean>
-		
-		<!-- 일반 파일 업로드 경로 -->
-		<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
+	<!-- 업로드 패스 설정 --> 
+	<beans:bean class="java.lang.String" id="uploadPath">
+	 <beans:constructor-arg value="D:\springWorkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\final_project\" />
+	</beans:bean>
+	
+	<!-- 일반 파일 업로드 경로 -->
+	<resources mapping="/imgUpload/**" location="/member/file/" />
 </beans:beans>
