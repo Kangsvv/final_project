@@ -123,7 +123,6 @@
 
       <form action="/member/upload" class="loginFrom max-W360">
       <input type=hidden name=mem_id value='yj'>
-      <c:forEach var=i items=${dto }>
         <div id="box">
           <div class="box" class="imgcan" style="background: #bdbdbd">
           	<div class="profile">
@@ -189,7 +188,6 @@
             />
           </li>
         </ul>
-        </c:forEach>
         <div id="btns">
           <button type="button" class="btn_main bt_1" id="modify">수정</button>
           <a href="/"><button type="button" class="btn_main bt_1" id="back">뒤로</button></a>
