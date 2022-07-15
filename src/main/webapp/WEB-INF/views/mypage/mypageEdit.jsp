@@ -122,11 +122,12 @@
       <h1 style="color: white">My Page</h1>
 
       <form action="/member/upload" class="loginFrom max-W360">
-      <input type=hidden name=mem_id value='yj'>
+      
         <div id="box">
           <div class="box" class="imgcan" style="background: #bdbdbd">
           	<div class="profile">
-<!--             	<img class="profile" src="https://cdn-icons-png.flaticon.com/512/10/10522.png" /> -->            </div>
+             	<img class="profile" src="${dto.mem_img }" />
+            </div>
           </div>
           <div class="imgbtncan">
             <input type="file" name="file" class="img_btn" id="imgmodify" placeholder="프로필사진 변경하기">
@@ -136,7 +137,7 @@
         <br />
         <ul style="padding: 0px 0px 20px 0px">
           <li>
-            <span style="color: white">아이디</span>
+            <span style="color: white">아이디(Cannot be changed)</span>
             <input
               class="form_main"
               type="text"
@@ -144,7 +145,19 @@
               value="${dto.mem_id}"
               name="memId"
               maxlength="12"
-              
+              readonly
+            />
+          </li>
+          <li>
+            <span style="color: white">이메일(Cannot be changed)</span>
+            <input
+              class="form_main"
+              type="email"
+              id="memEmail"
+              value="${dto.mem_email}"
+              name="memEmail"
+              maxlength="12"
+              autocomplete="off"
               readonly
             />
           </li>
@@ -157,24 +170,9 @@
               value="${dto.mem_name}"
               name="memName"
               autocomplete="off"
-              class="editable"
-              readonly
             />
           </li>
-          <li>
-            <span style="color: white">이메일</span>
-            <input
-              class="form_main"
-              type="email"
-              id="memEmail"
-              value="${dto.mem_email}"
-              name="memEmail"
-              maxlength="12"
-              autocomplete="off"
-              class="editable"
-              readonly
-            />
-          </li>
+          
           <li>
             <span style="color: white">전화번호</span>
             <input
@@ -183,18 +181,28 @@
               value="${dto.mem_phone}"
               name="memPhone"
               maxlength="12"
+            />
+          </li>
+          <!-- 자기소개 하실건가여? -->
+          <li>
+            <span style="color: white">자기소개</span>
+            <input
+              class="form_main"
+              class="change"
+              id="phone_center"
+              value="{dto.mem_intro}"
+              name="memIntro"
+              maxlength="12"
+              type="text"
               class="editable"
-              readonly
             />
           </li>
         </ul>
         <div id="btns">
-          <button type="button" class="btn_main bt_1" id="modify">수정</button>
-          <a href="/"><button type="button" class="btn_main bt_1" id="back">뒤로</button></a>
-
-          <a href="/member/memberout"><button type="button" class="btn_main bt_1" id="memberout">
-            탈퇴
-          </button></a>
+          <button type="submit" class="btn_main bt_1" id="modify">수정</button>
+          <button type="button" class="btn_main bt_1" id="back" href="/member/myapge">뒤로</button>
+			<br>
+          <button type="button" class="btn_main bt_1" id="memberout" href="/member/memberout"> 탈퇴 </button>
         </div>
       </form>
     </div>
@@ -205,34 +213,12 @@
       //여기서 탈퇴하는 기능, 탈퇴하면 모든 본인 게시물 삭제?
 
       $('#modify').on('click', function () {
-        $('.form_main').removeAttr('readonly');
-        $(this).css('display', 'none');
-        $('#back').css('display', 'none');
-        $('#memberout').css('display', 'none');
-
-        let btnok = $('<button>');
-        btnok.text('수정완료');
-        btnok.attr('class', 'btn_main bt_1');
-
-        let btncancel = $('<button>');
-        btncancel.text('수정취소');
-        btncancel.attr('type', 'button');
-        btncancel.addClass('btn_main bt_1');
-        btncancel.on('click', function () {
-          location.reload();
-        });
-
-        $('#btns').append(btnok);
-        $('#btns').append(btncancel);
-      });
+        alert("진챠 수정할 겨??????");
+      });  
       
-      
-      
-
       $('#back').on('click', function () {
-        location.href = '/';
+        location.href = '/member/mypage';
       });
-      
       
       $.ajax({
     	  url:"/mypage/upload",

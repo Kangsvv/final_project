@@ -35,12 +35,14 @@ public class MypageController {
 		String loginID = (String)session.getAttribute("loginID");
 		MemberDTO dto = pdao.selectID(loginID);
 		model.addAttribute("dto", dto);
-		System.out.println(dto.getmem_img());
 		return "/mypage/mypage";
 	}
 	
 	@RequestMapping("mypageEdit")
 	public String mypageEdit(Model model) throws Exception{
+		String loginID = (String)session.getAttribute("loginID");
+		MemberDTO dto = pdao.selectID(loginID);
+		model.addAttribute("dto", dto);
 		return "/mypage/mypageEdit";
 	}
 

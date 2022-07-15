@@ -9,7 +9,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <title>My page</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <style>
-      :root {
+    :root {
         font-size: 10px;
       }
       * {
@@ -78,11 +78,13 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       .profile-image {
         float: left;
+        height:calc(33.333% - 1rem);
         width: calc(33.333% - 1rem);
         display: flex;
         justify-content: center;
         align-items: center;
         margin-right: 3rem;
+        
       }
 
       .profile-image img {
@@ -390,10 +392,10 @@ Remove or comment-out the code block below to see how the browser will fall-back
     <header>
       <div class="container">
         <div class="profile">
-          <div class="profile-image">
-            <img
-              src="${dto.mem_img }"
-              alt=""
+          <div class="profile-image" >
+            <img style="height:100px"
+            	src="https://cdn.imweb.me/thumbnail/20211015/a90424c23ef93.jpg" 
+            	<%-- src="${dto.mem_img }" --%>
             />
           </div>
 
@@ -440,7 +442,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 
           <div class="profile-bio">
             <p>
-              <span class="profile-real-name">${dto.mem_name }</span> Lorem ipsum
+              <span class="profile-real-name"></span> Lorem ipsum
               dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
             </p>
           </div>
