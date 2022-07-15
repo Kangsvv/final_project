@@ -224,6 +224,8 @@ h5 {
   <section class="box" id="box1">
     <figure class="flip">
       <a href="/feed/goFeed?page=1"><img src="https://2.bp.blogspot.com/-ywv6LaSnjgE/Uh9GGzWaFbI/AAAAAAAAA64/fLVMc7_xFAU/s1600/where.jpg" /></a>
+<!--       /feed/feed_imglist -->
+      
       <figcaption class="bar">
         <h3>FEED</h3>
        </figcaption>

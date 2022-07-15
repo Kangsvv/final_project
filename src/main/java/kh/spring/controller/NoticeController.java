@@ -60,16 +60,16 @@ public class NoticeController {
 	@RequestMapping("event_insert")
 	public String event_insert(EventDTO dto) throws Exception{
 		dto.setWriter((String)session.getAttribute("loginID"));
+		System.out.println(dto.getWriter()+dto.getTitle()+dto.getContents());
 		Eservice.insert(dto);
 		
-		return "redirect:/notice/event";
+		return "redirect:/notice/event_selectAll";
 	}
 	
 	@RequestMapping("event_selectAll")
 	public String selectAll(Model model) throws Exception{
 		List<EventDTO> dto = Eservice.event_selectAll();
 		model.addAttribute("elist", dto);
-		System.out.println(dto);
 		return "/notice/event";
 	}
 	
@@ -90,7 +90,6 @@ public class NoticeController {
 	@RequestMapping("event_modify")
 	public String event_modify(EventDTO dto) throws Exception {
 		int result = Eservice.modify(dto);
-		
 		return "true";
 		
 	}
@@ -120,7 +119,7 @@ public class NoticeController {
 		dto.setWriter((String)session.getAttribute("loginID"));
 		Nservice.insert(dto);
 		
-		return "redirect:/notice/notic";
+		return "redirect:/notice/notic_selectAll";
 	}
 	
 	@RequestMapping("notic_selectAll")

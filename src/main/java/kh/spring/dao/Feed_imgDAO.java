@@ -17,25 +17,25 @@ public class Feed_imgDAO {
 	@Autowired
 	private SqlSession mybatis;
 	
-	//--------------------카페이미지 등록-----------------
+	//--------------------피드이미지 등록-----------------
 	public void insert(Feed_imgDTO dto)throws Exception{
 		mybatis.insert("Feed.feed_img-insert",dto);
 	}
-	//--------------------카페리스트(사진)-----------------
-	public List<Feed_imgDTO> cafein_imglist() throws Exception{
+	//--------------------피드리스트(사진)-----------------
+	public List<Feed_imgDTO> feed_imglist() throws Exception{
 		return mybatis.selectList("Feed.feed_img-select");
 	}
-	//--------------------카페 상세페이지출력-----------------
+	//-------------------피드 상세페이지출력-----------------
 	public Feed_imgDTO selectBySeq(int cafefeed_seq) {
 		return mybatis.selectOne("Feed.feed_img-detail",cafefeed_seq);
 	}
-	//--------------------카페 이미지 삭제-----------------
+	//--------------------피드 이미지 삭제-----------------
 	public void delete(int cafefeed_seq)throws Exception{
 		mybatis.delete("Feed.feed_img-delete",cafefeed_seq);
 	}
-	//--------------------삭제할 카페 이미지파일이름 뽑아내기---------
+	//--------------------삭제할 피드 이미지파일이름 뽑아내기---------
 	public String deletefile(int cafefeed_seq) {
-		return mybatis.selectOne("Feed.Feed_imgfile",cafefeed_seq);
+		return mybatis.selectOne("Feed.feed_imgfile",cafefeed_seq);
 	}
 	//----------------------수정-------------------------
 	public int update(String oriName,String sysName,int cafefeed_seq)throws Exception{
