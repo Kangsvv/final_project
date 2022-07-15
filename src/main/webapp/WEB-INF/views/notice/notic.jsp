@@ -314,6 +314,19 @@ li.dropdown {
 display: none;
 }
 
+#Noticecontainer::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+#Noticecontainer::-webkit-scrollbar-thumb {
+    height: 15%; /* 스크롤바의 길이 */
+    background: none; /* 스크롤바의 색상 */
+}
+
+#Noticecontainer::-webkit-scrollbar-track {
+    background: none;  /*스크롤바 뒷 배경 색상*/
+}
+
 </style>
 
 </head>
@@ -360,7 +373,7 @@ display: none;
 
 	<div id="Box">
 	
-      <div id="Noticecontainer">
+      <div id="Noticecontainer" style="overflow: auto;">
 
 			<div class="row col-12 noticbtn" style="margin-bottom: 15px;">
 				<div class="col-12" style="padding: 0%; text-align: left; margin-left: 3%;">
