@@ -37,7 +37,6 @@
 				</div>
 			</div>
 		</div>
-		<%=request.getRealPath("/") %>
 	</div>
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>

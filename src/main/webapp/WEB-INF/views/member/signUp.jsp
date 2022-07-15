@@ -16,7 +16,7 @@
 		<div style="background-color: white; max-width: 450px; height: 100vmin; margin: 0px auto;">
 			<div class='center_row'>
 				<h1 style="margin: 0px;">회원가입</h1>
-				<form action="joinAction" class='loginFrom max-W360'>
+				<form action="joinAction" class='loginFrom max-W360' autocomplete="off" enctype="multipart/form-data">
 					<ul style="padding: 0px 0px 20px 0px;">
 						<li><input class="form_main" type="text" id='mem_id'
 							name='mem_id' placeholder="아이디" maxlength="12" required="required">
@@ -62,7 +62,7 @@
 						<li><input type="checkbox" id='ceoCheck'><label
 							for='ceoCheck'>사업자 등록 시 체크해주세요.</label></li>
 					</ul>
-					<input type="file" id='mem_ceocheckimg' name='mem_ceocheckimg' style="display: none;">
+					<input type="file" id='mem_ceocheckimg_file' name='file' style="display: none;">
 					<input id='mem_level' name='mem_level' style="display: none;" value='0'>
 					<input id='mem_status' name='mem_status' style="display: none;" value='0'>
 					<input type='hidden' id='mem_phone' name='mem_phone' maxlength="12">
@@ -222,7 +222,7 @@
 				return false;
 			}
 			
-			if($("#mem_ceocheckimg").val() != null){
+			if($("#mem_ceocheckimg_file").val() != null){
 				$("#mem_status").val(2);
 				$("#mem_level").val(1);
 			}
@@ -287,18 +287,22 @@
 		});
 		
 		$("#ceoCheck").on("click",function(){
-			$("#mem_ceocheckimg").click();
+			$("#mem_ceocheckimg_file").click();
 			return false;
 		});
 		
-		$(document).on("change","#mem_ceocheckimg",function(){
-			var ext = $('#mem_ceocheckimg').val().split('.').pop().toLowerCase();
+		$(document).on("change","#mem_ceocheckimg_file",function(){
+			var ext = $('#mem_ceocheckimg_file').val().split('.').pop().toLowerCase();
 			if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1 && ext!="") {
 				alert('gif,png,jpg,jpeg 파일만 업로드 할수 있습니다.');
-				$('#mem_ceocheckimg').val('');
+				$('#mem_ceocheckimg_file').val('');
 				$("#ceoCheck").prop("checked", false);
 				return false;
 			}else{
+				if(this.files && this.files[0]) {
+				   var reader = new FileReader;
+				   reader.readAsDataURL(this.files[0]);
+				}
 				$("#ceoCheck").prop("checked", true);
 			}
 		});
