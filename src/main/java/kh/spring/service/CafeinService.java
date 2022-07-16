@@ -94,7 +94,7 @@ public class CafeinService {
 	//--------------------Cafe 리스트2------------------------------
 public List<Cafein_imgDTO> cafein_imglist2(Model model) throws Exception {
 		
-		System.out.println("gocafein Serv 준비중");
+		System.out.println("gocafein Serv2 준비중");
 		
 		return fdao.cafein_imglist2();
 	}

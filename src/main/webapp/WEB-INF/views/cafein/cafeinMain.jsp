@@ -264,8 +264,8 @@ nav button:hover{
 <!-------------------------------------------------------인스타 Board------------------------------------------------->
 
           <div class="tz-gallery">
-
-            <div class="row contents">
+			<div class="contents">
+            <div class="row">
     
                 
                 <c:forEach var="i" items="${list}">
@@ -276,7 +276,6 @@ nav button:hover{
                     </a>
                 </div>
                 </c:forEach>
-                
                
                 
     
@@ -319,7 +318,7 @@ nav button:hover{
     	let cDiv = $("<div class='row'>");
     	for(let i=0; i < resp.length; i++){
     		 
-    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4 cafeinimg'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
+    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4 cafeinimg'><a class='lightbox' href='/cafein/selectBySeq?cafein_seq="+resp[i].cafein_seq+"'><img src='/cafein/"+ resp[i].sys_name +"'>");
     	 
     	 	cDiv.append(contentsDiv);
     	 }
@@ -327,32 +326,11 @@ nav button:hover{
 	 	cDiv.hide();
 	 	cDiv.fadeIn(800);
     	 
-    })
-};
+    });
+    }
           </script>
 
-  <!-------------------------------------------------------인스타 Board------------------------------------------------->
-
-          <div class="tz-gallery">
-
-            <div class="row contents">
-    
-                
-<%--                 <c:forEach var="i" items="${list}"> --%>
-<!--                 <div class="col-sm-6 col-md-4 cafeinimg"> -->
-<%--                     <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }"> --%>
-<%--                         <img src="/cafein/${i.sys_name }"> --%>
-<!--                     </a> -->
-<!--                 </div> -->
-<%--                 </c:forEach> --%>
-                
-               
-                
-    
-            </div>
-    
-        </div>
-</div>
+ 
          <!-------------------------------------------------------Footer------------------------------------------------->
     <div class="col-12 d-none d-md-block">
   <div id="foot" align=center>

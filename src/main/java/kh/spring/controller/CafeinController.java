@@ -78,7 +78,7 @@ public class CafeinController {
 		
 		List<Cafein_imgDTO> list = serv.cafein_imglist(model, cpage);
 		model.addAttribute("list", list);
-		
+		System.out.println(list);
 		return list;
 	}
 	//------------------------Cafein 상세보기(로그인시)---------------------------
