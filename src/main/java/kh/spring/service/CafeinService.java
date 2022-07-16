@@ -83,7 +83,7 @@ public class CafeinService {
 		fdao.insert(new Cafein_imgDTO(0,oriName,sysName,cafein_seq));
 
 	}
-
+	
 	//--------------------Cafe 리스트------------------------------
 	public void cafein_imglist(Model model) throws Exception {
 		List<Cafein_imgDTO> list = fdao.cafein_imglist();
@@ -101,8 +101,7 @@ public class CafeinService {
 		//-------------좋아요 수----------------------
 		int count=dao.cafein_like_count(cafein_seq);
 		model.addAttribute("count",count);
-		//-------------좋아요체크----------------------
-		
+		//-------------좋아요체크----------------------		
 		String id = (String)session.getAttribute("loginID");
 		System.out.println(id);
 		System.out.println(cafein_seq);

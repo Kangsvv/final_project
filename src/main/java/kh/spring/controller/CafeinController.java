@@ -67,7 +67,12 @@ public class CafeinController {
 		serv.selectBySeq(model, cafein_seq);
 		return "cafein/cafeinDetail";
 	}
-
+	//------------------------Cafein 상세보기(비로그인시)---------------------------
+		@RequestMapping("selectBySeq2")
+		public String selectBySeq2(Model model,int cafein_seq) throws Exception {
+			serv.selectBySeq(model, cafein_seq);
+			return "cafein/cafeinDetail";
+		}
 	//-------------------------Cafein 수정페이지 ------------------------
 	@RequestMapping("UpdateSeq")
 	public String UpdateSeq(Model model,int cafein_seq) throws Exception {
