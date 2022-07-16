@@ -384,6 +384,9 @@ nav button:hover{
 
            $(".replyBox").append(container);
 
+           
+           container.hide();
+           container.fadeIn(800);
 //            $("#replyContents").val("");
 //            $("#replyContents").focus();
           }
