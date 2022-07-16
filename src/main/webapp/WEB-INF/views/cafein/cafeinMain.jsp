@@ -261,6 +261,30 @@ nav button:hover{
           <div class="col-6">
              <button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
           </div>
+<!-------------------------------------------------------인스타 Board------------------------------------------------->
+
+          <div class="tz-gallery">
+
+            <div class="row contents">
+    
+                
+                <c:forEach var="i" items="${list}">
+                <div class="col-sm-6 col-md-4 cafeinimg">
+                    <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
+                        <img src="/cafein/${i.sys_name }">
+                   
+                    </a>
+                </div>
+                </c:forEach>
+                
+               
+                
+    
+            </div>
+    
+        </div>
+</div>          
+          
       
          </div>
           <script>
@@ -295,7 +319,7 @@ nav button:hover{
     	let cDiv = $("<div class='row'>");
     	for(let i=0; i < resp.length; i++){
     		 
-    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
+    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4 cafeinimg'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
     	 
     	 	cDiv.append(contentsDiv);
     	 }

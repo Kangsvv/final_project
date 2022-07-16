@@ -66,7 +66,7 @@ public class CafeinController {
 		String finish = String.join(":", finisharr);
 		
 		serv.insert(name,address1,address2,day,open,finish,parking,realPath,file);
-		return "redirect:/cafein/cafein_imglist";
+		return "redirect:/cafein/goCafein?page=1";
 	}
 	
 	//------------------------Cafein 리스트 출력(사진리스트)---------------
@@ -82,7 +82,6 @@ public class CafeinController {
 		return list;
 	}
 	//------------------------Cafein 상세보기(로그인시)---------------------------
-	@ResponseBody
 	@RequestMapping("selectBySeq")
 	public String selectBySeq(Model model,int cafein_seq) throws Exception {
 		serv.selectBySeq(model, cafein_seq);
