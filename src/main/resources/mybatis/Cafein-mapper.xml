@@ -34,7 +34,11 @@
     </select>
 	
  	<select id="cafein_img-select" resultType="kh.spring.dto.Cafein_imgDTO">
- 	select *from cafein_img order by seq desc
+ 	 select * from (select row_number() over(order by seq desc) as line, cafein_img.* from cafein_img) where line between #{start} and #{end}
+ 	</select>
+	
+	<select id="cafein_img-select2" resultType="kh.spring.dto.Cafein_imgDTO">
+ 	 select * from cafein_img order by seq
  	</select>
 	
 	<select id="cafein-detail" resultType="kh.spring.dto.CafeinDTO">
