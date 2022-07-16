@@ -212,7 +212,7 @@ nav button:hover{
         	padding-right:30px;
         }
         
-        .editBtn, .deleteBtn, #bookmark, .likecount{
+        .editBtn, .deleteBtn, .fa-bookmark, .likecount{
         	cursor:pointer;
         }
         /* -------------댓글 관련 스타일 -----------------*/
@@ -300,6 +300,99 @@ nav button:hover{
 
 </head>
 <body>
+	<!-- ------------- 댓글쪽 인피니티 스크롤 ---------------- -->
+	<script>
+	let page = 2;  //페이징과 같은 방식이라고 생각하면 된다.
+
+ 
+    $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+        if($(window).scrollTop() >= $(document).height() - $(window).height()){
+         getreplyList(page);
+              page++;   
+        } 
+   	});
+
+    
+    function getreplyList(pape){
+        $.ajax({
+             url:'/feed/replyList',
+             type:'POST',
+            data : {page : page, cafefeed_seq: '${dto.cafefeed_seq}'},
+            dataType : 'json'
+          }).done(function(resp){
+
+          for(let i = 0; i < resp.length; i++){
+			let container = $("<div>");
+			container.attr("class","row replycontainer");
+
+           let left = $("<div>");
+           left.attr("class","col-12 replyleft");
+           
+           
+           let right = $("<div>");
+           right.attr("class","col-12 replyright");
+			
+           let writeInfo = $("<div>");
+           writeInfo.attr("class", "row writeInfo");
+           
+           let writerName = $("<div>");
+           writerName.attr("id", "replyWriter");
+           writerName.attr("class", "col-6");
+           writerName.text(resp[i].id);
+           
+           let write_date = $("<div>");
+           write_date.attr("id", "replyWrite_date");
+           write_date.attr("style", "text-align:right");
+           write_date.attr("class", "col-6");
+           write_date.text(resp[i].write_date);
+
+           let contents = $("<div>");
+           contents.attr("class","col-12 replycontents2");
+           let contentsEdit = $("<input>");
+           contentsEdit.attr("type","text");
+           contentsEdit.attr("id","editBox");
+           contentsEdit.attr("class","editable");
+           contentsEdit.attr("readonly",true);
+           
+           contentsEdit.val(resp[i].contents);
+
+           
+           let modifyBtn = $("<button>");
+           modifyBtn.attr("type","button");
+           modifyBtn.attr("class","replymodify btn btn-secondary");
+           modifyBtn.text("수정");
+           
+           let delBtn = $("<button>");
+           delBtn.attr("type","button");
+           delBtn.attr("class","replydel btn btn-secondary");
+           delBtn.text("삭제");
+           
+           
+           contents.append(contentsEdit);
+           
+           writeInfo.append(writerName);
+           writeInfo.append(write_date);
+           left.append(writeInfo);
+           left.append(contents);
+           
+
+           right.append(modifyBtn);
+           right.append(delBtn);
+
+           container.append(left);
+           container.append(right);
+
+           $(".replyBox").append(container);
+
+           
+           container.hide();
+           container.fadeIn(800);
+//            $("#replyContents").val("");
+//            $("#replyContents").focus();
+          }
+         });
+    }
+	</script>
     <!------------------------------------------------------------header----------------------------------------------------->
      
         <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
@@ -410,122 +503,124 @@ nav button:hover{
 				 <c:forEach var="i" items="${rdto }">
 		                <div class="row replycontainer">
 		                    <div class="col-12 replyleft">
-		                    	<input type="hidden" id="s">
-		                    	<div id="replyWriter" class="col-12">${i.id}</div>
-		                    	<div class="col-12 replycontents2">${i.contents}</div>
+		                    <div class="row writeInfo">
+		                  		<div id="replyWriter" class="col-6">${i.id}</div>
+		                    	<div id="replyWrite_date" class="col-6" style="text-align:right;">${i.write_date}</div>
+		                    </div>
+		                    	<div class="col-12 replycontents2"><input type="text" id="editBox" class="editable" value="${i.contents}" readonly></div>
 		                    </div>
 		                    <div class="col-12 replyright">
 		                    	<button type="button" class="replybmodify btn btn-secondary">수정</button>
 		                    	<button type="button" class="replydel btn btn-secondary">삭제</button>
 		                    </div>
 		                </div>
-		            </c:forEach>
+		         </c:forEach>
             </div>
          </div>
       </div>
       <br>
    </div>
    <script>
-        $(function(){
-            $("#replyWriteBtn").on("click", function(){
+//         $(function(){
+//             $("#replyWriteBtn").on("click", function(){
                 
-                let article = $("#replyContents").val();
+//                 let article = $("#replyContents").val();
 
-                if(article==""){
-                	const Toast = Swal.mixin({
-                	    toast: true,
-                	    position: 'center-center',
-                	    showConfirmButton: false,
-                	    timer: 3000,
-                	    timerProgressBar: true,
-                	    didOpen: (toast) => {
-                	        toast.addEventListener('mouseenter', Swal.stopTimer)
-                	        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                	    }
-                	})
+//                 if(article==""){
+//                 	const Toast = Swal.mixin({
+//                 	    toast: true,
+//                 	    position: 'center-center',
+//                 	    showConfirmButton: false,
+//                 	    timer: 3000,
+//                 	    timerProgressBar: true,
+//                 	    didOpen: (toast) => {
+//                 	        toast.addEventListener('mouseenter', Swal.stopTimer)
+//                 	        toast.addEventListener('mouseleave', Swal.resumeTimer)
+//                 	    }
+//                 	})
                 	 
-                	Toast.fire({
-                	    icon: 'error',
-                	    title: '댓글 내용을 입력해주세요.'
-                	})
-                	$("#replyContents").focus();
-                	return false;
-                }else{
-                	$.ajax({
-                		url:"/feed/replyWrite",
-                		data:{
-                			cafefeed_seq:${dto.cafefeed_seq},
-                			contents:article
-                		},
-                		async:false
-                	}).done(function(resp){
-                		console.log(resp);
-                		$(".replycontainer").remove();
-                		for(let i = 0; i < resp.length; i++){
-                			let container = $("<div>");
-                            container.attr("class","row replycontainer");
+//                 	Toast.fire({
+//                 	    icon: 'error',
+//                 	    title: '댓글 내용을 입력해주세요.'
+//                 	})
+//                 	$("#replyContents").focus();
+//                 	return false;
+//                 }else{
+//                 	$.ajax({
+//                 		url:"/feed/replyWrite",
+//                 		data:{
+//                 			cafefeed_seq:${dto.cafefeed_seq},
+//                 			contents:article
+//                 		},
+//                 		async:false
+//                 	}).done(function(resp){
+//                 		console.log(resp);
+//                 		$(".replycontainer").remove();
+//                 		for(let i = 0; i < resp.length; i++){
+//                 			let container = $("<div>");
+//                             container.attr("class","row replycontainer");
 
-                            let left = $("<div>");
-                            left.attr("class","col-12 replyleft");
+//                             let left = $("<div>");
+//                             left.attr("class","col-12 replyleft");
                             
                             
-                            let right = $("<div>");
-                            right.attr("class","col-12 replyright");
+//                             let right = $("<div>");
+//                             right.attr("class","col-12 replyright");
             				
-                            let writerName = $("<div>");
-                            writerName.attr("id", "replyWriter");
-                            writerName.attr("class", "col-12");
-                            writerName.text(resp[i].id);
+//                             let writerName = $("<div>");
+//                             writerName.attr("id", "replyWriter");
+//                             writerName.attr("class", "col-12");
+//                             writerName.text(resp[i].id);
 
-                            let contents = $("<div>");
-                            contents.attr("class","col-12 replycontents2");
-                            let contentsEdit = $("<input>");
-                            contentsEdit.attr("type","text");
-                            contentsEdit.attr("id","editBox");
-                            contentsEdit.attr("class","editable");
-                            contentsEdit.attr("readonly",true);
+//                             let contents = $("<div>");
+//                             contents.attr("class","col-12 replycontents2");
+//                             let contentsEdit = $("<input>");
+//                             contentsEdit.attr("type","text");
+//                             contentsEdit.attr("id","editBox");
+//                             contentsEdit.attr("class","editable");
+//                             contentsEdit.attr("readonly",true);
                             
-                            contentsEdit.val(resp[i].contents);
+//                             contentsEdit.val(resp[i].contents);
 
                             
-                            let modifyBtn = $("<button>");
-                            modifyBtn.attr("type","button");
-                            modifyBtn.attr("class","replymodify btn btn-secondary");
-                            modifyBtn.text("수정");
+//                             let modifyBtn = $("<button>");
+//                             modifyBtn.attr("type","button");
+//                             modifyBtn.attr("class","replymodify btn btn-secondary");
+//                             modifyBtn.text("수정");
                             
-                            let delBtn = $("<button>");
-                            delBtn.attr("type","button");
-                            delBtn.attr("class","replydel btn btn-secondary");
-                            delBtn.text("삭제");
+//                             let delBtn = $("<button>");
+//                             delBtn.attr("type","button");
+//                             delBtn.attr("class","replydel btn btn-secondary");
+//                             delBtn.text("삭제");
                             
                             
-                            contents.append(contentsEdit);
+//                             contents.append(contentsEdit);
                             
-                            left.append(writerName);
-                            left.append(contents);
+//                             left.append(writerName);
+//                             left.append(contents);
                             
 
-                            right.append(modifyBtn);
-                            right.append(delBtn);
+//                             right.append(modifyBtn);
+//                             right.append(delBtn);
 
-                            container.append(left);
-                            container.append(right);
+//                             container.append(left);
+//                             container.append(right);
 
-                            $(".replyBox").prepend(container);
+//                             $(".replyBox").prepend(container);
 
-                            $("#replyContents").val("");
-                            $("#replyContents").focus();
+//                             $("#replyContents").val("");
+//                             $("#replyContents").focus();
                             
-	                         $("body").on("click", ".replydel", function(){
-	                            location.href = "/feed/deleteReply?seq="+resp[i].seq+"&cafefeed_seq="+${dto.cafefeed_seq};
-	                            $(this).closest(".replycontainer").remove();
-	                         });
-                		}
-                        });
+// 	                         $("body").on("click", ".replydel", function(){
+// 	                            location.href = "/feed/deleteReply?seq="+resp[i].seq+"&cafefeed_seq="+${dto.cafefeed_seq};
+// 	                            $(this).closest(".replycontainer").remove();
+// 	                         });
+//                 		}
+//                         });
                     	
 
-                	}
-                })
+//                 	}
+//                 })
                 // ajax 로 받아 오는게 좋을것 같다.
 //                 $("body").on("click", ".replydel", function(){
 //                 	location.href = "/feed/deleteReply?seq="+resp[i].seq+"&cafefeed_seq="+${dto.cafefeed_seq};
@@ -536,7 +631,7 @@ nav button:hover{
 //         	        $(this).closest(".replycontainer").remove();
 //        	     });
 
-        });
+//         });
         
         $("#replyContents").keyup(function(e) {
             let content = $(this).val();
