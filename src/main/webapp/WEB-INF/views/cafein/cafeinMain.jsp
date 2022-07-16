@@ -236,33 +236,18 @@ nav button:hover{
           </nav>
 <!-----------------------------------------------검색 DIV------------------------------------------->
  <div id="con1">
+     
        <div class="row">
-          <div class="col-3"></div>
-          
-          <div class="col-6 d-none d-md-block searchdiv"style="padding:0px;">
-             <input class="search" type="text" placeholder="작성자 / 제목 으로 검색해보세요.">
-          </div>
-          <div class="col-6 d-md-none searchdiv"style="padding:0px;">
-             <input class="search" type="text" placeholder="작성자 / 제목 검색">
-          </div>
-          
-          <div class="col-3">
-          <button class="searchbtn" type="button" style="padding:0px;"><img class="search2" style="padding:0px; margin-top:5px;"src="/resources/img/search.png"></button>
-          </div>
-      </div>
-       <div class="row">
-           <div class="col-6">
-              <select class="select">
-                <option>최신순</option>
-                <option>조회순</option>
-                <option>추천순</option>
-              </select>
-           </div>
-          <div class="col-6">
+       	<c:choose>
+            <c:when test="${ mdto.mem_level == 1 || mdto.mem_level == 2 }">
+          <div class="col-12">
              <button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
           </div>
+          </c:when>
+          </c:choose>
+          
 <!-------------------------------------------------------인스타 Board------------------------------------------------->
-
+	
           <div class="tz-gallery">
 			<div class="contents">
             <div class="row">
