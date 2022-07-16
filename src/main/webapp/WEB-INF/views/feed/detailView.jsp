@@ -289,6 +289,11 @@ nav button:hover{
          .replymodify{
          	margin-right:5px;
          }
+         #editBox{
+         	background-color:#222;
+         	color:white;
+         	border:none;
+         }
         /*-----------------------모달 창 스타일 -----------------------------*/
 		
    </style>
@@ -402,7 +407,19 @@ nav button:hover{
             	</div>
             </div>
           	<div class="replyBox">
-
+				 <c:forEach var="i" items="${rdto }">
+		                <div class="row replycontainer">
+		                    <div class="col-12 replyleft">
+		                    	<input type="hidden" id="s">
+		                    	<div id="replyWriter" class="col-12">${i.id}</div>
+		                    	<div class="col-12 replycontents2">${i.contents}</div>
+		                    </div>
+		                    <div class="col-12 replyright">
+		                    	<button type="button" class="replybmodify btn btn-secondary">수정</button>
+		                    	<button type="button" class="replydel btn btn-secondary">삭제</button>
+		                    </div>
+		                </div>
+		            </c:forEach>
             </div>
          </div>
       </div>
@@ -462,7 +479,13 @@ nav button:hover{
 
                             let contents = $("<div>");
                             contents.attr("class","col-12 replycontents2");
-                            contents.text(resp[i].contents);
+                            let contentsEdit = $("<input>");
+                            contentsEdit.attr("type","text");
+                            contentsEdit.attr("id","editBox");
+                            contentsEdit.attr("class","editable");
+                            contentsEdit.attr("readonly",true);
+                            
+                            contentsEdit.val(resp[i].contents);
 
                             
                             let modifyBtn = $("<button>");
@@ -476,8 +499,11 @@ nav button:hover{
                             delBtn.text("삭제");
                             
                             
+                            contents.append(contentsEdit);
+                            
                             left.append(writerName);
                             left.append(contents);
+                            
 
                             right.append(modifyBtn);
                             right.append(delBtn);
@@ -489,16 +515,26 @@ nav button:hover{
 
                             $("#replyContents").val("");
                             $("#replyContents").focus();
+                            
+	                         $("body").on("click", ".replydel", function(){
+	                            location.href = "/feed/deleteReply?seq="+resp[i].seq+"&cafefeed_seq="+${dto.cafefeed_seq};
+	                            $(this).closest(".replycontainer").remove();
+	                         });
                 		}
                         });
                     	
-                        $("body").on("click", ".replydel", function(){
-                        	location.href = "/feed/deleteReply?seq="+${dto.seq}+"&cafefeed_seq="+${dto.cafefeed_seq};
-                            $(this).closest(".replycontainer").remove();
-                        });
+
                 	}
                 })
-                
+                // ajax 로 받아 오는게 좋을것 같다.
+//                 $("body").on("click", ".replydel", function(){
+//                 	location.href = "/feed/deleteReply?seq="+resp[i].seq+"&cafefeed_seq="+${dto.cafefeed_seq};
+//                     $(this).closest(".replycontainer").remove();
+//                 });
+//             	 $("body").on("click", ".replydmodify", function(){
+//         	    	location.href = "/feed/modifyReply?seq="+resp[i].seq+"&cafefeed_seq="+${dto.cafefeed_seq};
+//         	        $(this).closest(".replycontainer").remove();
+//        	     });
 
         });
         
