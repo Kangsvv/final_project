@@ -16,7 +16,7 @@
 		<div style="background-color: white; max-width: 450px; height: 100vmin; margin: 0px auto;">
 			<div class='center_row'>
 				<h1 style="margin: 0px;">회원가입</h1>
-				<form action="joinAction" class='loginFrom max-W360' autocomplete="off" enctype="multipart/form-data">
+				<form action="joinAction" method="post" class='loginFrom max-W360' enctype="multipart/form-data">
 					<ul style="padding: 0px 0px 20px 0px;">
 						<li><input class="form_main" type="text" id='mem_id'
 							name='mem_id' placeholder="아이디" maxlength="12" required="required">
@@ -222,7 +222,7 @@
 				return false;
 			}
 			
-			if($("#mem_ceocheckimg_file").val() != null){
+			if($("#mem_ceocheckimg_file").val() != '' && $("#mem_ceocheckimg_file").val() != null){
 				$("#mem_status").val(2);
 				$("#mem_level").val(1);
 			}
@@ -302,8 +302,9 @@
 				if(this.files && this.files[0]) {
 				   var reader = new FileReader;
 				   reader.readAsDataURL(this.files[0]);
+				   console.log(this.files[0]);
+				   $("#ceoCheck").prop("checked", true);
 				}
-				$("#ceoCheck").prop("checked", true);
 			}
 		});
 		
