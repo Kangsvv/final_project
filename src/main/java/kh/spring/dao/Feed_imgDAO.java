@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kh.spring.dto.Cafein_imgDTO;
 import kh.spring.dto.Feed_imgDTO;
 
 @Repository
@@ -22,8 +21,17 @@ public class Feed_imgDAO {
 		mybatis.insert("Feed.feed_img-insert",dto);
 	}
 	//--------------------피드리스트(사진)-----------------
-	public List<Feed_imgDTO> feed_imglist() throws Exception{
-		return mybatis.selectList("Feed.feed_img-select");
+	public List<Feed_imgDTO> feed_imglist(int cpage) throws Exception{
+		
+		int start = (cpage-1)*18+1;
+		int end = (cpage)*18;
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		map.put("start", start);
+		map.put("end", end);
+		
+		return mybatis.selectList("Feed.feed_img-select",map);
 	}
 	//-------------------피드 상세페이지출력-----------------
 	public Feed_imgDTO selectBySeq(int cafefeed_seq) {

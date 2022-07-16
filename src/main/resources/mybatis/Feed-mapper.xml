@@ -6,8 +6,8 @@
 <mapper namespace="Feed">
 
 	<!-- 최신순 무한스크롤 출력 -->
-	<select id="selectAllrs" resultType="kh.spring.dto.FeedDTO">
-		select * from (select row_number() over(order by cafefeed_seq desc) as line, CafeFeed.* from CafeFeed) where line between #{start} and #{end}
+	<select id="selectAllrs" resultType="kh.spring.dto.Feed_imgDTO">
+		select * from (select row_number() over(order by seq desc) as line, feed_img.* from feed_img) where line between #{start} and #{end}
 	</select>
 	
 	<!-- 추천순 무한스크롤 출력 -->
@@ -31,8 +31,8 @@
 		insert into feed_img values(feed_img_seq.nextval,#{ori_name},#{sys_name},#{cafefeed_seq})
 	</insert>
 	<!-- 피드 사진 select 기능 -->
-	<select id="feed_img-select" resultType="kh.spring.dto.Feed_imgDTO">
- 		select * from feed_img order by seq desc
+	<select id="feed_img-select" resultType="kh.spring.dto.Feed_imgDTO"> 
+ 		select * from (select row_number() over(order by seq desc) as line, feed_img.* from feed_img) where line between #{start} and #{end}
  	</select>
  	<!-- 피드 디테일뷰 -->
  	<select id="feed-detail" resultType="kh.spring.dto.FeedDTO">

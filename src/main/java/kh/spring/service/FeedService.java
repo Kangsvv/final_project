@@ -39,7 +39,7 @@ public class FeedService {
 	
 	
 	// 최신순 출력
-		public List<FeedDTO> selectAllrs(Model model, int cpage) throws Exception {
+		public List<Feed_imgDTO> selectAllrs(Model model, int cpage) throws Exception {
 			System.out.println("goFeed Serv 준비중");
 		
 		return dao.selectAllrs(cpage);
@@ -73,7 +73,8 @@ public class FeedService {
 
 			// 영구적으로 로컬 환경에도 옮겨야됨.
 //			String  localPath ="C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
-			String  localPath ="A:/springWorkspace/final_project/src/main/webapp/resources/feed";
+//			String  localPath ="A:/springWorkspace/final_project/src/main/webapp/resources/feed";
+			String localPath= "C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
 			File realFile = new File(realPath + "/"+sysName); // 파일 객체를 만든거예요 - 파일 데이터가 들어가 있음
 			File localFile = new File(localPath + "/"+sysName); // 파일 객체를 만든거고 - 빈 껍데기
 			// 실제 메모리상에 이 파일 객체 있는 거임.
@@ -95,8 +96,8 @@ public class FeedService {
 
 		}
 		// 카페 이미지 출력 FeedMain
-		public void feed_imglist(Model model) throws Exception {
-			List<Feed_imgDTO> list = fdao.feed_imglist();
+		public void feed_imglist(Model model,int cpage) throws Exception {
+			List<Feed_imgDTO> list = fdao.feed_imglist(cpage);
 			
 			System.out.println(list);
 			
