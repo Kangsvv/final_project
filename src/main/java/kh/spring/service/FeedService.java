@@ -72,8 +72,8 @@ public class FeedService {
 			file.transferTo(new File(realPath + "/"+sysName)); // 서버 경로 저장하기
 
 			// 영구적으로 로컬 환경에도 옮겨야됨.
-			String  localPath ="C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
-//			String  localPath ="A:/springWorkspace/final_project/src/main/webapp/resources/feed";
+//			String  localPath ="C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
+			String  localPath ="A:/springWorkspace/final_project/src/main/webapp/resources/feed";
 			File realFile = new File(realPath + "/"+sysName); // 파일 객체를 만든거예요 - 파일 데이터가 들어가 있음
 			File localFile = new File(localPath + "/"+sysName); // 파일 객체를 만든거고 - 빈 껍데기
 			// 실제 메모리상에 이 파일 객체 있는 거임.
@@ -84,7 +84,7 @@ public class FeedService {
 			// StandardCopyOption.REPLACE_EXISTING : 저장 옵션 - 덮어쓰기
 
 			String id = (String)session.getAttribute("loginID");
-			String nickname = mdao.nickname(id);
+//			String nickname = mdao.nickname(id);
 			
 			FeedDTO dto = new FeedDTO();
 			dto.setTitle(title);
@@ -105,7 +105,7 @@ public class FeedService {
 		// 카페 상세 페이지 출력 detailView
 		@Transactional
 		public void selectBySeq(Model model,int cafefeed_seq) throws Exception {
-			
+			System.out.println("Service CS : " + cafefeed_seq );
 			//-------------리뷰정보----------------------
 			FeedDTO dto = dao.selectBySeq(cafefeed_seq);
 			

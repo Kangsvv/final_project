@@ -59,7 +59,11 @@ public class FeedController {
 	@RequestMapping("selectBySeq")
 	public String detailView(Model model, int cafefeed_seq) throws Exception{
 		
+		System.out.println("Controller CS : " + cafefeed_seq );
+		
 		serv.selectBySeq(model, cafefeed_seq);
+		
+		rServ.selectBySeq(model, cafefeed_seq);
 		
 		return "/feed/detailView";
 	}
@@ -110,13 +114,13 @@ public class FeedController {
 		
 //		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
 	}
-	@ResponseBody
 	@RequestMapping("deleteReply")
-	public List<ReplyDTO> deleteReply(Model model, int seq, int cafefeed_seq) throws Exception{
+	public String deleteReply(Model model, int seq, int cafefeed_seq) throws Exception{
 		
 		rServ.deleteReply(seq);
+		rServ.selectBySeq(model, cafefeed_seq);
 		
-		return rServ.selectBySeq(model, cafefeed_seq);
+		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;
 		
 //		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
 	}
