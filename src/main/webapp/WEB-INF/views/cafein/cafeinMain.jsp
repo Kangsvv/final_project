@@ -267,6 +267,44 @@ nav button:hover{
           $(".writebtn").on("click",function(){
         	  location.href="/cafein/writeCafein";
           })
+          
+          	let page = 2;  //페이징과 같은 방식이라고 생각하면 된다.
+//          getFeedList(page);
+//          page++;
+      
+         $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+              if($(window).scrollTop() >= $(document).height() - $(window).height()){
+            	 getFeedList(page);
+            	 console.log(page);
+                 page++;   
+              } 
+         });
+   
+
+    function getFeedList(pape){
+      let page = pape;
+      
+      $.ajax({
+          url : '/cafein/cafein_imglist',
+          type : 'POST',
+          data : {page : page},
+          async: false,
+          dataType : 'json'
+     }).done(function(resp){
+    	 console.log(resp);
+    	let cDiv = $("<div class='row'>");
+    	for(let i=0; i < resp.length; i++){
+    		 
+    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
+    	 
+    	 	cDiv.append(contentsDiv);
+    	 }
+    	$(".contents").append(cDiv);
+	 	cDiv.hide();
+	 	cDiv.fadeIn(800);
+    	 
+    })
+};
           </script>
 
   <!-------------------------------------------------------인스타 Board------------------------------------------------->
@@ -276,13 +314,13 @@ nav button:hover{
             <div class="row contents">
     
                 
-                <c:forEach var="i" items="${list}">
-                <div class="col-sm-6 col-md-4 cafeinimg">
-                    <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
-                        <img src="/cafein/${i.sys_name }">
-                    </a>
-                </div>
-                </c:forEach>
+<%--                 <c:forEach var="i" items="${list}"> --%>
+<!--                 <div class="col-sm-6 col-md-4 cafeinimg"> -->
+<%--                     <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }"> --%>
+<%--                         <img src="/cafein/${i.sys_name }"> --%>
+<!--                     </a> -->
+<!--                 </div> -->
+<%--                 </c:forEach> --%>
                 
                
                 
