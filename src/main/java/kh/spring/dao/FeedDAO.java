@@ -8,8 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kh.spring.dto.CafeinDTO;
 import kh.spring.dto.FeedDTO;
+import kh.spring.dto.Feed_imgDTO;
 
 @Repository
 public class FeedDAO {
@@ -18,7 +18,7 @@ public class FeedDAO {
 	private SqlSession mybatis;
 
 	// 무한스크롤 최신순
-	public List<FeedDTO> selectAllrs(int cpage){
+	public List<Feed_imgDTO> selectAllrs(int cpage){
 
 		int start = (cpage-1)*18+1;
 		int end = (cpage)*18;

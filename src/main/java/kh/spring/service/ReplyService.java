@@ -43,8 +43,8 @@ public class ReplyService {
 		dao.replyWriteProc(dto);
 		
 	}
-	public List<ReplyDTO> selectBySeq(Model model, int cafefeed_seq) throws Exception {
-		List<ReplyDTO> list = dao.selectBySeq(cafefeed_seq);
+	public List<ReplyDTO> selectBySeq(Model model, int cafefeed_seq, int page) throws Exception {
+		List<ReplyDTO> list = dao.selectBySeq(cafefeed_seq, page);
 
 		System.out.println(list);
 		
