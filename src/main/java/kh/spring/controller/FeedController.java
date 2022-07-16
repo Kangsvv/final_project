@@ -64,11 +64,13 @@ public class FeedController {
 	@RequestMapping("selectBySeq")
 	public String detailView(Model model, int cafefeed_seq) throws Exception{
 		
+		int page = 1;
+		
 		System.out.println("Controller CS : " + cafefeed_seq );
 		
 		serv.selectBySeq(model, cafefeed_seq);
 		
-		rServ.selectBySeq(model, cafefeed_seq);
+		rServ.selectBySeq(model, cafefeed_seq, page);
 		
 		return "/feed/detailView";
 	}
@@ -118,11 +120,17 @@ public class FeedController {
 	public String deleteReply(Model model, int seq, int cafefeed_seq) throws Exception{
 		
 		rServ.deleteReply(seq);
-		rServ.selectBySeq(model, cafefeed_seq);
+//		rServ.selectBySeq(model, cafefeed_seq);
 		
 		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;
 		
 //		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
+	}
+	@ResponseBody
+	@RequestMapping("replyList")
+	public List<ReplyDTO> replyList(Model model, int cafefeed_seq, int page) throws Exception{
+		System.out.println("댓글 리스트 가져오는 중");
+		return rServ.selectBySeq(model, cafefeed_seq, page);
 	}
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class

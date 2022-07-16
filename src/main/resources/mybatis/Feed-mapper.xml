@@ -65,7 +65,7 @@
 	
 	<!-- 댓글 리스트 불러오기 -->
 	<select id="replylist_select" resultType="kh.spring.dto.ReplyDTO">
-		select * from cafefeedReply where cafefeed_seq=#{cafefeed_seq}
+		select * from (select row_number() over(order by write_date desc) as line, cafefeedReply.* from cafefeedReply) where (line between #{start} and #{end}) and (cafefeed_seq=#{cafefeed_seq})
 	</select>
 	<delete id="reply_delete">
 		delete from cafefeedReply where seq=#{seq}
