@@ -316,7 +316,7 @@ nav button:hover{
               page++;   
 //               console.log(page);
         } 
-   });
+   	});
 
     
     function getreplyList(pape){
