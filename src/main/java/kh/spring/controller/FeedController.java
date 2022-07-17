@@ -66,10 +66,10 @@ public class FeedController {
 		
 		int page = 1;
 		
-		System.out.println("Controller CS : " + cafefeed_seq );
+		System.out.println("Controller CS : " + cafefeed_seq);
 		
 		serv.selectBySeq(model, cafefeed_seq);
-		
+		System.out.println("selectBySeq 에 관한 페이지"+page);
 		rServ.selectBySeq(model, cafefeed_seq, page);
 		
 		return "/feed/detailView";
@@ -129,6 +129,7 @@ public class FeedController {
 	@ResponseBody
 	@RequestMapping("replyList")
 	public List<ReplyDTO> replyList(Model model, int cafefeed_seq, int page) throws Exception{
+		System.out.println("replyList 에 관한 페이지"+page);
 		System.out.println("댓글 리스트 가져오는 중");
 		return rServ.selectBySeq(model, cafefeed_seq, page);
 	}

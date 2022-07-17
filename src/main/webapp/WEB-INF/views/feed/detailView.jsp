@@ -304,23 +304,16 @@ nav button:hover{
 	<script>
 	let page = 2;  //페이징과 같은 방식이라고 생각하면 된다.
 
-    $(function(){
-         getreplyList(page);
-         page++;
-//          console.log(page);
-    })
  
     $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
         if($(window).scrollTop() >= $(document).height() - $(window).height()){
          getreplyList(page);
               page++;   
-//               console.log(page);
         } 
-   });
+   	});
 
     
     function getreplyList(pape){
-   		console.log(1);
         $.ajax({
              url:'/feed/replyList',
              type:'POST',
@@ -339,10 +332,19 @@ nav button:hover{
            let right = $("<div>");
            right.attr("class","col-12 replyright");
 			
+           let writeInfo = $("<div>");
+           writeInfo.attr("class", "row writeInfo");
+           
            let writerName = $("<div>");
            writerName.attr("id", "replyWriter");
-           writerName.attr("class", "col-12");
+           writerName.attr("class", "col-6");
            writerName.text(resp[i].id);
+           
+           let write_date = $("<div>");
+           write_date.attr("id", "replyWrite_date");
+           write_date.attr("style", "text-align:right");
+           write_date.attr("class", "col-6");
+           write_date.text(resp[i].write_date);
 
            let contents = $("<div>");
            contents.attr("class","col-12 replycontents2");
@@ -368,7 +370,9 @@ nav button:hover{
            
            contents.append(contentsEdit);
            
-           left.append(writerName);
+           writeInfo.append(writerName);
+           writeInfo.append(write_date);
+           left.append(writeInfo);
            left.append(contents);
            
 
@@ -378,8 +382,11 @@ nav button:hover{
            container.append(left);
            container.append(right);
 
-           $(".replyBox").prepend(container);
+           $(".replyBox").append(container);
 
+           
+           container.hide();
+           container.fadeIn(800);
 //            $("#replyContents").val("");
 //            $("#replyContents").focus();
           }
@@ -496,16 +503,18 @@ nav button:hover{
 				 <c:forEach var="i" items="${rdto }">
 		                <div class="row replycontainer">
 		                    <div class="col-12 replyleft">
-		                    	<input type="hidden" id="s">
-		                    	<div id="replyWriter" class="col-12">${i.id}</div>
-		                    	<div class="col-12 replycontents2">${i.contents}</div>
+		                    <div class="row writeInfo">
+		                  		<div id="replyWriter" class="col-6">${i.id}</div>
+		                    	<div id="replyWrite_date" class="col-6" style="text-align:right;">${i.write_date}</div>
+		                    </div>
+		                    	<div class="col-12 replycontents2"><input type="text" id="editBox" class="editable" value="${i.contents}" readonly></div>
 		                    </div>
 		                    <div class="col-12 replyright">
 		                    	<button type="button" class="replybmodify btn btn-secondary">수정</button>
 		                    	<button type="button" class="replydel btn btn-secondary">삭제</button>
 		                    </div>
 		                </div>
-		            </c:forEach>
+		         </c:forEach>
             </div>
          </div>
       </div>
