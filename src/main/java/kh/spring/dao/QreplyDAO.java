@@ -16,12 +16,18 @@ public class QreplyDAO {
 	private SqlSessionTemplate mybatis;
   
 	public List<QreplyDTO> reply_list(int question_seq) throws Exception {
-		return mybatis.selectList("qreply.reply_list", question_seq);
+		return mybatis.selectList("question.reply_list", question_seq);
 		
 	}
 	
 
-	public int reply_insert(QreplyDTO dto) throws Exception{
-		return mybatis.insert("qreply.reply_insert", dto);
+	public void reply_insert(QreplyDTO dto) throws Exception{
+		mybatis.insert("question.reply_insert", dto);
 	}
+	
+	
+	public void reply_delete(QreplyDTO dto) throws Exception{
+		mybatis.delete("question.reply_delete", dto);
+	}
+	
 }

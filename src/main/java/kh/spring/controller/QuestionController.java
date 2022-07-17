@@ -67,7 +67,7 @@ import kh.spring.service.QuestionService;
 			
 			Qservice.read(model, question_seq);
 			
-			List<QreplyDTO> rlist = Rservice.reply_list(question_seq);
+			List<QreplyDTO> rlist = Rservice.reply_list(model, question_seq);
 			model.addAttribute("rlist", rlist);
 			
 			System.out.println(rlist);
@@ -103,13 +103,26 @@ import kh.spring.service.QuestionService;
 			
 		}
 		
+		//-----------댓글 작성-----------
+		
 		
 		@RequestMapping("reply_insert")
 		public String reply_insert(QreplyDTO dto, int question_seq) throws Exception{
 			
 			Rservice.insert(dto);
 		
-			return "/question/question_detail?question_seq=${i.question_seq }";
+			return "question/question_detail";
+		}
+		
+		//-------댓글 삭제-------
+		
+		@RequestMapping("reply_delete")
+		public String reply_delete(QreplyDTO dto) throws Exception{
+			
+			Rservice.delete(dto);
+			
+			return "question/question_detail";
+			
 		}
 		
 		

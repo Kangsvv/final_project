@@ -438,25 +438,45 @@ li.dropdown {
 
 </div>
 
- <div id="reply">
+ <div id="reply_box">
 
+	
+	        <div class="replyWriteBox">
+            	<div id="row" style="font-size : 15px; width: 100%; height: 100%; overflow: hidden;" align=left>
+	            	<div id="replyContentsBox">
+	            		<textarea name="replyContents" id="replyContents" style="width: 100%;" rows="30" placeholder="내용"></textarea>
+	            	</div>
+	            	<div id="replyWriteBtnBox">
+	            		<input type="button" id="replyWriteBtn" value="작성하기">
+	            	</div>
+            	</div>
+            </div>
+	
+	
+	
+	
+	
 	 		<div class="replyList">
 				<c:forEach var="i" items="${rlist }">
-				<c:if test="${i.question_seq == dto.question_seq}">
 						<div style="color:white">
 						작성 날짜 : <fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
 						</div>
 						<div style="color:white">
 							${i.contents } 
 						</div>
-				 </c:if>
+									<div><button>수정</button> <button id="replyDelete">삭제</button></div>
 				</c:forEach>
-				<form action="reply_insert">
-				 <input type="text" class="reply" name="contents" style="color:black; margin: auto;" />
-				 		<button>작성하기</button>
-	 			</form>
+<!-- 				<form action="reply_insert"> -->
+<!-- 				 <input type="text" class="reply" name="contents" style="color:black; margin: auto;" /> -->
+<!-- 				 		<button>작성하기</button> -->
+<!-- 	 			</form> -->
 	 		</div>	
-	 	</div>
+	 	
+	 	
+	 	
+	 	
+	 	
+</div>
 	
 	
 	
@@ -473,6 +493,76 @@ div{border: 1px solid white;}
 	.replyList{
 		text-align: center;
 	}
+
+ .replyWriteBox{
+         	padding:20px;
+        	border-top: 2px solid white;
+			border-bottom: 2px solid white;
+        }
+       
+        #replyContentsBox{
+        	float: left;
+        	width:90%;
+        	height:100px;
+        }
+        #replyWriteBtnBox{
+       		float: left;
+        	width:10%;
+        	height:100px;
+        }
+        #replyWriteBtn{
+        	background-color:#760c0c;
+        	color:white;
+        	border-radius:10px;
+        	width:100%;
+        	height:100%;
+        }
+        .replycontainer {
+            margin: auto;
+            width: 95%;
+            margin-top: 10px;
+            border-bottom: 1px solid gray;
+        }
+ 		.replycontents2{
+ 			margin-left: 10px;
+			word-wrap: break-word;      /* IE 5.5-7 */
+			white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+			white-space: pre-wrap;      /* current browsers */
+ 		}
+        .replywriterName{
+            margin: 4px 4px;
+            width: 98%;
+            height: 15%;
+            background-color: rgb(84, 84, 84);
+            color: white;
+            padding-left: 10px;
+        }
+
+        .replycontent{
+            margin: 4px 4px;
+            width: 98%;
+            height: 78%;
+            padding-left: 10px;
+        }
+
+        .replydel {
+/*             margin-top: 60px; */
+        }
+        .replyleft{
+/*             float: left; */
+            width: 100%;
+        }
+
+         .replyright{
+/*              float: left;  */
+             width: 100%; 
+/*             height: 100%; */
+             text-align: right;
+             padding-bottom:5px;
+         }
+         .replymodify{
+         	margin-right:5px;
+         }
 
 </style>
 	<!-------------------------------------------------------Footer------------------------------------------------->
@@ -543,6 +633,7 @@ $(".backbtn").on("click", function(){
 	location.href = "/question/question_list";
 })
 
+
 $(".upbtn").on("click",function(){
 	$(".main").removeAttr("disabled");
 	$(".eventbox").removeAttr("disabled");
@@ -585,11 +676,106 @@ $(".create").on("click", "#modifyBtn",function(){
 	})
 })
 	
-// $(".reply").on("click", function(){
 	
-// 	location.href = "/question/reply_insert"	
+// 댓글	
+ $(function(){
+            $("#replyWriteBtn").on("click", function(){
+                
+                let article = $("#replyContents").val();
+
+                if(article==""){
+                	const Toast = Swal.mixin({
+                	    toast: true,
+                	    position: 'center-center',
+                	    showConfirmButton: false,
+                	    timer: 3000,
+                	    timerProgressBar: true,
+                	    didOpen: (toast) => {
+                	        toast.addEventListener('mouseenter', Swal.stopTimer)
+                	        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                	    }
+                	})
+                	 
+                	Toast.fire({
+                	    icon: 'error',
+                	    title: '댓글 내용을 입력해주세요.'
+                	})
+                	$("#replyContents").focus();
+                	return false;
+                }else{
+                	$.ajax({
+                		url:"/question/reply_insert",
+                		data:{
+                			question_seq:${dto.question_seq},
+                			contents:article
+      
+                		},
+                		async:false
+                		
+                	}).done(function(resp){
+                		console.log(resp);
+                		location.reload();
+                		$(".replycontainer").remove();
+                		for(let i = 0; i < resp.length; i++){
+                			let container = $("<div>");
+                            container.attr("class","row replycontainer");
+
+                            let left = $("<div>");
+                            left.attr("class","col-12 replyleft");
+                            
+                            
+                            let right = $("<div>");
+                            right.attr("class","col-12 replyright");
+            				
+                            let writerName = $("<div>");
+                            writerName.attr("id", "replyWriter");
+                            writerName.attr("class", "col-12");
+                            writerName.text(resp[i].id);
+
+                            let contents = $("<div>");
+                            contents.attr("class","col-12 replycontents2");
+                            contents.text(resp[i].contents);
+
+                            
+                            let modifyBtn = $("<button>");
+                            modifyBtn.attr("type","button");
+                            modifyBtn.attr("class","replymodify btn btn-secondary");
+                            modifyBtn.text("수정");
+                            
+                            let delBtn = $("<button>");
+                            delBtn.attr("type","button");
+                            delBtn.attr("class","replydel btn btn-secondary");
+                            delBtn.text("삭제");
+                            
+                            
+                            left.append(writerName);
+                            left.append(contents);
+
+                            right.append(modifyBtn);
+                            right.append(delBtn);
+
+                            container.append(left);
+                            container.append(right);
+
+                            $(".replyBox").prepend(container);
+
+                            $("#replyContents").val("");
+                            $("#replyContents").focus();
+                		};
+                       });
+             	}
+             })          
+     });
+
+$("#replyDelete").on("click", function() {
+	location.href = "/question/reply_delete";
 	
+});
+
+// $("#replyUpdate").on("click". function() {
+
 // })
+                    
 
 
 </script>

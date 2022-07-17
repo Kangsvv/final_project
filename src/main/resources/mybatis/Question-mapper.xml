@@ -27,6 +27,21 @@
 	</select>
 
 	
+<!--댓글-->
+	
+  <select id = "reply_list" resultType="kh.spring.dto.QreplyDTO">
+  	select * from reply where question_seq = #{question_seq}
+  </select>
+  
+  
+  <insert id = "reply_insert">
+    insert into reply values(reply_seq.nextval, #{question_seq}, #{contents}, 123, sysdate)
+  </insert>
+	
+	
+<delete id="reply_delete">
+	delete from reply where reply_seq = #{reply_seq}
+</delete>
 	
 	
 </mapper>
