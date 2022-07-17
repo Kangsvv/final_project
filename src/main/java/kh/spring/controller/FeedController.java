@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.gson.Gson;
 
 import kh.spring.dto.FeedDTO;
+import kh.spring.dto.Feed_imgDTO;
 import kh.spring.dto.ReplyDTO;
 import kh.spring.service.FeedService;
 import kh.spring.service.ReplyService;
@@ -36,21 +37,25 @@ public class FeedController {
 		int cpage = page;
 		
 		System.out.println(cpage);
-		List<FeedDTO> list = serv.selectAllrs(model, cpage);
+//		List<FeedDTO> list = serv.selectAllrs(model, cpage);
 //		String fList = g.toJson(list);
-		model.addAttribute("list", list);
 //		System.out.println(flist);
-		serv.feed_imglist(model);
-		
+		serv.feed_imglist(model,cpage);
 		return "/feed/feedMain";
 	}
+	
+//	@RequestMapping("feed_imglist")
+//	public String feed_imglist(Model model) throws Exception {
+//		return "goFeed?page=1";
+//	}
+	
 	@ResponseBody
 	@RequestMapping("goInfinitiedFeed")
-	public List<FeedDTO> goInfinitiedFeed(Model model, int page) throws Exception{
-		
+	public List<Feed_imgDTO> goInfinitiedFeed(Model model, int page) throws Exception{
+
 		int cpage = page;
 		
-		List<FeedDTO> list = serv.selectAllrs(model, cpage);
+		List<Feed_imgDTO> list = serv.selectAllrs(model, cpage);
 		model.addAttribute("list", list);
 		
 		return list;
@@ -59,7 +64,13 @@ public class FeedController {
 	@RequestMapping("selectBySeq")
 	public String detailView(Model model, int cafefeed_seq) throws Exception{
 		
+		int page = 1;
+		
+		System.out.println("Controller CS : " + cafefeed_seq);
+		
 		serv.selectBySeq(model, cafefeed_seq);
+		System.out.println("selectBySeq 에 관한 페이지"+page);
+		rServ.selectBySeq(model, cafefeed_seq, page);
 		
 		return "/feed/detailView";
 	}
@@ -87,11 +98,6 @@ public class FeedController {
 		model.addAttribute("list", list);
 		return "/feed/feedSearchResult";
 	}
-	@RequestMapping("feed_imglist")
-	public String feed_imglist(Model model) throws Exception {
-		serv.feed_imglist(model);
-		return "goFeed?page=1";
-	}
 	// 리뷰 게시글 삭제
 	@RequestMapping("deleteFeed")
 	public String deleteFeed(int cafefeed_seq, String realPath, MultipartFile file) throws Exception{
@@ -110,15 +116,22 @@ public class FeedController {
 		
 //		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
 	}
-	@ResponseBody
 	@RequestMapping("deleteReply")
-	public List<ReplyDTO> deleteReply(Model model, int seq, int cafefeed_seq) throws Exception{
+	public String deleteReply(Model model, int seq, int cafefeed_seq) throws Exception{
 		
 		rServ.deleteReply(seq);
+//		rServ.selectBySeq(model, cafefeed_seq);
 		
-		return rServ.selectBySeq(model, cafefeed_seq);
+		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;
 		
 //		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
+	}
+	@ResponseBody
+	@RequestMapping("replyList")
+	public List<ReplyDTO> replyList(Model model, int cafefeed_seq, int page) throws Exception{
+		System.out.println("replyList 에 관한 페이지"+page);
+		System.out.println("댓글 리스트 가져오는 중");
+		return rServ.selectBySeq(model, cafefeed_seq, page);
 	}
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class

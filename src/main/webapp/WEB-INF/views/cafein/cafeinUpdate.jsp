@@ -250,7 +250,7 @@ label{
   <div class="col-12 col-sm-6" id="file"><img id="preview" src="/resources/cafein/${fdto.sys_name }" />
 
     <label for="ex_file">업로드</label>
-    <input type="file" name="file" id="ex_file" value="파일첨부"  onchange="readURL(this);">
+    <input type="file" name="file" id="ex_file"  onchange="readURL(this);">
    
 </div>
   <div class="col-12 col-sm-6" id="table">

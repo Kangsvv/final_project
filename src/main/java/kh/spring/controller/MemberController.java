@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
-import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +35,7 @@ public class MemberController {
 	// Autowired를 이용해서 service를 이름을 정의하고 호출
 	@Autowired private MemberService memberService;
 	@Autowired JavaMailSender mailSender;
-	@Resource(name="uploadPath")
+//	@Resource(name="uploadPath")
 	private String uploadPath;
 	
 	@Autowired

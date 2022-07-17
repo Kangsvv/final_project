@@ -27,9 +27,23 @@ public class Cafein_imgDAO {
 		mybatis.insert("Cafein.cafein_img-insert",dto);
 	}
 	//--------------------카페리스트(사진)-----------------
-	public List<Cafein_imgDTO> cafein_imglist() throws Exception{
-		return mybatis.selectList("Cafein.cafein_img-select");
+	public List<Cafein_imgDTO> cafein_imglist(int page) throws Exception{
+		int start = (page-1)*18+1;
+		int end = (page)*18;
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		
+		System.out.println("cafeindao.확인");
+		
+		return mybatis.selectList("Cafein.cafein_img-select",map);
 	}
+	//--------------------카페 리스트 2-------------------
+	public List<Cafein_imgDTO> cafein_imglist2()throws Exception{
+		return mybatis.selectList("Cafein.cafein_img-select2");
+	}
+	
 	//--------------------카페 상세페이지출력-----------------
 	public Cafein_imgDTO selectBySeq(int cafein_seq) {
 		return mybatis.selectOne("Cafein.cafein_img-detail",cafein_seq);
