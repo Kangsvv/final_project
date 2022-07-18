@@ -376,13 +376,10 @@ nav button:hover{
 
            let contents = $("<div>");
            contents.attr("class","col-12 replycontents2");
-           let contentsEdit = $("<input>");
-           contentsEdit.attr("type","text");
-           contentsEdit.attr("id","editBox");
-           contentsEdit.attr("class","editable");
-           contentsEdit.attr("readonly",true);
+           let contentsEdit = $("<div>");
+           contentsEdit.attr("class","editBox");
            
-           contentsEdit.val(resp[i].contents);
+           contentsEdit.text(resp[i].contents);
 
            
            let modifyBtn = $("<button>");
@@ -432,7 +429,20 @@ nav button:hover{
 							location.reload();
 						});
 					}
-				})
+				});
+				modifyBtn.on("click", function(){
+					
+					contentsEdit.attr("contenteditable", "true");
+					contentsEdit.focus();
+					let seq = $(this).parent().siblings().children().children(".replySeq").val();
+					
+					console.log(seq);
+					$.ajax({
+						url:"/feed/replyModify",
+						data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq}}
+					}).done(function(resp){
+					});
+				});
            }
           
        });
@@ -557,10 +567,10 @@ nav button:hover{
 		                    	<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${i.write_date}" />
 		                    	</div>
 		                    </div>
-		                    	<div class="col-12 replycontents2"><input type="text" id="editBox" class="editable" value="${i.contents}" readonly></div>
+		                    	<div class="col-12 replycontents2"><div class="editBox">${i.contents}</div></div>
 		                    </div>
 		                    <div class="col-12 replyright">
-		                    	<button type="button" class="replybmodify btn btn-secondary">수정</button>
+		                    	<button type="button" class="replybmodify2 btn btn-secondary">수정</button>
 		                    	<button type="button" class="replydelBtn2 btn btn-secondary">삭제</button>
 		                    </div>
 		                </div>
@@ -579,7 +589,20 @@ nav button:hover{
 		    						location.reload();
 		    					});
 		    				}
-		    			})
+		    			});
+		                $(".replybmodify2").on("click", function(){
+		                	
+							$(this).parent().siblings().children().children(".editBox").attr("contenteditable", "true");
+							$(this).parent().siblings().children().children(".editBox").focus();
+							
+							let seq = $(this).parent().siblings().children().children(".replySeq").val();
+							console.log(seq);
+							$.ajax({
+								url:"/feed/replyModify",
+								data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq}}
+							}).done(function(resp){
+							});
+						})
 		       </script>
             </div>
          </div>
