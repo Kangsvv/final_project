@@ -66,7 +66,7 @@ public class FeedController {
 		
 		int page = 1;
 		
-		System.out.println("Controller CS : " + cafefeed_seq);
+//		System.out.println("Controller CS : " + cafefeed_seq);
 		
 		serv.selectBySeq(model, cafefeed_seq);
 		System.out.println("selectBySeq 에 관한 페이지"+page);
@@ -107,17 +107,20 @@ public class FeedController {
 		return "redirect:/feed/goFeed?page=1";
 	}
 	// 댓글 달기
-	@ResponseBody
 	@RequestMapping("replyWrite")
-	public List<ReplyDTO> replyWrite(Model model, int cafefeed_seq, String contents) throws Exception{
+	public String replyWrite(Model model, int cafefeed_seq, String contents) throws Exception{
 		
 		rServ.replyWriteProc(cafefeed_seq, contents);
-		return rServ.selectBySeq(model, cafefeed_seq);
+		
+		
+		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;
 		
 //		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
 	}
-	@RequestMapping("deleteReply")
-	public String deleteReply(Model model, int seq, int cafefeed_seq) throws Exception{
+	@RequestMapping("replyDel")
+	public String replyDel(Model model, int seq, int cafefeed_seq) throws Exception{
+		
+		System.out.println("댓글 삭제 : " + seq);
 		
 		rServ.deleteReply(seq);
 //		rServ.selectBySeq(model, cafefeed_seq);
@@ -129,7 +132,7 @@ public class FeedController {
 	@ResponseBody
 	@RequestMapping("replyList")
 	public List<ReplyDTO> replyList(Model model, int cafefeed_seq, int page) throws Exception{
-		System.out.println("replyList 에 관한 페이지"+page);
+//		System.out.println("replyList 에 관한 페이지"+page);
 		System.out.println("댓글 리스트 가져오는 중");
 		return rServ.selectBySeq(model, cafefeed_seq, page);
 	}
