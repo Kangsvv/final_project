@@ -1,0 +1,1937 @@
+[33mcommit 1ed24df89fdc64eba3fef219e59d0c4bd53bff8e[m[33m ([m[1;36mHEAD -> [m[1;32mpractice[m[33m)[m
+Merge: 136ece5 386fa47
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sun Jul 17 18:21:03 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 136ece5b44454aa61a596e3f3f805894e3b226ae[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sun Jul 17 18:20:54 2022 +0900
+
+    별거안함
+
+[33mcommit 2eceee3dff63444a34efbe81756edafca0c71d43[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sat Jul 16 17:34:25 2022 +0900
+
+    기능 어느정도 완성
+
+[33mcommit 386fa474b38aef8252fda88fb47c84a7b08a0118[m[33m ([m[1;31mmanager/master[m[33m)[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Sat Jul 16 17:32:06 2022 +0900
+
+    댓글 하이드 시간 추가
+
+[33mcommit dc5bb6cc68962cc0138b9b205996b11078e81511[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Sat Jul 16 17:26:24 2022 +0900
+
+    reply select write_date 수정필수
+
+[33mcommit c212ebec361ac19d2c0705171932352596596204[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Sat Jul 16 16:38:14 2022 +0900
+
+    댓글 인피니티스크롤 적용중
+
+[33mcommit 5cae0668b8a1d5aecc93a8897938083b71d17402[m
+Merge: 0173b59 d57c7c7
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Sat Jul 16 16:36:44 2022 +0900
+
+    Merge pull request #74 from tjgh1176/practice
+    
+    cafein 인피니티스크롤 적용
+
+[33mcommit d57c7c7cb7bbe427b67dfacf6cebdb1c2d568252[m[33m ([m[1;31morigin/practice[m[33m)[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sat Jul 16 16:32:53 2022 +0900
+
+    cafein 인피니티스크롤 적용!!
+
+[33mcommit abf2d1c4ccccc8acd6952d8b780e05b8e00a9503[m
+Merge: c3814f6 0173b59
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sat Jul 16 16:13:33 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 0173b596b9c3c8f8a54544a94411ddf4a58b4048[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Sat Jul 16 16:13:13 2022 +0900
+
+    reply 수정중
+
+[33mcommit c3814f6493415108697024eca272c13b922059af[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sat Jul 16 16:13:09 2022 +0900
+
+     인피니티스크롤 하는중
+
+[33mcommit f2f72163eba242e3fa151ad82d6bfbbe0a04eb34[m
+Merge: 4cda41e 0dcf7b7
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Sat Jul 16 15:42:45 2022 +0900
+
+    Merge pull request #71 from TY-9837/master
+    
+    무한스크롤 11
+
+[33mcommit 0dcf7b7555b293069f7b348c6748320cbe884d74[m
+Merge: 0e36686 4cda41e
+Author: KTY <rxd9837@naver.com>
+Date:   Sat Jul 16 15:35:01 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 0e36686b04924f44a32338065f76ab5f9b499a05[m
+Author: KTY <rxd9837@naver.com>
+Date:   Sat Jul 16 15:34:47 2022 +0900
+
+    무한스크롤 수정
+
+[33mcommit 8e78d23fd7d94c64d92915cb6c33916bc20fcad8[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sat Jul 16 15:33:52 2022 +0900
+
+    인피니티스크롤 하는중
+
+[33mcommit 4cda41e124386b5e2a7b9616225046f5675fc543[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Sat Jul 16 13:53:32 2022 +0900
+
+    root-context modified
+
+[33mcommit 57879bac506e72760f768ad53e8bcb77df40e1a3[m
+Merge: ecb0da0 4743f29
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Sat Jul 16 13:51:07 2022 +0900
+
+    Merge pull request #70 from yonghyung/master
+    
+    로그인 기능 완성 이미지 첨부파일 미완성
+
+[33mcommit 4743f290b4a237d3a2eaa2880948752ac96ec0e6[m
+Merge: 56a0f57 ecb0da0
+Author: LYH <lyh981022@naver.com>
+Date:   Sat Jul 16 13:44:28 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 56a0f57fa140f22defc255314669a178ffc3eb20[m
+Author: LYH <lyh981022@naver.com>
+Date:   Sat Jul 16 13:44:14 2022 +0900
+
+    로그인 이미지 첨부 미완성
+
+[33mcommit ede00dd955dd1111bc7f585f95574c91987b4380[m
+Merge: 1755aae ecb0da0
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sat Jul 16 13:42:55 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 1755aae1beb9de2f14b0b045bd17eb36e4887a32[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sat Jul 16 13:42:35 2022 +0900
+
+    update,detail 만지ㅡ는중
+
+[33mcommit ecb0da0050af813b939eb7890335bfb6e0502c04[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Fri Jul 15 17:59:09 2022 +0900
+
+    reply modify, delete 작업 중
+
+[33mcommit 04169b6620cf68aec57b510ec2b45bd9ee321f51[m
+Merge: 1704652 1da48e7
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Fri Jul 15 14:39:10 2022 +0900
+
+    Merge pull request #69 from yonghyung/master
+    
+    이메일 중복 확인 완료
+
+[33mcommit 1da48e7a1f843bb30becafc1f72730710997f346[m
+Merge: 4cb0017 1704652
+Author: LYH <lyh981022@naver.com>
+Date:   Fri Jul 15 14:36:49 2022 +0900
+
+    이메일 중복 확인 완료
+
+[33mcommit 4cb0017e9de51c516ac3c609f94f0a2646d41954[m
+Author: LYH <lyh981022@naver.com>
+Date:   Fri Jul 15 14:32:11 2022 +0900
+
+    이메일 중복 확인
+
+[33mcommit 170465246a145dad915835b85800cfd4cc65ff02[m
+Merge: 4c557ca 8737967
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Fri Jul 15 13:59:11 2022 +0900
+
+    Merge pull request #68 from tjgh1176/practice
+    
+    좋아요 수정 완료
+
+[33mcommit 873796730bf9f178fa6f1ad9e958c5e8e9b703be[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Fri Jul 15 13:43:58 2022 +0900
+
+    좋아요 수정 완료
+
+[33mcommit be7c11b58d455ee2184b77aca4c9924403859dcc[m
+Merge: 643dcfc 4c557ca
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Fri Jul 15 12:57:56 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 4c557caa54f58b540faaa695b1ece6cb4d7728f7[m
+Merge: 20cec74 ce38d64
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Fri Jul 15 12:57:49 2022 +0900
+
+    Merge pull request #67 from gkswnd128/master
+    
+    디테일 페이지 및 리스트 페이지 반응형 처리
+
+[33mcommit 643dcfcc0dfdb2ea3b5ca954acd957bf13f5b3a0[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Fri Jul 15 12:57:49 2022 +0900
+
+    좋아요 수정ㅇㅇㅇ
+
+[33mcommit ce38d64e86f694f3d715df68b036e24c225a5156[m
+Author: KHJ <kkran94@naver.com>
+Date:   Fri Jul 15 12:47:58 2022 +0900
+
+    디테일 페이지 및 리스트 페이지 반응형 처리
+
+[33mcommit 35d99c8a26ab13f78edf40afc4833c9bb281a6e4[m
+Merge: b76415c 20cec74
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Fri Jul 15 11:01:34 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 20cec74dd1c86a6e8dc019e219d78ee8f9f6d59e[m
+Merge: 60d6662 0bef629
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Fri Jul 15 11:01:23 2022 +0900
+
+    Merge pull request #66 from leeyeji1417/master
+    
+    로그인 변경됐습니다
+
+[33mcommit 0bef6296b593c85ec84426512834f9945d356296[m
+Merge: 00e21d4 60d6662
+Author: 이예지 <thddjchs77@gmail.com>
+Date:   Fri Jul 15 10:55:57 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 00e21d49d317fe439bb6d63521d66de30e54d903[m
+Author: 이예지 <thddjchs77@gmail.com>
+Date:   Fri Jul 15 10:55:49 2022 +0900
+
+    멤버쪽 바꿔써여
+
+[33mcommit b76415cef581056335f9e679f2bf75cfbf62f516[m
+Merge: 22b56f2 60d6662
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Fri Jul 15 10:51:32 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 22b56f20b57d4806f0c296e7f8c6671082994597[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Fri Jul 15 10:51:25 2022 +0900
+
+    몇가지 수정작업중
+
+[33mcommit 60d66627ca68aae3e302a3db959caf1dd3fc81d4[m
+Merge: ec00e60 a211a60
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Fri Jul 15 10:39:26 2022 +0900
+
+    Merge pull request #65 from gkswnd128/master
+
+[33mcommit a211a60dc5c8430b3e32f95323281ceb2f5897ab[m
+Author: KHJ <kkran94@naver.com>
+Date:   Fri Jul 15 10:36:47 2022 +0900
+
+    페이지 네이션 적용
+
+[33mcommit f2170ba69db11acb90ff11879982345249d00b9a[m
+Author: KHJ <kkran94@naver.com>
+Date:   Thu Jul 14 20:09:21 2022 +0900
+
+    디자인 수정 및 페이지 네이션 추가 중
+
+[33mcommit ec00e60563a8d7508b80ad339d767001fdc8cb40[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Thu Jul 14 20:09:17 2022 +0900
+
+    replyWriteProc added & replyDelete 작업중
+
+[33mcommit 1702fe24ecd216678dd65601b8c8b2f398c3b33d[m
+Merge: d34ff32 92e3e65
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Thu Jul 14 19:51:36 2022 +0900
+
+    Merge pull request #64 from tjgh1176/practice
+    
+    좋아요 기능 완료~~~
+
+[33mcommit 92e3e651c86fb82b8f756b7b35afc609d76db88e[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jul 14 19:49:18 2022 +0900
+
+    좋아요 기능 완료
+
+[33mcommit 5edd9cb054ed9b434fe8317b814ecb490d689a79[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jul 14 11:25:51 2022 +0900
+
+    alert버튼 수정
+
+[33mcommit 8310198b599cc65ac9fd57a433bf14eae0adca4f[m
+Merge: 89d05f5 d34ff32
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jul 14 09:18:07 2022 +0900
+
+    07-14땡기고 comit
+
+[33mcommit 89d05f5e4ed506564a07567a151ced9e2bdb5657[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jul 14 09:10:56 2022 +0900
+
+    cafein-update 수정
+
+[33mcommit d34ff32cb347df23f4ee9f7c5844f8d29ce5d363[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Wed Jul 13 22:24:02 2022 +0900
+
+    feedwrite successed
+
+[33mcommit 784613de755914a66bacb6498073f5af4b529398[m
+Merge: 23de19e df206ff
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jul 13 20:33:47 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 23de19e119d8c9b15f4d338f5643f491927fd1ca[m
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jul 13 20:33:40 2022 +0900
+
+    이메일 중복 확인
+
+[33mcommit df206ffa97e4c10860ab09d731e25764ba628a64[m
+Merge: f701c3e 14c5ff5
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jul 13 15:37:33 2022 +0900
+
+    Merge pull request #62 from tjgh1176/practice
+    
+    쪽지보내기 기능완료( 땡기고 다시 pr)
+
+[33mcommit 14c5ff591a1f966070f4bd6e52280f5b429be64f[m
+Merge: 0c50d69 f701c3e
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jul 13 15:26:17 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 0c50d691619879c3ed11909c52b37704509d7f7e[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jul 13 15:25:26 2022 +0900
+
+    쪽지보내기 기능 완료
+
+[33mcommit f701c3ed13c530577433271c4dc6141d6958e0d6[m
+Merge: 2774201 6d3df33
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jul 13 14:52:34 2022 +0900
+
+    Merge pull request #60 from gkswnd128/master
+    
+    Notice 관련 작업 중인 것 백업
+
+[33mcommit 6d3df33720bb9e5938dd967c0f517c43e1f61e43[m
+Merge: 54f4010 2774201
+Author: KHJ <kkran94@naver.com>
+Date:   Wed Jul 13 14:50:05 2022 +0900
+
+    최신 상태로 갱신중
+
+[33mcommit 54f4010703cbd92c636ffa84d2a72954fa3108e9[m
+Author: KHJ <kkran94@naver.com>
+Date:   Wed Jul 13 14:44:42 2022 +0900
+
+    노트북 작업 적용
+
+[33mcommit 0c4a10bf5a19a339d63bba040db29102a6759573[m
+Merge: cb29e6f 2774201
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jul 13 09:09:27 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit cb29e6fbc3eb26ad0d80f767056864524d8f9260[m
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jul 13 09:09:19 2022 +0900
+
+    수정4
+
+[33mcommit 27742018a9d88e445d9e0e32b5d97618d66fa6ce[m
+Merge: 8fc5849 bdca81d
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 12 17:59:09 2022 +0900
+
+    Merge pull request #59 from tjgh1176/practice
+    
+    모달 메시지,수정부분 완료
+
+[33mcommit bdca81d37be76fa4f3fdf24d11dc813f173ebac3[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 12 17:58:27 2022 +0900
+
+    모달 메시지,수정부분 완료
+
+[33mcommit 8fc584992be6b0a75f405ddc143a005a5d0def1f[m
+Merge: 6cfe96f 28288a2
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 12 17:00:08 2022 +0900
+
+    Merge pull request #58 from TY-9837/master
+    
+    검색222
+
+[33mcommit 28288a295b2a32c176a463d533b399a39cd9b481[m
+Merge: 047503e 6cfe96f
+Author: KTY <rxd9837@naver.com>
+Date:   Tue Jul 12 16:58:12 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 6cfe96ffb314f6349a34937edc00160958da80aa[m
+Merge: 3d767ca 046217b
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 12 16:57:50 2022 +0900
+
+    Merge pull request #56 from leeyeji1417/master
+    
+    mypage files add
+
+[33mcommit 047503e5dd726db2da0fd2aadb262e4a4f083f44[m
+Author: KTY <rxd9837@naver.com>
+Date:   Tue Jul 12 16:55:50 2022 +0900
+
+    검색기능
+
+[33mcommit 046217b0639221ef9a2f6ee81ec8d188bc932bac[m
+Author: 이예지 <thddjchs77@gmail.com>
+Date:   Tue Jul 12 16:53:15 2022 +0900
+
+    memDTO add 왼
+
+[33mcommit baf0a76a7fe524b05c0fde85fbddbc0744971018[m
+Author: 이예지 <thddjchs77@gmail.com>
+Date:   Tue Jul 12 16:14:34 2022 +0900
+
+    memDTO add
+
+[33mcommit 4c8478a4ed458eaa3b75db1843651c8d97bc3c5f[m
+Author: 이예지 <thddjchs77@gmail.com>
+Date:   Tue Jul 12 15:57:11 2022 +0900
+
+    mypage files add
+
+[33mcommit 3d767cad3995fedb6ad71bfac995388a05361c66[m
+Merge: 64efd21 42f5a69
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 12 14:51:36 2022 +0900
+
+    Merge pull request #55 from tjgh1176/practice
+    
+    로그인시 닉네임 받아오고 id비교후 수정삭제버튼 생성
+
+[33mcommit 42f5a69108ddd75cd9cfaf964c019294b75c2501[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 12 14:49:39 2022 +0900
+
+    로그인시 닉네임 받아오고 id비교후 수정삭제버튼 생성
+
+[33mcommit a316e90ae092b660efd336988e3a7fc2f481eaf5[m
+Merge: b3ce283 64efd21
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 12 11:29:48 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 81c3acbb37169331509956b7e1c92e43943435d0[m
+Merge: d688700 64efd21
+Author: KHJ <kkran94@naver.com>
+Date:   Tue Jul 12 11:29:20 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 64efd217b386a5a2d1dcc56d4931d7303a446c2c[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Tue Jul 12 11:27:11 2022 +0900
+
+    Login session added
+
+[33mcommit ee0a18ffbe618d84a18c1a09c742a53fa4b5c260[m
+Merge: 8d2066c da3ef20
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 12 11:23:25 2022 +0900
+
+    Merge pull request #54 from hostparksehun/master
+    
+    게시판 CRUD 완성
+
+[33mcommit da3ef20b36bfd956e3f3113d4f0474026140026f[m
+Merge: fb07f06 8d2066c
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 12 11:23:14 2022 +0900
+
+    Merge branch 'master' into master
+
+[33mcommit d688700a127c8a610237217ac01afc17b268cb4b[m
+Merge: 1167488 8d2066c
+Author: KHJ <kkran94@naver.com>
+Date:   Tue Jul 12 11:19:13 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 11674880a4739a5435774fe2692a0be44aa6ba4c[m
+Author: KHJ <kkran94@naver.com>
+Date:   Tue Jul 12 11:18:44 2022 +0900
+
+    디테일뷰 오버 플로우 적용
+
+[33mcommit fb07f06071dde8469efcd7add96a33960dca21b8[m
+Author: PSH <roten123_@naver.com>
+Date:   Tue Jul 12 11:05:56 2022 +0900
+
+    커밋 완료
+
+[33mcommit 8d2066cacc9d960d61e113dd23ecf7ad835aa33e[m
+Merge: 681d62d 0fb4014
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 12 11:04:33 2022 +0900
+
+    Merge pull request #53 from TY-9837/master
+    
+    관리자페이지 추가욧
+
+[33mcommit 0fb40147224d141ed1d51376a23d41d4c0906c02[m
+Merge: 8bed93e 681d62d
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 12 11:04:00 2022 +0900
+
+    Merge branch 'master' into master
+
+[33mcommit 8bed93e3c28f34ad0bad81d8db8b46b6df5ceb76[m
+Merge: 0322b85 6374666
+Author: KTY <rxd9837@naver.com>
+Date:   Tue Jul 12 11:01:39 2022 +0900
+
+    관리자페이지2
+
+[33mcommit 0322b85d74aa05e450689c48a4dbfac3112b6a2f[m
+Author: KTY <rxd9837@naver.com>
+Date:   Tue Jul 12 10:59:06 2022 +0900
+
+    관리자페이지
+
+[33mcommit d4106e6e81d5ec23dc30073127ae4e02abcc7e55[m
+Author: PSH <roten123_@naver.com>
+Date:   Tue Jul 12 10:57:15 2022 +0900
+
+    커밋완료
+
+[33mcommit 681d62d1b060127cf18469b06285e0c77b384f3b[m
+Merge: 4391e1d b67ac58
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 12 10:57:04 2022 +0900
+
+    Merge pull request #52 from yonghyung/master
+    
+    수정
+
+[33mcommit b67ac58289a5681cdbe7477af63541e90e6a93aa[m
+Merge: be575bc 4391e1d
+Author: LYH <lyh981022@naver.com>
+Date:   Tue Jul 12 10:53:28 2022 +0900
+
+    커밋2
+
+[33mcommit be575bc887d2794c5a26c42dd9d6bc19a96169a8[m
+Author: LYH <lyh981022@naver.com>
+Date:   Tue Jul 12 10:52:07 2022 +0900
+
+    커밋
+
+[33mcommit 660b2c10955f0a2486df609159ccf1b39a2e956e[m
+Author: LYH <lyh981022@naver.com>
+Date:   Tue Jul 12 10:38:52 2022 +0900
+
+    이메일 중복 작업
+
+[33mcommit cedffb935ede5a5bb28faa6c5aba6cd34f83420f[m
+Author: KTY <rxd9837@naver.com>
+Date:   Tue Jul 12 10:24:27 2022 +0900
+
+    관리자페이지 미완성
+
+[33mcommit b3ce28369c81a889cce05685544b72f4151ec456[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 12 09:01:26 2022 +0900
+
+    pull전 땡기기
+
+[33mcommit 4391e1d8263ba01ca1fda73c178745c960724397[m
+Merge: fe8ecfd 86d6b4c
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jul 11 19:39:48 2022 +0900
+
+    Merge pull request #50 from gkswnd128/master
+    
+    Notice 삭제 기능 구현 및 디자인 수정
+
+[33mcommit 86d6b4c2120144f86eacbd0f06646830d02ed508[m
+Merge: 7bee6e3 fe8ecfd
+Author: KHJ <kkran94@naver.com>
+Date:   Mon Jul 11 19:30:04 2022 +0900
+
+    충돌 부분 삭제 후 저장
+
+[33mcommit 7bee6e313243c84f97a886b87b35dde66effdbba[m
+Author: KHJ <kkran94@naver.com>
+Date:   Mon Jul 11 19:20:22 2022 +0900
+
+    Notice 삭제 기능 및 스타일 다수 적용
+
+[33mcommit fe8ecfdad5b0f355a35fe283fad869aca9a31073[m
+Merge: 2d03821 9adda7c
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jul 11 18:00:59 2022 +0900
+
+    Merge pull request #48 from tjgh1176/practice
+    
+    수정 기능은 거의 다됌
+
+[33mcommit 9adda7ceb3c30722e450e3ff902e522ec756a07f[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jul 11 17:18:35 2022 +0900
+
+    member mapper come back
+
+[33mcommit 260c85fbc4dafed2581e4c784bb43d304a0f9c8b[m
+Merge: b42b297 2d03821
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jul 11 17:05:46 2022 +0900
+
+    member.xml 땡겨오기
+
+[33mcommit b42b2977a2bcce9902917a9982e8756fbbb7a8ef[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jul 11 16:59:16 2022 +0900
+
+    이것저거ㅓㅅ
+
+[33mcommit a0e3311b5b81f5ac8085b12e803ee9e5a49a7465[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jul 11 10:03:53 2022 +0900
+
+    수정기능 수정중
+
+[33mcommit 8e39173e08ea5f879de664fcb4b80293f2eaccd8[m
+Merge: 60d93dd 2d03821
+Author: LYH <lyh981022@naver.com>
+Date:   Mon Jul 11 09:39:03 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 60d93dd3d528ad93c7e90c9e4cd651afe5a41e17[m
+Author: LYH <lyh981022@naver.com>
+Date:   Mon Jul 11 09:38:51 2022 +0900
+
+    컴퓨터 풀 전
+
+[33mcommit 2d03821cecab570389b303756f7a3b19d1bbe044[m
+Merge: 54c1d49 74c98ed
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jul 11 09:37:11 2022 +0900
+
+    Merge pull request #47 from yonghyung/master
+    
+    로그인,회원가입 기능 구현
+
+[33mcommit 74c98ed00a4e245ff095ea12741b4d2e918d9071[m
+Merge: 0b2e134 54c1d49
+Author: LYH <lyh981022@naver.com>
+Date:   Sun Jul 10 15:50:35 2022 +0900
+
+    로그인 출돌 수정
+
+[33mcommit 0b2e13439574675b7fdb5da1c48b316f7b07b4c9[m
+Author: LYH <lyh981022@naver.com>
+Date:   Sun Jul 10 15:22:45 2022 +0900
+
+    로그인 기능 수정 완료
+
+[33mcommit 89b0197123ff03badf7714f03acb125eb8f15f23[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sun Jul 10 14:28:27 2022 +0900
+
+    좋아요 추가중
+
+[33mcommit 4a49a4dc73b123094092cf1bc0fe578ad2a77d02[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Sat Jul 9 14:49:05 2022 +0900
+
+    이미지파일빼고 정보만 update
+
+[33mcommit 54c1d4992a0912bcb60ef513c6227222fac77efe[m
+Merge: 92583d5 6374666
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Fri Jul 8 17:57:51 2022 +0900
+
+    Merge pull request #45 from TY-9837/master
+    
+    굿
+
+[33mcommit 6374666d1f151845b1a9d993514081389728d146[m
+Merge: 8a2c593 92583d5
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Fri Jul 8 17:57:41 2022 +0900
+
+    Merge branch 'master' into master
+
+[33mcommit 8a2c5932410e8b1afc920ee52d2e0abbe35b7280[m
+Author: KTY <rxd9837@naver.com>
+Date:   Fri Jul 8 17:53:24 2022 +0900
+
+    infinitied Scroll added2
+
+[33mcommit 4043ec1fa066d3c4c4eb5387a46d916028412907[m
+Author: KTY <rxd9837@naver.com>
+Date:   Fri Jul 8 17:43:02 2022 +0900
+
+    $(.contents).append(cDiv);
+
+[33mcommit 5e1c3520fc67f94462ebd64b456af05a00541179[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Fri Jul 8 15:54:09 2022 +0900
+
+    리스트출력 css
+
+[33mcommit 92583d54be5d4960470d7b3c42c1eff2de581adb[m
+Merge: 0a7084a a09175b
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Fri Jul 8 15:53:45 2022 +0900
+
+    Merge pull request #43 from yonghyung/master
+    
+    로그인 기능 완성?
+
+[33mcommit a09175b0f2906da7ada571cd4deecc2ed41f7a35[m
+Merge: 9049813 0a7084a
+Author: LYH <lyh981022@naver.com>
+Date:   Fri Jul 8 15:50:33 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 96d0bb84aaacc02ef3c7f6dcf7868509b057aed1[m
+Author: PSH <roten123_@naver.com>
+Date:   Fri Jul 8 15:25:59 2022 +0900
+
+    커밋
+
+[33mcommit 0a7084aeff6fa412d0d018a02034af412f706a27[m
+Merge: e75e2cb 12197b5
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Thu Jul 7 18:05:56 2022 +0900
+
+    Merge pull request #42 from tjgh1176/practice
+
+[33mcommit 12197b5093bc6068b61d06e5a7726ec27e6e624b[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jul 7 17:58:26 2022 +0900
+
+    카페등록시 입력여부 다 체크  확인
+
+[33mcommit 423e4ef5a08343a4b18442c239a95d9efec6e648[m
+Merge: 78b67e1 4a43a63
+Author: PSH <roten123_@naver.com>
+Date:   Thu Jul 7 17:50:10 2022 +0900
+
+    커밋 완료
+
+[33mcommit e75e2cb5bdc80235301b32691721e6937b26ed90[m
+Merge: 4a43a63 a34c2bf
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Thu Jul 7 16:07:24 2022 +0900
+
+    Merge pull request #41 from tjgh1176/practice
+    
+    insert,list,detail,delete 완전 완료
+
+[33mcommit 90498132c00fb5e09b9c05e56806aecc5ff33e48[m
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jul 7 16:06:46 2022 +0900
+
+    아이디/비번찾기
+
+[33mcommit a34c2bf01dcd120ace1e045835ab9288468cbee4[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jul 7 16:03:40 2022 +0900
+
+    insert,list,detail,delete 완전 완료
+
+[33mcommit e9f127d12399a85a459137daae099918c243c1f7[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jul 7 16:00:26 2022 +0900
+
+    insert 완전 해결
+
+[33mcommit 78b67e1028dce97d2dd82c8c7dfa1b355534b489[m
+Author: PSH <roten123_@naver.com>
+Date:   Thu Jul 7 15:31:49 2022 +0900
+
+    커밋
+
+[33mcommit 4a43a6388f99a7ff25c37c64bac671a6a1807efb[m
+Merge: 9ed3cca cb9304a
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Thu Jul 7 12:01:03 2022 +0900
+
+    Merge pull request #40 from tjgh1176/practice
+
+[33mcommit cb9304a100110d20dc413f5a48a60650b70617dc[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jul 7 11:47:54 2022 +0900
+
+    cafein 이미지파일까지 완전삭제
+
+[33mcommit a759f91d91da8387c5a538941f4a06c40dfe4f5d[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jul 7 09:29:11 2022 +0900
+
+    상세페이지 수정
+
+[33mcommit d4d645451aab1590472a2d8329de4224227c3e5a[m
+Merge: b394f1a 9ed3cca
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jul 7 09:21:51 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit b394f1ad4824d78850c0ca9b0c38aef0650811ca[m
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jul 7 09:21:37 2022 +0900
+
+    풀리전
+
+[33mcommit 9ed3ccaaa37db97da110879eed3d00b61270b75d[m
+Merge: b13256f 5713f7f
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Thu Jul 7 09:17:31 2022 +0900
+
+    Merge pull request #39 from yonghyung/master
+    
+    로그인 기능 카카오API 기능 구현
+
+[33mcommit 5713f7f6a287d12c02919acc6c102d7f9bac3945[m
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jul 7 09:14:11 2022 +0900
+
+    로그인 카카오API
+
+[33mcommit 4cd3c33f693a612b9cd48a2e8b24790aa4eb4d6c[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jul 6 23:21:59 2022 +0900
+
+    delete confirm 추가함
+
+[33mcommit 1657339f5714ab9f8694e2dc84c11edce0635127[m
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jul 6 20:03:53 2022 +0900
+
+    카카오 로그인
+
+[33mcommit b13256fa186109a2ae2f5e2fe9ffa94ab041337c[m
+Merge: dc4a00d d4643fc
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jul 6 19:38:44 2022 +0900
+
+    Merge pull request #37 from tjgh1176/practice
+
+[33mcommit d4643fc1afc1315cc230a525ba85dafce54bc219[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jul 6 19:36:28 2022 +0900
+
+    삭제기능 완료(DB만 삭제/파일도 삭제되도록 해야함)
+
+[33mcommit dc4a00deb2b4d2929fd9345775c9434935c98f59[m
+Merge: a3c7e97 d45cae7
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jul 6 18:52:02 2022 +0900
+
+    Merge pull request #36 from tjgh1176/practice
+
+[33mcommit d45cae732fb5d44c39171b29ad71f2f5fcd6ea94[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jul 6 18:50:07 2022 +0900
+
+    detailview까지 완성
+
+[33mcommit 83cdb141c121c376878cac3c4d837c2f6623695f[m
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jul 6 17:28:35 2022 +0900
+
+    로그인 처리 임시
+
+[33mcommit e35e4b4b3b62f8371812ef4082cfccd4031c5c6f[m
+Merge: 989e2f3 044dc4c
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jul 6 17:24:21 2022 +0900
+
+    로그인 임시 처리
+
+[33mcommit a3c7e97d4075a5e3c283eece38a29fd854c1bfce[m
+Merge: 740f44a bef9f15
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jul 6 17:17:53 2022 +0900
+
+    Merge pull request #35 from tjgh1176/practice
+    
+    한중님꺼 땡기고 다시 푸쉬(확인해주실수 있나요?ㅠ)
+
+[33mcommit 740f44a22a08c41e0b49201118eeac74c4466371[m
+Merge: 044dc4c f99c830
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jul 6 17:12:32 2022 +0900
+
+    Merge pull request #33 from gkswnd128/master
+    
+    이벤트 및 공지 사항 게시판 리스트 출력 등록
+
+[33mcommit bef9f159d1866c84627f3fc3476fc9ce46e5e54b[m
+Merge: e95739e 044dc4c
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jul 6 17:08:30 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit e95739e04832d90d9ce9b5982b11b920ef691f75[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jul 6 17:08:20 2022 +0900
+
+    리스트 출력 완성 ㅠㅠ
+
+[33mcommit f99c830eeaa5636716690457ea7bc11db5e150f9[m
+Merge: cd6e8b9 044dc4c
+Author: gkswnd128 <105614187+gkswnd128@users.noreply.github.com>
+Date:   Wed Jul 6 16:51:59 2022 +0900
+
+    Merge branch 'master' into master
+
+[33mcommit cd6e8b99f01ab85757eece30c774af73a0dc4ab9[m
+Author: KHJ <kkran94@naver.com>
+Date:   Wed Jul 6 16:47:26 2022 +0900
+
+    이벤트 및 공지 사항 게시판 리스트 출력 등록
+
+[33mcommit 989e2f397c79116337a189134b96f78773488913[m
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jul 6 15:47:08 2022 +0900
+
+    백업중
+
+[33mcommit 044dc4c30d99215bee9409edf1e10a87e347796e[m
+Merge: e06e2fb e66b991
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jul 6 14:14:51 2022 +0900
+
+    Merge pull request #32 from tjgh1176/practice
+    
+    list 하는중/등록시 이미지파일 검사추가
+
+[33mcommit 1a06c7a8df0ebb48bf5e1ce567f08e1bb71f0571[m
+Author: PSH <roten123_@naver.com>
+Date:   Wed Jul 6 14:14:47 2022 +0900
+
+    조정중
+
+[33mcommit 11971e054476b0629918c003eb41739b1bc4bf5d[m
+Merge: e66b991 e06e2fb
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jul 6 14:14:04 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit e66b991d5a59d6a5803f7e96f2c98404920caca2[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jul 6 14:12:14 2022 +0900
+
+    list 하는중/등록시 이미지파일 검사추가
+
+[33mcommit 55ece07cff2d42da8594f9b314f6c53974f5e02e[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 21:43:20 2022 +0900
+
+    cafein file의 부모시퀀스 가져오기 최종
+
+[33mcommit e06e2fb3ee7b1f4bba14394b6e219ef8f0129646[m
+Merge: 8bbb244 094d9ce
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 5 21:13:36 2022 +0900
+
+    Merge pull request #31 from tjgh1176/practice
+    
+    cafein file의 부모시퀀스 가져오기 성공
+
+[33mcommit 094d9ce0ac2e6145a0733f6d73875485de826d6e[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 21:04:42 2022 +0900
+
+    cafein file의 부모시퀀스 가져오기 성공
+
+[33mcommit dc8e9f5e66645d38818f623087d06ecac6151e28[m
+Merge: 49746bc 8bbb244
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 20:20:34 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 8bbb2440afbb77c9d117f7c7067a2493d4f50ff8[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Tue Jul 5 20:12:51 2022 +0900
+
+    pom.xml error edited
+
+[33mcommit 49746bc4f034a7c5e1d795751c64791787c2d23f[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 18:44:01 2022 +0900
+
+    오류 찾자
+
+[33mcommit 01aab34d37d2e1a4f89876afa73717bb87f8afa7[m
+Merge: 55fd8b7 901c0df
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 5 18:17:23 2022 +0900
+
+    Merge pull request #30 from gkswnd128/master
+
+[33mcommit 901c0df5e444ae9cd4a664cd7becfe4972170f6a[m
+Author: KHJ <kkran94@naver.com>
+Date:   Tue Jul 5 18:14:28 2022 +0900
+
+    FAQ 연결 수정
+
+[33mcommit 55fd8b7e1ef1833ad2a90e70827707fb65e8e653[m
+Merge: 659d90e 115cd25
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 5 18:05:44 2022 +0900
+
+    Merge pull request #29 from tjgh1176/practice
+
+[33mcommit 115cd253ff17756f4c702668ed096b8fdbff1237[m
+Merge: 9ebeb33 659d90e
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 18:03:22 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 9ebeb339ada90f87c89b3db26b383122586b7e47[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 18:03:02 2022 +0900
+
+    이미지 업로드, insert 성공(한글깨짐..)
+
+[33mcommit 2d1ab6b45deacfcf511f0d155a2c0a20156f40ed[m
+Merge: a8b03d2 659d90e
+Author: KHJ <kkran94@naver.com>
+Date:   Tue Jul 5 18:00:14 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit a8b03d2f2605d5430ef8683fa9b0f10a30355f64[m
+Author: KHJ <kkran94@naver.com>
+Date:   Tue Jul 5 17:59:07 2022 +0900
+
+    Insert 기능 구현
+
+[33mcommit 659d90e27e8493caeb51301b33b146b30273fb54[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Tue Jul 5 17:53:23 2022 +0900
+
+    FeedMain & pom.xml edited
+
+[33mcommit 996678ad1d328a84fb3f0e4f13ef7c404da30ea6[m
+Author: KHJ <kkran94@naver.com>
+Date:   Tue Jul 5 17:00:22 2022 +0900
+
+    구조 수정 및 인서트 기능 구현중
+
+[33mcommit 76d1f9f545287a6a85b52e61ab8969fce12dad2d[m
+Merge: 3559287 d0f5342
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 5 16:27:40 2022 +0900
+
+    Merge pull request #28 from yonghyung/master
+    
+    이메일 인증 수정 완료
+
+[33mcommit 3559287c3439ba331a2570cfa37dbf23cb7f260d[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Tue Jul 5 16:22:51 2022 +0900
+
+    detailView reply 완성
+
+[33mcommit d0f5342565e2b05d078d876a130f633e0e184a2e[m
+Merge: f7bf1f7 6f23746
+Author: LYH <lyh981022@naver.com>
+Date:   Tue Jul 5 16:21:28 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit f7bf1f758ef4fa759520b4b4b6169205c7ca6fba[m
+Author: LYH <lyh981022@naver.com>
+Date:   Tue Jul 5 16:21:02 2022 +0900
+
+    이메일 인증 수정 완료
+
+[33mcommit c800b03ca54fd6cd7a0213bc301425b559f66c6e[m
+Merge: 794501d 6f23746
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 16:18:35 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit 6f2374672ae29c14f97f9888ea8fc6b9284a3471[m
+Merge: 980f869 fd31f31
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 5 16:14:32 2022 +0900
+
+    Merge pull request #27 from tjgh1176/practice
+    
+     cafein 정보입력 코드 수정
+
+[33mcommit 794501de1fdf087a7d6a953012356dfb4e2d1514[m
+Merge: fd31f31 980f869
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 16:09:06 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit fd31f3186f8753ff91e5ecbd3d41a366d1e3933e[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 16:04:32 2022 +0900
+
+    cafein 정보입력 코드 수정
+
+[33mcommit 0cc6382781f7f9fc68a31f810ac480d4d55f90a2[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 15:24:16 2022 +0900
+
+    파일 연습
+
+[33mcommit 980f86949348678c213de08c9d208b1f9a3e10d7[m
+Merge: de0a67b 0fae4a1
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jul 5 13:59:02 2022 +0900
+
+    Merge pull request #26 from tjgh1176/practice
+
+[33mcommit 0fae4a11c45b2dfe724d3c14d7637cb8ff57ff5f[m
+Merge: fb50e14 de0a67b
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 13:21:47 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project into practice
+
+[33mcommit fb50e14342e0b94ffc0245b47eab39c1f6bfdfce[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jul 5 13:21:03 2022 +0900
+
+    insert 일부 return false, 주소api 추가
+
+[33mcommit de0a67b41f0b6fd75fda3505e3f0e4fe8e73f34d[m
+Merge: 0a0455b f240073
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Mon Jul 4 19:36:35 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 0a0455bb2381130be359d675b8c3632e6cb6a339[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Mon Jul 4 19:36:25 2022 +0900
+
+    detailView reply adding
+
+[33mcommit 5a0cfc8a7f7764270e82c85fe3704adfc2a6b99a[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jul 4 19:17:13 2022 +0900
+
+    기본정보 insertㅇ
+
+[33mcommit f2400738ac639813c36c340dcb094f56fc4dd731[m
+Merge: 8d05818 fd2d092
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jul 4 16:39:03 2022 +0900
+
+    Merge pull request #25 from tjgh1176/master
+    
+    cafeinDTO 수정
+
+[33mcommit fd2d092401f88071777329f5bcf7f31c484e5ec5[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 2fee7db 8d05818
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jul 4 16:37:09 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 2fee7db5b0d8ee6b8d50499470abd7b2d705b11d[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jul 4 16:36:56 2022 +0900
+
+    cafeinDTO 수정
+
+[33mcommit 8d058181f00927461567fdca95b7441465f2fdc5[m
+Merge: 9758e81 719d428
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jul 4 16:12:25 2022 +0900
+
+    Merge pull request #24 from tjgh1176/master
+    
+    cafeindto 추가 및 cafein 등록 ui 수정
+
+[33mcommit 719d428303d064704cde1f6f0e3b4aad3ac466f3[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jul 4 16:10:10 2022 +0900
+
+    cafein 등록 ui 수정
+
+[33mcommit 74250802d6dd337b51b0d66fe7988b35a24bf8dd[m
+Merge: 51e768e 9758e81
+Author: PSH <roten123_@naver.com>
+Date:   Mon Jul 4 14:48:24 2022 +0900
+
+    src/main/webapp/WEB-INF/views/notice/notic_Write.jsp create
+
+[33mcommit 51e768ead5ab4befe709360522eb6d7b08e3f4a6[m
+Author: PSH <roten123_@naver.com>
+Date:   Mon Jul 4 14:43:15 2022 +0900
+
+    src/main/java/kh/spring/service/QuestionService.java create
+
+[33mcommit f1f14c3eb69185e64cf8cf0f7028a9bb6a3a4a33[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jul 4 13:45:42 2022 +0900
+
+    cafein-DTO 추가
+
+[33mcommit 9758e81fc93ea0a42e1a518616406f53b711288b[m
+Merge: c596605 20edbef
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jul 4 11:37:28 2022 +0900
+
+    Merge pull request #23 from gkswnd128/master
+    
+    이벤트 및 공지사항 게시판 적용
+
+[33mcommit 20edbef66c08cb62727f3a0f23abc511fb8465a5[m
+Author: KHJ <kkran94@naver.com>
+Date:   Mon Jul 4 11:35:16 2022 +0900
+
+    notic 보드 스크립트 구문 수정
+
+[33mcommit bbb1a649330bf4ba8f38046842df4b0b67bcd97c[m
+Merge: 4cafcd1 c596605
+Author: PSH <roten123_@naver.com>
+Date:   Mon Jul 4 11:28:55 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit d5f0e7ebd7c2a8cf5e7a0ff2f4c3f9e86b87a8cd[m
+Merge: df26712 c596605
+Author: LYH <lyh981022@naver.com>
+Date:   Mon Jul 4 11:27:56 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 6437348d9f9f0db6c32928bfdfc38cd312980a99[m
+Merge: a2f6655 c596605
+Author: KHJ <kkran94@naver.com>
+Date:   Mon Jul 4 11:27:40 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit c5966059addb61af081d90c249c40fdca298c8b3[m
+Merge: e271d99 da7cba3
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jul 4 11:26:47 2022 +0900
+
+    Merge pull request #22 from tjgh1176/master
+
+[33mcommit a2f6655f64e1d46f2e0d0dc6a7346425ef1511ba[m
+Author: KHJ <kkran94@naver.com>
+Date:   Mon Jul 4 11:25:26 2022 +0900
+
+    공지사항 리스트 및 작성하기 디자인 적용
+
+[33mcommit df26712fb84fe555f3431cb4548a36d9e0391380[m
+Author: LYH <lyh981022@naver.com>
+Date:   Mon Jul 4 11:21:11 2022 +0900
+
+    로그인 디자인 수정
+
+[33mcommit da7cba3bb24373f7727b62813304d475842a6552[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jul 4 11:16:22 2022 +0900
+
+    cafein 작성페이지 수정
+
+[33mcommit 4cafcd1adc24f2e3ea04f904e74db5130d7c5fe2[m
+Merge: e71b01a e271d99
+Author: PSH <roten123_@naver.com>
+Date:   Mon Jul 4 09:27:58 2022 +0900
+
+    src/main/webapp/WEB-INF/views/feed/feedWrite.jsp modified
+
+[33mcommit 732f9f48c53ff38f1926ce61f48f3bd502b1abcc[m
+Merge: 435a249 e271d99
+Author: LYH <lyh981022@naver.com>
+Date:   Mon Jul 4 09:24:56 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 435a24951426a542c66b123f9c5721cc898ffbeb[m
+Author: LYH <lyh981022@naver.com>
+Date:   Mon Jul 4 09:24:46 2022 +0900
+
+    기능 시작전
+
+[33mcommit e71b01ae84c3e55d3ef5b482abc1ed84d5a09a4d[m
+Author: PSH <roten123_@naver.com>
+Date:   Mon Jul 4 09:23:31 2022 +0900
+
+    src/main/java/kh/spring/controller/NoticeController.java modified
+
+[33mcommit e271d99643059bb02ef89b662789ecf6b6be3033[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Fri Jul 1 18:24:11 2022 +0900
+
+    feed all edited
+
+[33mcommit 50da2d88d4dbb86a71c72600702dcd049aba7692[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Fri Jul 1 18:17:13 2022 +0900
+
+    detailView.jsp conflic edited
+
+[33mcommit d019b44d88bea859de63f2245beb259e1c3d9169[m
+Author: PSH <roten123_@naver.com>
+Date:   Fri Jul 1 17:26:38 2022 +0900
+
+    src/main/resources/mybatis/Question.xml -> src/main/resources/mybatis/Question-mapper.xml
+
+[33mcommit b717bf7cac5d0cd5de741aaffd9dce004d68e4f9[m
+Merge: fedf7e3 62fba91
+Author: PSH <roten123_@naver.com>
+Date:   Fri Jul 1 17:21:35 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit fedf7e3bbb180308793561bc6faf6a9de90bd1af[m
+Author: PSH <roten123_@naver.com>
+Date:   Fri Jul 1 17:21:22 2022 +0900
+
+    src/main/java/kh/spring/service/NoticeService.java modified
+
+[33mcommit 62fba91c59c9cabb845d810b9e936b8ce1eeca59[m
+Merge: 1b8343b 425c680
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Fri Jul 1 16:47:38 2022 +0900
+
+    Merge pull request #21 from tjgh1176/master
+
+[33mcommit 425c68025721a73141268f21af7ea94a5bc48ca3[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Fri Jul 1 16:42:34 2022 +0900
+
+    cafein jsp 추가 및 연동
+
+[33mcommit 1b8343b9c1c6486a22abb5230cdf7c8a693b0819[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Fri Jul 1 13:01:07 2022 +0900
+
+    detailView.jsp modifing
+
+[33mcommit 97efe4f09028f38171ec053446eed8cb22d9a143[m
+Merge: 6e0650a 257ee4e
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Fri Jul 1 12:01:21 2022 +0900
+
+    Merge pull request #19 from yonghyung/master
+    
+    로그인
+
+[33mcommit 257ee4e076778777ad146e695fcc0b0ed84c80f2[m
+Merge: f6e344d 6e0650a
+Author: LYH <lyh981022@naver.com>
+Date:   Fri Jul 1 11:56:51 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit f6e344d3d479e6c7911188342e0dd532b83c8def[m
+Author: LYH <lyh981022@naver.com>
+Date:   Fri Jul 1 11:56:33 2022 +0900
+
+    백업로그인
+
+[33mcommit c75f9c9f95bfe3236c6c51298c2e419ee314aaa7[m
+Merge: 40c5a38 6e0650a
+Author: PSH <roten123_@naver.com>
+Date:   Fri Jul 1 11:16:34 2022 +0900
+
+    src/main/webapp/WEB-INF/views/feed/detailView.jsp modified
+
+[33mcommit 6e0650a0134595d8233b0ac77bbd00c5ab375a6f[m
+Merge: 954cabb 282decb
+Author: ikcon97 <skckak@naver.com>
+Date:   Thu Jun 30 18:18:17 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 954cabb239171cef25e2ee7f56affd139dd11ed9[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Thu Jun 30 18:18:10 2022 +0900
+
+    detailView edited 3
+
+[33mcommit 282decbbd786e9d1d0bf1fb7fc6a76187beef315[m
+Merge: f091ac6 83af996
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Thu Jun 30 18:17:47 2022 +0900
+
+    Merge pull request #18 from TY-9837/master
+
+[33mcommit 83af9967930936c24a8aab0b62352bcb91c94937[m
+Merge: e605e89 f091ac6
+Author: KTY <rxd9837@naver.com>
+Date:   Thu Jun 30 18:15:56 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit e605e8996e587dc37dccdf1ec54d914359c77303[m
+Author: KTY <rxd9837@naver.com>
+Date:   Thu Jun 30 18:15:43 2022 +0900
+
+    writer2
+
+[33mcommit 65fdf276c385b39223a5853afbf4da0083a3ff4b[m
+Merge: be19cfe f091ac6
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jun 30 16:50:49 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit be19cfe6297be84ab8a43afee26d34f0d63db721[m
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jun 30 16:50:34 2022 +0900
+
+    이메일 인증
+
+[33mcommit 6ed2e4bb3d78a8931cb79139534e1bd494022c97[m
+Merge: a88077f f091ac6
+Author: ikcon97 <skckak@naver.com>
+Date:   Thu Jun 30 16:40:04 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit a88077f662ed7fc98ec3e70e2e3079399d5fd0a6[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Thu Jun 30 16:39:55 2022 +0900
+
+    detailView.jsp edited followBtn
+
+[33mcommit f091ac6bb3cb05be93a50ff2a5a779de9b3180b0[m
+Merge: ed10b97 bfa5523
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Thu Jun 30 16:38:51 2022 +0900
+
+    Merge pull request #17 from TY-9837/master
+    
+    writer1
+
+[33mcommit bfa55237ce0eae67b876f86e1fd39b92e400ef90[m
+Author: KTY <rxd9837@naver.com>
+Date:   Thu Jun 30 16:24:45 2022 +0900
+
+    writer1
+
+[33mcommit ed10b972840b3c1586d264c61d884d224debe4e5[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Thu Jun 30 16:08:53 2022 +0900
+
+    feedMain.jsp edited
+
+[33mcommit 3d929d33c591ace17b275653730ddaff37845e20[m
+Merge: 58ef36b 1425c7f
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Thu Jun 30 15:12:43 2022 +0900
+
+    Merge pull request #16 from tjgh1176/master
+    
+    네비바 토글 link 추가
+
+[33mcommit 1425c7f9782b47965c3618575d836d621bbd674b[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jun 30 15:08:38 2022 +0900
+
+    네비바 토글 link추가
+
+[33mcommit 4fa231d17e9f16aaffb958113ebfcd619ab0ba1d[m
+Merge: 40348b0 58ef36b
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jun 30 14:34:00 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 40348b0c6cdd677ae1586dc552cbbe54ff9fb52c[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jun 30 14:33:54 2022 +0900
+
+    cafein 네비바 하단 선추가
+
+[33mcommit eed7794b19820f68eb90ca738105fcda68ac4994[m
+Merge: 327b1f0 58ef36b
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jun 30 14:23:01 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 327b1f0b54b559fe1349b189fcc1c7cd1c3baf03[m
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jun 30 14:22:31 2022 +0900
+
+    메일 인증
+
+[33mcommit 58ef36be2edeff594759947208962e76b5afbe41[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Thu Jun 30 14:19:25 2022 +0900
+
+    noticeMain.jsp edited
+
+[33mcommit 4f6a20d7a17c2e2d09076dc36e7aaa24381ebeec[m
+Merge: 1a88b61 cfcdd03
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jun 30 11:59:25 2022 +0900
+
+    수정
+
+[33mcommit 1a88b61c9dadf904ffea58ca087884a39488d778[m
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jun 30 11:58:00 2022 +0900
+
+    백업
+
+[33mcommit cfcdd030ff9c24bd89369596540332885e6756b0[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Thu Jun 30 11:55:51 2022 +0900
+
+    jackson added
+
+[33mcommit c3d30f9f2fba985b0b12fd0e1de680c2f35a5002[m
+Merge: 8d44716 c28f530
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Thu Jun 30 11:50:08 2022 +0900
+
+    Merge pull request #14 from tjgh1176/master
+    
+    index button추가
+
+[33mcommit c28f530a1ff451d5855938a62adb207f870410c8[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Thu Jun 30 11:48:54 2022 +0900
+
+    index button추가
+
+[33mcommit 8d4471698adcf9c6f239e9a50c0587934b02416f[m
+Merge: 532a7ee 6f01292
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Thu Jun 30 11:09:27 2022 +0900
+
+    Merge pull request #13 from yonghyung/master
+    
+    중복체크
+
+[33mcommit 6f01292a29b5cc84af59951e8d296b84984b5e29[m
+Author: LYH <lyh981022@naver.com>
+Date:   Thu Jun 30 11:02:13 2022 +0900
+
+    1. db계정수정
+    2. 회원가입 중복체크 임시 처리
+
+[33mcommit 532a7ee8537e7b56ab419b41f3f4b18538185c30[m
+Merge: 75eb918 676fbc3
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jun 29 18:45:13 2022 +0900
+
+    Merge pull request #12 from gkswnd128/master
+
+[33mcommit 676fbc39057204f7bf32146d24e7a74aeab64acb[m
+Author: KHJ <kkran94@navercom>
+Date:   Wed Jun 29 18:31:31 2022 +0900
+
+    FAQ 디자인 갱신
+
+[33mcommit 75eb91826365d6a395c8f7b9f21d9a8e213f9c2b[m
+Merge: f6e6eed 4958f06
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jun 29 18:22:52 2022 +0900
+
+    Merge pull request #11 from TY-9837/master
+
+[33mcommit 4958f06940cac013036265fe47bb3afd7b31a367[m
+Author: KTY <rxd9837@naver.com>
+Date:   Wed Jun 29 18:14:15 2022 +0900
+
+    feedmain_modify1
+
+[33mcommit 40c5a3858e4ab9d716ef15c27b8ea36bdc513a92[m
+Author: PSH <roten123_@naver.com>
+Date:   Wed Jun 29 18:02:55 2022 +0900
+
+    src/main/webapp/WEB-INF/views/feed/detailView.jsp modified
+
+[33mcommit f6e6eed667767c200fb4a6277a050b8eea62352e[m
+Merge: 36d62b1 e0a568f
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jun 29 17:53:07 2022 +0900
+
+    Merge pull request #10 from yonghyung/master
+    
+    로그인 회원가입 디자인
+
+[33mcommit e0a568f1f0e5b6da0d6b294e981129a786b172dc[m
+Merge: 7c4a106 36d62b1
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jun 29 17:44:30 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 7c4a106c17c521feb6f3b75a88d231ea5a73540b[m
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jun 29 17:44:14 2022 +0900
+
+    로그인 디자인
+
+[33mcommit 814d3718a212aae2f317995a31994aa4d80129b8[m
+Author: PSH <roten123_@naver.com>
+Date:   Wed Jun 29 15:51:39 2022 +0900
+
+     src/main/webapp/WEB-INF/views/feed/feedMain.jsp modified
+
+[33mcommit 36d62b1e57a54603fb925926304de4feabffbb1c[m[33m ([m[1;32m36d62[m[33m)[m
+Merge: 3678c81 e08b923
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jun 29 12:52:19 2022 +0900
+
+    Merge pull request #9 from tjgh1176/master
+    
+    footer색상 변경
+
+[33mcommit e08b9232e9745e44f37d78e2d3a31ee2215ef39c[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jun 29 12:50:45 2022 +0900
+
+    footer색상 변경
+
+[33mcommit 6e9d4bcebdc95d2db5f905b0c87ce96c2f59d88b[m
+Merge: 94ba015 3678c81
+Author: KHJ <kkran94@navercom>
+Date:   Wed Jun 29 12:16:44 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 3678c819dd5a7847f467eb51556e12818df5f0fa[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Wed Jun 29 12:15:20 2022 +0900
+
+    h1 header added
+
+[33mcommit 94ba0155c47d6f2144e31c4c6e57690040d08cff[m
+Merge: 06f8689 213b933
+Author: KHJ <kkran94@navercom>
+Date:   Wed Jun 29 12:13:14 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 06f8689b557dc71fcc410c4861f417e3e2884255[m
+Author: KHJ <kkran94@navercom>
+Date:   Wed Jun 29 12:13:10 2022 +0900
+
+    FAQ 수정중
+
+[33mcommit 39c6068392e923fc8a4d9b5767594e8250b3ecf0[m
+Merge: b84318c 213b933
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jun 29 12:09:51 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit b84318c02f9b8f27a680301d88ca9e9c724b4c28[m
+Merge: b52d6e7 b049a51
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jun 29 12:09:33 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 213b933fe34ac525fea6237f8fe4acbf9a9d512a[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Wed Jun 29 12:09:26 2022 +0900
+
+    feedMain Header Footer added
+
+[33mcommit b52d6e7dc5b678cdf686fdc933b7be17f5c7cade[m
+Author: LYH <lyh981022@naver.com>
+Date:   Wed Jun 29 12:09:13 2022 +0900
+
+    로그인
+
+[33mcommit b049a51a70df37a3672e766957fa7cab717d68a3[m
+Merge: e0f38db f1c6005
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Wed Jun 29 11:51:39 2022 +0900
+
+    Merge pull request #8 from tjgh1176/master
+    
+    cafein-design
+
+[33mcommit f1c60057b649cb62cc37995d9c45f902df439cc8[m
+Merge: 19fa73e e0f38db
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jun 29 11:48:31 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 19fa73eaefc58801e22a386017977600b58c2812[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Wed Jun 29 11:47:37 2022 +0900
+
+    cafein-design
+
+[33mcommit e0f38dbc749eef798e690bfcf2ed5b190fd5d5e8[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Wed Jun 29 11:47:17 2022 +0900
+
+    feedMain.jsp edited
+
+[33mcommit beb02575e1429bfe405ea5e4f21b0b49e8cee049[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Wed Jun 29 09:16:53 2022 +0900
+
+    feedDetailView added
+
+[33mcommit 14be22ac6d10aa95381ab5ff09f76aeabbe6084d[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Tue Jun 28 16:15:58 2022 +0900
+
+    feedMain added
+
+[33mcommit 26c380a7ae8048c6368e5404b4c2a78bb3e4ccf3[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Tue Jun 28 14:18:21 2022 +0900
+
+    views folder added
+
+[33mcommit f69aa72c94cf714c625328326be802c16611501c[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Tue Jun 28 13:48:03 2022 +0900
+
+    home.jsp edited 1
+
+[33mcommit 46146639cecee57d93b99fbce1a5bbb90e664ffa[m
+Merge: 40b8c81 c6c9af7
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Tue Jun 28 13:44:10 2022 +0900
+
+    Merge pull request #7 from tjgh1176/master
+    
+    index 수정입니다.
+
+[33mcommit c6c9af75e5d4fcadcff9e2cc36312b5a759f9fba[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Tue Jun 28 13:41:20 2022 +0900
+
+    index 틀
+
+[33mcommit 40b8c8181bc0c7b0cfc42e1e357e5d46c49ed3b8[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Tue Jun 28 12:28:14 2022 +0900
+
+    home.jsp edited
+
+[33mcommit a1c623ed04b115ff2c54218cfd26db3d859dde99[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Tue Jun 28 12:16:14 2022 +0900
+
+    gitignore edited
+
+[33mcommit 19c9b5c7be43e0ef088f1b4568d34d20a099860c[m
+Author: ikcon97 <skckak@naver.com>
+Date:   Tue Jun 28 11:44:04 2022 +0900
+
+    test
+
+[33mcommit 96ae63e97d0530d4b09f2003b00d970f6259c644[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Mon Jun 27 16:35:09 2022 +0900
+
+    controller, dao, dto, service, mapper added
+
+[33mcommit 5c25c3bee0aaeda1f554febea199d2fdbd8f4de2[m
+Merge: 2181a53 4788739
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jun 27 16:24:31 2022 +0900
+
+    Merge pull request #6 from leeyeji1417/master
+    
+    O create
+
+[33mcommit 4788739299893ee332f465ad3c0e1f696e38703b[m
+Author: 이예지지 <thddjchs77@gmail.com>
+Date:   Mon Jun 27 16:23:31 2022 +0900
+
+    O create
+
+[33mcommit 2181a53c98ba40c8fd1455080aebc8af7fa6838a[m
+Merge: 60a2f60 5c67614
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Mon Jun 27 16:12:51 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 5c67614a34e4af8013d3b9fb4ff101078aa8c800[m
+Merge: 2e5bd9b 400d090
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jun 27 16:12:22 2022 +0900
+
+    Merge pull request #5 from hostparksehun/master
+    
+    test
+
+[33mcommit 60a2f6062150bbc18bd75ed7c29f6ea6b89a2843[m
+Merge: 3a9e773 2e5bd9b
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Mon Jun 27 16:12:02 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 3a9e773a91ceb2bdadb3a04055987cc8dffb1181[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Mon Jun 27 16:11:33 2022 +0900
+
+    dao, dto, service added
+
+[33mcommit 400d090bf5cb7632834b66dd7adfd934260e6761[m
+Merge: 99fc7dd 2e5bd9b
+Author: PSH <roten123_@naver.com>
+Date:   Mon Jun 27 16:11:00 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit 99fc7dd1aecf9413db009e280a1b97533d3d892b[m
+Author: PSH <roten123_@naver.com>
+Date:   Mon Jun 27 16:10:31 2022 +0900
+
+    src/main/java/kh/spring/controller/test.java
+
+[33mcommit 2e5bd9bb08e63e471b0d97019839c3585528174c[m
+Merge: 1dca442 20577f6
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jun 27 16:09:21 2022 +0900
+
+    Merge pull request #4 from tjgh1176/master
+    
+    이서호 테스트입니다
+
+[33mcommit 1dca44208557264695d9b4cdd50b36bf41418a82[m
+Merge: f87eae9 5cf8f09
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jun 27 16:08:32 2022 +0900
+
+    Merge pull request #3 from gkswnd128/master
+    
+    김한중 test
+
+[33mcommit 20577f6acaa3a8f89350578653a954ed393505e1[m
+Author: L.S.H <tjgh1176@naver.com>
+Date:   Mon Jun 27 16:08:22 2022 +0900
+
+    L.S.H TEST
+
+[33mcommit 5cf8f09437e485a65d3ae76a7813745e2639bda9[m
+Author: KHJ <kkran94@navercom>
+Date:   Mon Jun 27 16:06:17 2022 +0900
+
+    test
+
+[33mcommit f87eae971270a5e114e19c8491d10817ae23d142[m
+Merge: ebd0a53 0273fe8
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jun 27 15:59:07 2022 +0900
+
+    Merge pull request #2 from yonghyung/master
+    
+    kh
+
+[33mcommit 0273fe86616ee9e2797e19a7531f079889b5b3d0[m
+Merge: e4e979e ebd0a53
+Author: LYH <lyh981022@naver.com>
+Date:   Mon Jun 27 15:56:40 2022 +0900
+
+    Merge branch 'master' of https://github.com/Kangsvv/final_project
+
+[33mcommit e4e979ea12fa16d2b5f0aff3b9b254a5fdfaadfc[m
+Author: LYH <lyh981022@naver.com>
+Date:   Mon Jun 27 15:39:19 2022 +0900
+
+    KH
+
+[33mcommit ebd0a5344497b3ef764e0b0cd9fa4dc2adde1cd0[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Mon Jun 27 15:34:06 2022 +0900
+
+    pakage added
+
+[33mcommit 6c4a7cfd5634cfe798eb48ac8e6bd3c12df4dc13[m
+Merge: 22d3f00 278714a
+Author: Kangsvv <105614314+Kangsvv@users.noreply.github.com>
+Date:   Mon Jun 27 15:18:46 2022 +0900
+
+    Merge pull request #1 from TY-9837/master
+    
+    TY
+
+[33mcommit 278714ae9258214bacfd4d793b156deddbdc048e[m
+Author: KTY <rxd9837@naver.com>
+Date:   Mon Jun 27 15:17:05 2022 +0900
+
+    TY
+
+[33mcommit 22d3f00d4bba5c17b372760a5f617731327304ac[m
+Author: Kangsvv <tjrdnjsdlekt@naver.com>
+Date:   Mon Jun 27 00:14:50 2022 +0900
+
+    First Commit

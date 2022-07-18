@@ -93,9 +93,14 @@ public class CafeinService {
 	}
 	//--------------------Cafe 리스트2------------------------------
 public List<Cafein_imgDTO> cafein_imglist2(Model model) throws Exception {
-		
+		String id = (String)session.getAttribute("loginID");
+		if(id!=null) {
+		MemberDTO mdto = new MemberDTO();
+		mdto.setmem_id(id);
+		mdto =mdao.login(mdto);
+		model.addAttribute("mdto",mdto);
+		}
 		System.out.println("gocafein Serv2 준비중");
-		
 		return fdao.cafein_imglist2();
 	}
 	//--------------------Cafe 상세정보------------------------------

@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -131,25 +132,24 @@ public class MemberController {
 
 	// 회원가입 처리
 	@RequestMapping("joinAction")
-	public String joinAction(MemberDTO member, Model model, MultipartFile file) {
+	public String joinAction(MemberDTO member, Model model, @RequestParam(value = "file", required = false) MultipartFile file) {
 		String fileUpload = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(fileUpload);
 		String fileName = null;
-		System.out.println(file	);
 		try {
-	
-			if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
-			 fileName =  UploadFileUtils.fileUpload(fileUpload, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-			} else {
-			 fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			if(member.getmem_level() == 1) {
+				if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+					fileName =  UploadFileUtils.fileUpload(fileUpload, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+				} else {
+					fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+				}
+				
+				member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 			}
-	
-			member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-			
 			// 회원가입 처리
 			int result = memberService.joinAction(member);
 			member.setmem_pw(null);
-			if(result > 0) {
+			if(result > 0 && member.getmem_level() == 0) {
 				model.addAttribute("loginMember", member);
 			}
 			
