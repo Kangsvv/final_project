@@ -381,7 +381,7 @@ label{
 
 <div class="row">
   <div class="col-12" id="btn"><button id="add">등록</button>
-  <a href="/cafein/cafein_imglist"><button type="button">취소</button></a></div>
+  <a href="/cafein/goCafein?page=1"><button type="button">취소</button></a></div>
 </div>
        </form>
    <!----------------------------------------------------- script------------------------------------------------ -->
