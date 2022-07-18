@@ -104,7 +104,7 @@ public class CafeinController {
 	@RequestMapping("delete") 
 	public String delete(int seq,String realPath,MultipartFile file) throws Exception {
 		serv.delete(seq,realPath,file);
-		return "redirect:/cafein/cafein_imglist";
+		return "redirect:/cafein/goCafein?page=1";
 	}
 	//------------------------Cafe수정----------------------------------
 	@RequestMapping("update") 
