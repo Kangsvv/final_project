@@ -129,6 +129,18 @@ public class FeedController {
 		
 //		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
 	}
+	@RequestMapping("replyModify")
+	public String replyModify(Model model, int seq, String contents,int cafefeed_seq) throws Exception{
+		
+		System.out.println("댓글 수정 : " + seq);
+		
+		rServ.ModifyReply(seq, contents);
+//		rServ.selectBySeq(model, cafefeed_seq);
+		
+		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;
+		
+//		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
+	}
 	@ResponseBody
 	@RequestMapping("replyList")
 	public List<ReplyDTO> replyList(Model model, int cafefeed_seq, int page) throws Exception{
