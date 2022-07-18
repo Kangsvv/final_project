@@ -9,8 +9,8 @@
 		select * from member where mem_id = #{value }
 	</select>
 	
-	<update id="updateMypage" >
-		update set  from member where mem_id = #{memID }
+	<update id="mypageUpdate" >
+		update member set mem_img = #{mem_img }, mem_name=#{mem_name }, mem_phone=#{mem_phone}, mem_oriname = #{mem_oriname} where mem_id = #{mem_id}  
 	</update>
 
 </mapper>

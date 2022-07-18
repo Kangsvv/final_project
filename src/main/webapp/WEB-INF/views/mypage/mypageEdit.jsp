@@ -118,15 +118,16 @@
     </style>
   </head>
   <body style="background-color: #222">
+  <form action="/mypage/update" method="post" enctype="multipart/form-data">
+  
     <div class="mypage wrap">
       <h1 style="color: white">My Page</h1>
 
-      <form action="/member/upload" class="loginFrom max-W360">
       
         <div id="box">
           <div class="box" class="imgcan" style="background: #bdbdbd">
           	<div class="profile">
-             	<img class="profile" src="${dto.mem_img }" />
+             	<img class="profile" src="/resources/mypage/${dto.mem_img }" />
             </div>
           </div>
           <div class="imgbtncan">
@@ -190,8 +191,7 @@
               class="form_main"
               class="change"
               id="phone_center"
-              value="{dto.mem_intro}"
-              name="memIntro"
+              value=""
               maxlength="12"
               type="text"
               class="editable"
@@ -204,8 +204,9 @@
 			<br>
           <button type="button" class="btn_main bt_1" id="memberout" href="/mypage/memberout"> 탈퇴 </button>
         </div>
-      </form>
+      
     </div>
+    </form>
 
     <script>
       
@@ -213,7 +214,11 @@
       //여기서 탈퇴하는 기능, 탈퇴하면 모든 본인 게시물 삭제?
 
       $('#modify').on('click', function () {
-        alert("진챠 수정할 겨??????");
+    	  if(confirm("정말 등록하시겠습니까 ?") == true){        
+    		  alert("등록되었습니다");    }
+    	      else{        
+    		  	return false;    
+    		  	}
       });  
       
       $('#back').on('click', function () {

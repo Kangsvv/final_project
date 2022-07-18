@@ -18,5 +18,9 @@ public class MypageDAO {
 	public MemberDTO selectID(String loginID) throws Exception {
 		return mybatis.selectOne("mypage.selectID",loginID) ;
 	}
+	
+	public int mypageUpdate(MemberDTO dto)throws Exception{
+		return mybatis.update("mypage.mypageUpdate",dto);
+	}
 
 }

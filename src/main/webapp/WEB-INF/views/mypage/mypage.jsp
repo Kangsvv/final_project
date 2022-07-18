@@ -29,10 +29,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         padding-bottom: 3rem;
       }
 
-      img {
-        display: block;
-      }
-
+      
       .container {
         max-width: 93.5rem;
         margin: 0 auto;
@@ -78,17 +75,22 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       .profile-image {
         float: left;
-        height:calc(33.333% - 1rem);
-        width: calc(33.333% - 1rem);
+        border-radius: 70%;
+    	width: 200px;
+    	height: 200px;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-right: 3rem;
-        
+      	overflow:hidden;
       }
-
+		
+		
       .profile-image img {
-        border-radius: 50%;
+         
+        width:100%;
+		height:100%;
+		object-fit:cover;
       }
 
       .profile-user-settings,
@@ -393,10 +395,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
       <div class="container">
         <div class="profile">
           <div class="profile-image" >
-            <img style="height:100px"
-            	src="https://cdn.imweb.me/thumbnail/20211015/a90424c23ef93.jpg" 
-            	<%-- src="${dto.mem_img }" --%>
-            />
+           <img src="/resources/mypage/${dto.mem_img }" />
           </div>
 
           <div class="profile-user-settings">
