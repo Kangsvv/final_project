@@ -250,7 +250,7 @@ label{
   <div class="col-12 col-sm-6" id="file"><img id="preview" src="/resources/cafein/${fdto.sys_name }" />
 
     <label for="ex_file">업로드</label>
-    <input type="file" name="file" id="ex_file" value="파일첨부"  onchange="readURL(this);">
+    <input type="file" name="file" id="ex_file"  onchange="readURL(this);">
    
 </div>
   <div class="col-12 col-sm-6" id="table">
@@ -275,7 +275,7 @@ label{
   </tr>
   <tr>
     <td class="tableTitle">휴무일 : </td>
-    <td><input type="checkbox" value="월" name="dayarr" class="day"><label>월</label>
+    <td><input type="checkbox" value="월" name="dayarr" class="day" id="mon"><label>월</label>
       <input type="checkbox" value="화" name="dayarr" class="day"><label>화</label>
       <input type="checkbox" value="수" name="dayarr" class="day"><label>수</label>
       <input type="checkbox" value="목" name="dayarr" class="day"><label>목</label>
@@ -285,6 +285,7 @@ label{
       <input type="checkbox" value="공휴일" name="dayarr" class="day"><label>공휴일</label>
       <input type="checkbox" value="연중무휴" name="dayarr" class="day"><label>연중무휴</label>
       </td>
+     <input type="checkbox" id="checkYn" name="dayarr" <c:if test="${item.checkbox eq 'Y'}">checked</c:if> >
   </tr>
   <tr>
     <td class="tableTitle">오픈시간 : </td>
@@ -381,7 +382,7 @@ label{
 
 <div class="row">
   <div class="col-12" id="btn"><button id="update">수정 완료</button>
-  <a href="/cafein/cafein_imglist"><button type="button">뒤로가기</button></a></div>
+  <a href="/cafein/goCafein?page=1"><button type="button">뒤로가기</button></a></div>
 </div>
        </form>
    <!----------------------------------------------------- script------------------------------------------------ -->
@@ -404,8 +405,43 @@ label{
 						document.getElementById("address2").focus();
 					},
 				}).open();
-	}
+	}var beforeStr = "02-123-4567";
+	var afterStr = beforeStr.split('-');
+ //--------------------------------요일 체크박스 체크 --------------------------------------
+ var arr = "${dto.day}";
+    arr = arr.split('/');
+    var arrLen = arr.length;
+
+    var chk = $('input:checkbox[name=dayarr]');
+
+    for (var i = 0; i < arrLen; i++) { // arr
+        var arrVal = arr[i]; // arr의 값 = i : 0, arrVal : 2
+        chk.filter('[value=' + arrVal + ']').prop('checked', true); // arrVal 값 2, 4, 5에 의해 checkbox의 value의 값 2, 4, 5를 checked 처리
+    }
+
+ //-------------------------------오픈시간 select------------------------------------
+    var arr = "${dto.open}";
+    arr = arr.split(':');
+    var arrLen = arr.length;
+   
+    $("#openarr1").val(arr[0]).prop("selected", true);
+    $("#openarr2").val(arr[1]).prop("selected", true);
+    $("#openarr3").val(arr[2]).prop("selected", true);
+    
+//-------------------------------마감시간 select------------------------------------    
+    var arr = "${dto.finish}";
+    arr = arr.split(':');
+    var arrLen = arr.length;
+   
  
+    $("#finisharr1").val(arr[0]).prop("selected", true);
+    $("#finisharr2").val(arr[1]).prop("selected", true);
+    $("#finisharr3").val(arr[2]).prop("selected", true);
+//------------------------------주차장 유무 radio값체크------------------------------
+   $("[name=parking]").filter("[value=${dto.parking}]").prop("checked",true)
+
+  
+
  //---------------------------------공백시 return false--------------------------------
  
  $("#update").on("click",function(){

@@ -83,11 +83,25 @@ public class CafeinService {
 		fdao.insert(new Cafein_imgDTO(0,oriName,sysName,cafein_seq));
 
 	}
-
+	
 	//--------------------Cafe 리스트------------------------------
-	public void cafein_imglist(Model model) throws Exception {
-		List<Cafein_imgDTO> list = fdao.cafein_imglist();
-		model.addAttribute("list",list);
+	public List<Cafein_imgDTO> cafein_imglist(Model model,int page) throws Exception {
+		
+		System.out.println("gocafein Serv 준비중");
+		
+		return fdao.cafein_imglist(page);
+	}
+	//--------------------Cafe 리스트2------------------------------
+public List<Cafein_imgDTO> cafein_imglist2(Model model) throws Exception {
+		String id = (String)session.getAttribute("loginID");
+		if(id!=null) {
+		MemberDTO mdto = new MemberDTO();
+		mdto.setmem_id(id);
+		mdto =mdao.login(mdto);
+		model.addAttribute("mdto",mdto);
+		}
+		System.out.println("gocafein Serv2 준비중");
+		return fdao.cafein_imglist2();
 	}
 	//--------------------Cafe 상세정보------------------------------
 	@Transactional
@@ -101,8 +115,7 @@ public class CafeinService {
 		//-------------좋아요 수----------------------
 		int count=dao.cafein_like_count(cafein_seq);
 		model.addAttribute("count",count);
-		//-------------좋아요체크----------------------
-		
+		//-------------좋아요체크----------------------		
 		String id = (String)session.getAttribute("loginID");
 		System.out.println(id);
 		System.out.println(cafein_seq);

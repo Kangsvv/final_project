@@ -1,6 +1,8 @@
 package kh.spring.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,18 @@ public class ReplyDAO {
 		mybatis.insert("Feed.reply_insert",dto);
 	}
 	
-	public List<ReplyDTO> selectBySeq(int cafefeed_seq) throws Exception {
-		return mybatis.selectList("Feed.replylist_select", cafefeed_seq);
+	public List<ReplyDTO> selectBySeq(int cafefeed_seq, int page) throws Exception {
+		
+		int start = (page-1)*10+1;
+		int end = (page)*10;
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		map.put("start", start);
+		map.put("end", end);
+		map.put("cafefeed_seq", cafefeed_seq);
+		
+		return mybatis.selectList("Feed.replylist_select", map);
 	}
 	public void deleteReply(int seq) throws Exception{
 		mybatis.delete("Feed.reply_delete", seq);

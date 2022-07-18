@@ -1,6 +1,9 @@
 package kh.spring.controller;
 
 
+import java.util.List;
+
+import org.apache.commons.io.input.ClassLoaderObjectInputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.spring.dto.Cafein_imgDTO;
 import kh.spring.dto.Cafein_likeDTO;
+import kh.spring.dto.FeedDTO;
 import kh.spring.service.CafeinService;
 
 @Controller
@@ -23,9 +28,18 @@ public class CafeinController {
 	
 	//----------------------Cafein 리스트---------------------
 	@RequestMapping("goCafein")
-	public String goCafein() {
+	public String goCafein(Model model,int page) throws Exception {
+		
+		int cpage= page;
+		
+		System.out.println(cpage);
+		List<Cafein_imgDTO> list = serv.cafein_imglist(model, cpage);
+		model.addAttribute("list",list);
+		serv.cafein_imglist2(model);
+		
 		return "/cafein/cafeinMain";
 	}
+	
 	//----------------------Cafein 작성---------------------
 
 	@RequestMapping("writeCafein")
@@ -52,14 +66,20 @@ public class CafeinController {
 		String finish = String.join(":", finisharr);
 		
 		serv.insert(name,address1,address2,day,open,finish,parking,realPath,file);
-		return "redirect:/cafein/cafein_imglist";
+		return "redirect:/cafein/goCafein?page=1";
 	}
 	
 	//------------------------Cafein 리스트 출력(사진리스트)---------------
+	@ResponseBody
 	@RequestMapping("cafein_imglist")
-	public String cafein_imglist(Model model) throws Exception {
-		serv.cafein_imglist(model);
-		return "/cafein/cafeinMain";
+	public List<Cafein_imgDTO> cafein_imglist(Model model,int page) throws Exception {
+		System.out.println(page);
+		int cpage = page;
+		
+		List<Cafein_imgDTO> list = serv.cafein_imglist(model, cpage);
+		model.addAttribute("list", list);
+		System.out.println(list);
+		return list;
 	}
 	//------------------------Cafein 상세보기(로그인시)---------------------------
 	@RequestMapping("selectBySeq")
@@ -67,7 +87,13 @@ public class CafeinController {
 		serv.selectBySeq(model, cafein_seq);
 		return "cafein/cafeinDetail";
 	}
-
+	//------------------------Cafein 상세보기(비로그인시)---------------------------
+	
+		@RequestMapping("selectBySeq2")
+		public String selectBySeq2(Model model,int cafein_seq) throws Exception {
+			serv.selectBySeq(model, cafein_seq);
+			return "cafein/cafeinDetail";
+		}
 	//-------------------------Cafein 수정페이지 ------------------------
 	@RequestMapping("UpdateSeq")
 	public String UpdateSeq(Model model,int cafein_seq) throws Exception {
@@ -78,7 +104,7 @@ public class CafeinController {
 	@RequestMapping("delete") 
 	public String delete(int seq,String realPath,MultipartFile file) throws Exception {
 		serv.delete(seq,realPath,file);
-		return "redirect:/cafein/cafein_imglist";
+		return "redirect:/cafein/goCafein?page=1";
 	}
 	//------------------------Cafe수정----------------------------------
 	@RequestMapping("update") 

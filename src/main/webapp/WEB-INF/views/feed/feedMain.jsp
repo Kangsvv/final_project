@@ -330,8 +330,8 @@ nav button:hover{
      }).done(function(resp){
     	let cDiv = $("<div class='row'>");
     	for(let i=0; i < resp.length; i++){
-    		 
-    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
+    		 console.log(resp);
+    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4 feedImg'><a class='lightbox' href='/feed/selectBySeq?cafefeed_seq="+resp[i].cafefeed_seq+"'><img src='/feed/"+ resp[i].sys_name +"'>"); 
     	 
     	 	cDiv.append(contentsDiv);
     	 }
