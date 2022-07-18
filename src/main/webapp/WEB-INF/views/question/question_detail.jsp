@@ -435,6 +435,8 @@ li.dropdown {
 			</div> 	
 		</div>
 
+
+	
 	</div>
 
 </div>
@@ -443,12 +445,14 @@ li.dropdown {
 
 	
 	        <div class="replyWriteBox">
-            	<div id="row" style="font-size : 15px; width: 100%; height: 100%; overflow: hidden;" align=left>
+            	<div style="font-size : 15px; height: 100%; overflow: hidden; align=center;" >
+	            	<div style="margin:auto;">
 	            	<div id="replyContentsBox">
 	            		<textarea name="replyContents" id="replyContents" style="width: 100%;" rows="30" placeholder="내용"></textarea>
 	            	</div>
 	            	<div id="replyWriteBtnBox">
 	            		<input type="button" id="replyWriteBtn" value="작성하기">
+	            	</div>
 	            	</div>
             	</div>
             </div>
@@ -466,7 +470,7 @@ li.dropdown {
 							${i.contents } 
 						</div>
 						<input type="hidden" class="reply_seq" value="${i.reply_seq}"> 
-									<div><button id="replyUpdate">수정</button> <button id="replyDelete">삭제</button></div>
+				<div><button class="replyUpdate">수정</button> <button class="replyDelete">삭제</button></div>
 				</c:forEach>
 
 	 		</div>	
@@ -475,20 +479,15 @@ li.dropdown {
 	 	
 	 	
 	 	
-</div>
+<!-- </div> -->
 	
 	
 	
 
 <style>
-div{border: 1px solid white;}
+/* div{border: 1px solid white;} */
 
-	#reply{
-	
-	width: 1000px;
-  	height: 300px;
-  	
-	}
+
 	.replyList{
 		text-align: center;
 	}
@@ -499,11 +498,12 @@ div{border: 1px solid white;}
 			border-bottom: 2px solid white;
         }
        
-        #replyContentsBox{
-        	float: left;
-        	width:90%;
-        	height:100px;
-        }
+         #replyContentsBox{ 
+            margin: auto;
+         	width:60%;
+         	height:100px; 
+         	float:left;
+         } 
         #replyWriteBtnBox{
        		float: left;
         	width:10%;
@@ -516,18 +516,7 @@ div{border: 1px solid white;}
         	width:100%;
         	height:100%;
         }
-        .replycontainer {
-            margin: auto;
-            width: 95%;
-            margin-top: 10px;
-            border-bottom: 1px solid gray;
-        }
- 		.replycontents2{
- 			margin-left: 10px;
-			word-wrap: break-word;      /* IE 5.5-7 */
-			white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
-			white-space: pre-wrap;      /* current browsers */
- 		}
+        
         .replywriterName{
             margin: 4px 4px;
             width: 98%;
@@ -537,31 +526,9 @@ div{border: 1px solid white;}
             padding-left: 10px;
         }
 
-        .replycontent{
-            margin: 4px 4px;
-            width: 98%;
-            height: 78%;
-            padding-left: 10px;
-        }
+        
 
-        .replydel {
-/*             margin-top: 60px; */
-        }
-        .replyleft{
-/*             float: left; */
-            width: 100%;
-        }
 
-         .replyright{
-/*              float: left;  */
-             width: 100%; 
-/*             height: 100%; */
-             text-align: right;
-             padding-bottom:5px;
-         }
-         .replymodify{
-         	margin-right:5px;
-         }
 
 </style>
 	<!-------------------------------------------------------Footer------------------------------------------------->
@@ -724,36 +691,34 @@ $(".create").on("click", "#modifyBtn",function(){
      });
 
 
-$("#replyDelete").on("click", function() {
+$(".replyDelete").on("click", function() {
 	
 	let result = confirm("댓글을 삭제하시겠습니까?");
 	
-	let reply_seq = $(this).parent(".reply_seq").val();
+	let reply_seq = $(this).parent().siblings(".reply_seq").val();
 
 	console.log(reply_seq);
 	if(result){
 		$.ajax({
  		url:"/question/reply_delete",
- 		data:{reply_seq:reply_seq}
+ 		data:{reply_seq:reply_seq, question_seq:${dto.question_seq}}
  		
 	  }).done(function(resp){
 		location.reload();  
-	  })
+	  });
 	}
 })
 		
 
 // $(".upbtn").on("click",function(){
 // 	$(".main").removeAttr("disabled");
-// 	$(".eventbox").removeAttr("disabled");
-	
+// 	$(".eventbox").removeAttr("disabled");	
 // 	$(".upbtn").css("display","none"); // 수정 버튼 감추기
 // 	$(".delbtn").css("display","none"); // 삭제 버튼 감추기
-	
 // 		let ok = $("<button>");//수정완료 버튼
 // 			ok.text("완료");
 // 			ok.attr("id","modifyBtn")
-		
+
 // 			let cancel = $("<button>");//취소 버튼
 // 			cancel.text("취소");
 // 			cancel.attr("id", "cancelBtn")

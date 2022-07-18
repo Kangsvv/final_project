@@ -117,12 +117,14 @@ import kh.spring.service.QuestionService;
 		//-------댓글 삭제-------
 		
 		@RequestMapping("reply_delete")
-		public String reply_delete(Model model, int reply_seq) throws Exception{
+		public String reply_delete(int reply_seq, int question_seq) throws Exception{
 			
-			int result = Rservice.delete(model, reply_seq);
-			model.addAttribute("reply_seq", result);
+			System.out.println(reply_seq);
 			
-			return "redirect:/question/question_detail";
+			Rservice.delete(reply_seq);
+			
+			
+			return "redirect:/question/question_detail?question_seq="+question_seq;
 			
 		}
 		
