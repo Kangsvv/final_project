@@ -132,7 +132,7 @@ public class FeedController {
 	@RequestMapping("replyModify")
 	public String replyModify(Model model, int seq, String contents,int cafefeed_seq) throws Exception{
 		
-		System.out.println("댓글 수정 : " + seq);
+		System.out.println("댓글 수정 : " + seq + " : " + contents);
 		
 		rServ.ModifyReply(seq, contents);
 //		rServ.selectBySeq(model, cafefeed_seq);
