@@ -50,7 +50,7 @@
 							id='mem_email' name='mem_email' placeholder="이메일" maxlength="25"
 							autocomplete="off" required>
 							<button id='emailcheck' type="button" class='bt_1'
-								style="width: 25%; display: inline-block;">인증</button> <span
+								style="width: 25%; display: inline-block;" >인증</button> <span
 							id='checkEmail'></span></li>
 						<li id='emailLi' style="display: none;"><input
 							class="form_main" style="width: 70%" id='emailNum' name='emailNum'
@@ -176,7 +176,7 @@
 							email = false;
 						}else{
 							$("#checkEmail").text("사용 가능한 이메일입니다.").css("color","black");
-							email = true;
+							email = true;						
 						}
 					},
 					// 에러가 발생했을때
@@ -274,6 +274,7 @@
 						$("#emailLi").hide();
 						$("#mem_email").hide();
 						$("#emailcheck").hide();
+						$("#checkEmail").hide();
 					}else{
 						alert("인증번호를 확인해주세요. 3분이 초과된경우 다시 전송 후 인증해주세요.");
 						emailCheck = false;
