@@ -13,8 +13,20 @@
  	select * from member where mem_level = 1
  	</select>
  	
+ 	<select id="selectIMG" resultType="String">
+ 	select mem_ceocheckimg from member where mem_id=#{mem_id}
+ 	</select>
+ 	
  	<select id="delete">
  	delete from member where mem_id=#{mem_id}
  	</select>
  	
+ 	<select id="CEOok">
+ 	update member set mem_level = 1 where mem_id= #{mem_id}
+ 	</select>
+ 	
+ 	<select id="leveldown">
+ 	update member set mem_level = 0 where mem_id= #{mem_id}
+ 	</select>
+
 </mapper>
