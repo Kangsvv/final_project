@@ -35,10 +35,9 @@ public int modify(NoticDTO dto) throws Exception {
 	return mybatis.update("notic.notic_modify",dto);
 }
 
-/* 추후 조회수 기능 추가 가능하면 다시 진행
- * public void update(int count) { 
- * mybatis.update("event.count", count); }
- */
+public void update(int seq) { 
+mybatis.update("event.count", seq); }
+
 
 
 }

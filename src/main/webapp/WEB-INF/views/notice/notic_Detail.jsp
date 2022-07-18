@@ -443,8 +443,7 @@ li.dropdown {
 					<fmt:formatDate pattern="yy-MM-dd" value="${dto.write_date}" />
 				</div>
 				<div class="col-3 con_head bluck2">
-					조회수 :
-					<%--  추후 가능하면 넣을 예정 ${dto.count } --%>
+					조회수 : ${dto.viewcount }
 				</div>
 			</div>
 

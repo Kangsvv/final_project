@@ -26,7 +26,9 @@ public List<NoticDTO> notic_selectAll() throws Exception {
 }
 
 public void nselectBySeq(Model model, int seq) throws Exception {
+	
 	NoticDTO dto = dao.nselectBySeq(seq);
+	dao.update(seq);
 	model.addAttribute("dto",dto);
 }
 
