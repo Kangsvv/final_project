@@ -38,5 +38,6 @@ public class ReplyDAO {
 		mybatis.delete("Feed.reply_delete", seq);
 	}
 	public void ModifyReply(ReplyDTO dto) {
+		mybatis.update("Feed.reply_update", dto);
 	}
 }

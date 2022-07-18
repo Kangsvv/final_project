@@ -299,6 +299,9 @@ nav button:hover{
             word-wrap: break-word;      /* IE 5.5-7 */
 			white-space: pre-wrap;      /* current browsers */
          }
+         .replyWrite_date{
+         	font-size:14px;
+         }
         /*-----------------------모달 창 스타일 -----------------------------*/
 		
    </style>
@@ -341,7 +344,7 @@ nav button:hover{
            writeInfo.attr("class", "row writeInfo");
            
            let writerName = $("<div>");
-           writerName.attr("id", "replyWriter");
+           writerName.attr("class", "replyWriter");
            writerName.attr("class", "col-6");
            writerName.text(resp[i].id);
            
@@ -370,8 +373,9 @@ nav button:hover{
            
            var korFormat = year + "-" + month + "-" + day + " " + hour + ":" + min;
            
-           write_date.attr("id", "replyWrite_date");
+           write_date.attr("class", "replyWrite_date");
            write_date.attr("style", "text-align:right");
+           write_date.css("font-size", "14px");
            write_date.attr("class", "col-6");
            write_date.text(korFormat);
 
@@ -382,6 +386,7 @@ nav button:hover{
            
            contentsEdit.text(resp[i].contents);
 
+           if(${loginIsAdmin == 'Y'} || resp[i].id=='${loginID}' ){
            
            let modifyBtn = $("<button>");
            modifyBtn.attr("type","button");
@@ -392,7 +397,6 @@ nav button:hover{
            delBtn.attr("type","button");
            delBtn.attr("class","replydel btn btn-secondary");
            delBtn.text("삭제");
-           
            
            
            contents.append(contentsEdit);
@@ -434,8 +438,7 @@ nav button:hover{
 				});
 				modifyBtn.on("click", function(){
 					
-					$(this).attr("disabled",true);
-					
+					$(this).css("display","none");
 					contentsEdit.attr("contenteditable", "true");
 					contentsEdit.focus();
 					let seq = $(this).parent().siblings().children().children(".replySeq").val();
@@ -443,21 +446,36 @@ nav button:hover{
 					delBtn.css("display","none");
                     let btn3 =$("<button>");
                     btn3.text("수정완료");
-                    btn3.attr("class","btn btn-outline-primary btn-sm finish");
+                    btn3.attr("class","btn btn-primary modifyFinish");
                     btn3.attr("type","button");
+                    btn3.css("margin-right","5px");
                     let btn4 =$("<button>");
                     btn4.text("취소");
-                    btn4.attr("class","btn btn-outline-danger btn-sm");
+                    btn4.attr("class","btn btn-danger modifyCancel");
                     btn4.attr("type","button");
 					
-					
+                    $(this).parent().append(btn3);
+                    $(this).parent().append(btn4);
 					
 					console.log(seq);
-					$.ajax({
-						url:"/feed/replyModify",
-						data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq}}
-					}).done(function(resp){
-					});
+					let mFinish = $(this).siblings(".modifyFinish");
+					let mCancel = $(this).siblings(".modifyCancel");
+					mFinish.on("click",function(){
+						$.ajax({
+							url:"/feed/replyModify",
+							data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq},contents:contentsEdit.text()}
+						}).done(function(resp){
+							location.reload();
+						});
+					})
+					mCancel.on("click",function(){
+						mFinish.css("display","none");
+						mCancel.css("display","none");
+						
+						modifyBtn.css("display","inline");
+						delBtn.css("display","inline");
+						contentsEdit.attr("contenteditable", "false");
+					})
 				});
            }
           
@@ -578,8 +596,8 @@ nav button:hover{
 		                    <div class="col-12 replyleft">
 		                    <div class="row writeInfo">
 		                    	<input type="hidden" value="${i.seq}" class="replySeq">
-		                  		<div id="replyWriter" class="col-6">${i.id}</div>
-		                    	<div id="replyWrite_date" class="col-6" style="text-align:right;">
+		                  		<div class="col-6 replyWriter">${i.id}</div>
+		                    	<div class="col-6 replyWrite_date" style="text-align:right;">
 		                    	<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${i.write_date}" />
 		                    	</div>
 		                    </div>
@@ -610,7 +628,6 @@ nav button:hover{
 		                	$(this).css("display","none");
 		                	
 		                	let editDiv = $(this).parent().siblings().children().children(".editBox");
-		                	let contents = editDiv.text();
 		                	editDiv.attr("contenteditable", "true");
 		                	editDiv.focus();
 							
@@ -632,14 +649,24 @@ nav button:hover{
 							console.log(seq);
 							
 							let mFinish = $(this).siblings(".modifyFinish");
+							let mCancel = $(this).siblings(".modifyCancel");
 							
 							mFinish.on("click", function(){
 								$.ajax({
 									url:"/feed/replyModify",
-									data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq},contents:contents}
+									data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq},contents:editDiv.text()}
 								}).done(function(resp){
-									
+									location.reload();
 								});
+							})
+							mCancel.on("click",function(){
+								mFinish.css("display","none");
+								mCancel.css("display","none");
+								
+								$(this).siblings(".replybmodify2").css("display","inline");
+								$(this).siblings(".replydelBtn2").css("display","inline");
+								
+								editDiv.attr("contenteditable", "false");
 							})
 						})
 		       </script>
