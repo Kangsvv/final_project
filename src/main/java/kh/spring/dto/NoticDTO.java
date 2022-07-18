@@ -9,7 +9,7 @@ public class NoticDTO {
 	private String contents;
 	private String writer;
 	private Timestamp write_date;
-	private int count;
+	private int viewcount;
 	
 	public NoticDTO() {
 		super();
@@ -22,7 +22,7 @@ public class NoticDTO {
 		this.contents = contents;
 		this.writer = writer;
 		this.write_date = write_date;
-		this.count = count;
+		this.viewcount = viewcount;
 	}
 
 	public int getSeq() {
@@ -66,11 +66,11 @@ public class NoticDTO {
 	}
 
 	public int getCount() {
-		return count;
+		return viewcount;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setCount(int viewcount) {
+		this.viewcount = viewcount;
 	}
 	
 	

@@ -3,7 +3,6 @@ package kh.spring.controller;
 
 import java.util.List;
 
-import org.apache.commons.io.input.ClassLoaderObjectInputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.dto.Cafein_imgDTO;
-import kh.spring.dto.Cafein_likeDTO;
-import kh.spring.dto.FeedDTO;
 import kh.spring.service.CafeinService;
 
 @Controller
