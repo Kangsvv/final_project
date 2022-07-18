@@ -303,12 +303,13 @@ li.dropdown {
     <form action="event_insert">
 			<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
-            <input type=text name=title id=title placeholder="제목" style="width:97%;">
+            <input type=text name=title id=title placeholder="제목 (최대 33자)" style="width:97%;" maxlength="33">
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
-            <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용"></textarea>
+            <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용 (최대 1300자)"></textarea>
             </div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
+            	<p class="textCount"><span>0</span> / 1300</p>
                 <a href="/notice/event_selectAll"><button class="btn" type="button">뒤로</button></a>
                 <button type="submit" class="btn" style="margin-left:10px;">등록</button>
             </div>
@@ -354,9 +355,32 @@ window.onclick = function(e) {
    }         
 }
 
+//글 입력시
+$("#contents").keyup(function(e) {
+	let content = $(this).val();
+	
+	// 글자수 계산
+	if (content.length == 0 || content == ''){
+		$(".textCount").text("0자 /1300자");
+	} else {
+		$(".textCount").text(content.length + "자 /1300자");
+		
+	}
+	
+	// 글자수 제한
+	 	if($(this).val().length > 1300) {
+    	$(this).val($(this).val().substring(0, 1300));
+    	alert("1300자까지 입력 가능합니다")
+		 }
+});
+
 $(".cbtn").click(function() {
 	location.href = "/notice/event";
 })
+
+
+
+
 </script>
           
 </body>

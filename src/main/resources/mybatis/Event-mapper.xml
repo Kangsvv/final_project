@@ -27,10 +27,9 @@
 		update Event set title = #{title}, contents= #{contents}, WRITE_DATE=sysdate where seq = #{seq}
 	</update>
 	
-<!-- 	추후 조회수 기능 추가 가능하면 다시 진행
 	<update id="count"> 
-		update Event set count = count +1 where seq=#{Event_seq}
+		update Event set viewcount = viewcount +1 where seq=#{Event_seq}
 	</update> 
--->
+
 	
 </mapper>
