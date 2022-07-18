@@ -200,9 +200,9 @@
         </ul>
         <div id="btns">
           <button type="submit" class="btn_main bt_1" id="modify">수정</button>
-          <button type="button" class="btn_main bt_1" id="back" href="/member/myapge">뒤로</button>
+          <button type="button" class="btn_main bt_1" id="back" href="/mypage/myapge">뒤로</button>
 			<br>
-          <button type="button" class="btn_main bt_1" id="memberout" href="/member/memberout"> 탈퇴 </button>
+          <button type="button" class="btn_main bt_1" id="memberout" href="/mypage/memberout"> 탈퇴 </button>
         </div>
       </form>
     </div>
