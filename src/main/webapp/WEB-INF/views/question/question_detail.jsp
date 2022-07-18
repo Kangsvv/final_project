@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -464,12 +465,10 @@ li.dropdown {
 						<div style="color:white">
 							${i.contents } 
 						</div>
-									<div><button>수정</button> <button id="replyDelete">삭제</button></div>
+						<input type="hidden" class="reply_seq" value="${i.reply_seq}"> 
+									<div><button id="replyUpdate">수정</button> <button id="replyDelete">삭제</button></div>
 				</c:forEach>
-<!-- 				<form action="reply_insert"> -->
-<!-- 				 <input type="text" class="reply" name="contents" style="color:black; margin: auto;" /> -->
-<!-- 				 		<button>작성하기</button> -->
-<!-- 	 			</form> -->
+
 	 		</div>	
 	 	
 	 	
@@ -677,6 +676,9 @@ $(".create").on("click", "#modifyBtn",function(){
 })
 	
 	
+	
+
+	
 // 댓글	
  $(function(){
             $("#replyWriteBtn").on("click", function(){
@@ -715,66 +717,68 @@ $(".create").on("click", "#modifyBtn",function(){
                 	}).done(function(resp){
                 		console.log(resp);
                 		location.reload();
-                		$(".replycontainer").remove();
-                		for(let i = 0; i < resp.length; i++){
-                			let container = $("<div>");
-                            container.attr("class","row replycontainer");
-
-                            let left = $("<div>");
-                            left.attr("class","col-12 replyleft");
-                            
-                            
-                            let right = $("<div>");
-                            right.attr("class","col-12 replyright");
-            				
-                            let writerName = $("<div>");
-                            writerName.attr("id", "replyWriter");
-                            writerName.attr("class", "col-12");
-                            writerName.text(resp[i].id);
-
-                            let contents = $("<div>");
-                            contents.attr("class","col-12 replycontents2");
-                            contents.text(resp[i].contents);
-
-                            
-                            let modifyBtn = $("<button>");
-                            modifyBtn.attr("type","button");
-                            modifyBtn.attr("class","replymodify btn btn-secondary");
-                            modifyBtn.text("수정");
-                            
-                            let delBtn = $("<button>");
-                            delBtn.attr("type","button");
-                            delBtn.attr("class","replydel btn btn-secondary");
-                            delBtn.text("삭제");
-                            
-                            
-                            left.append(writerName);
-                            left.append(contents);
-
-                            right.append(modifyBtn);
-                            right.append(delBtn);
-
-                            container.append(left);
-                            container.append(right);
-
-                            $(".replyBox").prepend(container);
-
-                            $("#replyContents").val("");
-                            $("#replyContents").focus();
-                		};
+                		
                        });
              	}
              })          
      });
 
+
 $("#replyDelete").on("click", function() {
-	location.href = "/question/reply_delete";
 	
-});
+	let result = confirm("댓글을 삭제하시겠습니까?");
+	
+	let reply_seq = $(this).parent(".reply_seq").val();
 
-// $("#replyUpdate").on("click". function() {
+	console.log(reply_seq);
+	if(result){
+		$.ajax({
+ 		url:"/question/reply_delete",
+ 		data:{reply_seq:reply_seq}
+ 		
+	  }).done(function(resp){
+		location.reload();  
+	  })
+	}
+})
+		
 
-// })
+// $(".upbtn").on("click",function(){
+// 	$(".main").removeAttr("disabled");
+// 	$(".eventbox").removeAttr("disabled");
+	
+// 	$(".upbtn").css("display","none"); // 수정 버튼 감추기
+// 	$(".delbtn").css("display","none"); // 삭제 버튼 감추기
+	
+// 		let ok = $("<button>");//수정완료 버튼
+// 			ok.text("완료");
+// 			ok.attr("id","modifyBtn")
+		
+// 			let cancel = $("<button>");//취소 버튼
+// 			cancel.text("취소");
+// 			cancel.attr("id", "cancelBtn")
+	
+// 	$(".create").prepend(cancel); //취소 버튼 추가
+// 	$(".create").prepend(ok); // 수정완료 버튼 추가
+	
+// 	$("#cancelBtn").on("click", function(){
+// 		location.reload();
+// 	})
+// });
+
+
+//  $("#replyUpdate").on("click". function() {
+//    $("#replyContents").removeAttr("disabled");
+   
+//    $("#replyUpdate").css("display", "none");
+   
+//    		let Rupdate = $("<button>");
+//    		Rupdate.text("완료");
+//    		Rupdate.attr("id","replymodify")
+   		
+//    	$("#replyDelete").after(Rupdate);	
+ 
+//  });
                     
 
 

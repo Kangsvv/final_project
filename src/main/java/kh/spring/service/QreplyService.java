@@ -26,8 +26,8 @@ public class QreplyService {
 		dao.reply_insert(dto);
 	}
 	
-	public void delete(QreplyDTO dto) throws Exception{
-		dao.reply_delete(dto);
+	public int delete(Model model, int reply_seq) throws Exception{
+		return dao.reply_delete(reply_seq);
 	}
 	
 }

@@ -306,7 +306,7 @@ li.dropdown {
             <input type=text name=title id=title placeholder="제목" style="width:97%;">
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
-            <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용"></textarea>
+            <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용" maxlength="500"></textarea>
             </div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
                 <a href="/question/question_list"><button class="btn" type="button">뒤로</button></a>

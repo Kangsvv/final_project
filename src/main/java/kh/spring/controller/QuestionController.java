@@ -82,7 +82,7 @@ import kh.spring.service.QuestionService;
 			
 			Qservice.delete(question_seq);
 			
-			return "/question/question_list";
+			return "redirect:/question/question_list";
 		}
 		
 		//----------------------수정---------------------
@@ -117,11 +117,12 @@ import kh.spring.service.QuestionService;
 		//-------댓글 삭제-------
 		
 		@RequestMapping("reply_delete")
-		public String reply_delete(QreplyDTO dto) throws Exception{
+		public String reply_delete(Model model, int reply_seq) throws Exception{
 			
-			Rservice.delete(dto);
+			int result = Rservice.delete(model, reply_seq);
+			model.addAttribute("reply_seq", result);
 			
-			return "question/question_detail";
+			return "redirect:/question/question_detail";
 			
 		}
 		

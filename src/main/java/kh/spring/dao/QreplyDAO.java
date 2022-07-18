@@ -26,8 +26,8 @@ public class QreplyDAO {
 	}
 	
 	
-	public void reply_delete(QreplyDTO dto) throws Exception{
-		mybatis.delete("question.reply_delete", dto);
+	public int  reply_delete(int reply_seq) throws Exception{
+		 return mybatis.delete("question.reply_delete", reply_seq);
 	}
 	
 }
