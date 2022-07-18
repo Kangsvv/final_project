@@ -321,6 +321,8 @@ nav button:hover{
             dataType : 'json'
           }).done(function(resp){
 
+        	
+        	 
           for(let i = 0; i < resp.length; i++){
 			let container = $("<div>");
 			container.attr("class","row replycontainer");
@@ -336,15 +338,19 @@ nav button:hover{
            writeInfo.attr("class", "row writeInfo");
            
            let writerName = $("<div>");
+          
            writerName.attr("id", "replyWriter");
            writerName.attr("class", "col-6");
            writerName.text(resp[i].id);
            
            let write_date = $("<div>");
+           
+           var date = Date(resp[i].write_date);
+           
            write_date.attr("id", "replyWrite_date");
            write_date.attr("style", "text-align:right");
            write_date.attr("class", "col-6");
-           write_date.text(resp[i].write_date);
+           write_date.text(date);
 
            let contents = $("<div>");
            contents.attr("class","col-12 replycontents2");
