@@ -277,6 +277,7 @@ nav button:hover{
         .replyleft{
 /*             float: left; */
             width: 100%;
+            padding-bottom : 10px;
         }
 
          .replyright{
@@ -393,6 +394,7 @@ nav button:hover{
            delBtn.text("삭제");
            
            
+           
            contents.append(contentsEdit);
            
            writeInfo.append(writerName);
@@ -432,9 +434,23 @@ nav button:hover{
 				});
 				modifyBtn.on("click", function(){
 					
+					$(this).attr("disabled",true);
+					
 					contentsEdit.attr("contenteditable", "true");
 					contentsEdit.focus();
 					let seq = $(this).parent().siblings().children().children(".replySeq").val();
+                    
+					delBtn.css("display","none");
+                    let btn3 =$("<button>");
+                    btn3.text("수정완료");
+                    btn3.attr("class","btn btn-outline-primary btn-sm finish");
+                    btn3.attr("type","button");
+                    let btn4 =$("<button>");
+                    btn4.text("취소");
+                    btn4.attr("class","btn btn-outline-danger btn-sm");
+                    btn4.attr("type","button");
+					
+					
 					
 					console.log(seq);
 					$.ajax({
@@ -591,17 +607,40 @@ nav button:hover{
 		    				}
 		    			});
 		                $(".replybmodify2").on("click", function(){
+		                	$(this).css("display","none");
 		                	
-							$(this).parent().siblings().children().children(".editBox").attr("contenteditable", "true");
-							$(this).parent().siblings().children().children(".editBox").focus();
+		                	let editDiv = $(this).parent().siblings().children().children(".editBox");
+		                	let contents = editDiv.text();
+		                	editDiv.attr("contenteditable", "true");
+		                	editDiv.focus();
 							
+		                	$(this).siblings(".replydelBtn2").css("display","none");
+		                    let btn1 =$("<button>");
+		                    btn1.text("수정완료");
+		                    btn1.attr("class","btn btn-primary modifyFinish");
+		                    btn1.attr("type","button");
+		                    btn1.css("margin-right","5px");
+		                    let btn2 =$("<button>");
+		                    btn2.text("취소");
+		                    btn2.attr("class","btn btn-danger modifyCancel");
+		                    btn2.attr("type","button");
+		                    
+		                    $(this).parent().append(btn1);
+		                    $(this).parent().append(btn2);
+		                	
 							let seq = $(this).parent().siblings().children().children(".replySeq").val();
 							console.log(seq);
-							$.ajax({
-								url:"/feed/replyModify",
-								data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq}}
-							}).done(function(resp){
-							});
+							
+							let mFinish = $(this).siblings(".modifyFinish");
+							
+							mFinish.on("click", function(){
+								$.ajax({
+									url:"/feed/replyModify",
+									data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq},contents:contents}
+								}).done(function(resp){
+									
+								});
+							})
 						})
 		       </script>
             </div>
@@ -761,6 +800,27 @@ nav button:hover{
         
         $("#replyContents").keyup(function(e) {
             let content = $(this).val();
+            
+            // 글자수 계산
+            if (content.length == 0 || content == ''){
+               $(".textCount").text("0자");
+            } else {
+               $(".textCount").text(content.length + "자");
+               
+            }
+            
+            // 글자수 제한
+                 if($(this).val().length > 250) {
+                  $(this).val($(this).val().substring(0, 250));
+                  alert("250자까지만 입력가능합니다")
+                 }
+            
+            
+         });
+        
+        //-------------------------댓글 수정 글자수제한--------------------------------
+        $(".editBox").keyup(function(e) {
+            let content = $(this).text();
             
             // 글자수 계산
             if (content.length == 0 || content == ''){

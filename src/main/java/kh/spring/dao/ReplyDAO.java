@@ -37,4 +37,6 @@ public class ReplyDAO {
 	public void deleteReply(int seq) throws Exception{
 		mybatis.delete("Feed.reply_delete", seq);
 	}
+	public void ModifyReply(ReplyDTO dto) {
+	}
 }
