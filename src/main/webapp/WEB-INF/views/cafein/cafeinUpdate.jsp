@@ -418,8 +418,20 @@ label{
         var arrVal = arr[i]; // arr의 값 = i : 0, arrVal : 2
         chk.filter('[value=' + arrVal + ']').prop('checked', true); // arrVal 값 2, 4, 5에 의해 checkbox의 value의 값 2, 4, 5를 checked 처리
     }
-
-
+//-------------------------------체크---------------------------------------------
+$(".day").change(function(){
+	if($(this).is(":checked")){
+		console.log("체크됐음");
+		$("#allnot").prop("checked",false);
+	}else{
+		console.log("체크해제");
+	}
+})
+$("#allnot").change(function(){
+	if($(this).is(":checked")){
+		$(".day").prop("checked",false);
+	}
+})
  //-------------------------------오픈시간 select------------------------------------
     var arr = "${dto.open}";
     arr = arr.split(':');

@@ -282,8 +282,8 @@ label{
       <input type="checkbox" value="금" name="dayarr" class="day"><label>금</label>
       <input type="checkbox" value="토" name="dayarr" class="day"><label>토</label>
       <input type="checkbox" value="일" name="dayarr" class="day"><label>일</label>
-      <input type="checkbox" value="공휴일" name="dayarr" class="day"><label>공휴일</label>
-      <input type="checkbox" value="연중무휴" name="dayarr" class="day"><label>연중무휴</label>
+      <input type="checkbox" value="공휴일" name="dayarr" class="day" ><label>공휴일</label>
+      <input type="checkbox" value="연중무휴" name="dayarr" class="allnot" id="allnot"><label>연중무휴</label>
       </td>
   </tr>
   <tr>
@@ -492,6 +492,20 @@ label{
         	
         }
  })
+ //-------------------------------체크---------------------------------------------
+$(".day").change(function(){
+	if($(this).is(":checked")){
+		console.log("체크됐음");
+		$("#allnot").prop("checked",false);
+	}else{
+		console.log("체크해제");
+	}
+})
+$("#allnot").change(function(){
+	if($(this).is(":checked")){
+		$(".day").prop("checked",false);
+	}
+})
  // -------------------------파일 업로드 시, 검수 ( 가로 X 세로 사이즈 체크 ) ------------------------
 	
  
