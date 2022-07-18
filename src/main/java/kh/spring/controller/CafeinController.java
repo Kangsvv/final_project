@@ -7,6 +7,7 @@ import org.apache.commons.io.input.ClassLoaderObjectInputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -129,11 +130,11 @@ public class CafeinController {
 	}
 	//-----------------------쪽지보내기-----------------------------------
 	@RequestMapping("message")
-	public String message(int seq,String title,String receiver,String receiver_email,String contents)throws Exception{
+	public String message(int seq,String title,String receiver,String receiver_email,String contents,String cafe)throws Exception{
 		System.out.println(title);
 		System.out.println(contents);
 		
-		serv.message(title,receiver,receiver_email,contents);
+		serv.message(title,receiver,receiver_email,contents,seq,cafe);
 		
 		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
 		

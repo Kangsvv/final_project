@@ -182,7 +182,7 @@ public List<Cafein_imgDTO> cafein_imglist2(Model model) throws Exception {
 		
 	}
 	//--------------------------------------쪽지보내기-------------------------------
-	public void message(String title,String receiver,String receiver_email,String contents) throws Exception {
+	public void message(String title,String receiver,String receiver_email,String contents,int cafein_seq,String cafe) throws Exception {
 		String id = (String)session.getAttribute("loginID");
 		String nickname=mdao.nickname(id);
 		String email = mdao.email(id);
@@ -194,7 +194,8 @@ public List<Cafein_imgDTO> cafein_imglist2(Model model) throws Exception {
 		ldto.setSender_email(email);
 		ldto.setReceiver_email(receiver_email);
 		ldto.setContents(contents);
-		
+		ldto.setCafein_seq(cafein_seq);
+		ldto.setCafe(cafe);
 		dao.message(ldto);
 		
 	}

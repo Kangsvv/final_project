@@ -16,7 +16,7 @@
 	</insert>
 	
 	<insert id="message">
-		insert into message values(message_seq.nextval,#{title},#{sender},#{receiver},#{sender_email},#{receiver_email},#{contents},sysdate)
+		insert into message values(message_seq.nextval,#{title},#{sender},#{receiver},#{sender_email},#{receiver_email},#{contents},sysdate,#{cafein_seq},#{cafe})
 	</insert>
 	
 	
