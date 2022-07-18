@@ -404,35 +404,6 @@ display: none;
         </tbody>
     </table>
 
-
-
-<%--          <div class="row col-12 titlebox">
-            <div class="col-1 title_head">No.</div>
-            <div class="col-7 title_head">제목</div>
-            <div class="col-2 title_head">글쓴이</div>
-            <div class="col-2 title_head">작성일</div>
-         </div>
-
-			<c:choose>
-				<c:when test="${empty elist}">
-					<div>현재 등록된 게시글이 없습니다.</div>
-				</c:when>
-				<c:otherwise>
-					<c:forEach var="i" items="${elist}">
-						<a class="constyle" href="/notice/selectBySeq?seq=${i.seq }">
-						<div class="row col-12 noticbox">
-							<div class="col-1 notice" >${i.seq }</div>
-							<div class="col-7 notice1">${i.title }</div>
-							<div class="col-2 notice">${i.writer }</div>
-							<div class="col-2 notice">
-								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
-							</div>
-						</div>
-						</a>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose> --%>
-
 			<c:choose>
 				<c:when test="${loginID = admin} "> --%>
 					<div class="row">
