@@ -280,9 +280,9 @@ nav button:hover{
         }
 
          .replyright{
-/*              float: left;  */
+/*           float: left;  */
              width: 100%; 
-/*             height: 100%; */
+/*           height: 100%; */
              text-align: right;
              padding-bottom:5px;
          }
@@ -293,6 +293,10 @@ nav button:hover{
          	background-color:#222;
          	color:white;
          	border:none;
+         	margin: 4px 4px;
+            width: 95%;
+            word-wrap: break-word;      /* IE 5.5-7 */
+			white-space: pre-wrap;      /* current browsers */
          }
         /*-----------------------모달 창 스타일 -----------------------------*/
 		
@@ -340,11 +344,35 @@ nav button:hover{
            writerName.attr("class", "col-6");
            writerName.text(resp[i].id);
            
+           let hidden = $("<input>");
+           hidden.attr("type", "hidden");
+           hidden.attr("class", "replySeq");
+           hidden.val(resp[i].seq);
+           
+           
            let write_date = $("<div>");
+           
+           var date = new Date(resp[i].write_date);
+           var year = date.getFullYear();
+           
+           var month = new String(date.getMonth(resp[i].write_date) + 1);
+           month = month >= 10 ? month : '0' + month;     // month 두자리로 저장
+           
+           var day = new String(date.getDate(resp[i].write_date));
+           day = day >= 10 ? day : '0' + day;	//day 두자리로 저장
+           
+           var hour = new String(date.getHours(resp[i].write_date));
+           hour = hour >= 10 ? hour : '0' + hour;	//hour 두자리로 저장
+           
+           var min = new String(date.getMinutes(resp[i].write_date));
+           min = min >= 10 ? min : '0' + min;	//hour 두자리로 저장
+           
+           var korFormat = year + "-" + month + "-" + day + " " + hour + ":" + min;
+           
            write_date.attr("id", "replyWrite_date");
            write_date.attr("style", "text-align:right");
            write_date.attr("class", "col-6");
-           write_date.text(resp[i].write_date);
+           write_date.text(korFormat);
 
            let contents = $("<div>");
            contents.attr("class","col-12 replycontents2");
@@ -372,6 +400,8 @@ nav button:hover{
            
            writeInfo.append(writerName);
            writeInfo.append(write_date);
+           writeInfo.append(hidden);
+           
            left.append(writeInfo);
            left.append(contents);
            
@@ -389,9 +419,26 @@ nav button:hover{
            container.fadeIn(800);
 //            $("#replyContents").val("");
 //            $("#replyContents").focus();
-          }
-         });
+
+				delBtn.on("click", function(){
+					let del = confirm("댓글을 삭제하시겠습니까?");
+					let seq = $(this).parent().siblings().children().children(".replySeq").val();
+					console.log(seq);
+					if(del){
+						$.ajax({
+							url:"/feed/replyDel",
+							data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq}}
+						}).done(function(resp){
+							location.reload();
+						});
+					}
+				})
+           }
+          
+       });
+       
     }
+	
 	</script>
     <!------------------------------------------------------------header----------------------------------------------------->
      
@@ -495,7 +542,7 @@ nav button:hover{
 	            		<textarea name="replyContents" id="replyContents" style="width: 100%;" rows="30" placeholder="내용"></textarea>
 	            	</div>
 	            	<div id="replyWriteBtnBox">
-	            		<input type="button" id="replyWriteBtn" value="작성하기">
+	            		<input type="button" id="replyWriteBtn" value="작성">
 	            	</div>
             	</div>
             </div>
@@ -504,22 +551,78 @@ nav button:hover{
 		                <div class="row replycontainer">
 		                    <div class="col-12 replyleft">
 		                    <div class="row writeInfo">
+		                    	<input type="hidden" value="${i.seq}" class="replySeq">
 		                  		<div id="replyWriter" class="col-6">${i.id}</div>
-		                    	<div id="replyWrite_date" class="col-6" style="text-align:right;">${i.write_date}</div>
+		                    	<div id="replyWrite_date" class="col-6" style="text-align:right;">
+		                    	<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${i.write_date}" />
+		                    	</div>
 		                    </div>
 		                    	<div class="col-12 replycontents2"><input type="text" id="editBox" class="editable" value="${i.contents}" readonly></div>
 		                    </div>
 		                    <div class="col-12 replyright">
 		                    	<button type="button" class="replybmodify btn btn-secondary">수정</button>
-		                    	<button type="button" class="replydel btn btn-secondary">삭제</button>
+		                    	<button type="button" class="replydelBtn2 btn btn-secondary">삭제</button>
 		                    </div>
 		                </div>
 		         </c:forEach>
+		         <script>
+		                $(".replydelBtn2").on("click", function(){
+		    				let del = confirm("댓글을 삭제하시겠습니까?");
+		    				let seq = $(this).parent().siblings().children().children(".replySeq").val();
+		    				console.log(seq);
+		    				if(del){
+		    					$.ajax({
+		    						url:"/feed/replyDel",
+		    						data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq}},
+		    						async:false
+		    					}).done(function(resp){
+		    						location.reload();
+		    					});
+		    				}
+		    			})
+		       </script>
             </div>
          </div>
       </div>
       <br>
    </div>
+   <script>
+  	 $("#replyWriteBtn").on("click", function(){
+  		let article = $("#replyContents").val();
+	     if(article==""){
+	    	const Toast = Swal.mixin({
+	    	    toast: true,
+	    	    position: 'center-center',
+	    	    showConfirmButton: false,
+	    	    timer: 3000,
+	    	    timerProgressBar: true,
+	    	    didOpen: (toast) => {
+	    	        toast.addEventListener('mouseenter', Swal.stopTimer)
+	    	        toast.addEventListener('mouseleave', Swal.resumeTimer)
+	    	    }
+	    	})
+	    	 
+	    	Toast.fire({
+	    	    icon: 'error',
+	    	    title: '댓글 내용을 입력해주세요.'
+	    	})
+	    	$("#replyContents").focus();
+	    	return false;
+	    }else{
+	    	$.ajax({
+	    		url:"/feed/replyWrite",
+	    		data:{
+	    			cafefeed_seq:${dto.cafefeed_seq},
+	    			contents:article
+	    		},
+	    		async:false
+	    	}).done(function(resp){
+	    		location.reload();
+			})
+  	 	}
+  	 });
+   	
+   </script>
    <script>
 //         $(function(){
 //             $("#replyWriteBtn").on("click", function(){
