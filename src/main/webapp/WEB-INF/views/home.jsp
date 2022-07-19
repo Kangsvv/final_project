@@ -291,7 +291,7 @@ h5 {
     </c:choose>
 </div>
 <button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
-
+<button type="button" onclick="location.href='/manager/test' " id="test">test</button>
 </body>
 <script>
   $("#box1").hover(function(){
