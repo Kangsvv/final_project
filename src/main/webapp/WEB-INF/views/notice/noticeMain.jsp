@@ -297,28 +297,28 @@ li.dropdown {
 
          <div id="Accordion_wrap">
             <div class="que">
-               <span>사장 게시판은 일반회원은 작성할 수 없나요?</span>
+               <span>CAFE-IN 게시판은 일반회원은 작성할 수 없나요?</span>
             </div>
             <div class="anw">
-               <span>사장 게시판의 경우 사장 회원으로 가입한 회원님만 이용이 가능합니다.</span>
+               <span>CAFE-IN 게시판의 경우 사장 회원님만 이용이 가능합니다.</span>
             </div>
             <div class="que">
-               <span>일반 게시판은 사장님 회원도 사용할 수 있나요?</span>
+               <span>FEED 게시판은 사장님 회원도 사용할 수 있나요?</span>
             </div>
             <div class="anw">
-               <span>This is second answer.</span>
+               <span>FEED 게시판의 경우 일반/사장 회원 모두 이용이 가능합니다.</span>
             </div>
             <div class="que">
                <span>문제 혹은 궁금한게 있다면 어디로 가야 하나요?</span>
             </div>
             <div class="anw">
-               <span>답변을 고민중.....</span>
+               <span><a href="/question/question_list">1:1 문의하기</a> 게시판을 통해 가능합니다.</span>
             </div>
             <div class="que">
-               <span>아이디 / 비밀번호를 잊어 버렸어요..ㅠ</span>
+               <span>ID/PW를 잊어버렸는데 찾을 방법이 있을까요?</span>
             </div>
             <div class="anw">
-               <span>답변을 고민중.....</span>
+               <span><a href="http://localhost/member/loginSearch">ID/PW 찾기</a>를 통해 가능합니다.</span>
             </div>
          </div>
       </div>
