@@ -77,6 +77,7 @@ public class FeedController {
 		serv.selectBySeq(model, cafefeed_seq);
 		System.out.println("selectBySeq 에 관한 페이지"+page);
 		rServ.selectBySeq(model, cafefeed_seq, page);
+		rServ.replyCount(model, cafefeed_seq);
 		
 		return "/feed/detailView";
 	}
