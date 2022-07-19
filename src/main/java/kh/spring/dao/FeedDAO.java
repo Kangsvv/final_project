@@ -63,5 +63,10 @@ public class FeedDAO {
 	public int delete(int cafefeed_seq) throws Exception{
 		return mybatis.delete("Feed.feed-delete", cafefeed_seq);
 	}
+	
+	// 조회수 업
+	public void countUp(int cafefeed_seq) {
+		mybatis.update("Feed.countUp",cafefeed_seq);
+	}
 
 }

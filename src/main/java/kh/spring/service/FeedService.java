@@ -106,18 +106,17 @@ public class FeedService {
 		// 카페 상세 페이지 출력 detailView
 		@Transactional
 		public void selectBySeq(Model model,int cafefeed_seq) throws Exception {
-//			System.out.println("Service CS : " + cafefeed_seq );
+			
+			//-------------조회수업----------------------
+			dao.countUp(cafefeed_seq);
+
 			//-------------리뷰정보----------------------
 			FeedDTO dto = dao.selectBySeq(cafefeed_seq);
-			
-//			System.out.println(dto);
-			
+					
 			model.addAttribute("dto",dto);
 			//-------------리뷰이미지----------------------
 			Feed_imgDTO fdto = fdao.selectBySeq(cafefeed_seq);
-			
-//			System.out.println(fdto);
-			
+		
 			model.addAttribute("fdto",fdto);
 		}
 		public void deleteFeedBySeq(int cafefeed_seq,String realPath,MultipartFile file) throws Exception {
@@ -130,4 +129,5 @@ public class FeedService {
 			dao.delete(cafefeed_seq);
 			fdao.delete(cafefeed_seq);
 		}
+		
 }
