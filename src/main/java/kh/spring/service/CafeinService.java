@@ -199,6 +199,23 @@ public List<Cafein_imgDTO> cafein_imglist2(Model model) throws Exception {
 		dao.message(ldto);
 		
 	}
+	//-----------------------쪽지함 출력----------------------------------
+	public void messagebox(Model model) throws Exception {
+		String id = (String)session.getAttribute("loginID");
+		MemberDTO dto = new MemberDTO();
+		dto.setmem_id(id);		
+		dto = mdao.login(dto);
+		
+		MemberDTO memdto = new MemberDTO();
+		memdto.setmem_id(id);
+		
+		memdto =mdao.login(memdto);
+		model.addAttribute("memdto",memdto);
+		
+		List<MessageDTO> mdto= dao.messagebox(dto.getmem_email());
+		model.addAttribute("mdto",mdto);
+	
+	}
 	public void update1(int cafein_seq,String name,String address1,String address2,String day,String open,String finish,String parking) throws Exception {
 		CafeinDTO dto=new CafeinDTO();
 		dto.setSeq(cafein_seq);

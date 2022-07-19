@@ -136,7 +136,12 @@ public class CafeinController {
 		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
 		
 	}
-	
+	//-----------------------쪽지함 출력----------------------------------
+	@RequestMapping("messagebox")
+	public String messagebox(Model model)throws Exception{
+		serv.messagebox(model);
+		return "/member/messagebox";
+	}
 	
 	
 	//------------------------좋아요기능----------------------------------
