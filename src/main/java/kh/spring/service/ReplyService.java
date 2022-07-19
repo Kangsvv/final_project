@@ -55,4 +55,22 @@ public class ReplyService {
 	public void deleteReply(int seq) throws Exception{
 		dao.deleteReply(seq);
 	}
+	public void ModifyReply(int seq, String contents) {
+		
+		String id = (String)session.getAttribute("loginID");
+		
+		ReplyDTO dto = new ReplyDTO();
+		dto.setSeq(seq);
+		dto.setId(id);
+		dto.setContents(contents);
+		
+		dao.ModifyReply(dto);
+	}
+	public List<ReplyDTO> selectBySeqOne(int seq) throws Exception {
+		List<ReplyDTO> list = dao.selectBySeqOne(seq);
+
+		System.out.println(list);
+		
+		return list;
+	}
 }

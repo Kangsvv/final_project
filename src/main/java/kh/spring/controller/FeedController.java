@@ -65,7 +65,6 @@ public class FeedController {
 	public String detailView(Model model, int cafefeed_seq) throws Exception{
 		
 		int page = 1;
-		
 //		System.out.println("Controller CS : " + cafefeed_seq);
 		
 		serv.selectBySeq(model, cafefeed_seq);
@@ -130,11 +129,11 @@ public class FeedController {
 //		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
 	}
 	@RequestMapping("replyModify")
-	public String replyModify(Model model, int seq, int cafefeed_seq) throws Exception{
+	public String replyModify(Model model, int seq, String contents,int cafefeed_seq) throws Exception{
 		
-		System.out.println("댓글 수정 : " + seq);
+		System.out.println("댓글 수정 : " + seq + " : " + contents);
 		
-		rServ.deleteReply(seq);
+		rServ.ModifyReply(seq, contents);
 //		rServ.selectBySeq(model, cafefeed_seq);
 		
 		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;

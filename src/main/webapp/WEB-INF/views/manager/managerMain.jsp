@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -15,8 +14,11 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-   
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script> 
    <style>
+::-webkit-scrollbar { 
+    display: none;}
 	/*------------------------ 헤더 부분 스타일 ------------------------ */
    .loginbox{
       flex:auto;
@@ -129,8 +131,8 @@ nav button:hover{
 #Box {
   text-align: center;
   height: 800px;
-  margin-left:24%;
-  margin-right:24%;
+  margin-left:12%;
+  margin-right:12%;
   margin-bottom:3%;
   padding: 2%;
 }
@@ -141,7 +143,7 @@ nav button:hover{
 	width: 100%;
 	height: 800px;
 	padding: 5%;
-	border-radius: 10%;
+	border-radius:15px;
 }
 
 .titlebox {
@@ -214,41 +216,70 @@ nav button:hover{
 
 <br>
       <h1 class="main" style="color:white; text-align: center;">회원관리</h1>
-      <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
+      <div style="border-bottom: 3px solid white; width: 72%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
       
-      <div class="container">
-  	 <div class="row">
-            <div class="col-12" style="padding-left:15%;">
-            	<a class="cbtn" style="font-weight:bold; color:760c0c;">일반회원</a>
+  	 <div style="padding-left:15%;">
+            	<a class="cbtn" style="font-weight:bold; color:#760c0c;">일반회원</a>
             	<a class="cbtn">|</a>
             	<a href="/manager/ceoMember" class="cbtn">사장회원</a>
-            </div>
      </div>
-     </div>
-	<div id="Box">
-	
-      <div id="Noticecontainer">
 
 
-         <div class="row col-12 titlebox">
-            <div class="col-2 title_head">No.</div>
-            <div class="col-3 title_head">회원ID</div>
-            <div class="col-3 title_head">닉네임</div>
-            <div class="col-2 title_head">가입일</div>
-            <div class="col-2 title_head">관리</div>
-         </div>
-					<c:forEach var="i" items="${list}">
-					    <form action="/manager/delete">
-						<div class="row col-12 noticbox">
-							<div class="col-2 notice">${i.mem_seq }</div>
-							<div class="col-3 notice">${i.mem_id }</div>
-							<div class="col-3 notice">${i.mem_name }</div>
-							<div class="col-2 notice"><fmt:formatDate pattern="yy-MM-dd" value="${i.mem_joindate}" /></div>
-							<div class="col-2 notice"><button id="delete" type="submit">탈퇴</button></div>
-						</div>
-						<input type="hidden" value="${i.mem_id }" name="id">
-						</form>
-					</c:forEach>
+<div id="Box">
+      <div id="Noticecontainer" style="overflow-y:scroll;">
+       <table id="maintable">
+        <thead>
+            <tr>
+                <th style="text-align: center;">번호</th>
+                <th style="text-align: center;">회원ID</th>
+                <th style="text-align: center;">닉네임</th>
+                <th style="text-align: center;">가입일</th>
+                <th style="text-align: center;">관리</th>  
+            </tr>
+        </thead>
+        
+        <tbody>
+            <c:forEach var="i" items="${list}">
+             <tr>
+                <th style="text-align: center;">${i.mem_seq}</th>
+                <th style="text-align: center;">${i.mem_id }</th>      
+                <th style="text-align: center;">${i.mem_name }</th>
+                <th style="text-align: center;"><fmt:formatDate pattern="yy-MM-dd" value="${i.mem_joindate}" /></th>
+                <th style="text-align: center;">
+						<button id="delete" class="btn btn-primary" type="button">탈퇴</button>
+						
+			 <c:if test="${i.mem_ceocheckimg != null}">
+					<button id="levelup" type="button" class="btn btn-primary levelup" data-bs-toggle="modal" data-bs-target="#exampleModal">등업</button>
+			 </c:if>	
+				</th>
+            </tr>
+            
+            <!-------------------------------------------------------Modal------------------------------------------------->
+<div class="modal fade row" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog col-12" style="max-width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">사업자 증빙서류</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+     	 <input id="modalID" type="hidden" value="${i.mem_id}">
+      	<img src="${i.mem_ceocheckimg}" style="width:100%;">
+      </div>
+      <div class="modal-footer">
+           <button id="ok" type="button" class="btn btn-primary">등업승인</button>
+           <button id="no" type="button" class="btn btn-primary">미승인</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  --------------------------------------------------------------------------------------------- -->
+            </c:forEach>
+        </tbody>
+        
+    </table>
+    
 		</div>
 </div>
 
@@ -267,5 +298,70 @@ nav button:hover{
   </div>
 </div>
 
+
+<script>
+ var lang_kor = {
+		"decimal" : "",
+		"emptyTable" : "데이터가 없습니다.",
+		"info" : "_START_ - _END_ (총 _TOTAL_ 명)",
+		"infoEmpty" : "0명",
+		"infoFiltered" : "(전체 _MAX_ 명 중 검색결과)",
+		"infoPostFix" : "",
+		"thousands" : ",",
+		"lengthMenu" : "_MENU_ 개씩 보기",
+		"loadingRecords" : "로딩중...",
+		"processing" : "처리중...",
+		"search" : "검색 : ",
+		"zeroRecords" : "검색된 데이터가 없습니다.",
+		"paginate" : {
+			"first" : "첫 페이지",
+			"last" : "마지막 페이지",
+			"next" : "다음",
+			"previous" : "이전" },
+		"aria" : {
+			"sortAscending" : " :  오름차순 정렬",
+			"sortDescending" : " :  내림차순 정렬"
+		}
+	};
+
+$(document).ready(function() {
+		$("#maintable").DataTable({
+			language : lang_kor
+		});
+	});
+
+$("#ok").on("click",function(){
+	var id = $("#modalID").val();
+	
+	$.ajax({
+		url:"/manager/CEOok",
+		data:{id : id},
+		dateType:"json"
+	}).done(function(resp){
+		alert("승인되었습니다.")
+		location.reload()
+	})
+})
+
+$("#no").on("click",function(){
+	// 	메세지 보내기
+	alert("메세지가 발송되었습니다.");
+})
+
+$("#delete").on("click",function(){
+	
+	var id = $("#modalID").val();
+	
+	$.ajax({
+		url:"/manager/delete",
+		data:{id : id},
+		dateType:"json"
+	}).done(function(resp){
+		alert("삭제되었습니다.")
+		location.reload()
+	})
+})
+
+</script>
 </body>
 </html>

@@ -28,4 +28,16 @@ public class ManagerService {
 	public void delete(String id) throws Exception{
 		dao.delete(id);
 	}
+	
+	public String selectIMG(String id) throws Exception{
+		return dao.selectIMG(id);
+	}
+	
+	public void CEOok(String id) throws Exception{
+		dao.CEOok(id);
+	}
+	
+	public void leveldown(String id) throws Exception{
+		dao.leveldown(id);
+	}
 }
