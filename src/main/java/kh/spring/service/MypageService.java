@@ -47,20 +47,14 @@ public class MypageService {
 				// StandardCopyOption.REPLACE_EXISTING : 저장 옵션 - 덮어쓰기
 				
 				String loginID = (String)session.getAttribute("loginID");
-//				if(sysName!= null && oriName !=null) {
 				MemberDTO dto = new MemberDTO();
 				dto.setmem_img(sysName);
 				dto.setmem_name(memName);
 				dto.setmem_phone(memPhone);
 				dto.setMem_oriname(oriName);
 				dto.setmem_id(loginID);
-				 pDAO.mypageUpdate(dto);
-//				}else {
-//					MemberDTO dto = new MemberDTO();
-//					dto.setmem_name(memName);
-//					dto.setmem_phone(memPhone);
-//					pDAO.mypageUpdate(dto);
-//				}
+				pDAO.mypageUpdate(dto);
+
 	}
 
 }

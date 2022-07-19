@@ -22,5 +22,9 @@ public class MypageDAO {
 	public int mypageUpdate(MemberDTO dto)throws Exception{
 		return mybatis.update("mypage.mypageUpdate",dto);
 	}
+	
+	public int memberout(String loginID)throws Exception{
+		return mybatis.update("mypage.memberout",loginID);
+	}
 
 }

@@ -201,7 +201,6 @@
         <div id="btns">
           <button type="submit" class="btn_main bt_1" id="modify">수정</button>
           <button type="button" class="btn_main bt_1" id="back" href="/mypage/myapge">뒤로</button>
-			<br>
           <button type="button" class="btn_main bt_1" id="memberout" href="/mypage/memberout"> 탈퇴 </button>
         </div>
       
@@ -222,14 +221,16 @@
       });  
       
       $('#back').on('click', function () {
-        location.href = '/member/mypage';
+        location.href = '/mypage/mypage';
       });
       
-      $.ajax({
-    	  url:"/mypage/upload",
-    	  dataType:"json"
-      }).done(function(resp){
-    	  $(".profile").append(resp);
+      $('#memberout').on('click',function(){
+    	  if(confirm("정말 탈퇴?") == true){        
+    		  location.href = '/mypage/memberout';
+    		}else{        
+    		  	return false;    
+    		  	}
+    	  
       })
       
     </script>

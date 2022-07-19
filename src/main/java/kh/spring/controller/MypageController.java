@@ -33,7 +33,6 @@ public class MypageController {
 		e.printStackTrace();
 		return "error";
 	}
-
 	
 	@RequestMapping("mypage")
 	public String mypage_select(Model model) throws Exception{
@@ -49,7 +48,6 @@ public class MypageController {
 		MemberDTO dto = pdao.selectID(loginID);
 		model.addAttribute("dto", dto);
 		return "/mypage/mypageEdit";
-		
 	}
 	
 	@RequestMapping("update")
@@ -58,6 +56,14 @@ public class MypageController {
 		pser.mypageupdate(realpath, file, memName,memPhone);
 		System.out.println(realpath);
 		return "redirect:/mypage/mypageEdit";
+	}
+	
+	@RequestMapping("memberout")
+	public String memberout() throws Exception{
+		String loginID = (String)session.getAttribute("loginID");
+		pdao.memberout(loginID);
+		session.invalidate();
+		return "redirect:/";
 	}
 
 }
