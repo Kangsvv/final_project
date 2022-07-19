@@ -59,6 +59,10 @@ public class ManagerController {
 		return "true";
 	}
 
+	@RequestMapping("test")
+	public String test() throws Exception{
+		return "/test";
+	}
 	
 	
 
