@@ -43,6 +43,13 @@ public class FeedController {
 		serv.feed_imglist(model,cpage);
 		return "/feed/feedMain";
 	}
+	@RequestMapping("goUpdate")
+	public String goUpdate(Model model, int cafefeed_seq) throws Exception{
+		
+		serv.selectBySeq(model, cafefeed_seq);
+		
+		return "/feed/feedUpdate";
+	}
 	
 //	@RequestMapping("feed_imglist")
 //	public String feed_imglist(Model model) throws Exception {
@@ -65,7 +72,6 @@ public class FeedController {
 	public String detailView(Model model, int cafefeed_seq) throws Exception{
 		
 		int page = 1;
-		
 //		System.out.println("Controller CS : " + cafefeed_seq);
 		
 		serv.selectBySeq(model, cafefeed_seq);

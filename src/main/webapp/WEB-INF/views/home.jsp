@@ -285,7 +285,7 @@ h5 {
 		    <button type="button" onclick="location.href='/member/signUp' ">signUp</button>
 	    </c:when>
 	    <c:otherwise>
-	    	<button type="button" onclick="location.href='/member/myPage' ">myPage</button>
+	    	<button type="button" onclick="location.href='/mypage/mypage' ">myPage</button>
 	    	<button type="button" onclick="location.href='/member/logout' ">logout</button>
 	    </c:otherwise>
     </c:choose>
