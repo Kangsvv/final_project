@@ -896,7 +896,9 @@ nav button:hover{
               alert('삭제가 취소되었습니다.');
             }
         })
-        
+        $(".editBtn").on("click", function(){
+        	location.href = "/feed/goUpdate?cafefeed_seq=${dto.cafefeed_seq}";
+        })
         
     </script>
     
