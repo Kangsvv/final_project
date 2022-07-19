@@ -188,6 +188,8 @@ nav button:hover{
         .contentsBox{
            padding:20px;
            font-size: 16px;
+            word-wrap: break-word;      /* IE 5.5-7 */
+            white-space: pre-wrap;      /* current browsers */
 /*            margin-top:20px;  */
         }
         #maincon{
@@ -212,7 +214,7 @@ nav button:hover{
            padding-right:30px;
         }
         
-        .editBtn, .deleteBtn, .fa-bookmark, .likecount{
+        .editBtn, .deleteBtn, .backBtn ,.fa-bookmark, .likecount{
            cursor:pointer;
         }
         /* -------------댓글 관련 스타일 -----------------*/
@@ -533,7 +535,7 @@ nav button:hover{
                            <fmt:formatDate pattern="yy-MM-dd HH:mm:ss" value="${dto.write_date}" />
                         </div>
                         <c:if test="${loginID == dto.id }">
-                           <div class="col-6 col-md-3 mdbtns" style="text-align:center;"><i class="fa-solid fa-xl fa-pen-to-square editBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-regular fa-xl fa-trash-can deleteBtn" style="color:white;"></i></div>
+                           <div class="col-6 col-md-3 mdbtns" style="text-align:center;"><i class="fa-solid fa-xl fa-rotate-left backBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-xl fa-pen-to-square editBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-regular fa-xl fa-trash-can deleteBtn" style="color:white;"></i></div>
                   </c:if>
                      </div>
                 </div>
@@ -542,6 +544,8 @@ nav button:hover{
       <div class="row">
       <!-- Main Contents Container -->
          <div class="col-12 contents-container">
+         <div class="row">
+         <div class="col-12 col-md-7">
          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -563,6 +567,12 @@ nav button:hover{
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
+            </div>
+            
+            <div class="col-12 col-md-5 contentsBox">
+               ${dto.contents }
+            </div>
+            </div>
             <div id="mainfoot">
                <div class="row">
                   <div class="col-6">
@@ -581,11 +591,6 @@ nav button:hover{
                   </div>
                </div>
               
-
-            </div>
-            <div class="contentsBox">
-<!--              style="margin-left:5%; -->
-               ${dto.contents }
 
             </div>
             <div class="replyWriteBox">
@@ -898,6 +903,9 @@ nav button:hover{
         })
         $(".editBtn").on("click", function(){
         	location.href = "/feed/goUpdate?cafefeed_seq=${dto.cafefeed_seq}";
+        })
+        $(".backBtn").on("click", function(){
+        	location.href = "/feed/goFeed?page=1";
         })
         
     </script>

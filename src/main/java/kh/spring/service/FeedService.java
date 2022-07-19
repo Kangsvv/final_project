@@ -129,5 +129,36 @@ public class FeedService {
 			dao.delete(cafefeed_seq);
 			fdao.delete(cafefeed_seq);
 		}
-		
+		@Transactional
+		public void update(String title, String contents, int cafefeed_seq, String realPath, MultipartFile file) throws Exception{
+			// 실시간으로 데이터를 만질려고
+			// 실시간으로 데이터를 만질려고
+			realPath = session.getServletContext().getRealPath("/resources/feed"); // 서버 경로 불러오는 거
+			System.out.println(realPath);
+			File filePath = new File(realPath);
+			if(!filePath.exists())filePath .mkdir();
+			System.out.println(realPath);
+			String oriName =file.getOriginalFilename(); // DB용
+			String sysName = UUID.randomUUID() + "_"+oriName; //UUID.randomUUID()중복되지 임의값을 만들어 리턴 oriname 
+			file.transferTo(new File(realPath + "/"+sysName)); // 서버 경로 저장하기
+			// 영구적으로 로컬 환경에도 옮겨야됨.
+//			String  localPath ="C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
+//			String  localPath ="A:/springWorkspace/final_project/src/main/webapp/resources/feed";
+			String localPath= "C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
+			File realFile = new File(realPath + "/"+sysName); // 파일 객체를 만든거예요 - 파일 데이터가 들어가 있음
+			File localFile = new File(localPath + "/"+sysName); // 파일 객체를 만든거고 - 빈 껍데기
+			// 실제 메모리상에 이 파일 객체 있는 거임.
+
+			// 로컬 경로 복사
+			Files.copy(realFile.toPath(), localFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+			// toPath() : 객체 안에 저장된 경로를 불러오는거
+			// StandardCopyOption.REPLACE_EXISTING : 저장 옵션 - 덮어쓰기
+			FeedDTO dto = new FeedDTO();
+			dto.setCafefeed_seq(cafefeed_seq);
+			dto.setTitle(title);
+			dto.setContents(contents);
+			dao.update(dto);
+			fdao.update(oriName,sysName,cafefeed_seq);
+			
+		}
 }
