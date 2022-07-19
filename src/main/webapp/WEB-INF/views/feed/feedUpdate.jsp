@@ -259,10 +259,11 @@ nav button:hover{
    <div class="col-12" style="margin-bottom:40px;">
       <a style="color: white; font-size: 40px;">카페리뷰 글 수정하기</a>
     </div>
-    <form action="/feed/feed_insert" method="post" enctype="multipart/form-data">
+    <form action="/feed/feed_update" method="post" enctype="multipart/form-data">
        <div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
             <input type=text name=title id=title placeholder="제목" style="width:97%; color:white;" value="${dto.title }">
+            <input type="hidden" value="${dto.cafefeed_seq}" name="cafefeed_seq" class="cafefeed_seq">
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
             <textarea name="contents" id="contents" style="width: 98%; color:white;" rows="30" placeholder="내용">${dto.contents }</textarea>
@@ -296,7 +297,20 @@ nav button:hover{
 </div>
 <script>
 	$("#writeBtn").on("click",function(){
-		 
+		if($("#title").val() == ''){
+			 alert("제목을 입력해주세요");
+			 $("#title").focus();
+			 return false;
+		 }
+		 else if($("#contents").val() == ''){
+			 alert("내용를 입력해주세요.");
+			 $("#contents").focus();
+			 return false;
+		}
+		else if(!$("#ex_file").val()){
+			alert("사진을 넣어주세요.");
+			return false;
+		}
 	 	// file
 	    let fileVal = $("#ex_file").val();
 	    
@@ -316,19 +330,7 @@ nav button:hover{
 	       	}
        	
         }
-	   if($("#title").val() == ''){
-			 alert("제목을 입력해주세요");
-			 $("#contents").focus();
-			 return false;
-		 }
-		 else if($("#contents").val() == ''){
-			 alert("내용를 입력해주세요.");
-			 $("#contents").focus();
-			 return false;
-		}else if(fileVal == ''){
-			alert("사진을 올려주세요.");
-			return false;
-		}
+	  
 	})
 // -------------------------파일 업로드 시, 검수 ( 가로 X 세로 사이즈 체크 ) ------------------------
 </script>
