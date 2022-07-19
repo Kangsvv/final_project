@@ -20,16 +20,16 @@ public class QuestionService {
     }
 
 	public void insert(QuestionDTO dto) throws Exception {
-		int seq = dao.insert(dto);
+		int question_seq = dao.insert(dto);
     }
 
-	public void read(Model model, int seq) throws Exception{
-		QuestionDTO dto = dao.read(seq);
+	public void read(Model model, int question_seq) throws Exception{
+		QuestionDTO dto = dao.read(question_seq);
 		model.addAttribute("dto", dto);
 	}
 
-	public void delete(int seq) throws Exception{
-		dao.delete(seq);
+	public void delete(int question_seq) throws Exception{
+		dao.delete(question_seq);
 	}
 	
 	public int modify(QuestionDTO dto) throws Exception{

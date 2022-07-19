@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kh.spring.dto.QreplyDTO;
 import kh.spring.dto.QuestionDTO;
+import kh.spring.service.QreplyService;
 import kh.spring.service.QuestionService;
 
 
@@ -22,6 +24,9 @@ import kh.spring.service.QuestionService;
 		
 		@Autowired
 		private QuestionService Qservice;
+		
+		@Autowired
+		private QreplyService Rservice;
 		
 		
 		@Autowired
@@ -34,6 +39,7 @@ import kh.spring.service.QuestionService;
 			List<QuestionDTO> dto = Qservice.selectAll();
 			model.addAttribute("qlist",dto);
 			
+		
 			return "/question/question_list";
 			
 		}
@@ -55,10 +61,16 @@ import kh.spring.service.QuestionService;
 		
 		
 		//---------------------- 상세페이지 이동 ---------------------
+	
 		@RequestMapping("question_detail")
-		public String question_detail(int seq, Model model) throws Exception {
+		public String question_detail(int question_seq, Model model) throws Exception {
 			
-			Qservice.read(model, seq);
+			Qservice.read(model, question_seq);
+			
+			List<QreplyDTO> rlist = Rservice.reply_list(model, question_seq);
+			model.addAttribute("rlist", rlist);
+			
+			System.out.println(rlist);
 			
 			return "/question/question_detail";
 		}
@@ -66,11 +78,11 @@ import kh.spring.service.QuestionService;
 		//---------------------삭제-----------------------
 		
 		@RequestMapping("question_delete")
-		public String question_delete(int seq) throws Exception{
+		public String question_delete(int question_seq) throws Exception{
 			
-			Qservice.delete(seq);
+			Qservice.delete(question_seq);
 			
-			return "/question/question_list";
+			return "redirect:/question/question_list";
 		}
 		
 		//----------------------수정---------------------
@@ -88,6 +100,31 @@ import kh.spring.service.QuestionService;
 //				return "true";
 //			}else
 //				return "false";
+			
+		}
+		
+		//-----------댓글 작성-----------
+		
+		
+		@RequestMapping("reply_insert")
+		public String reply_insert(QreplyDTO dto, int question_seq) throws Exception{
+			
+			Rservice.insert(dto);
+		
+			return "question/question_detail";
+		}
+		
+		//-------댓글 삭제-------
+		
+		@RequestMapping("reply_delete")
+		public String reply_delete(int reply_seq, int question_seq) throws Exception{
+			
+			System.out.println(reply_seq);
+			
+			Rservice.delete(reply_seq);
+			
+			
+			return "redirect:/question/question_detail?question_seq="+question_seq;
 			
 		}
 		

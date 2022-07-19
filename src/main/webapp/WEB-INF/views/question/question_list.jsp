@@ -356,21 +356,27 @@ li.dropdown {
             <div class="col-2 title_head">글쓴이</div>
             <div class="col-2 title_head">작성일</div>
          </div>
-         
-         
-       <c:forEach var="i" items="${qlist }"> 
-        <a href="/question/question_detail?seq=${i.seq }">
-         <div class="row col-12 noticbox">
-            <div class="col-1 notice">${i.seq }</div>
-            <div class="col-7 notice1">${i.title }</div>
-            <div class="col-2 notice">${i.writer }</div>
-            <div class="col-2 notice">${i.write_date }</div>
-         </div>
-         </a>
-	   </c:forEach> 
-	   
-	   
-         <div class="row col-12 noticbox">
+
+
+			<c:choose>
+				<c:when test="${empty qlist}">
+					<div>현재 등록된 게시글이 없습니다.</div>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="i" items="${qlist }">
+						<a href="/question/question_detail?question_seq=${i.question_seq }">
+							<div class="row col-12 noticbox">
+								<div class="col-1 notice">${i.question_seq }</div>
+								<div class="col-7 notice1">${i.title }</div>
+								<div class="col-2 notice">${i.writer }</div>
+								<div class="col-2 notice">${i.write_date }</div>
+							</div>
+						</a>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+
+			<div class="row col-12 noticbox">
             <div class="col-1 notice">2</div>
             <div class="col-7 notice1">디자인 보기용</div>
             <div class="col-2 notice">김한중</div>
