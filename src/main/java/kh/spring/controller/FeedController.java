@@ -104,6 +104,15 @@ public class FeedController {
 		model.addAttribute("list", list);
 		return "/feed/feedSearchResult";
 	}
+	// 리뷰 게시글 업데이트 
+	@RequestMapping(value="feed_update",produces="application/text;charset=utf-8")
+	public String feed_update(String title,String contents, String realPath,int cafefeed_seq, MultipartFile file) throws Exception {
+		
+		System.out.println(title);
+		
+		serv.update(title, contents, cafefeed_seq, realPath, file);
+		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;
+	}
 	// 리뷰 게시글 삭제
 	@RequestMapping("deleteFeed")
 	public String deleteFeed(int cafefeed_seq, String realPath, MultipartFile file) throws Exception{
