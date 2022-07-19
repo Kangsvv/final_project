@@ -65,7 +65,6 @@ public class FeedController {
 	public String detailView(Model model, int cafefeed_seq) throws Exception{
 		
 		int page = 1;
-		
 //		System.out.println("Controller CS : " + cafefeed_seq);
 		
 		serv.selectBySeq(model, cafefeed_seq);
