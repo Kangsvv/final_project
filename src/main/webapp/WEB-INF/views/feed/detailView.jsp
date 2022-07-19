@@ -679,7 +679,15 @@ nav button:hover{
                         $(this).siblings(".replybmodify2").css("display","inline");
                         $(this).siblings(".replydelBtn2").css("display","inline");
                         
+						$.ajax({
+                        	url:"/feed/replyInfo",
+                        	data: {seq:seq}
+                        }).done(function(resp){
+                    		
+                    	})
+                        
                         editDiv.attr("contenteditable", "false");
+                        
                      })
                   })
              </script>

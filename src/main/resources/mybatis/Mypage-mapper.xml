@@ -5,4 +5,16 @@
     
 <mapper namespace="mypage">
 
+	<select id="selectID" resultType="kh.spring.dto.MemberDTO">
+		select * from member where mem_id = #{value }
+	</select>
+	
+	<update id="mypageUpdate" >
+		update member set mem_img = #{mem_img }, mem_name=#{mem_name }, mem_phone=#{mem_phone}, mem_oriname = #{mem_oriname} where mem_id = #{mem_id}  
+	</update>
+	
+	<delete id="memberout" >
+		delete from member where mem_id = #{mem_id}
+	</delete>
+
 </mapper>

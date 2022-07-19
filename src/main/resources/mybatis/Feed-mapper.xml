@@ -75,5 +75,9 @@
 	<update id="reply_update">
 		update cafefeedReply set contents=#{contents} where seq=#{seq}
 	</update>
+	<!-- 글 조회수업 -->
+	<update id="countUp">
+		update cafefeed set view_count = view_count +1 where cafefeed_seq=#{cafefeed_seq}
+	</update>
 	
 </mapper>
