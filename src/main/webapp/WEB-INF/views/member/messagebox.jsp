@@ -446,7 +446,7 @@ border-bottom : 1px solid black;
                   </div>
                 </div>
               </td>
-              <td>${mdto.cafe}<br>
+              <td>${mdto.sender}<br>
               	  (${mdto.sender_email })</td>
               <td><fmt:formatDate pattern="yy-MM-dd HH:mm" value="${mdto.write_date}" /></td>
               
@@ -476,7 +476,7 @@ border-bottom : 1px solid black;
   
               제목:&nbsp; <br>  
             <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요" required/><br><br>
-              받는사람:<input type = "text" name="receiver_email" id = "receiver_email" placeholder = "상대방 이메일을 입력해주세요" required/>
+              받는사람:<input type = "text" name="receiver_email" id = "mem_email" placeholder = "상대방 이메일을 입력해주세요" required/>
              <br>
              <div id="checkEmail"></div>  
              <br>
@@ -518,7 +518,47 @@ border-bottom : 1px solid black;
 
 <script>
 //------------------------이메일 확인----------------------
+var email = false;
 
+$("#mem_email").on("input",function(){	
+	email = false;
+	var regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+	var mem_email = $("#mem_email").val();
+	if(!regEmail.test($("#mem_email").val())) {
+		$("#checkEmail").text("올바른 이메일이 아닙니다.").css("color","red");
+		eamil = false;
+	}else {
+		$("#checkEmail").text("").css("color","black");
+		// ajax 기본형태 $.ajax 
+		$.ajax({
+			url : "/member/memberemailCheck",
+			async: false,
+			type : "post",
+			data : {"email":mem_email},
+			success : function(result){
+				if(result > 0){
+					$("#checkEmail").text("존재하는 email").css("color","white");
+					console.log("존재하는email");
+					email = true;
+				}else{
+					alert("이메일이 존재하지 않습니다.");
+					console.log("존재하지 않는email");
+					email = false;
+				}
+			},
+			// 에러가 발생했을때
+			error : function(err){
+				alert("인터넷 연결이 불안정하거나, 서버와 통신이 불가능합니다.");
+			}
+		})
+	}
+});
+
+$("#send").submit(function(){
+	if(!email){
+		return false;
+	}
+})
 //----------------------------------------------
 
 

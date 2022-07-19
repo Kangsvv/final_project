@@ -155,7 +155,7 @@ public class CafeinController {
 		memdto=mdao.email_member(receiver_email);
 		String receiver=memdto.getmem_name();
 		System.out.println(receiver);
-		serv.message2(title,receiver_email,sender,sender_email,contents,receiver);
+		serv.message2(title,sender,sender_email,receiver,receiver_email,contents);
 		
 		return "redirect:/cafein/messagebox";
 		
