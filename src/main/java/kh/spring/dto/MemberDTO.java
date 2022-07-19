@@ -42,14 +42,6 @@ public class MemberDTO {
 	}
 
 	
-	public String getMem_oriname() {
-		return mem_oriname;
-	}
-
-	public void setMem_oriname(String mem_oriname) {
-		this.mem_oriname = mem_oriname;
-	}
-	
 	public int getmem_seq() {
 		return mem_seq;
 	}
@@ -145,13 +137,21 @@ public class MemberDTO {
 	public void setmem_deletedate(Timestamp mem_deletedate) {
 		this.mem_deletedate = mem_deletedate;
 	}
+	
+	public String getmem_oriname() {
+		return mem_oriname;
+	}
+
+	public void setmem_oriname(String mem_oriname) {
+		this.mem_oriname = mem_oriname;
+	}
 
 	@Override
 	public String toString() {
 		return "MemberDTO [mem_seq=" + mem_seq + ", mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_name=" + mem_name
 				+ ", mem_email=" + mem_email + ", mem_phone=" + mem_phone + ", mem_level=" + mem_level + ", mem_status="
 				+ mem_status + ", mem_img=" + mem_img + ", mem_ceocheckimg=" + mem_ceocheckimg + ", mem_joindate="
-				+ mem_joindate + ", mem_deletedate=" + mem_deletedate + mem_oriname +"]";
+				+ mem_joindate + ", mem_deletedate=" + mem_deletedate + ", mem_oriname=" + mem_oriname +"]";
 	}
 
 

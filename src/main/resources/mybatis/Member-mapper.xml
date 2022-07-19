@@ -27,7 +27,7 @@
 
 	<!-- 회원가입 처리 -->
 	<insert id="joinAction">
-		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},0,0,'',#{mem_ceocheckimg},sysdate,'','')
+		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},#{mem_level},#{mem_status},'',#{mem_ceocheckimg},sysdate,'',#{mem_oriname})
 	</insert>
 	
 	<!-- 로그인 -->
