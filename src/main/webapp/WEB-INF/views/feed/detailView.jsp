@@ -386,7 +386,6 @@ nav button:hover{
            
            contentsEdit.text(resp[i].contents);
 
-           if(${loginIsAdmin == 'Y'} || resp[i].id=='${loginID}' ){
            
            let modifyBtn = $("<button>");
            modifyBtn.attr("type","button");
@@ -410,8 +409,8 @@ nav button:hover{
            left.append(contents);
            
 
-           right.append(modifyBtn);
-           right.append(delBtn);
+//            right.append(modifyBtn);
+//            right.append(delBtn);
 
            container.append(left);
            container.append(right);
@@ -423,6 +422,14 @@ nav button:hover{
            container.fadeIn(800);
 //            $("#replyContents").val("");
 //            $("#replyContents").focus();
+
+
+			if(resp[i].id=='${loginID}' ){
+			
+				right.append(modifyBtn);
+		        right.append(delBtn);
+		        
+			}
 
             delBtn.on("click", function(){
                let del = confirm("댓글을 삭제하시겠습니까?");
@@ -605,8 +612,13 @@ nav button:hover{
                              <div class="col-12 replycontents2"><div class="editBox">${i.contents}</div></div>
                           </div>
                           <div class="col-12 replyright">
-                             <button type="button" class="replybmodify2 btn btn-secondary">수정</button>
+                          
+                          <c:if test="${loginID == i.id }">
+                          	 <button type="button" class="replybmodify2 btn btn-secondary">수정</button>
                              <button type="button" class="replydelBtn2 btn btn-secondary">삭제</button>
+                          </c:if>
+<!--                              <button type="button" class="replybmodify2 btn btn-secondary">수정</button> -->
+<!--                              <button type="button" class="replydelBtn2 btn btn-secondary">삭제</button> -->
                           </div>
                       </div>
                </c:forEach>
