@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   
 <!DOCTYPE html>
 <html>
@@ -224,6 +225,7 @@ html,body {
 }
 .panel-faq-container {
   margin-bottom: -16px;
+  text-align:center;
 }
 .panel-faq-title {
   color: black;
@@ -236,7 +238,7 @@ html,body {
   왜? 닫기 버튼을 누를 때 변화가 티남 */
   transition: all 1s;
 }
-#btn-all-close {
+#btn-all-close,#answer {
   margin-bottom: 10px;
   background-color: #760c0c;
   border: none;
@@ -244,6 +246,12 @@ html,body {
   cursor: pointer;
   padding: 10px 25px;
   float: right;
+}
+#btn-all-close{
+	margin-right:5%;
+}
+#answer{
+	margin-right:1%;
 }
 #btn-all-close:hover {
   background-color: #760c0c;
@@ -254,6 +262,7 @@ html,body {
 .active {
   display: block;
   /* 높이를 정해줘야지만 transition이 적용됨 */
+  border-top 1px solid black;
   height: 300px;
 }
 table{
@@ -401,7 +410,8 @@ border-bottom : 1px solid black;
                 <h3 style="text-align: center; padding-top: 50px;color: white;">쪽지함</h3>
             </div>
         <div class="col-12" >
-            <button id="btn-all-close">모든쪽지닫기</button>
+            <button class="btn btn-primary" id="btn-all-close">모든쪽지닫기</button>
+            <button type="button" id="answer" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">쪽지보내기</button>
         </div>
         <div class="row">
           <div class="col-12">
@@ -413,7 +423,7 @@ border-bottom : 1px solid black;
               <th>제목</th>
               <th>보낸사람</th>
               <th>날짜</th>
-              <th>카페링크</th>
+              
             </tr>
           </thead>
           <c:forEach var="mdto" items="${mdto}">
@@ -426,28 +436,33 @@ border-bottom : 1px solid black;
                 <div class="panel-faq-container">
                   <p class="panel-faq-title">${mdto.title}</p>
                   <div class="panel-faq-answer">
-                  <h3>------------------------------------------------------------------</h3>
+                  <h5>↓ 내용 ↓</h5>
                   <br>
                    ${mdto.contents}
                    <br>
                    <br>
                    <br>
-                   <div style="text-align:right;"><button type="button" id="answer" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">답장</button></div>
+               
                   </div>
                 </div>
               </td>
-              <td>${mdto.cafe}</td>
-              <td>${mdto.write_date}</td>
-              <td>
-              <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${mdto.cafein_seq }">cafein</a>
-			  </td>
+              <td>${mdto.cafe}<br>
+              	  (${mdto.sender_email })</td>
+              <td><fmt:formatDate pattern="yy-MM-dd HH:mm" value="${mdto.write_date}" /></td>
+              
 			  
             </tr>
              <input type="hidden" name="seq"  value="${mdto.message_seq }">
           
           </tbody>
-            <!--------------------------쪽지모달창------------------------->
- <form action="/cafein/message" id="send">
+        </c:forEach>
+        </table>
+      </div>
+    </div>
+      </div>
+    </div>
+   <!--------------------------쪽지모달창------------------------->
+ <form action="/cafein/message2" id="send">
  <div class="modal fade send" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -461,14 +476,13 @@ border-bottom : 1px solid black;
   
               제목:&nbsp; <br>  
             <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요" required/><br><br>
-              받는사람:&nbsp;  ${dto.writer}&nbsp;(${dto.name}&nbsp;사장님) 
-             <br>  
+              받는사람:<input type = "text" name="receiver_email" id = "receiver_email" placeholder = "상대방 이메일을 입력해주세요" required/>
+             <br>
+             <div id="checkEmail"></div>  
              <br>
               <textarea placeholder = "내용을 입력해주세요" name="contents" required /></textarea><br>
-            <input type="hidden" name="receiver" value="${dto.writer}">
-            <input type="hidden" name="receiver_email" value="${dto.email}">
-            <input type="hidden" name="seq" value="${dto.seq} ">
-            <input type="hidden" name="cafe" value="${dto.name}사장님">
+          	  <input type="hidden" name="sender_email" value="${memdto.mem_email} ">
+          	  <input type="hidden" name="sender" value="${memdto.mem_name} ">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
         <button  class="btn btn-success" id="message">전송</button> 
            </form>
@@ -482,13 +496,6 @@ border-bottom : 1px solid black;
 <!--       </div> -->
     </div>
   </div>
-        </c:forEach>
-        </table>
-      </div>
-    </div>
-      </div>
-    </div>
- 
     <!-------------------------------------------------------Footer------------------------------------------------->
  
     <div class="col-12 d-none d-md-block" >
@@ -510,8 +517,9 @@ border-bottom : 1px solid black;
 
 
 <script>
-//------------------------답장할사람 찾기----------------------
-console.log($("#answer").parent().parent().parent().parent().parent());
+//------------------------이메일 확인----------------------
+
+//----------------------------------------------
 
 
   const hamburger = document.querySelector(".hamburger");

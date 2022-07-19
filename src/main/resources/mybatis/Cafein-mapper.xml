@@ -18,7 +18,9 @@
 	<insert id="message">
 		insert into message values(message_seq.nextval,#{title},#{sender},#{receiver},#{sender_email},#{receiver_email},#{contents},sysdate,#{cafein_seq},#{cafe})
 	</insert>
-	
+	<insert id="message2">
+		insert into message values(message_seq.nextval,#{title},#{sender},#{receiver},#{sender_email},#{receiver_email},#{contents},default,'','')
+	</insert>
 	
 	
  	<insert id="cafein-like">
@@ -67,6 +69,8 @@
 	<select id="cafein_imgfile" resultType="String">
 	select sys_name from cafein_img where cafein_seq=#{cafein_seq}
 	</select>
+	
+
 	
 	<update id="cafein-update">
 	update cafein set name=#{name},address1=#{address1},address2=#{address2},day=#{day},open=#{open},finish=#{finish},parking=#{parking} where seq=#{seq}

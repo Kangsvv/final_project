@@ -407,14 +407,14 @@ table td{
   
               제목:&nbsp; <br>  
             <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요" required/><br><br>
-              받는사람:&nbsp;  ${dto.writer}&nbsp;(${dto.name}&nbsp;사장님) 
+              받는사람:&nbsp;  ${dto.writer}&nbsp;(카페:&nbsp;${dto.name}) 
              <br>  
              <br>
               <textarea placeholder = "내용을 입력해주세요" name="contents" required /></textarea><br>
             <input type="hidden" name="receiver" value="${dto.writer}">
             <input type="hidden" name="receiver_email" value="${dto.email}">
             <input type="hidden" name="seq" value="${dto.seq} ">
-            <input type="hidden" name="cafe" value="${dto.name}사장님">
+            <input type="hidden" name="cafe" value="${dto.name}">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
         <button  class="btn btn-success" id="message">전송</button> 
            </form>

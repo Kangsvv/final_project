@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.spring.dao.MemberDAO;
 import kh.spring.dto.Cafein_imgDTO;
+import kh.spring.dto.MemberDTO;
 import kh.spring.service.CafeinService;
 
 @Controller
@@ -23,6 +25,10 @@ public class CafeinController {
 	
 	@Autowired
 	private CafeinService serv;
+	
+	@Autowired
+	private MemberDAO mdao;
+	
 	
 	//----------------------Cafein 리스트---------------------
 	@RequestMapping("goCafein")
@@ -134,6 +140,24 @@ public class CafeinController {
 		serv.message(title,receiver,receiver_email,contents,seq,cafe);
 		
 		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
+		
+	}
+	//----------------------쪽지 보내기2----------------------------------
+	@RequestMapping("message2")
+	public String message2(String title,String sender,String sender_email,String receiver_email,String contents)throws Exception{
+		System.out.println(title);
+		System.out.println(sender);
+		System.out.println(sender_email);
+		System.out.println(receiver_email);
+		System.out.println(contents);
+		
+		MemberDTO memdto = new MemberDTO();
+		memdto=mdao.email_member(receiver_email);
+		String receiver=memdto.getmem_name();
+		System.out.println(receiver);
+		serv.message2(title,receiver_email,sender,sender_email,contents,receiver);
+		
+		return "redirect:/cafein/messagebox";
 		
 	}
 	//-----------------------쪽지함 출력----------------------------------
