@@ -188,6 +188,8 @@ nav button:hover{
         .contentsBox{
            padding:20px;
            font-size: 16px;
+            word-wrap: break-word;      /* IE 5.5-7 */
+            white-space: pre-wrap;      /* current browsers */
 /*            margin-top:20px;  */
         }
         #maincon{
@@ -542,6 +544,8 @@ nav button:hover{
       <div class="row">
       <!-- Main Contents Container -->
          <div class="col-12 contents-container">
+         <div class="row">
+         <div class="col-7">
          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -563,6 +567,12 @@ nav button:hover{
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
+            </div>
+            
+            <div class="col-5 contentsBox">
+               ${dto.contents }
+            </div>
+            </div>
             <div id="mainfoot">
                <div class="row">
                   <div class="col-6">
@@ -581,11 +591,6 @@ nav button:hover{
                   </div>
                </div>
               
-
-            </div>
-            <div class="contentsBox">
-<!--              style="margin-left:5%; -->
-               ${dto.contents }
 
             </div>
             <div class="replyWriteBox">
