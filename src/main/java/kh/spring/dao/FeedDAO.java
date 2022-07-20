@@ -40,7 +40,7 @@ public class FeedDAO {
 	}
 	
 	// 피드 검색결과 출력
-	public List<FeedDTO> feedSearchResult(String search,int cpage){
+	public List<Feed_imgDTO> feedSearchResult(String search,int cpage){
 		String start = Integer.toString((cpage-1)*18+1);
 		String end = Integer.toString((cpage)*18);
 		

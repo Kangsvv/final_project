@@ -179,33 +179,7 @@ nav button:hover{
    color:white;
    }
 
-     .feedImg{
-      	height:300px;
-      	overflow: hidden;
-      }
-  .feedImg img{
-      width: 100%;
-      height: 100%;
-      -webkit-transform:scale(1);
-	-moz-transform:scale(1);
-	-ms-transform:scale(1);	
-	-o-transform:scale(1);	
-	transform:scale(1);
-	-webkit-transition:.3s;
-	-moz-transition:.3s;
-	-ms-transition:.3s;
-	-o-transition:.3s;
-	transition:.3s;
-      }
-       .feedImg:hover img{
-      -webkit-transform:scale(1.2);
-	-moz-transform:scale(1.2);
-	-ms-transform:scale(1.2);	
-	-o-transform:scale(1.2);
-	transform:scale(1.2);
-	opacity:0.7;
 
-      }
 </style>
 <body>
 
@@ -273,28 +247,7 @@ nav button:hover{
 
             <div class="contents">
              	<div class="row">
-12
-					<c:choose>
-					
-						<c:when test="${list} == null">
-						<h1 style="color:white; margin:auto;">검색결과가 없습니다.</h1>
-						</c:when>
-
-						<c:otherwise>
-							<c:forEach var="i" items="${list}">
-								<div class="col-sm-6 col-md-4  feedImg">
-									<a class="lightbox"
-										href="/feed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
-										<img src="/feed/${i.sys_name }">
-									</a>
-								</div>
-
-							</c:forEach>
-						</c:otherwise>
-
-					</c:choose>
-
-
+		 		    <a>검색결과가 없습니다.</a>
 				</div>
     
             </div>
@@ -322,43 +275,6 @@ nav button:hover{
 	$(".writebtn").on("click", function(){
 		location.href = "/feed/goFeedWrite";
 	})
-	
-         
-		let page = 2;  //페이징과 같은 방식이라고 생각하면 된다.
-//          getFeedList(page);
-//          page++;
-      
-         $(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
-              if($(window).scrollTop() >= $(document).height() - $(window).height()){
-            	 getFeedList(page);
-                 page++;   
-              } 
-         });
-   
-
-    function getFeedList(pape){
-      let page = pape;
-      
-      $.ajax({
-          url : '/feed/goInfinitiedFeed',
-          type : 'POST',
-          data : {page : page},
-          async: false,
-          dataType : 'json'
-     }).done(function(resp){
-    	let cDiv = $("<div class='row'>");
-    	for(let i=0; i < resp.length; i++){
-    		 
-    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
-    	 
-    	 	cDiv.append(contentsDiv);
-    	 }
-    	$(".contents").append(cDiv);
-	 	cDiv.hide();
-	 	cDiv.fadeIn(800);
-    	 
-    })
-};
 </script>
 </body>
 </html>

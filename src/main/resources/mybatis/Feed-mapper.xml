@@ -9,15 +9,10 @@
 	<select id="selectAllrs" resultType="kh.spring.dto.Feed_imgDTO">
 		select * from (select row_number() over(order by seq desc) as line, feed_img.* from feed_img) where line between #{start} and #{end}
 	</select>
-	
-	<!-- 추천순 무한스크롤 출력 -->
-	<select id="selectAllpp" resultType="kh.spring.dto.FeedDTO">
-		select * from (select row_number() over(order by like_count desc) as line, CafeFeed.* from CafeFeed) where line between #{start} and #{end}
-	</select>
 
 	<!-- 피드 검색결과 출력 -->
-	<select id="feedSearchResult" resultType="kh.spring.dto.FeedDTO">
-		select * from (select row_number() over(order by recommend desc) as line, CafeFeed.* from CafeFeed) where (REPLACE(title,' ','') like '%'||#{title}||'%') and (line between #{start} and #{end})
+	<select id="feedSearchResult" resultType="kh.spring.dto.Feed_imgDTO">
+		select * from (select row_number() over(order by cafefeed_seq desc) as line, CafeFeed.* from CafeFeed) where (REPLACE(title,' ','') like '%'||#{title}||'%') and (line between #{start} and #{end})
 	</select>
 	<!-- 피드 insert 기능 -->
 	<insert id="feed-insert">
