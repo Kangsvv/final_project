@@ -177,41 +177,10 @@ nav button:hover{
 	opacity:0.7;
 
       }
-/*---------------------기능 구현 후 Hover 예정------------------*/
-
-
-/* footer 부분 */
-
-#foot{
-    border-top: 1px solid gray;
-    background-color: black;
-    
-}
-
-
-.footer2{
-    line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px ;
-    font-family: 'Noto Sans KR';
-   font-style: normal;
-   font-weight: 700;
-   font-size: 14px;
-   line-height: 20px;
-   color: #FFFFFF;
-}
-.footer2 a{
-   text-decoration : none;
-   color:white;
-   }
-
 
 </style>
-<body>
+<body style="background-color:#222;">
      <!------------------------------------------------------------header----------------------------------------------------->
-     
-   
-   
         <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">CAFEIN</a>
@@ -271,6 +240,8 @@ nav button:hover{
           
       
          </div>
+         </div>
+         
           <script>
           $(".writebtn").on("click",function(){
         	  location.href="/cafein/writeCafein";
@@ -315,21 +286,8 @@ nav button:hover{
     }
           </script>
 
- 
-         <!-------------------------------------------------------Footer------------------------------------------------->
-    <div class="col-12 d-none d-md-block">
-  <div id="foot" align=center>
-     <div class="container">
-        <div class="row">
-          <div class="col-4" id="footicon"> </div>
-           <div class="col-2 footer2"><a href="#">회사소개</a></div>
-           <div class="col-2 footer2"><a href="#">이용약관</a></div>
-           <div class="col-2 footer2"><a href="#">1:1 문의</a></div>
-           <div class="col-2 footer2"><a href="#">©2022 CAFEIN</a></div>
-        </div>
-     </div>
-  </div>
-</div>
+ <div id="footer"> <jsp:include page="footer.jsp"/></div> 
+
 
           
 </body>

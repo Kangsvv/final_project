@@ -20,210 +20,119 @@
 <title>Insert title here</title>
 </head>
 <style>
-    nav{
-  
-  width: 100%;
-  background-color: #131418;
-  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
-  /* display: flex; */
-  /* position: fixed; */
-  z-index: 10;
+/*HEADer부분----------------------------*/
+ /*------------------------ 헤더 부분 스타일 ------------------------ */
+   .loginbox{
+      flex:auto;
+      float:left;
+      min-width:150px;
+      text-align:right;
+   }
+      .search{
+         color:black;
+         background-color: gray;
+         border-radius: 8px;
+         height:50px;
+         padding:5px;
+         padding-left:15px;
+         font-weight : bold;
+         border:0 solid black;
+         display:block;
+         width:100%;
+         
+      }
+      input:focus {outline:none;}
+      input::placeholder {
+      color: #ccc;
+      }
+      .write{
+         width:40px;
+      }
+      .search2{
+         width:40px;
+         bottom:30px;
+         float: left;
+      }
+      .writebtn{
+          background-color:transparent;
+         float: right;
+         margin-right:5%;
+         margin-bottom:2%;
+      }
+      .searchbtn{
+         background-color:transparent;
+      }
+      .select option, #select{
+         color:black;
+         background-color:#ccc;
+          text-align: center;
+      }
+      .select{
+         height:30px;
+         margin-left:5%;
+         border-radius: 8px;
+         margin-top:10px;
+         width:100px;
+         border:none;
+      }
+      
+      button{
+        border:none;
+      }
+      #login,#signup{
+         color:white;
+      }
+      #login:hover,#signup:hover{
+         color:black;
+      }
+/* container */
+
+#con1{
+   margin-left: 12%;
+   margin-right: 12%;
+}
+ body{
+    background-color: #222;
+  }
+    nav {
+   background-color: black;
+   color: white;
+   padding-left:10%;
+   padding-right:10%;
+   border-bottom: 1px solid gray;
+}
+nav a{
+    color: white;
+}
+.navbar-nav{
+   min-width:450px;
+}
+.navbar-nav a{
+    color: white;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+.navbar-nav a:hover{
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    text-decoration-line: none;
 }
 #btn{
-  
-  background-color: #131418;
-  
+    text-align: right;
 }
-/*Styling logo*/
-.logo {
-  padding: 1vh 1vw;
-  text-align: center;
-  font-size: 40px;
-  margin-bottom: 2%;
-}
-#logo img{
- height: 100px;
- width: 100px;
-}
-.logo img {
-  height: 5rem;
-  width: 5rem;
+nav button{
+    background-color: rgba(0, 0, 0, 0.128);
+    border-radius: 5px;
+    color: white;
 }
 
-/*Styling Links*/
-.nav-links{
-  display: flex;
-  list-style: none; 
-  /* width: 88vw; */
-  height: 80px;
-  padding: 0 0.7vw;
-  justify-content: space-evenly;
-  align-items: center;
-  text-transform: uppercase;
+nav button:hover{
+    border-radius: 5px;
+    color: black;
+    background-color: white;
 }
-.nav-links li a{
-  text-decoration: none;
-  margin: 0 0.7vw;
-  font-size: 20px;
-  color: white;
-}
-.nav-links li a:hover {
-  color: white;
-}
-
-.nav-links li {
-  position: relative;
-  color: white;
-  opacity: 1;
-}
-.nav-links li a::before {
-  content: "";
-  display: block;
-  height: 3px;
-  width: 0%;
-  background-color: #760c0c;
-  position: absolute;
-  transition: all ease-in-out 250ms;
-  margin: 0 0 0 10%;
-}
-.nav-links li a:hover::before{
-  width: 80%;
-  opacity: 1;
-}
-
-/*Styling Buttons*/
-#btn button{
-  color: white;
-  background-color: #222;
-  border-radius: 2em;
-  padding: 0.1rem 0.8rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-#btn button:hover {
-   color: #131418;
-  background-color: #f2f5f7;
-  border:1.5px solid #f2f5f7;
-  transition: all ease-in-out 350ms;
-}
-.fade:not(.show) {
-  opacity: 1;
-}
-/*Styling Hamburger Icon*/
-.hamburger div{
-  width: 30px;
-  height:3px;
-  background: #f2f5f7;
-  margin: 5px;
-  transition: all 0.3s ease;
- 
-}
-.hamburger{
-
-  display: none;
-}
-
-/*Stying for small screens*/
-@media screen and (max-width: 800px){
-  nav{
-      position: fixed;
-      z-index: 3;
-      opacity: 1;
-      height: 70px;
-  }
-  .hamburger{
-      display:block;
-      position: absolute;
-      cursor: pointer;
-      right: 5%;
-      top: 50%;
-      transform: translate(-5%, -50%);
-      z-index: 2;
-      transition: all 0.7s ease;
-      opacity: 1;
-  }
-  .nav-links{
-      position: fixed;
-      background: #131418;
-      color: white;
-      height: 100vh;
-      width: 100%;
-      flex-direction: column;
-      clip-path: circle(50px at 90% -20%);
-      -webkit-clip-path: circle(50px at 90% -10%);
-      transition: all 1s ease-out;
-      pointer-events: none;
-      opacity: 1;
-  }
-  .nav-links.open{
-      clip-path: circle(1000px at 90% -10%);
-      -webkit-clip-path: circle(1000px at 90% -10%);
-      pointer-events: all;
-      color: white;
-      opacity: 1;
-  }
-  .nav-links li{
-      opacity: 1;
-  }
-  .nav-links li:nth-child(1){
-      transition: all 0.5s ease 0.2s;
-      opacity: 1;
-  }
- .nav-links li:nth-child(2){
-      transition: all 0.5s ease 0.4s;
-      opacity: 1;
-  }
-  .nav-links li:nth-child(3){
-      transition: all 0.5s ease 0.6s;
-      opacity: 1;
-  }
-  .nav-links li:nth-child(4){
-      transition: all 0.5s ease 0.7s;
-      opacity: 1;
-  }
-  .nav-links li:nth-child(5){
-      transition: all 0.5s ease 0.8s;
-      opacity: 1;
-  }
-  .nav-links li:nth-child(6){
-      transition: all 0.5s ease 0.9s;
-      opacity: 1;
-      margin: 0;
-  }
-  .nav-links li:nth-child(7){
-      transition: all 0.5s ease 1s;
-      opacity: 1;
-      margin: 0;
-  }
-
-  li.fade{
-      opacity: 1;
-  }
-
-}
-.container{
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-/*Animating Hamburger Icon on Click*/
-.toggle .line1{
-  transform: rotate(-45deg) translate(-5px,6px);
-}
-.toggle .line2{
-  transition: all 0.7s ease;
-  width:0;
-}
-.toggle .line3{
-  transform: rotate(45deg) translate(-5px,-6px);
-
-}
-body{
-    background-color: #222;
-}
-html,body {
-  font-family: Helvetica, Arial, sans-serif;
-  margin: 0;
-}
+/*---------------쪽지붑 */
 .panel-faq-container {
   margin-bottom: -16px;
   text-align:center;
@@ -382,28 +291,29 @@ border-bottom : 1px solid black;
 </style>
 
 <body>
-  <div id="btn" style="text-align: right;">
-    <button class="button" id="login">Login</button>
-        <button class="button" id="join">Join</button>
-</div>
-<nav>
-  
-    <div class="hamburger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-    <ul class="nav-links" style="color: white;">
-        <li id="logo"><img src="logo.png"></li>
-        <li><a  href="#">Home</a></li>
-        <li><a href="#">FEED</a></li>
-        <li><a href="#">CAFE-IN</a></li>
-        <li><a href="#">NOTICE</a></li>
-    </ul>
-
-    
-</nav>
-<script src="nav.js"></script>
+ <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">CAFEIN</a>
+              <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">▼</span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link" href="#">HOME</a>
+                  <a class="nav-link" href="#">FEED</a>
+                  <a class="nav-link" href="#">CAFE-IN</a>
+                  <a class="nav-link" href="#">NOTICE</a>
+                  <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
+              <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
+                </div>
+              </div>
+              <button id="login" type="button"
+                    class="mx-1 d-none d-lg-inline btn navbar-btn">Login</button>
+                    <button id="signup" type="button"
+                    class="mx-1 d-none d-lg-inline btn navbar-btn">Signup</button>
+            </div>
+          </nav>
+          
     <div class="container">
         <div class="row">
 
@@ -593,24 +503,7 @@ $("#send").submit(function(){
 
           console.log('모달 초기화', inputValue)
       });
-//----------------------------------------------
 
-
-  const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-const links = document.querySelectorAll(".nav-links li");
-
-hamburger.addEventListener('click', ()=>{
-   //Animate Links
-    navLinks.classList.toggle("open");
-
-    links.forEach(link => {
-        link.classList.toggle("fade");
-    });
-  
-    //Hamburger Animation
-    hamburger.classList.toggle("toggle");
-});
 
     window.onload = () => {
   // panel-faq-container
