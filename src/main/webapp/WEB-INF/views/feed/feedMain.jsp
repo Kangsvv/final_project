@@ -104,7 +104,7 @@ nav a{
 .navbar-nav a{
     color: white;
     border-radius: 5px;
-    margin-right: 20px;
+    margin-right: 10%;
 }
 .navbar-nav a:hover{
     color: black;
@@ -202,7 +202,13 @@ nav button:hover{
    text-decoration : none;
    color:white;
    }
+.logo{
+width:100px;
+}
 
+.logo2{
+width:80px;
+}
 
 </style>
 <body>
@@ -211,19 +217,37 @@ nav button:hover{
      
         <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">CAFEIN</a>
+              <img src="/img/logo4.png" class="logo">
               <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">▼</span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
+                <div class="navbar-nav" style="margin-left:5%;">
                   <a class="nav-link" href="#">HOME</a>
                   <a class="nav-link" href="#">FEED</a>
                   <a class="nav-link" href="#">CAFE-IN</a>
                   <a class="nav-link" href="#">NOTICE</a>
-                  <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
-              <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
-                </div>
+
+					<c:choose>
+						<c:when test="${loginID == null}">
+							<li class="nav-item d-lg-none"><a
+								class="nav-link mx-0 mx-md-0 mx-lg-3"
+								href="/Member/loginView.jsp" id="board">Login</a></li>
+							<li class="nav-item d-lg-none"><a
+								class="nav-link mx-0 mx-md-0 mx-lg-3"
+								href="/Member/joinView.jsp" id="board">Signup</a></li>
+						</c:when>
+						
+						<c:otherwise>
+							<li class="nav-item d-lg-none"><a
+								class="nav-link mx-0 mx-md-0 mx-lg-3"
+								href="#" id="board">Logout</a></li>
+							<li class="nav-item d-lg-none"><a
+								class="nav-link mx-0 mx-md-0 mx-lg-3"
+								href="#" id="board">Mypage</a></li>
+						</c:otherwise>
+					</c:choose>
+				</div>
               </div>
               <button id="login" type="button"
                     class="mx-1 d-none d-lg-inline btn navbar-btn">Login</button>
@@ -289,8 +313,7 @@ nav button:hover{
      <div class="container">
         <div class="row">
 
-          <div class="col-4" id="footicon"><a href="#" style="color:white; padding-top:20px; text-decoration-line: none;">CAFEIN</a></div>
-
+           <div class="col-4 footer2"><a href="#" style="font-size:20px;">CAFEIN</a></div>
            <div class="col-2 footer2"><a href="#">회사소개</a></div>
            <div class="col-2 footer2"><a href="#">이용약관</a></div>
            <div class="col-2 footer2"><a href="#">1:1 문의</a></div>
@@ -341,6 +364,16 @@ nav button:hover{
     	 
     })
 };
+
+$("#selectBox").on("change", function(){
+    //selected value
+    $(this).val();
+    $("option:selected", this).attr("value");
+    //selected option element
+    $("option:selected", this);
+    $("option:selected", this).text();
+    $(this).find("option:selected").text();
+});
 </script>
 </body>
 </html>

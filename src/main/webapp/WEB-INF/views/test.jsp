@@ -234,12 +234,13 @@ nav{
     </style>
   </head>
   <body>
-
+    <!DOCTYPE html>
+    <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="#"/>
+        <link rel="stylesheet" href="nav.css"/>
         <title>Responsive Animated Navbar</title>
     </head>
     <body>
@@ -255,14 +256,18 @@ nav{
                 <div class="line3"></div>
             </div>
             <ul class="nav-links" style="color: white;">
-                <li id="logo"><img src="/img/logo.png"></li>
+                <li id="logo"><img src="/img/logo3.png"></li>
                 <li><a  href="#">Home</a></li>
                 <li><a href="#">FEED</a></li>
                 <li><a href="#">CAFE-IN</a></li>
                 <li><a href="#">NOTICE</a></li>
             </ul>
 
+            
         </nav>
+        <script src="nav.js"></script>
+    </body>
+    </html>
     
 <script>
   const hamburger = document.querySelector(".hamburger");
@@ -281,5 +286,3 @@ hamburger.addEventListener('click', ()=>{
     hamburger.classList.toggle("toggle");
 });
 </script>
-  </body>
-    </html>
