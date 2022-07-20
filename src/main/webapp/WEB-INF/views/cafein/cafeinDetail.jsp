@@ -40,7 +40,10 @@
   margin-top: 100px;
   margin: auto;
 }
-
+table{
+margin-right:auto;
+margin-left:auto;
+}
 #file{
   border-radius: 5px;
   color: white;
@@ -63,7 +66,7 @@ border-radius: 5px;
   color: white;
   margin: auto;
   min-width: 450px;
-  margin-left: 16%;
+
 }
 input[type=text] {
 	width: 300px;
@@ -296,7 +299,7 @@ table td{
               받는사람:&nbsp;  ${dto.writer}&nbsp;(카페:&nbsp;${dto.name}) 
              <br>  
              <br>
-              <textarea placeholder = "내용을 입력해주세요" name="contents" required /></textarea><br>
+              <textarea placeholder = "내용을 입력해주세요" name="contents" class="contents" required /></textarea><br>
             <input type="hidden" name="receiver" value="${dto.writer}">
             <input type="hidden" name="receiver_email" value="${dto.email}">
             <input type="hidden" name="seq" value="${dto.seq} ">
@@ -331,8 +334,23 @@ table td{
             let myInput = document.getElementById("my-input");
             myInput.click();
         }
-     //------------------좋아요알림(토스트 스크립트)-----------------------------  
-  
+     //------------------모달 초기화-----------------------------  
+     
+        // ______________모달 종료 시 입력값 초기화
+      $('.modal').on('hidden.bs.modal', function(e) { // 모달 클래스에 .modal이 있는지 꼭 확인
+          console.log('modal close'); // 'hidden.bs.modal' => 부트스트랩 모달 이벤트, 모달이 사라지면 작동함
+
+          // 초기화 로직 : 아래에 초기화할 대상을 모두 적으면 됨.
+          
+          // 전체 텍스트 인풋 초기화
+        $("#title").val("")
+       	$(".contents").val("")
+    
+          // 셀렉트 초기화 - 선택된 거 초기화
+          $('.select2').val(0).trigger('change.select2');
+
+          console.log('모달 초기화', inputValue)
+      });
 	//---------------------------------------------------------------------
         $("#like").click("on",function() {
         	   if(${loginID == null}){
