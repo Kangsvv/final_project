@@ -6,7 +6,7 @@
 <mapper namespace="mypage">
 
 	<select id="selectID" resultType="kh.spring.dto.MemberDTO">
-		select * from member where mem_id = #{value }
+		select * from member where mem_id = #{value } order by 1 desc
 	</select>
 	
 	<select id="selectimg" resultType="kh.spring.dto.Cafein_imgDTO">
@@ -18,7 +18,7 @@
 	</update>
 	
 	<delete id="memberout" >
-		delete from member where mem_id = #{mem_id}
+		delete from member where mem_id = #{value }
 	</delete>
 
 </mapper>
