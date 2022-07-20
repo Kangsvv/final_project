@@ -52,7 +52,7 @@
 	</select>
 	
 	<select id="messagebox" resultType="kh.spring.dto.MessageDTO">
-	select *from message where receiver_email=#{receiver_email}
+	select *from message where receiver_email=#{receiver_email} order by write_date desc
 	</select>
 	
 	<delete id="cafein_img-delete">

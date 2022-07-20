@@ -14,7 +14,8 @@
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
- 
+ <!--  sweet alert  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
  
 <title>Insert title here</title>
 </head>
@@ -557,8 +558,41 @@ $("#mem_email").on("input",function(){
 $("#send").submit(function(){
 	if(!email){
 		return false;
+	}else{
+		 Swal.fire({
+   		  position: 'top-end',
+   		  icon: 'success',
+   		  title: '쪽지가 전달되었습니다.',
+   		  showConfirmButton: false,
+   		  timer: 7000
+   		})
 	}
 })
+
+//-------------모달-----------------------------
+ // ______________모달 종료 시 입력값 초기화
+      $('.modal').on('hidden.bs.modal', function(e) { // 모달 클래스에 .modal이 있는지 꼭 확인
+          console.log('modal close'); // 'hidden.bs.modal' => 부트스트랩 모달 이벤트, 모달이 사라지면 작동함
+
+          // 초기화 로직 : 아래에 초기화할 대상을 모두 적으면 됨.
+          
+          // 전체 텍스트 인풋 초기화
+          if($(this).find('form').length >0){
+             $(this).find('form')[0].reset();
+               var inputValue = $(this).find('select:eq(0) option:eq(0)');
+          }
+          
+          // CSS 초기화
+         $(".msg1").text("");
+         $(".msg2").text("");
+         $(".msg3").text("");
+         $(".msg4").text("");
+         
+          // 셀렉트 초기화 - 선택된 거 초기화
+          $('.select2').val(0).trigger('change.select2');
+
+          console.log('모달 초기화', inputValue)
+      });
 //----------------------------------------------
 
 
