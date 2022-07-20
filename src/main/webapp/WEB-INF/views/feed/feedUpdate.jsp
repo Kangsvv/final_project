@@ -257,15 +257,16 @@ nav button:hover{
 
 <div class="container" id="main">
    <div class="col-12" style="margin-bottom:40px;">
-      <a style="color: white; font-size: 40px;">카페리뷰 글쓰기</a>
+      <a style="color: white; font-size: 40px;">카페리뷰 글 수정하기</a>
     </div>
-    <form action="/feed/feed_insert" method="post" enctype="multipart/form-data">
+    <form action="/feed/feed_update" method="post" enctype="multipart/form-data">
        <div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
-            <input type=text name=title id=title placeholder="제목" style="width:97%; color:white;">
+            <input type=text name=title id=title placeholder="제목" style="width:97%; color:white;" value="${dto.title }">
+            <input type="hidden" value="${dto.cafefeed_seq}" name="cafefeed_seq" class="cafefeed_seq">
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
-            <textarea name="contents" id="contents" style="width: 98%; color:white;" rows="30" placeholder="내용"></textarea>
+            <textarea name="contents" id="contents" style="width: 98%; color:white;" rows="30" placeholder="내용">${dto.contents }</textarea>
             </div>
             <div class="row" style="margin-top: 5%; margin-bottom: 5%;">
 				<div class="col-12 col-sm-6" id="file"><img id="preview" />
@@ -275,7 +276,7 @@ nav button:hover{
 			</div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
                 <a href="/feed/goFeed?page=1"><button class="btn" type="button">뒤로</button></a>
-                <button type="submit" class="btn" id="writeBtn" style="margin-left:10px;">작성</button>
+                <button type="submit" class="btn" id="writeBtn" style="margin-left:10px;">수정</button>
             </div>
         </div>
     </form>
@@ -296,7 +297,7 @@ nav button:hover{
 </div>
 <script>
 	$("#writeBtn").on("click",function(){
-		 if($("#title").val() == ''){
+		if($("#title").val() == ''){
 			 alert("제목을 입력해주세요");
 			 $("#title").focus();
 			 return false;
@@ -329,6 +330,7 @@ nav button:hover{
 	       	}
        	
         }
+	  
 	})
 // -------------------------파일 업로드 시, 검수 ( 가로 X 세로 사이즈 체크 ) ------------------------
 </script>

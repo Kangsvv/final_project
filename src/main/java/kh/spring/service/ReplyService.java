@@ -66,4 +66,11 @@ public class ReplyService {
 		
 		dao.ModifyReply(dto);
 	}
+	public List<ReplyDTO> selectBySeqOne(int seq) throws Exception {
+		List<ReplyDTO> list = dao.selectBySeqOne(seq);
+
+		System.out.println(list);
+		
+		return list;
+	}
 }

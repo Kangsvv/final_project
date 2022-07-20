@@ -42,4 +42,8 @@ public class ReplyDAO {
 	public void ModifyReply(ReplyDTO dto) {
 		mybatis.update("Feed.reply_update", dto);
 	}
+public List<ReplyDTO> selectBySeqOne(int seq) throws Exception {
+		
+		return mybatis.selectOne("Feed.replylist_selectOne", seq);
+	}
 }

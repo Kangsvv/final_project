@@ -224,8 +224,8 @@
 			}
 			
 			if($("#mem_ceocheckimg_file").val() != '' && $("#mem_ceocheckimg_file").val() != null){
-				$("#mem_status").val(2);
-				$("#mem_level").val(1);
+				$("#mem_status").val(0);
+				$("#mem_level").val(2);
 			}
 		});
 		
