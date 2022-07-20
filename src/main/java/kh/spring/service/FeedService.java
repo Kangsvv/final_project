@@ -17,8 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kh.spring.dao.FeedDAO;
 import kh.spring.dao.Feed_imgDAO;
 import kh.spring.dao.MemberDAO;
-import kh.spring.dto.CafeinDTO;
-import kh.spring.dto.Cafein_imgDTO;
+import kh.spring.dto.BookmarkDTO;
 import kh.spring.dto.FeedDTO;
 import kh.spring.dto.Feed_imgDTO;
 
@@ -118,6 +117,15 @@ public class FeedService {
 			Feed_imgDTO fdto = fdao.selectBySeq(cafefeed_seq);
 		
 			model.addAttribute("fdto",fdto);
+			
+			//-------------------- 북마크 ---------------------
+//			if ((String)session.getAttribute("loginID") != null) {
+//				String id = (String)session.getAttribute("loginID");// 로그인 id
+//				model.addAttribute("isDetailBook", dao.isDetailBook(cafefeed_seq, id));// 해당 게시글에 찜 했는지 정보
+//			}
+			
+			
+			
 		}
 		public void deleteFeedBySeq(int cafefeed_seq,String realPath,MultipartFile file) throws Exception {
 			//해당 경로에 이미지파일 있으면 삭제
@@ -160,5 +168,14 @@ public class FeedService {
 			dao.update(dto);
 			fdao.update(oriName,sysName,cafefeed_seq);
 			
+		}
+		public void bookmarkInsert(int cafefeed_seq) throws Exception{
+			String id = (String)session.getAttribute("loginID");
+			
+			BookmarkDTO dto = new BookmarkDTO();
+			dto.setCafefeed_seq(cafefeed_seq);
+			dto.setId(id);
+			
+			dao.bookmarkInsert(dto);
 		}
 }
