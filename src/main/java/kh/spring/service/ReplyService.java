@@ -73,7 +73,9 @@ public class ReplyService {
 		
 		return list;
 	}
-	public void replyCount(int cafefeed_seq) throws Exception {
+	public void replyCount(Model model, int cafefeed_seq) throws Exception {
+		int replyCnt = dao.replyCount(cafefeed_seq);
 		
+		model.addAttribute("rCnt", replyCnt);
 	}
 }

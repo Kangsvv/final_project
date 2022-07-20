@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kh.spring.dto.CafeinDTO;
+import kh.spring.dto.BookmarkDTO;
 import kh.spring.dto.FeedDTO;
 import kh.spring.dto.Feed_imgDTO;
 
@@ -72,5 +72,19 @@ public class FeedDAO {
 	public void countUp(int cafefeed_seq) {
 		mybatis.update("Feed.countUp",cafefeed_seq);
 	}
-
+	public void bookmarkInsert(BookmarkDTO dto) throws Exception {
+		
+		mybatis.insert("Feed.bookmarkInsert", dto);
+	}
+	public void bookmarkDelete(BookmarkDTO dto) throws Exception {
+		
+		mybatis.delete("Feed.bookmarkDelete", dto);
+	}
+	public boolean isDetailBook(BookmarkDTO dto) throws Exception {
+		
+		return mybatis.selectOne("Feed.isDetailBook", dto);
+	}
+	public int isBookChecking(BookmarkDTO dto) throws Exception {
+		return mybatis.selectOne("Feed.isBookChecking", dto);
+	}
 }

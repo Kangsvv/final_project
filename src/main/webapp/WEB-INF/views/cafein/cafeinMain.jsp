@@ -224,8 +224,27 @@ nav button:hover{
                   <a class="nav-link" href="#">FEED</a>
                   <a class="nav-link" href="#">CAFE-IN</a>
                   <a class="nav-link" href="#">NOTICE</a>
-                  <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
-				  <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
+                
+                <c:choose>
+						<c:when test="${mdto==null}">
+							<li class="nav-item d-lg-none"><a
+								class="nav-link mx-0 mx-md-0 mx-lg-3"
+								href="/Member/loginView.jsp" id="board">Login</a></li>
+							<li class="nav-item d-lg-none"><a
+								class="nav-link mx-0 mx-md-0 mx-lg-3"
+								href="/Member/joinView.jsp" id="board">Signup</a></li>
+						</c:when>
+						
+						<c:otherwise>
+							<li class="nav-item d-lg-none"><a
+								class="nav-link mx-0 mx-md-0 mx-lg-3"
+								href="#" id="board">Logout</a></li>
+							<li class="nav-item d-lg-none"><a
+								class="nav-link mx-0 mx-md-0 mx-lg-3"
+								href="#" id="board">Mypage</a></li>
+						</c:otherwise>
+					</c:choose>
+                
                 </div>
               </div>
               <button id="login" type="button"
