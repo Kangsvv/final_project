@@ -181,54 +181,9 @@ nav button:hover{
 </style>
 <body style="background-color:#222;">
      <!------------------------------------------------------------header----------------------------------------------------->
-<<<<<<< HEAD
+
 <div id="header"><jsp:include page="header.jsp"/> </div>
-=======
-     
-   
-   
-        <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">CAFEIN</a>
-              <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">▼</span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link" href="#">HOME</a>
-                  <a class="nav-link" href="#">FEED</a>
-                  <a class="nav-link" href="#">CAFE-IN</a>
-                  <a class="nav-link" href="#">NOTICE</a>
-                
-                <c:choose>
-						<c:when test="${mdto==null}">
-							<li class="nav-item d-lg-none"><a
-								class="nav-link mx-0 mx-md-0 mx-lg-3"
-								href="/Member/loginView.jsp" id="board">Login</a></li>
-							<li class="nav-item d-lg-none"><a
-								class="nav-link mx-0 mx-md-0 mx-lg-3"
-								href="/Member/joinView.jsp" id="board">Signup</a></li>
-						</c:when>
-						
-						<c:otherwise>
-							<li class="nav-item d-lg-none"><a
-								class="nav-link mx-0 mx-md-0 mx-lg-3"
-								href="#" id="board">Logout</a></li>
-							<li class="nav-item d-lg-none"><a
-								class="nav-link mx-0 mx-md-0 mx-lg-3"
-								href="#" id="board">Mypage</a></li>
-						</c:otherwise>
-					</c:choose>
-                
-                </div>
-              </div>
-              <button id="login" type="button"
-                    class="mx-1 d-none d-lg-inline btn navbar-btn">Login</button>
-                    <button id="signup" type="button"
-                    class="mx-1 d-none d-lg-inline btn navbar-btn">Signup</button>
-            </div>
-          </nav>
->>>>>>> 3d5fa58faefee568b6ad50f8d09d1d42deb2eb27
+
 <!-----------------------------------------------검색 DIV------------------------------------------->
  <div id="con1">
      

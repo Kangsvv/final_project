@@ -104,11 +104,12 @@ nav a{
 }
 .navbar-nav{
    min-width:450px;
+   margin-left:5%;
 }
 .navbar-nav a{
     color: white;
     border-radius: 5px;
-    margin-right: 20px;
+    margin-right: 10%;
 }
 .navbar-nav a:hover{
     color: black;
@@ -130,6 +131,9 @@ nav button:hover{
     color: black;
     background-color: white;
 }
+.logo{
+width:100px;
+}
 
 
 </style>
@@ -138,7 +142,7 @@ nav button:hover{
      
      <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">CAFEIN</a>
+        <img src="/img/logo4.png" class="logo">
         <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon">▼</span>
         </button>
