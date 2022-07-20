@@ -430,7 +430,7 @@ li.dropdown {
 
 <br>
  	<div class="row col-12 titlebox">
-      <input type="text" class="main" style="color:white; text-align: center; margin: auto;" value="${dto.title }" disabled>
+      <input type="text" class="main" style="color:white; text-align: center; margin: auto;" value="${dto.title }" disabled maxlength="33">
     </div>
       <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
@@ -451,19 +451,21 @@ li.dropdown {
 
 			<div> 
 			<textarea class="row col-12 eventbox"
-				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled>${dto.contents }</textarea>
+				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled maxlength="1300">${dto.contents } </textarea>
 
 				<c:choose>
 					<c:when test="${loginID =admin }">
 						<div class="col-12 create">
-							<input type="button" class="upbtn" value="수정"> <input
-								type="button" class="delbtn" value="삭제"> <input
-								type="button" class="backbtn" value="뒤로">
+							<input type="button" class="upbtn" value="수정"> 
+							<input type="button" class="delbtn" value="삭제"> 
+							<input type="button" class="backbtn" value="뒤로">
 						</div>
 					</c:when>
 
 					<c:otherwise>
 						<div class="col-12 create">
+							<input type="button" class="upbtn" value="수정"> 
+							<input type="button" class="delbtn" value="삭제"> 
 							<input type="button" class="backbtn" value="뒤로">
 						</div>
 					</c:otherwise>
@@ -499,10 +501,9 @@ li.dropdown {
 	</div>
 <!-------------------------------------------------------Footer------------------------------------------------->
 
-</body>
-
 
 <script>
+
 $(".que").click(function() {
    $(this).next(".anw").stop().slideToggle(300);
    $(this).toggleClass('on').siblings().removeClass('on');
@@ -563,9 +564,16 @@ $(".upbtn").on("click",function(){
 	})
 });
 
-// 수정완료 버튼
+// 수정완료 버튼  -> 현재 alert 조건 설정 중
 $(".create").on("click", "#modifyBtn",function(){
-	
+	var regtitile = $(".main").val();
+	var regcontents =$(".eventbox").val();
+	if($(".main").val() == null || $(".eventbox").val()==null){
+		alert("수정할 제목과 내용을 입력해주세요")
+		return false;
+	};
+		
+		
 	let seq = "${dto.seq}"; // 게시글 고유 넘버
 	let title = $(".main").val();
 	let contents = $(".eventbox").val(); // 게시글 내용
@@ -576,13 +584,15 @@ $(".create").on("click", "#modifyBtn",function(){
 		data : {seq:seq, title:title , contents:contents},
 	}).done(function(resp){
 		if(resp == "true"){
+			alert("제목과 내용을 입력하세요");
 			location.reload();//새로 고침	
 		}
 
 	})
-})
-	
+});
 
 </script>
+
+</body>
 
 </html>
