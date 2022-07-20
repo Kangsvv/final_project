@@ -154,3 +154,7 @@ ul {
 .pwSearch {
 	display: none;
 }
+
+html, body {
+	height: 100%;
+}

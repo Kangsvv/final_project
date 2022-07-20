@@ -11,9 +11,9 @@
 <style type="text/css">
 </style>
 </head>
-<body style="background-color: #222;  margin: 0px;">
-	<div class='signUp wrap'>
-		<div style="background-color: white; max-width: 450px; height: 100vmin; margin: 0px auto;">
+<body style="background-color: #222;  margin: 0px; height:100%;">
+	<div class='signUp wrap' style="height:100%;">
+		<div style="background-color: white; max-width: 450px; height: 100%; margin: 0px auto;">
 			<div class='center_row'>
 				<h1 style="margin: 0px;">회원가입</h1>
 				<form action="joinAction" method="post" class='loginFrom max-W360' enctype="multipart/form-data">
@@ -66,6 +66,7 @@
 					<input id='mem_level' name='mem_level' style="display: none;" value='0'>
 					<input id='mem_status' name='mem_status' style="display: none;" value='0'>
 					<input type='hidden' id='mem_phone' name='mem_phone' maxlength="12">
+					<input id='mem_oriname' type="hidden" name='mem_oriname' value=''>
 					<button class='btn_main bt_1' id='signUpBtn'>회원가입</button>
 				</form>
 		
@@ -223,8 +224,8 @@
 			}
 			
 			if($("#mem_ceocheckimg_file").val() != '' && $("#mem_ceocheckimg_file").val() != null){
-				$("#mem_status").val(2);
-				$("#mem_level").val(1);
+				$("#mem_status").val(0);
+				$("#mem_level").val(2);
 			}
 		});
 		
