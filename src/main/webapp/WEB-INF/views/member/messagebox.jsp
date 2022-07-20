@@ -161,7 +161,7 @@ border-bottom : 1px solid black;
 <body>
  <div id="header"><jsp:include page="header.jsp"/> </div>
           
-    <div class="container">
+    <div class="container" style="height:800px;">
         <div class="row">
 
             <div class="col-12">

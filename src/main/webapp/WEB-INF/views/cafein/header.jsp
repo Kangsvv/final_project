@@ -144,18 +144,38 @@ nav button:hover{
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="#">HOME</a>
-            <a class="nav-link" href="#">FEED</a>
-            <a class="nav-link" href="#">CAFE-IN</a>
-            <a class="nav-link" href="#">NOTICE</a>
+            <a class="nav-link" href="/">HOME</a>
+            <a class="nav-link" href="/feed/goFeed?page=1">FEED</a>
+            <a class="nav-link" href="/cafein/goCafein?page=1">CAFE-IN</a>
+            <a class="nav-link" href="/notice/FAQ">NOTICE</a>
+             <c:choose>
+				<c:when test="${empty loginID}">
             <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
-        <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
+        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
+          </c:when>
+         <c:otherwise>
+          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/mypage/mypage" id="board">myPage</a></li>
+          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/logout" id="board">logout</a></li>
+         </c:otherwise>          
+          </c:choose>
           </div>
         </div>
-        <button id="login" type="button"
-              class="mx-1 d-none d-lg-inline btn navbar-btn">Login</button>
-              <button id="signup" type="button"
-              class="mx-1 d-none d-lg-inline btn navbar-btn">Signup</button>
+        <c:choose>
+		<c:when test="${empty loginID}">
+		     <button id="login" type="button"
+              class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/login' ">Login</button>
+        	 <button id="signup" type="button"
+              class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/signUp' ">Signup</button>
+	    </c:when>
+	    <c:otherwise>
+	    	 <button id="login" type="button"
+              class="mx-1 d-none d-lg-inline btn navbar-btn"  onclick="location.href='/mypage/mypage' ">myPage</button>
+	    	 <button id="login" type="button"
+              class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/logout' ">logout</button>
+	    </c:otherwise>
+    </c:choose>
+        
+        
       </div>
     </nav> 
 </body>
