@@ -491,8 +491,43 @@ nav button:hover{
        });
        
     }
-   
+    let book = true;
+    if(${isBookOk!=null}){
+        if(${isBookOk==true}){
+           alert("이미 좋아요가 눌려있습니다.")
+           book=false;
+        }
+     }
+    let bUpDown = 0;
+    $(".fa-bookmark").on("click", function () {
+        if(${loginID == null}){
+           alert("로그인이 필요합니다.");
+           return false;
+        }
+       
+        if (book) {
+        	book=false;
+            alert("좋아요가 눌렸습니다.");
+        } else {
+        	book=true;
+            alert("좋아요가 취소되었습니다.");
+        }
+        if(book == false){
+           bUpDown = 1;
+        }else{
+           bUpDown = 0;
+        }
+        $.ajax({
+				url:"/feed/clickBook",
+				data:{cafefeed_seq:${dto.cafefeed_seq},
+					upDown:bUpDown},
+				dataType:"json"
+		}).done(function(resp){
+				console.log(resp);
+		})
+    })
    </script>
+
     <!------------------------------------------------------------header----------------------------------------------------->
      
         <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
@@ -588,17 +623,7 @@ nav button:hover{
                      </span>
                   </div>
                </div>
-               <script>
-               		$(".fa-bookmark").on("click",function(){
-               			$.ajax({
-               				url:"/feed/clickBook",
-               				data:{cafefeed_seq:${dto.cafefeed_seq}},
-               				dataType:"json"
-               			}).done(function(resp){
-               				console.log(resp);
-               			})
-               		})
-               </script>
+
 
             </div>
             <div class="replyWriteBox">

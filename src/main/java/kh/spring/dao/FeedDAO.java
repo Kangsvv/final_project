@@ -76,4 +76,15 @@ public class FeedDAO {
 		
 		mybatis.insert("Feed.bookmarkInsert", dto);
 	}
+	public void bookmarkDelete(BookmarkDTO dto) throws Exception {
+		
+		mybatis.delete("Feed.bookmarkDelete", dto);
+	}
+	public boolean isDetailBook(BookmarkDTO dto) throws Exception {
+		
+		return mybatis.selectOne("Feed.isDetailBook", dto);
+	}
+	public int isBookChecking(BookmarkDTO dto) throws Exception {
+		return mybatis.selectOne("Feed.isBookChecking", dto);
+	}
 }

@@ -98,6 +98,12 @@
 		insert into bookmark values(#{cafefeed_seq}, #{id})
 	</insert>
 	<delete id="bookmarkDelete">
-		delete
+		delete from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
 	</delete>
+	<select id="isDetailBook" resultType="boolean">
+		select * from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
+	</select>
+	<select id="isBookChecking" resultType="int">
+		select count(*) from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
+	</select>
 </mapper>

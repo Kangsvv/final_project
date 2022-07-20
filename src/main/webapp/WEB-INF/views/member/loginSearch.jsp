@@ -10,9 +10,9 @@
 <style type="text/css">
 </style>
 </head>
-<body style="background-color: #222; margin: 0px;">
-	<div class='idSearch wrap'>
-		<div style="background-color: white; max-width: 450px; height: 100vmin; margin: 0px auto;">
+<body style="background-color: #222; margin: 0px; height:100%;">
+	<div class='idSearch wrap' style="height: 100% 	">
+		<div style="background-color: white; max-width: 450px; height: 100%; margin: 0px auto;">
 			<div class='center_row'>
 				<h1 class='id_result' style="margin: 0px;">아이디 찾기</h1>
 				<h1 class='pw_result' style="margin: 0px; display: none;">패스워드 찾기</h1>
