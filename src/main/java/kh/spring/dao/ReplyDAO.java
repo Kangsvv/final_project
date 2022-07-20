@@ -26,6 +26,8 @@ public class ReplyDAO {
 		int start = (page-1)*10+1;
 		int end = (page)*10;
 		
+		System.out.println(start +" : "+ end);
+		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		
 		map.put("start", start);
@@ -36,5 +38,16 @@ public class ReplyDAO {
 	}
 	public void deleteReply(int seq) throws Exception{
 		mybatis.delete("Feed.reply_delete", seq);
+	}
+	public void ModifyReply(ReplyDTO dto) {
+		mybatis.update("Feed.reply_update", dto);
+	}
+	public List<ReplyDTO> selectBySeqOne(int seq) throws Exception {
+		
+		return mybatis.selectOne("Feed.replylist_selectOne", seq);
+	}
+	// 댓글 수 나오기
+	public int replyCount(int cafefeed_seq)throws Exception{
+		return mybatis.selectOne("Feed.feed-replyCount", cafefeed_seq);
 	}
 }

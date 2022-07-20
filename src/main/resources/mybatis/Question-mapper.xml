@@ -15,18 +15,36 @@
 
 	
 <delete id="delete">
-	delete from question where seq= #{seq}
+	delete from question where question_seq= #{question_seq}
 </delete>
 
 <update id="modify">
-	update question set title = #{title}, contents = #{contents} where seq = #{seq}
+	update question set title = #{title}, contents = #{contents} where question_seq = #{question_seq}
 </update>
 
 	<select id="read" resultType="kh.spring.dto.QuestionDTO">
-		select * from question where seq = #{seq}
+		select * from question where question_seq = #{question_seq}
 	</select>
 
 	
+<!--댓글-->
 	
+  <select id = "reply_list" resultType="kh.spring.dto.QreplyDTO">
+  	select * from reply where question_seq = #{question_seq}
+  </select>
+  
+  
+  <insert id = "reply_insert">
+    insert into reply values(reply_seq.nextval, #{question_seq}, #{contents}, 123, sysdate)
+  </insert>
+	
+	
+<delete id="reply_delete">
+	delete from reply where reply_seq = #{reply_seq}
+</delete>
+	
+<update id = "reply_update">
+	update reply set contents= #{contents} where reply_seq = #{reply_seq}
+</update>
 	
 </mapper>

@@ -43,6 +43,13 @@ public class FeedController {
 		serv.feed_imglist(model,cpage);
 		return "/feed/feedMain";
 	}
+	@RequestMapping("goUpdate")
+	public String goUpdate(Model model, int cafefeed_seq) throws Exception{
+		
+		serv.selectBySeq(model, cafefeed_seq);
+		
+		return "/feed/feedUpdate";
+	}
 	
 //	@RequestMapping("feed_imglist")
 //	public String feed_imglist(Model model) throws Exception {
@@ -65,12 +72,12 @@ public class FeedController {
 	public String detailView(Model model, int cafefeed_seq) throws Exception{
 		
 		int page = 1;
-		
-		System.out.println("Controller CS : " + cafefeed_seq);
+//		System.out.println("Controller CS : " + cafefeed_seq);
 		
 		serv.selectBySeq(model, cafefeed_seq);
 		System.out.println("selectBySeq 에 관한 페이지"+page);
 		rServ.selectBySeq(model, cafefeed_seq, page);
+		rServ.replyCount(model, cafefeed_seq);
 		
 		return "/feed/detailView";
 	}
@@ -98,6 +105,15 @@ public class FeedController {
 		model.addAttribute("list", list);
 		return "/feed/feedSearchResult";
 	}
+	// 리뷰 게시글 업데이트 
+	@RequestMapping(value="feed_update",produces="application/text;charset=utf-8")
+	public String feed_update(String title,String contents, String realPath,int cafefeed_seq, MultipartFile file) throws Exception {
+		
+		System.out.println(title);
+		
+		serv.update(title, contents, cafefeed_seq, realPath, file);
+		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;
+	}
 	// 리뷰 게시글 삭제
 	@RequestMapping("deleteFeed")
 	public String deleteFeed(int cafefeed_seq, String realPath, MultipartFile file) throws Exception{
@@ -107,19 +123,34 @@ public class FeedController {
 		return "redirect:/feed/goFeed?page=1";
 	}
 	// 댓글 달기
-	@ResponseBody
 	@RequestMapping("replyWrite")
-	public List<ReplyDTO> replyWrite(Model model, int cafefeed_seq, String contents) throws Exception{
+	public String replyWrite(Model model, int cafefeed_seq, String contents) throws Exception{
 		
 		rServ.replyWriteProc(cafefeed_seq, contents);
-		return rServ.selectBySeq(model, cafefeed_seq);
+		
+		
+		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;
 		
 //		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
 	}
-	@RequestMapping("deleteReply")
-	public String deleteReply(Model model, int seq, int cafefeed_seq) throws Exception{
+	@RequestMapping("replyDel")
+	public String replyDel(Model model, int seq, int cafefeed_seq) throws Exception{
+		
+		System.out.println("댓글 삭제 : " + seq);
 		
 		rServ.deleteReply(seq);
+//		rServ.selectBySeq(model, cafefeed_seq);
+		
+		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;
+		
+//		return "redirect:/feed/selectBySeq?cafefeed_seq=" + cafefeed_seq;
+	}
+	@RequestMapping("replyModify")
+	public String replyModify(Model model, int seq, String contents,int cafefeed_seq) throws Exception{
+		
+		System.out.println("댓글 수정 : " + seq + " : " + contents);
+		
+		rServ.ModifyReply(seq, contents);
 //		rServ.selectBySeq(model, cafefeed_seq);
 		
 		return "redirect:/feed/selectBySeq?cafefeed_seq="+cafefeed_seq;
@@ -129,9 +160,24 @@ public class FeedController {
 	@ResponseBody
 	@RequestMapping("replyList")
 	public List<ReplyDTO> replyList(Model model, int cafefeed_seq, int page) throws Exception{
-		System.out.println("replyList 에 관한 페이지"+page);
+//		System.out.println("replyList 에 관한 페이지"+page);
 		System.out.println("댓글 리스트 가져오는 중");
 		return rServ.selectBySeq(model, cafefeed_seq, page);
+	}
+	@RequestMapping("clickBook")
+	public String clickBook(Model model,int upDown, int cafefeed_seq) throws Exception{
+		
+		if (upDown == 1) {
+			serv.bookmarkInsert(cafefeed_seq);// 북마크 테이블에 게시글 정보(해당 게시글seq, 내 id) 추가
+			System.out.println("북마크 추가");
+		} else if (upDown == 0) {
+			serv.bookmarkDelete(cafefeed_seq);// 좋아요 테이블에서 게시글 정보 삭제
+			System.out.println("북마크 삭제");
+		}
+		
+		
+		return "1";
+//		return rServ.selectBySeq(model, cafefeed_seq, page);
 	}
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class

@@ -1,7 +1,6 @@
 package kh.spring.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Random;
 
 import javax.annotation.Resource;
@@ -43,15 +42,10 @@ public class MemberController {
 	@Autowired
 	private HttpSession session;
 
-	@ExceptionHandler //예외 공동 처리
-	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
-		e.printStackTrace();
-		return "error";
-	}
-
+	
 	// 인증번호 메일 보내기
 	@RequestMapping(value = "sendEmail", method=RequestMethod.GET)
-	public String mailSending(HttpServletRequest request, String email, HttpServletResponse response, String num) throws IOException {
+	public String mailSending(HttpServletRequest request, String email, HttpServletResponse response, String num) throws Exception {
 		String setfrom = "slamp1022@naver.com";
 		String tomail = email;
 		String title = "CafeIn 인증번호입니다.";
@@ -59,7 +53,7 @@ public class MemberController {
 				+ System.getProperty("line.separator")
 				+ "인증번호는 : " + num + "입니다."
 				+ System.getProperty("line.separator");
-		try {
+		 	
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 			messageHelper.setFrom(setfrom);
@@ -67,9 +61,7 @@ public class MemberController {
 			messageHelper.setSubject(title);
 			messageHelper.setText(content);
 			mailSender.send(message);
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		return title;
 	}
 
@@ -133,11 +125,11 @@ public class MemberController {
 
 	// 회원가입 처리
 	@RequestMapping("joinAction")
-	public String joinAction(MemberDTO member, Model model, @RequestParam(value = "file", required = false) MultipartFile file) {
+	public String joinAction(MemberDTO member, Model model, @RequestParam(value = "file", required = false) MultipartFile file) throws Exception{
 		String fileUpload = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(fileUpload);
 		String fileName = null;
-		try {
+		
 			if(member.getmem_level() == 1) {
 				if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
 					fileName =  UploadFileUtils.fileUpload(fileUpload, file.getOriginalFilename(), file.getBytes(), ymdPath); 
@@ -148,15 +140,14 @@ public class MemberController {
 				member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 			}
 			// 회원가입 처리
+			System.out.println(member);
 			int result = memberService.joinAction(member);
 			member.setmem_pw(null);
 			if(result > 0 && member.getmem_level() == 0) {
 				model.addAttribute("loginMember", member);
 			}
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		
 		return "redirect:/";
 	}
@@ -210,7 +201,7 @@ public class MemberController {
 	public int kakaoLogin(String email, String name, Model model, RedirectAttributes rdAttr) {
 		int result = 0;
 		MemberDTO member = new MemberDTO();
-		member.setmem_id("kakao_" + email.split("@")[0]);
+		member.setmem_id(email.split("@")[0]);
 		member.setmem_name(name);
 		member.setmem_email(email);
 		
@@ -276,5 +267,11 @@ public class MemberController {
 			int result = 0;
 			result = memberService.memberemailCheck(email);
 			return result;
+		}
+		
+		@ExceptionHandler //예외 공동 처리
+		public String exceptionHandler(Exception e) {
+			e.printStackTrace();
+			return "error";
 		}
 }

@@ -17,8 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kh.spring.dao.FeedDAO;
 import kh.spring.dao.Feed_imgDAO;
 import kh.spring.dao.MemberDAO;
-import kh.spring.dto.CafeinDTO;
-import kh.spring.dto.Cafein_imgDTO;
+import kh.spring.dto.BookmarkDTO;
 import kh.spring.dto.FeedDTO;
 import kh.spring.dto.Feed_imgDTO;
 
@@ -27,6 +26,7 @@ public class FeedService {
 
 	@Autowired
 	private FeedDAO dao;
+	
 	
 	@Autowired
 	private HttpSession session;
@@ -106,19 +106,38 @@ public class FeedService {
 		// 카페 상세 페이지 출력 detailView
 		@Transactional
 		public void selectBySeq(Model model,int cafefeed_seq) throws Exception {
-			System.out.println("Service CS : " + cafefeed_seq );
+			
+			//-------------조회수업----------------------
+			dao.countUp(cafefeed_seq);
+
 			//-------------리뷰정보----------------------
 			FeedDTO dto = dao.selectBySeq(cafefeed_seq);
-			
-			System.out.println(dto);
-			
+					
 			model.addAttribute("dto",dto);
 			//-------------리뷰이미지----------------------
 			Feed_imgDTO fdto = fdao.selectBySeq(cafefeed_seq);
-			
-			System.out.println(fdto);
-			
+		
 			model.addAttribute("fdto",fdto);
+			
+			
+			//-------------------- 북마크 ---------------------
+			if ((String)session.getAttribute("loginID") != null) {
+				String id = (String)session.getAttribute("loginID");// 로그인 id
+				
+				BookmarkDTO bdto = new BookmarkDTO();
+				
+				System.out.println(cafefeed_seq + " : " + id);
+				bdto.setCafefeed_seq(cafefeed_seq);
+				bdto.setId(id);
+				boolean isBookOk = dao.isDetailBook(bdto);
+				int bookCheck = dao.isBookChecking(bdto);
+				if(bookCheck != 0) {
+				model.addAttribute("isBookOk", isBookOk);// 해당 게시글에 찜 했는지 정보
+				}
+			}
+			
+			
+			
 		}
 		public void deleteFeedBySeq(int cafefeed_seq,String realPath,MultipartFile file) throws Exception {
 			//해당 경로에 이미지파일 있으면 삭제
@@ -129,5 +148,55 @@ public class FeedService {
 
 			dao.delete(cafefeed_seq);
 			fdao.delete(cafefeed_seq);
+		}
+		@Transactional
+		public void update(String title, String contents, int cafefeed_seq, String realPath, MultipartFile file) throws Exception{
+			// 실시간으로 데이터를 만질려고
+			// 실시간으로 데이터를 만질려고
+			realPath = session.getServletContext().getRealPath("/resources/feed"); // 서버 경로 불러오는 거
+			System.out.println(realPath);
+			File filePath = new File(realPath);
+			if(!filePath.exists())filePath .mkdir();
+			System.out.println(realPath);
+			String oriName =file.getOriginalFilename(); // DB용
+			String sysName = UUID.randomUUID() + "_"+oriName; //UUID.randomUUID()중복되지 임의값을 만들어 리턴 oriname 
+			file.transferTo(new File(realPath + "/"+sysName)); // 서버 경로 저장하기
+			// 영구적으로 로컬 환경에도 옮겨야됨.
+//			String  localPath ="C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
+//			String  localPath ="A:/springWorkspace/final_project/src/main/webapp/resources/feed";
+			String localPath= "C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
+			File realFile = new File(realPath + "/"+sysName); // 파일 객체를 만든거예요 - 파일 데이터가 들어가 있음
+			File localFile = new File(localPath + "/"+sysName); // 파일 객체를 만든거고 - 빈 껍데기
+			// 실제 메모리상에 이 파일 객체 있는 거임.
+
+			// 로컬 경로 복사
+			Files.copy(realFile.toPath(), localFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+			// toPath() : 객체 안에 저장된 경로를 불러오는거
+			// StandardCopyOption.REPLACE_EXISTING : 저장 옵션 - 덮어쓰기
+			FeedDTO dto = new FeedDTO();
+			dto.setCafefeed_seq(cafefeed_seq);
+			dto.setTitle(title);
+			dto.setContents(contents);
+			dao.update(dto);
+			fdao.update(oriName,sysName,cafefeed_seq);
+			
+		}
+		public void bookmarkInsert(int cafefeed_seq) throws Exception{
+			String id = (String)session.getAttribute("loginID");
+			
+			BookmarkDTO dto = new BookmarkDTO();
+			dto.setCafefeed_seq(cafefeed_seq);
+			dto.setId(id);
+			
+			dao.bookmarkInsert(dto);
+		}
+		public void bookmarkDelete(int cafefeed_seq) throws Exception{
+			String id = (String)session.getAttribute("loginID");
+			
+			BookmarkDTO dto = new BookmarkDTO();
+			dto.setCafefeed_seq(cafefeed_seq);
+			dto.setId(id);
+			
+			dao.bookmarkDelete(dto);
 		}
 }

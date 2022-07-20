@@ -3,18 +3,18 @@ package kh.spring.controller;
 
 import java.util.List;
 
-import org.apache.commons.io.input.ClassLoaderObjectInputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.spring.dao.MemberDAO;
 import kh.spring.dto.Cafein_imgDTO;
-import kh.spring.dto.Cafein_likeDTO;
-import kh.spring.dto.FeedDTO;
+import kh.spring.dto.MemberDTO;
 import kh.spring.service.CafeinService;
 
 @Controller
@@ -25,6 +25,10 @@ public class CafeinController {
 	
 	@Autowired
 	private CafeinService serv;
+	
+	@Autowired
+	private MemberDAO mdao;
+	
 	
 	//----------------------Cafein 리스트---------------------
 	@RequestMapping("goCafein")
@@ -129,16 +133,39 @@ public class CafeinController {
 	}
 	//-----------------------쪽지보내기-----------------------------------
 	@RequestMapping("message")
-	public String message(int seq,String title,String receiver,String receiver_email,String contents)throws Exception{
+	public String message(int seq,String title,String receiver,String receiver_email,String contents,String cafe)throws Exception{
 		System.out.println(title);
 		System.out.println(contents);
 		
-		serv.message(title,receiver,receiver_email,contents);
+		serv.message(title,receiver,receiver_email,contents,seq,cafe);
 		
 		return "redirect:/cafein/selectBySeq?cafein_seq="+seq;
 		
 	}
-	
+	//----------------------쪽지 보내기2----------------------------------
+	@RequestMapping("message2")
+	public String message2(String title,String sender,String sender_email,String receiver_email,String contents)throws Exception{
+		System.out.println(title);
+		System.out.println(sender);
+		System.out.println(sender_email);
+		System.out.println(receiver_email);
+		System.out.println(contents);
+		
+		MemberDTO memdto = new MemberDTO();
+		memdto=mdao.email_member(receiver_email);
+		String receiver=memdto.getmem_name();
+		System.out.println(receiver);
+		serv.message2(title,sender,sender_email,receiver,receiver_email,contents);
+		
+		return "redirect:/cafein/messagebox";
+		
+	}
+	//-----------------------쪽지함 출력----------------------------------
+	@RequestMapping("messagebox")
+	public String messagebox(Model model)throws Exception{
+		serv.messagebox(model);
+		return "/member/messagebox";
+	}
 	
 	
 	//------------------------좋아요기능----------------------------------

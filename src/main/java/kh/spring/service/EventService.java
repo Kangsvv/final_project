@@ -28,7 +28,9 @@ public List<EventDTO> event_selectAll() throws Exception {
 }
 
 public void selectBySeq(Model model, int seq) throws Exception {
+	
 	EventDTO dto = dao.selectBySeq(seq);
+	dao.update(seq);
 	model.addAttribute("dto",dto);
 }
 
@@ -40,11 +42,8 @@ public int modify(EventDTO dto) throws Exception {
 	return dao.modify(dto);
 }
 
-/* 추후 조회수 기능 추가 가능하면 다시 진행
- * public void update(int count) throws Exception { dao.update(count); }
- */
 
 }
 
 
-/* 순서 : Mepper > DAO > Service > Controller > Service */
+/* 순서 : Mepper < DAO < Service < Controller < jsp */

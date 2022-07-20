@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kh.spring.service.ManagerService;
 
@@ -29,10 +30,11 @@ public class ManagerController {
 		return "/manager/managerCEO";
 	}
 	
+	@ResponseBody
 	@RequestMapping("delete")
 	public String managerCEO(String id) throws Exception{
 		serv.delete(id);
-		return "redirect:/manager/goAdmin";
+		return "true";
 	}
 	
 	@RequestMapping("deleteCEO")
@@ -40,6 +42,30 @@ public class ManagerController {
 		serv.delete(id);
 		return "redirect:/manager/ceoMember";
 	}
+	
+	@ResponseBody
+	@RequestMapping("CEOok")
+	public String CEOok(String id) throws Exception{
+		serv.CEOok(id);
+		
+		return "true";
+	}
+	
+	@ResponseBody
+	@RequestMapping("leveldown")
+	public String leveldown(String id) throws Exception{
+		serv.leveldown(id);
+		
+		return "true";
+	}
+
+	@RequestMapping("test")
+	public String test() throws Exception{
+		return "/test";
+	}
+	
+	
+
 	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class

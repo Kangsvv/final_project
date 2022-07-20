@@ -22,6 +22,8 @@
    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
    crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
 
 <title>문의사항</title>
 
@@ -301,6 +303,23 @@ li.dropdown {
 
 .show {display:block;}
 
+#example_length,#example_info{
+display: none;
+}
+
+#Noticecontainer::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+#Noticecontainer::-webkit-scrollbar-thumb {
+    height: 15%; /* 스크롤바의 길이 */
+    background: none; /* 스크롤바의 색상 */
+}
+
+#Noticecontainer::-webkit-scrollbar-track {
+    background: none;  /*스크롤바 뒷 배경 색상*/
+}
+
 </style>
 
 </head>
@@ -348,50 +367,50 @@ li.dropdown {
 	
       <div id="Noticecontainer">
 
+<c:choose>
+				<c:when test="${empty qlist}">
+					<div>현재 등록된 게시글이 없습니다.</div>
+				</c:when>
+				<c:otherwise>
 
+<table id="example" class="display" style="width:100%;">
+        <thead>
+            <tr>
+                <th style="text-align: center;" class="bluck">글번호</th>
+                <th style="text-align: center;">제목</th>
+                <th style="text-align: center;">작성자</th>
+                <th style="text-align: center;" class="bluck">작성일</th>
+            </tr>
+        </thead>
+        
+        
+        <tbody>
+            <c:forEach var="i" items="${qlist}">
+             <tr>
+                <th class="bluck">${i.question_seq}</th>
+                <th><a href="/question/question_detail?question_seq=${i.question_seq }" style="text-decoration: none; color: black;" >${i.title}</a></th>
+                <th>${i.writer}</th>
+                <th class="bluck">${i.write_date}</th>
+            </tr>
+            
+            </c:forEach>
+        </tbody>
+				
+    </table>
+</c:otherwise>
+				</c:choose>
 
-         <div class="row col-12 titlebox">
-            <div class="col-1 title_head">No.</div>
-            <div class="col-7 title_head">제목</div>
-            <div class="col-2 title_head">글쓴이</div>
-            <div class="col-2 title_head">작성일</div>
-         </div>
+		
          
-         
-       <c:forEach var="i" items="${qlist }"> 
-        <a href="/question/question_detail?seq=${i.seq }">
-         <div class="row col-12 noticbox">
-            <div class="col-1 notice">${i.seq }</div>
-            <div class="col-7 notice1">${i.title }</div>
-            <div class="col-2 notice">${i.writer }</div>
-            <div class="col-2 notice">${i.write_date }</div>
-         </div>
-         </a>
-	   </c:forEach> 
-	   
-	   
-         <div class="row col-12 noticbox">
-            <div class="col-1 notice">2</div>
-            <div class="col-7 notice1">디자인 보기용</div>
-            <div class="col-2 notice">김한중</div>
-            <div class="col-2 notice">22.07.01</div>
-         </div>
-
-         <div class="row col-12 noticbox">
-            <div class="col-1 notice">3</div>
-            <div class="col-7 notice1">디자인 보기용</div>
-            <div class="col-2 notice">김한중</div>
-            <div class="col-2 notice">22.07.01</div>
-         </div>
          
          <div class="row">
             <div class="col-12 create">
                <input type="button" class="cbtn" value="작성하기">
             </div>
          </div>
-         
+         </div>
       </div>
-</div>
+<
 
 <!-------------------------------------------------------Footer------------------------------------------------->
 	<div class="col-12 d-none d-md-block">
@@ -447,6 +466,36 @@ window.onclick = function(e) {
 $(".cbtn").click(function() {
 	location.href = "/question/question_write";
 })
+
+ var lang_kor = {
+		"decimal" : "",
+		"emptyTable" : "데이터가 없습니다.",
+		"info" : "_START_ - _END_ (총 _TOTAL_ 명)",
+		"infoEmpty" : "0명",
+		"infoFiltered" : "(전체 _MAX_ 명 중 검색결과)",
+		"infoPostFix" : "",
+		"thousands" : ",",
+		"lengthMenu" : "_MENU_ 개씩 보기",
+		"loadingRecords" : "로딩중...",
+		"processing" : "처리중...",
+		"search" : "검색 : ",
+		"zeroRecords" : "검색된 데이터가 없습니다.",
+		"paginate" : {
+			"first" : "첫 페이지",
+			"last" : "마지막 페이지",
+			"next" : "다음",
+			"previous" : "이전" },
+		"aria" : {
+			"sortAscending" : " :  오름차순 정렬",
+			"sortDescending" : " :  내림차순 정렬"
+		}
+	};
+
+$(document).ready(function() {
+		$('#example').DataTable({
+			language : lang_kor
+		});
+	});
 
 </script>
 
