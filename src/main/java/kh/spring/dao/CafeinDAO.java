@@ -41,7 +41,14 @@ public class CafeinDAO {
 	public int message(MessageDTO dto)throws Exception{
 		return mybatis.insert("Cafein.message",dto);
 	}
-	
+	//-------------------쪽지2--------------------
+	public int message2(MessageDTO dto)throws Exception{
+		return mybatis.insert("Cafein.message2",dto);
+	}
+	//------------------쪽지함--------------------
+	public List<MessageDTO> messagebox(String email)throws Exception{
+		return mybatis.selectList("Cafein.messagebox", email);
+	}
 	//--------------------좋아요-----------------
 	public int cafein_like(Cafein_likeDTO ldto)throws Exception{
 		return mybatis.insert("Cafein.cafein-like",ldto);

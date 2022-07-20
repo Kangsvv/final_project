@@ -189,7 +189,6 @@ nav button:hover{
            padding:20px;
            font-size: 16px;
             word-wrap: break-word;      /* IE 5.5-7 */
-            white-space: pre-wrap;      /* current browsers */
 /*            margin-top:20px;  */
         }
         #maincon{
@@ -536,7 +535,7 @@ nav button:hover{
                         </div>
                         <c:if test="${loginID == dto.id }">
                            <div class="col-6 col-md-3 mdbtns" style="text-align:center;"><i class="fa-solid fa-xl fa-rotate-left backBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-xl fa-pen-to-square editBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-regular fa-xl fa-trash-can deleteBtn" style="color:white;"></i></div>
-                  </c:if>
+                  		</c:if>
                      </div>
                 </div>
 
@@ -579,9 +578,8 @@ nav button:hover{
                      <span class="marginSet">
                         <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count }
                      </span>
-                     
                      <span>
-                        <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;54
+                        <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;${rCnt }
                      </span>
                   </div>
                   <div class="col-6" id="bookmark">
@@ -590,7 +588,17 @@ nav button:hover{
                      </span>
                   </div>
                </div>
-              
+               <script>
+               		$(".fa-bookmark").on("click",function(){
+               			$.ajax({
+               				url:"/feed/clickBook",
+               				data:{cafefeed_seq:${dto.cafefeed_seq}},
+               				dataType:"json"
+               			}).done(function(resp){
+               				console.log(resp);
+               			})
+               		})
+               </script>
 
             </div>
             <div class="replyWriteBox">
@@ -704,7 +712,27 @@ nav button:hover{
    <script>
       $("#replyWriteBtn").on("click", function(){
         let article = $("#replyContents").val();
-        if(article==""){
+        if(${loginID == null}){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'center-center',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+             
+            Toast.fire({
+                icon: 'error',
+                title: '로그인을 하셔야 댓글 입력이 가능합니다.'
+            })
+            return false;
+        }
+        
+        else if(article==""){
           const Toast = Swal.mixin({
               toast: true,
               position: 'center-center',
