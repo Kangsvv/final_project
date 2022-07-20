@@ -69,4 +69,8 @@
 	<select id="memberemail" resultType="String">
 	select mem_email from member where mem_id=#{mem_id}
 	</select>
+	<!-- 이메일로 값가져오기 -->
+	<select id="email_member" resultType="kh.spring.dto.MemberDTO">
+	select *from member where mem_email=#{mem_email}
+	</select>
 </mapper> 
