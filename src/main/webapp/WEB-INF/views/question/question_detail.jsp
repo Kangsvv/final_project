@@ -211,6 +211,7 @@ button {
     resize: none;
 }
 
+
 .notice1 {
 	text-align: left;
 }
@@ -367,28 +368,49 @@ li.dropdown {
 
 /* ------------------ 댓글 ---------------------- */
 	.replyList{
-		text-align: center;
+		
 	}
 
  .replyWriteBox{
- 			width: 1000px;
+/*  			width: 1000px; */
          	padding:20px;
         	border-top: 2px solid white;
 			border-bottom: 2px solid white;
         }
+        
+ .replyModifyWriteBox{
+ 			width: 1000px;
+         	padding:20px;
+        	margin:auto;
+        }
        
          #replyContentsBox{ 
-            margin: auto;
-         	width:87%;
+            display: flex;
+  			justify-content : center;
+/*          width:87%; */
          	height:100%; 
          	float:left;
          } 
         #replyWriteBtnBox{
        		float: left;
-        	width:10%;
+/*         	width:10%; */
         	height:100px;
         }
         #replyWriteBtn{
+        	background-color:#760c0c;
+        	color:white;
+        	border-radius:10px;
+        	width:100%;
+        	height:100%;
+        }
+        
+        #replyModifyBtnBox{
+       		float: left;
+        	width:10%;
+        	height:100px;
+        }
+        
+        #replyModifyBtnWriteBtn{
         	background-color:#760c0c;
         	color:white;
         	border-radius:10px;
@@ -406,8 +428,6 @@ li.dropdown {
         }
 
         
-
-
 </style>
 
 </head>
@@ -486,21 +506,20 @@ li.dropdown {
 
 </div>
 
- <div id="reply_box">
+ <div class="row" id="reply_box">
 
-<div>		
-	        <div class="replyWriteBox" style="margin:auto;">
-            	<div style="font-size : 15px; width:1000px; height: 100px; overflow: hidden; align=center;" >
+<div class="col-12">		
+	        <div class="col-12 replyWriteBox" style="margin:auto;">
+            	<div class="col-12" style="font-size : 15px; height: 100px; overflow: hidden;" >
 	            	
-	            	<div id="replyContentsBox">
+	            	<div class="col-10" id="replyContentsBox">
 	            		<textarea name="replyContents" id="replyContents"  
-	            		style="width: 100%;  height: 100px; word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;"
-	            		rows="30" placeholder="내용" maxlength="251"></textarea>     
-	            	
+	            		style="width: 100%;  height: 100px;"
+	            		rows="30" placeholder="내용" maxlength="251"></textarea> 
 	            	</div>
 	            	
-	            	<div id="replyWriteBtnBox">
-	            		<input type="button" id="replyWriteBtn" value="작성하기">
+	            	<div class="col-2" id="replyWriteBtnBox">
+	            		<input type="button" id="replyWriteBtn" value="작성하기" style="width:100%;">
 	            	</div>
 	            	
             	</div>
@@ -508,40 +527,55 @@ li.dropdown {
 	</div>
 
 
-		<div>
-
-
-<!-- table로 만들기 -->
+		<div style="margin-bottom:100px;">
+		
 	 		<div class="replyList">
 				<c:forEach var="i" items="${rlist }">
-					<div>
-						<div style="color:white">
-						작성 날짜 : <fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
+					<div class="col-12">
+						<div class="readcontainer" style="margin: auto; width: 1000px;">
+							<div style="color: white">
+								작성 날짜 :
+								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
+							</div>
+							<div class="readContnets" style="color: white; word-break: break-all; white-space: pre-line;">${i.contents }</div>
+
+
+
+							<div class="replyModifyBox" style="display:none;">
+								<div class="replyModifyWriteBox">
+									<div class="sizebox" style="font-size: 15px; height: 100px; overflow: hidden;">
+										<div id="replyModifyBox" style="width:90%; float:left;">
+											<textarea name="replyContents" id="replyModifyContents"
+												style="width:100%; height: 100px;" rows="30"
+												placeholder="내용" maxlength="251"></textarea>
+											
+										</div>
+
+										<div id="replyModifyBtnBox">
+											<input type="button" id="replyModifyBtnWriteBtn" value="수정완료">
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+
+							
+							<input type="hidden" class="reply_seq" value="${i.reply_seq}">
+								<div  class="col-12 replyreadbox">
+									<button class="replyUpdate">수정</button>
+									<button class="replyDelete">삭제</button>
+								</div>
+							</div>
 						</div>
-						
-						<div class="readContnets" style="color:white; word-break: break-all; white-space: pre-line;">
-							${i.contents } 
-						</div>
-						
-						<input type="hidden" class="reply_seq" value="${i.reply_seq}"> 
-						<div class="replyreadbox">
-							<button class="replyUpdate">수정</button> 
-							<button class="replyDelete">삭제</button>
-						</div>
-					</div>
-				</c:forEach>
+						</c:forEach>
 
 	 		</div>	
 	 	
 	 	
 	 </div>	
+	 </div>
 	 	
-	 	
-
-	
-	
-	
-
 
 	<!-------------------------------------------------------Footer------------------------------------------------->
 	<div class="col-12 d-none d-md-block">
@@ -653,8 +687,7 @@ $(".create").on("click", "#modifyBtn",function(){
 
 	})
 })
-	
-	
+
 	
 
 	
@@ -708,7 +741,7 @@ $(".replyDelete").on("click", function() {
 	}
 })
 		
-
+		
   $(".replyUpdate").on("click", function() {
 	  
    
@@ -732,10 +765,12 @@ $(".replyDelete").on("click", function() {
     	})
     	
     	
-    	let readDiv = $(this).parent().siblings(".readContnets");
+//     	let readDiv = $(this).parent().siblings(".readContnets");
     	
-    	readDiv.attr("contenteditable", "true");
-    	readDiv.focus();
+//     	readDiv.attr("contenteditable", "true");
+//     	readDiv.focus();
+		let Rcontents = $(this).parent().siblings(".replyModifyBox");
+		Rcontents.css("display","block");
     	
   });
                     
@@ -743,7 +778,7 @@ $(".replyDelete").on("click", function() {
 $(".replyreadbox").on("click", ".Rupdate", function() {
 	
 	let reply_seq = $(this).parent().siblings(".reply_seq").val();
-	let contents = $(this).parent().siblings(".readContnets").text();
+	let contents = $(this).parent().siblings().children().children().children().children("#replyModifyContents").val();
 	
 	$.ajax({
 		url : "/question/reply_update",
