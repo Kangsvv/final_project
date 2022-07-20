@@ -21,117 +21,7 @@
 </head>
 <style>
 /*HEADer부분----------------------------*/
- /*------------------------ 헤더 부분 스타일 ------------------------ */
-   .loginbox{
-      flex:auto;
-      float:left;
-      min-width:150px;
-      text-align:right;
-   }
-      .search{
-         color:black;
-         background-color: gray;
-         border-radius: 8px;
-         height:50px;
-         padding:5px;
-         padding-left:15px;
-         font-weight : bold;
-         border:0 solid black;
-         display:block;
-         width:100%;
-         
-      }
-      input:focus {outline:none;}
-      input::placeholder {
-      color: #ccc;
-      }
-      .write{
-         width:40px;
-      }
-      .search2{
-         width:40px;
-         bottom:30px;
-         float: left;
-      }
-      .writebtn{
-          background-color:transparent;
-         float: right;
-         margin-right:5%;
-         margin-bottom:2%;
-      }
-      .searchbtn{
-         background-color:transparent;
-      }
-      .select option, #select{
-         color:black;
-         background-color:#ccc;
-          text-align: center;
-      }
-      .select{
-         height:30px;
-         margin-left:5%;
-         border-radius: 8px;
-         margin-top:10px;
-         width:100px;
-         border:none;
-      }
-      
-      button{
-        border:none;
-      }
-      #login,#signup{
-         color:white;
-      }
-      #login:hover,#signup:hover{
-         color:black;
-      }
-/* container */
-
-#con1{
-   margin-left: 12%;
-   margin-right: 12%;
-}
- body{
-    background-color: #222;
-  }
-    nav {
-   background-color: black;
-   color: white;
-   padding-left:10%;
-   padding-right:10%;
-   border-bottom: 1px solid gray;
-}
-nav a{
-    color: white;
-}
-.navbar-nav{
-   min-width:450px;
-}
-.navbar-nav a{
-    color: white;
-    border-radius: 5px;
-    margin-right: 20px;
-}
-.navbar-nav a:hover{
-    color: black;
-    background-color: white;
-    border-radius: 5px;
-    text-decoration-line: none;
-}
-#btn{
-    text-align: right;
-}
-nav button{
-    background-color: rgba(0, 0, 0, 0.128);
-    border-radius: 5px;
-    color: white;
-}
-
-nav button:hover{
-    border-radius: 5px;
-    color: black;
-    background-color: white;
-}
+ 
 /*---------------쪽지붑 */
 .panel-faq-container {
   margin-bottom: -16px;
@@ -225,7 +115,7 @@ border-bottom : 1px solid black;
       padding-bottom:5px;
       
     }
-    
+  
     #form {
       
       text-align:center;
@@ -265,54 +155,11 @@ border-bottom : 1px solid black;
     }
 
 /*-----------------------------------------Footer부분----------------------------*/
-/* footer 부분 */
-#foot{
-  position: absolute;
-  height: 60px;
-  width: 100%;
-  padding: 0 25px;
-  line-height: 60px;
-  background-color: #222;
-  color: white;
- 
-/* rgba(32, 31, 31, 0.532) */
-}
-.footer2{
-    line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px ;
-    font-family: 'Noto Sans KR';
-   font-style: normal;
-   font-weight: 700;
-   font-size: 14px;
-   line-height: 20px;
-   color: #FFFFFF;
-}
+
 </style>
 
 <body>
- <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">CAFEIN</a>
-              <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">▼</span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link" href="#">HOME</a>
-                  <a class="nav-link" href="#">FEED</a>
-                  <a class="nav-link" href="#">CAFE-IN</a>
-                  <a class="nav-link" href="#">NOTICE</a>
-                  <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
-              <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
-                </div>
-              </div>
-              <button id="login" type="button"
-                    class="mx-1 d-none d-lg-inline btn navbar-btn">Login</button>
-                    <button id="signup" type="button"
-                    class="mx-1 d-none d-lg-inline btn navbar-btn">Signup</button>
-            </div>
-          </nav>
+ <div id="header"><jsp:include page="header.jsp"/> </div>
           
     <div class="container">
         <div class="row">
@@ -371,12 +218,12 @@ border-bottom : 1px solid black;
       </div>
     </div>
       </div>
-    </div>
+   
    <!--------------------------쪽지모달창------------------------->
  <form action="/cafein/message2" id="send">
- <div class="modal fade send" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade send" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" style="background-color:#222;">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel" style="color: white;">Message</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -387,7 +234,8 @@ border-bottom : 1px solid black;
   
               제목:&nbsp; <br>  
             <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요" required/><br><br>
-              받는사람:<input type = "text" name="receiver_email" id = "mem_email" placeholder = "상대방 이메일을 입력해주세요" required/>
+              받는사람:<br>
+              <input type = "text" name="receiver_email" id = "mem_email" placeholder = "상대방 이메일을 입력해주세요" required/>
              <br>
              <div id="checkEmail"></div>  
              <br>
@@ -407,22 +255,10 @@ border-bottom : 1px solid black;
 <!--       </div> -->
     </div>
   </div>
+   </div>
+   
     <!-------------------------------------------------------Footer------------------------------------------------->
- 
-    <div class="col-12 d-none d-md-block" >
-      <div id="foot" align=center>
-         
-            <div id="footer" class="row" style=" border-top: 1px solid gray;">
-              <div class="col-4" id="footicon"> </div>
-               <div class="col-2 footer2">회사소개</div>
-               <div class="col-2 footer2">이용약관</div>
-               <div class="col-2 footer2">1:1 문의</div>
-               <div class="col-2 footer2">©2022 CAFEIN</div>
-            </div>
-         
-      </div>
-    </div>
-
+ <div id="footer"><jsp:include page="footer.jsp"/> </div>
 </body>
 
 
