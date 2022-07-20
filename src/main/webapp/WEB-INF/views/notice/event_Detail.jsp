@@ -430,7 +430,7 @@ li.dropdown {
 
 <br>
  	<div class="row col-12 titlebox">
-      <input type="text" class="main" style="color:white; text-align: center; margin: auto;" value="${dto.title }" disabled maxlength="33">
+      <input type="text" id="main" class="main" style="color:white; text-align: center; margin: auto;" value="${dto.title }" disabled maxlength="33">
     </div>
       <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
@@ -450,7 +450,7 @@ li.dropdown {
 			</div>
 
 			<div> 
-			<textarea class="row col-12 eventbox"
+			<textarea id="eventbox" class="row col-12 eventbox"
 				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled maxlength="1300">${dto.contents } </textarea>
 
 				<c:choose>
@@ -528,12 +528,10 @@ window.onclick = function(e) {
 }
 
 $(".delbtn").click(function(){
-	let result = confirm("정말 삭제하시겠습니까?")
+	let result = confirm("정말 삭제하시겠습니까?");
 	if(result){
-		alert("삭제가 완료되었습니다.")
+		alert("삭제가 완료되었습니다.");
 		location.href = "/notice/event_delete?seq=${dto.seq}";
-	}else{
-		
 	}
 })
 
@@ -541,63 +539,64 @@ $(".backbtn").on("click", function(){
 	location.href = "/notice/event_selectAll";
 })
 
-$(".upbtn").on("click",function(){
-	$(".main").removeAttr("disabled");
-	$(".eventbox").removeAttr("disabled");
-	
-	$(".upbtn").css("display","none"); // 수정 버튼 감추기
-	$(".delbtn").css("display","none"); // 삭제 버튼 감추기
-	
+
+
+
+	$(".upbtn").on("click", function() {
+		$("#main").removeAttr("disabled");
+		$("#eventbox").removeAttr("disabled");
+
+		$(".upbtn").css("display", "none"); // 수정 버튼 감추기
+		$(".delbtn").css("display", "none"); // 삭제 버튼 감추기
+
 		let ok = $("<button>");//수정완료 버튼
-			ok.text("완료");
-			ok.attr("id","modifyBtn")
+		ok.text("완료");
+		ok.attr("id", "modifyBtn");
+		ok.attr("type", "button");
+
+		let cancel = $("<button>");//취소 버튼
+		cancel.text("취소");
+
+		cancel.attr("id", "cancelBtn");
+		cancel.attr("type", "button");
+
+		$(".create").prepend(cancel); //취소 버튼 추가
+		$(".create").prepend(ok); // 수정완료 버튼 추가
 		
-			let cancel = $("<button>");//취소 버튼
-			cancel.text("취소");
-			cancel.attr("id", "cancelBtn")
-	
-	$(".create").prepend(cancel); //취소 버튼 추가
-	$(".create").prepend(ok); // 수정완료 버튼 추가
-	
-	$("#cancelBtn").on("click", function(){
-		location.reload();
-	})
-});
-
-// 수정완료 버튼  -> 현재 alert 조건 설정 중
-$(".create").on("click", "#modifyBtn",function(){
-	var regtitile = $(".main").val();
-	var regcontents =$(".eventbox").val();
-
-	if ($(".main").val() == null || $(".eventbox").val()){
-		alert("수정할 제목을 입력해주세요")
-		return false;
-	}else if ($(".main").val() || $(".eventbox").val() == null){
-		alert("수정할 내용을 입력해주세요")
-		return false
-	}else{
-		return true;
-	};
 		
-	let seq = "${dto.seq}"; // 게시글 고유 넘버
-	let title = $(".main").val();
-	let contents = $(".eventbox").val(); // 게시글 내용
-	
-	$.ajax({
-		url : "/notice/event_modify",
-		type : "post",
-		data : {seq:seq, title:title , contents:contents},
-	}).done(function(resp){
-		if(resp == "true"){
-			alert("제목과 내용을 입력하세요");
-			location.reload();//새로 고침	
-		}
+		// 수정완료 버튼 
+		$("#modifyBtn").on("click",function(){
+			if ($("#main").val() == "" || $("#eventbox").val() ==""){
+				alert("수정할 제목/내용을 입력해주세요");
+				return false;
+			}else{
+				
+				
+				let seq = "${dto.seq}"; // 게시글 고유 넘버
+				let title = $(".main").val();
+				let contents = $(".eventbox").val(); // 게시글 내용
+				   
+				   $.ajax({
+				      url : "/notice/event_modify",
+				      type : "post",
+				      data : {seq:seq, title:title , contents:contents},
+				   }).done(function(resp){
+				      if(resp == "true"){
+				         location.reload();//새로 고침   
+				      }
+				   })
 
+				
+			}
+		});
 	})
-});
 
+		$("#cancelBtn").on("click", function(){
+			location.reload();
+		})
+
+
+	
 </script>
-
 </body>
-
 </html>
