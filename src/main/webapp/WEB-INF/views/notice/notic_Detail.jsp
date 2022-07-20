@@ -428,7 +428,7 @@ li.dropdown {
 
 <br>
 	<div class="row col-12 titlebox">
-      <input type="text" class="main" style="color:white; text-align: center; margin: auto;" value="${dto.title }" disabled>
+      <input type="text" class="main" style="color:white; text-align: center; margin: auto;" value="${dto.title }" disabled maxlength="33">
     </div>
       <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
@@ -449,7 +449,7 @@ li.dropdown {
 
 			<div> 
 			<textarea class="row col-12 noticbox"
-				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled>${dto.contents }</textarea>
+				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled maxlength="1300">${dto.contents }</textarea>
 
 				<c:choose>
 					<c:when test="${loginID = admin }">
@@ -577,6 +577,8 @@ $(".create").on("click", "#modifyBtn",function(){
 
 	})
 })
+
+
 
 </script>
 

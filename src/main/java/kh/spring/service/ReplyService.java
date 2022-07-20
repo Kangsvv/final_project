@@ -73,4 +73,7 @@ public class ReplyService {
 		
 		return list;
 	}
+	public void replyCount(int cafefeed_seq) throws Exception {
+		
+	}
 }

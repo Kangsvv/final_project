@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kh.spring.dto.CafeinDTO;
 import kh.spring.dto.FeedDTO;
 import kh.spring.dto.Feed_imgDTO;
 
@@ -63,7 +64,10 @@ public class FeedDAO {
 	public int delete(int cafefeed_seq) throws Exception{
 		return mybatis.delete("Feed.feed-delete", cafefeed_seq);
 	}
-	
+	// 카페정보 수정
+	public int update(FeedDTO dto)throws Exception{
+		return mybatis.update("Feed.feed-update",dto);
+	}
 	// 조회수 업
 	public void countUp(int cafefeed_seq) {
 		mybatis.update("Feed.countUp",cafefeed_seq);
