@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.spring.dao.MemberDAO;
 import kh.spring.dao.MypageDAO;
 import kh.spring.dto.MemberDTO;
 
@@ -19,6 +20,9 @@ import kh.spring.dto.MemberDTO;
 public class MypageService {
 	@Autowired 
 	private MypageDAO pDAO;
+	
+	@Autowired 
+	private MemberDAO mDAO;
 	
 	@Autowired
 	private HttpSession session;
@@ -56,5 +60,7 @@ public class MypageService {
 				pDAO.mypageUpdate(dto);
 
 	}
+	
+	
 
 }

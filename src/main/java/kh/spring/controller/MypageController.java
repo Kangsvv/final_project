@@ -1,5 +1,7 @@
 package kh.spring.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.dao.MypageDAO;
+import kh.spring.dto.Cafein_imgDTO;
 import kh.spring.dto.MemberDTO;
 import kh.spring.service.MypageService;
 
@@ -36,9 +39,14 @@ public class MypageController {
 	
 	@RequestMapping("mypage")
 	public String mypage_select(Model model) throws Exception{
+		
 		String loginID = (String)session.getAttribute("loginID");
+		System.out.println(loginID);
 		MemberDTO dto = pdao.selectID(loginID);
+		List<Cafein_imgDTO> imglist = pdao.selectimg(loginID);
 		model.addAttribute("dto", dto);
+		model.addAttribute("imglist", imglist);
+		
 		return "/mypage/mypage";
 	}
 	
@@ -65,5 +73,8 @@ public class MypageController {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	
+	
 
 }

@@ -385,9 +385,9 @@ Remove or comment-out the code block below to see how the browser will fall-back
           }
         }
       }
-      a {
+      /* a {
         text-decoration-line: none;
-      }
+      } */
     </style>
   </head>
   <body background-color="#222">
@@ -404,6 +404,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
             <button class="btn profile-edit-btn" id="editprofile">
               Edit Profile
             </button>
+            <button onclick="location.href='/cafein/messagebox' ">message</button>
 
             <button
               class="btn profile-settings-btn"
@@ -417,7 +418,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
             <ul>
               <li>
                 <a href="index.html"
-                  ><span class="profile-stat-count">164</span> 내 게시물</a
+                  ><span class="profile-stat-count">123</span> 내 게시물</a
                 >
               </li>
               <li>
@@ -456,33 +457,14 @@ Remove or comment-out the code block below to see how the browser will fall-back
     <main>
       <div class="container">
         <div class="gallery">
+          
+	<!-- -------------------------------------------------- -->
+	<c:forEach var="i" items="${imglist }">
           <div class="gallery-item" tabindex="0">
-            <img
-              src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-              class="gallery-image"
-              alt=""
-            />
-
-            <div class="gallery-item-info">
-              <ul>
-                <li class="gallery-item-likes">
-                  <span class="visually-hidden">Likes:</span
-                  ><i class="fas fa-heart" aria-hidden="true"></i> 56
-                </li>
-                <li class="gallery-item-comments">
-                  <span class="visually-hidden">Comments:</span
-                  ><i class="fas fa-comment" aria-hidden="true"></i> 2
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="gallery-item" tabindex="0">
-            <img
-              src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
-              class="gallery-image"
-              alt=""
-            />
+           
+            <a href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
+            <img src="/cafein/${i.sys_name }" class="gallery-image"/>
+            </a>
 
             <div class="gallery-item-type">
               <span class="visually-hidden">Gallery</span
@@ -490,7 +472,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
             </div>
 
             <div class="gallery-item-info">
-              <ul>
+             <!--  <ul>
                 <li class="gallery-item-likes">
                   <span class="visually-hidden">Likes:</span
                   ><i class="fas fa-heart" aria-hidden="true"></i> 42
@@ -499,23 +481,13 @@ Remove or comment-out the code block below to see how the browser will fall-back
                   <span class="visually-hidden">Comments:</span
                   ><i class="fas fa-comment" aria-hidden="true"></i> 1
                 </li>
-              </ul>
+              </ul> -->
             </div>
           </div>
+    </c:forEach>
+	<!-- -------------------------------------------------- -->
 
-          <div class="gallery-item" tabindex="0">
-            <a href="/"
-              ><img
-                src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
-                class="gallery-image"
-                alt=""
-            /></a>
-
-            <div class="gallery-item-type">
-              <span class="visually-hidden">Gallery</span
-              ><i class="fas fa-clone" aria-hidden="true"></i>
-            </div>
-          </div>
+          
         </div>
         <!-- End of gallery -->
 
