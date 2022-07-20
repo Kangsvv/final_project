@@ -568,11 +568,16 @@ $(".upbtn").on("click",function(){
 $(".create").on("click", "#modifyBtn",function(){
 	var regtitile = $(".main").val();
 	var regcontents =$(".eventbox").val();
-	if($(".main").val() == null || $(".eventbox").val()==null){
-		alert("수정할 제목과 내용을 입력해주세요")
+
+	if ($(".main").val() == null || $(".eventbox").val()){
+		alert("수정할 제목을 입력해주세요")
 		return false;
+	}else if ($(".main").val() || $(".eventbox").val() == null){
+		alert("수정할 내용을 입력해주세요")
+		return false
+	}else{
+		return true;
 	};
-		
 		
 	let seq = "${dto.seq}"; // 게시글 고유 넘버
 	let title = $(".main").val();
