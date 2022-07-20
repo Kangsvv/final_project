@@ -275,15 +275,15 @@ label{
   </tr>
   <tr>
     <td class="tableTitle">휴무일 : </td>
-    <td><input type="checkbox" value="월" name="dayarr" class="day" id="mon"><label>월</label>
-      <input type="checkbox" value="화" name="dayarr" class="day"><label>화</label>
-      <input type="checkbox" value="수" name="dayarr" class="day"><label>수</label>
-      <input type="checkbox" value="목" name="dayarr" class="day"><label>목</label>
-      <input type="checkbox" value="금" name="dayarr" class="day"><label>금</label>
-      <input type="checkbox" value="토" name="dayarr" class="day"><label>토</label>
-      <input type="checkbox" value="일" name="dayarr" class="day"><label>일</label>
-      <input type="checkbox" value="공휴일" name="dayarr" class="day"><label>공휴일</label>
-      <input type="checkbox" value="연중무휴" name="dayarr" class="day"><label>연중무휴</label>
+    <td><input type="checkbox" value="월" name="dayarr" class="day" id="day1"><label>월</label>
+      <input type="checkbox" value="화" name="dayarr" class="day" id="day2"><label>화</label>
+      <input type="checkbox" value="수" name="dayarr" class="day" id="day3"><label>수</label>
+      <input type="checkbox" value="목" name="dayarr" class="day" id="day4"><label>목</label>
+      <input type="checkbox" value="금" name="dayarr" class="day" id="day5"><label>금</label>
+      <input type="checkbox" value="토" name="dayarr" class="day" id="day6"><label>토</label>
+      <input type="checkbox" value="일" name="dayarr" class="day" id="day7"><label>일</label>
+      <input type="checkbox" value="공휴일" name="dayarr" class="day" id="day8"><label>공휴일</label>
+      <input type="checkbox" value="연중무휴" name="dayarr" class="allnot" id="allnot"><label>연중무휴</label>
       </td>
      <input type="checkbox" id="checkYn" name="dayarr" <c:if test="${item.checkbox eq 'Y'}">checked</c:if> >
   </tr>
@@ -418,7 +418,20 @@ label{
         var arrVal = arr[i]; // arr의 값 = i : 0, arrVal : 2
         chk.filter('[value=' + arrVal + ']').prop('checked', true); // arrVal 값 2, 4, 5에 의해 checkbox의 value의 값 2, 4, 5를 checked 처리
     }
-
+//-------------------------------체크---------------------------------------------
+$(".day").change(function(){
+	if($(this).is(":checked")){
+		console.log("체크됐음");
+		$("#allnot").prop("checked",false);
+	}else{
+		console.log("체크해제");
+	}
+})
+$("#allnot").change(function(){
+	if($(this).is(":checked")){
+		$(".day").prop("checked",false);
+	}
+})
  //-------------------------------오픈시간 select------------------------------------
     var arr = "${dto.open}";
     arr = arr.split(':');
@@ -437,6 +450,8 @@ label{
     $("#finisharr1").val(arr[0]).prop("selected", true);
     $("#finisharr2").val(arr[1]).prop("selected", true);
     $("#finisharr3").val(arr[2]).prop("selected", true);
+    
+//-----------------------------시간설정
 //------------------------------주차장 유무 radio값체크------------------------------
    $("[name=parking]").filter("[value=${dto.parking}]").prop("checked",true)
 
@@ -546,18 +561,7 @@ label{
         	
         }
  })
- // ------------------------ DB 정보들 input type 체크되어있기  ------------------------
-// 	$(document).ready(function() {
-		
-//    	var strData = ${dto.day};
-// 	console.log(strData);
-//     var arrDay = strData.split('/'); //배열로 변환
-//     ($("input:checkbox[name='dayarr']").is(":checked") == false)
-//     if($("input:checkbox[name='dayarr']").val()== arrDay){
-//     	$("input:checkbox[name='dayarr']").is(":checked");
-//     }else
-
-// });
+ 
  
    </script>
    

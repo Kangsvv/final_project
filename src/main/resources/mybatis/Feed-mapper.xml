@@ -94,4 +94,8 @@
 	<update id="countUp">
 		update cafefeed set view_count = view_count +1 where cafefeed_seq=#{cafefeed_seq}
 	</update>
+	<!-- 피드 댓글 수 가져오기 -->
+	<select id="feed-replyCount" resultType="int">
+		select count(*) from cafefeedReply where cafefeed_seq=#{cafefeed_seq}
+	</select>
 </mapper>

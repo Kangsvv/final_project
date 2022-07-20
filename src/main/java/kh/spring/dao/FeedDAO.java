@@ -72,5 +72,4 @@ public class FeedDAO {
 	public void countUp(int cafefeed_seq) {
 		mybatis.update("Feed.countUp",cafefeed_seq);
 	}
-
 }

@@ -306,7 +306,8 @@ li.dropdown {
             <input type=text name=title id=title placeholder="제목 (최대 33자)" style="width:97%;" maxlength="33">
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
-            <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용 (최대 1300자)"></textarea>
+            <textarea class="row col-12 eventbox"
+				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled>${dto.contents }</textarea>
             </div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
             	<p class="textCount"><span>0</span> / 1300</p>
