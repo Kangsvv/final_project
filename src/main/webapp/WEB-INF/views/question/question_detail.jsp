@@ -211,6 +211,7 @@ button {
     resize: none;
 }
 
+
 .notice1 {
 	text-align: left;
 }
@@ -364,6 +365,69 @@ li.dropdown {
 	border-radius: 15%;
 }
 
+
+/* ------------------ 댓글 ---------------------- */
+	.replyList{
+		
+	}
+
+ .replyWriteBox{
+/*  			width: 1000px; */
+         	padding:20px;
+        	border-top: 2px solid white;
+			border-bottom: 2px solid white;
+        }
+        
+ .replyModifyWriteBox{
+ 			width: 1000px;
+         	padding:20px;
+        	margin:auto;
+        }
+       
+         #replyContentsBox{ 
+            display: flex;
+  			justify-content : center;
+/*          width:87%; */
+         	height:100%; 
+         	float:left;
+         } 
+        #replyWriteBtnBox{
+       		float: left;
+/*         	width:10%; */
+        	height:100px;
+        }
+        #replyWriteBtn{
+        	background-color:#760c0c;
+        	color:white;
+        	border-radius:10px;
+        	width:100%;
+        	height:100%;
+        }
+        
+        #replyModifyBtnBox{
+       		float: left;
+        	width:10%;
+        	height:100px;
+        }
+        
+        #replyModifyBtnWriteBtn{
+        	background-color:#760c0c;
+        	color:white;
+        	border-radius:10px;
+        	width:100%;
+        	height:100%;
+        }
+        
+        .replywriterName{
+            margin: 4px 4px;
+            width: 98%;
+            height: 15%;
+            background-color: rgb(84, 84, 84);
+            color: white;
+            padding-left: 10px;
+        }
+
+        
 </style>
 
 </head>
@@ -424,9 +488,10 @@ li.dropdown {
 				</div>
 			</div>
 
-			<div> 
+		    <div> 
 			<textarea class="row col-12 eventbox"
-				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled>${dto.contents }</textarea>
+				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled
+				maxlength="1301">${dto.contents }</textarea>
 
 			<div class="col-12 create">
 				<input type="button" class="upbtn" value="수정"> 
@@ -441,96 +506,77 @@ li.dropdown {
 
 </div>
 
- <div id="reply_box">
+ <div class="row" id="reply_box">
 
-	
-	        <div class="replyWriteBox">
-            	<div style="font-size : 15px; height: 100%; overflow: hidden; align=center;" >
-	            	<div style="margin:auto;">
-	            	<div id="replyContentsBox">
-	            		<textarea name="replyContents" id="replyContents" style="width: 100%;" rows="30" placeholder="내용"></textarea>
+<div class="col-12">		
+	        <div class="col-12 replyWriteBox" style="margin:auto;">
+            	<div class="col-12" style="font-size : 15px; height: 100px; overflow: hidden;" >
+	            	
+	            	<div class="col-10" id="replyContentsBox">
+	            		<textarea name="replyContents" id="replyContents"  
+	            		style="width: 100%;  height: 100px;"
+	            		rows="30" placeholder="내용" maxlength="251"></textarea> 
 	            	</div>
-	            	<div id="replyWriteBtnBox">
-	            		<input type="button" id="replyWriteBtn" value="작성하기">
+	            	
+	            	<div class="col-2" id="replyWriteBtnBox">
+	            		<input type="button" id="replyWriteBtn" value="작성하기" style="width:100%;">
 	            	</div>
-	            	</div>
+	            	
             	</div>
             </div>
-	
-	
-	
-	
-	
+	</div>
+
+
+		<div style="margin-bottom:100px;">
+		
 	 		<div class="replyList">
 				<c:forEach var="i" items="${rlist }">
-						<div style="color:white">
-						작성 날짜 : <fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
+					<div class="col-12">
+						<div class="readcontainer" style="margin: auto; width: 1000px;">
+							<div style="color: white">
+								작성 날짜 :
+								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
+							</div>
+							<div class="readContnets" style="color: white; word-break: break-all; white-space: pre-line;">${i.contents }</div>
+
+
+
+							<div class="replyModifyBox" style="display:none;">
+								<div class="replyModifyWriteBox">
+									<div class="sizebox" style="font-size: 15px; height: 100px; overflow: hidden;">
+										<div id="replyModifyBox" style="width:90%; float:left;">
+											<textarea name="replyContents" id="replyModifyContents"
+												style="width:100%; height: 100px;" rows="30"
+												placeholder="내용" maxlength="251"></textarea>
+											
+										</div>
+
+										<div id="replyModifyBtnBox">
+											<input type="button" id="replyModifyBtnWriteBtn" value="수정완료">
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+
+							
+							<input type="hidden" class="reply_seq" value="${i.reply_seq}">
+								<div  class="col-12 replyreadbox">
+									<button class="replyUpdate">수정</button>
+									<button class="replyDelete">삭제</button>
+								</div>
+							</div>
 						</div>
-						<div style="color:white">
-							${i.contents } 
-						</div>
-						<input type="hidden" class="reply_seq" value="${i.reply_seq}"> 
-				<div><button class="replyUpdate">수정</button> <button class="replyDelete">삭제</button></div>
-				</c:forEach>
+						</c:forEach>
 
 	 		</div>	
 	 	
 	 	
+	 </div>	
+	 </div>
 	 	
-	 	
-	 	
-<!-- </div> -->
-	
-	
-	
 
-<style>
-/* div{border: 1px solid white;} */
-
-
-	.replyList{
-		text-align: center;
-	}
-
- .replyWriteBox{
-         	padding:20px;
-        	border-top: 2px solid white;
-			border-bottom: 2px solid white;
-        }
-       
-         #replyContentsBox{ 
-            margin: auto;
-         	width:60%;
-         	height:100px; 
-         	float:left;
-         } 
-        #replyWriteBtnBox{
-       		float: left;
-        	width:10%;
-        	height:100px;
-        }
-        #replyWriteBtn{
-        	background-color:#760c0c;
-        	color:white;
-        	border-radius:10px;
-        	width:100%;
-        	height:100%;
-        }
-        
-        .replywriterName{
-            margin: 4px 4px;
-            width: 98%;
-            height: 15%;
-            background-color: rgb(84, 84, 84);
-            color: white;
-            padding-left: 10px;
-        }
-
-        
-
-
-
-</style>
 	<!-------------------------------------------------------Footer------------------------------------------------->
 	<div class="col-12 d-none d-md-block">
 		<div id="foot" align=center>
@@ -641,8 +687,7 @@ $(".create").on("click", "#modifyBtn",function(){
 
 	})
 })
-	
-	
+
 	
 
 	
@@ -652,25 +697,12 @@ $(".create").on("click", "#modifyBtn",function(){
                 
                 let article = $("#replyContents").val();
 
-                if(article==""){
-                	const Toast = Swal.mixin({
-                	    toast: true,
-                	    position: 'center-center',
-                	    showConfirmButton: false,
-                	    timer: 3000,
-                	    timerProgressBar: true,
-                	    didOpen: (toast) => {
-                	        toast.addEventListener('mouseenter', Swal.stopTimer)
-                	        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                	    }
-                	})
-                	 
-                	Toast.fire({
-                	    icon: 'error',
-                	    title: '댓글 내용을 입력해주세요.'
-                	})
+                if(article == ""){
+
+					alret('내용을 입력해주세요')
                 	$("#replyContents").focus();
                 	return false;
+                	
                 }else{
                 	$.ajax({
                 		url:"/question/reply_insert",
@@ -709,42 +741,92 @@ $(".replyDelete").on("click", function() {
 	}
 })
 		
-
-// $(".upbtn").on("click",function(){
-// 	$(".main").removeAttr("disabled");
-// 	$(".eventbox").removeAttr("disabled");	
-// 	$(".upbtn").css("display","none"); // 수정 버튼 감추기
-// 	$(".delbtn").css("display","none"); // 삭제 버튼 감추기
-// 		let ok = $("<button>");//수정완료 버튼
-// 			ok.text("완료");
-// 			ok.attr("id","modifyBtn")
-
-// 			let cancel = $("<button>");//취소 버튼
-// 			cancel.text("취소");
-// 			cancel.attr("id", "cancelBtn")
-	
-// 	$(".create").prepend(cancel); //취소 버튼 추가
-// 	$(".create").prepend(ok); // 수정완료 버튼 추가
-	
-// 	$("#cancelBtn").on("click", function(){
-// 		location.reload();
-// 	})
-// });
-
-
-//  $("#replyUpdate").on("click". function() {
-//    $("#replyContents").removeAttr("disabled");
+		
+  $(".replyUpdate").on("click", function() {
+	  
    
-//    $("#replyUpdate").css("display", "none");
-   
-//    		let Rupdate = $("<button>");
-//    		Rupdate.text("완료");
-//    		Rupdate.attr("id","replymodify")
+    $(this).css("display", "none");
+    
+    		let Rupdate = $("<button>");
+    		Rupdate.text("완료");
+       		Rupdate.attr("class","Rupdate");
+       		Rupdate.css("margin-right", "5px");
    		
-//    	$("#replyDelete").after(Rupdate);	
- 
-//  });
+       		let Rcancel = $("<button>");
+       		Rcancel.text("취소");
+       		Rcancel.attr("class", "Rcancel");
+       		
+       		$(this).parent().prepend(Rcancel);
+       		$(this).parent().prepend(Rupdate);
+    	
+    	
+    	$(".Rcancel").on("click", function(){
+    		location.reload();
+    	})
+    	
+    	
+//     	let readDiv = $(this).parent().siblings(".readContnets");
+    	
+//     	readDiv.attr("contenteditable", "true");
+//     	readDiv.focus();
+		let Rcontents = $(this).parent().siblings(".replyModifyBox");
+		Rcontents.css("display","block");
+    	
+  });
                     
+
+$(".replyreadbox").on("click", ".Rupdate", function() {
+	
+	let reply_seq = $(this).parent().siblings(".reply_seq").val();
+	let contents = $(this).parent().siblings().children().children().children().children("#replyModifyContents").val();
+	
+	$.ajax({
+		url : "/question/reply_update",
+		data: {reply_seq:reply_seq, question_seq:${dto.question_seq}, contents:contents }
+			
+	}).done(function(resp){
+		location.reload();
+	})
+})
+
+$(".eventbox").keyup(function(e) {
+	let content = $(this).val();
+	
+	// 글자수 계산
+	if (content.length == 0 || content == ''){
+		$(".textCount").text("0자 /1300자");
+	} else {
+		$(".textCount").text(content.length + "자 /1300자");
+		
+	}
+	
+	// 글자수 제한
+	 	if($(this).val().length > 1300) {
+    	$(this).val($(this).val().substring(0, 1300));
+    	alert("1300자까지 입력 가능합니다")
+		 }
+});
+
+$("#replyContents").keyup(function(e) {
+    let content = $(this).val();
+    
+    // 글자수 계산
+    if (content.length == 0 || content == ''){
+       $(".textCount").text("0자");
+    } else {
+       $(".textCount").text(content.length + "자");
+       
+    }
+    
+    // 글자수 제한
+         if($(this).val().length > 250) {
+          $(this).val($(this).val().substring(0, 250));
+          alert("250자까지만 입력가능합니다")
+         }
+    
+    
+ });
+
 
 
 </script>

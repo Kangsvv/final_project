@@ -165,10 +165,15 @@ public class FeedController {
 		return rServ.selectBySeq(model, cafefeed_seq, page);
 	}
 	@RequestMapping("clickBook")
-	public String clickBook(Model model, int cafefeed_seq) throws Exception{
-		System.out.println("책 눌렀음");
+	public String clickBook(Model model,int upDown, int cafefeed_seq) throws Exception{
 		
-		serv.bookmarkInsert(cafefeed_seq);
+		if (upDown == 1) {
+			serv.bookmarkInsert(cafefeed_seq);// 북마크 테이블에 게시글 정보(해당 게시글seq, 내 id) 추가
+			System.out.println("북마크 추가");
+		} else if (upDown == 0) {
+			serv.bookmarkDelete(cafefeed_seq);// 좋아요 테이블에서 게시글 정보 삭제
+			System.out.println("북마크 삭제");
+		}
 		
 		
 		return "1";

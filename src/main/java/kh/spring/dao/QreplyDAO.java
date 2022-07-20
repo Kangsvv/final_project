@@ -30,4 +30,8 @@ public class QreplyDAO {
 		 mybatis.delete("question.reply_delete", reply_seq);
 	}
 	
+	public void reply_update(QreplyDTO dto) throws Exception{
+		mybatis.update("question.reply_update", dto);
+	}
+	
 }

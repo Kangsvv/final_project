@@ -128,6 +128,14 @@ import kh.spring.service.QuestionService;
 			
 		}
 		
+		@RequestMapping("reply_update")
+		public String reply_update(QreplyDTO dto, int question_seq) throws Exception {
+			Rservice.update(dto);
+			
+			return "redirect:/question/question_detail?question_seq="+question_seq;
+
+			
+		}
 		
 		@ExceptionHandler //예외 공동 처리
 		public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class

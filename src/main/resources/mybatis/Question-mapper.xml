@@ -43,5 +43,8 @@
 	delete from reply where reply_seq = #{reply_seq}
 </delete>
 	
+<update id = "reply_update">
+	update reply set contents= #{contents} where reply_seq = #{reply_seq}
+</update>
 	
 </mapper>
