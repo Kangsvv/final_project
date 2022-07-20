@@ -189,7 +189,6 @@ nav button:hover{
            padding:20px;
            font-size: 16px;
             word-wrap: break-word;      /* IE 5.5-7 */
-            white-space: pre-wrap;      /* current browsers */
 /*            margin-top:20px;  */
         }
         #maincon{
@@ -581,7 +580,7 @@ nav button:hover{
                      </span>
                      
                      <span>
-                        <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;54
+                        <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;${rCnt }
                      </span>
                   </div>
                   <div class="col-6" id="bookmark">
