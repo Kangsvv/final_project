@@ -280,18 +280,18 @@ h5 {
 
 <div id="btn"> 
 	<c:choose>
-		<c:when test="${empty loginMember}">
+		<c:when test="${empty loginID}">
 		    <button type="button" onclick="location.href='/member/login' ">login</button>
 		    <button type="button" onclick="location.href='/member/signUp' ">signUp</button>
 	    </c:when>
 	    <c:otherwise>
-	    	<button type="button" onclick="location.href='/member/myPage' ">myPage</button>
+	    	<button type="button" onclick="location.href='/mypage/mypage' ">myPage</button>
 	    	<button type="button" onclick="location.href='/member/logout' ">logout</button>
 	    </c:otherwise>
     </c:choose>
 </div>
 <button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
-
+<button type="button" onclick="location.href='/manager/test' " id="test">test</button>
 </body>
 <script>
   $("#box1").hover(function(){

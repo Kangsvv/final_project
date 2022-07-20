@@ -64,6 +64,7 @@
 	</insert>
 	
 	<!-- 댓글 리스트 불러오기 -->
+	
 	<select id="replylist_select" resultType="kh.spring.dto.ReplyDTO">
 		select * from (select row_number() over(order by write_date desc) as line, cafefeedReply.* from cafefeedReply) where (line between #{start} and #{end}) and (cafefeed_seq=#{cafefeed_seq})
 	</select>
@@ -75,5 +76,33 @@
 	<update id="reply_update">
 		update cafefeedReply set contents=#{contents} where seq=#{seq}
 	</update>
+	<select id="replylist_selectOne" resultType="kh.spring.dto.ReplyDTO">
+		select * from cafefeedReply where seq=#{seq}
+	</select>
 	
+	<!-- 피드 게시글 수정하기 -->
+	
+	<update id="feed-update">
+		update cafefeed set title=#{title}, contents=#{contents} where cafefeed_seq=#{cafefeed_seq}
+	</update>
+	
+	<update id="feed_img-update">
+ 		update feed_img set ori_name= #{ori_name}, sys_name=#{sys_name} where cafefeed_seq=#{cafefeed_seq}
+ 	</update>
+ 	
+	<!-- 글 조회수업 -->
+	<update id="countUp">
+		update cafefeed set view_count = view_count +1 where cafefeed_seq=#{cafefeed_seq}
+	</update>
+	<!-- 피드 댓글 수 가져오기 -->
+	<select id="feed-replyCount" resultType="int">
+		select count(*) from cafefeedReply where cafefeed_seq=#{cafefeed_seq}
+	</select>
+	<!-- 북마크 추가, 삭제 -->
+	<insert id="bookmarkInsert">
+		insert into bookmark values(#{cafefeed_seq}, #{id})
+	</insert>
+	<delete id="bookmarkDelete">
+		delete
+	</delete>
 </mapper>

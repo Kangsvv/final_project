@@ -9,7 +9,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <title>My page</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <style>
-      :root {
+    :root {
         font-size: 10px;
       }
       * {
@@ -29,10 +29,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         padding-bottom: 3rem;
       }
 
-      img {
-        display: block;
-      }
-
+      
       .container {
         max-width: 93.5rem;
         margin: 0 auto;
@@ -78,15 +75,22 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       .profile-image {
         float: left;
-        width: calc(33.333% - 1rem);
+        border-radius: 70%;
+    	width: 200px;
+    	height: 200px;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-right: 3rem;
+      	overflow:hidden;
       }
-
+		
+		
       .profile-image img {
-        border-radius: 50%;
+         
+        width:100%;
+		height:100%;
+		object-fit:cover;
       }
 
       .profile-user-settings,
@@ -387,22 +391,19 @@ Remove or comment-out the code block below to see how the browser will fall-back
     </style>
   </head>
   <body background-color="#222">
-  
     <header>
       <div class="container">
         <div class="profile">
-          <div class="profile-image">
-            <img
-              src="${dto.mem_img }"
-            />
+          <div class="profile-image" >
+           <img src="/resources/mypage/${dto.mem_img }" />
           </div>
 
           <div class="profile-user-settings">
-            <h1 class="profile-user-name">${dto.mem_id }</h1>
+            <h1 class="profile-user-name">${dto.mem_name }</h1>
 
-            <a href="/mypage/mypageEdit"><button class="btn profile-edit-btn" id="editprofile">
+            <button class="btn profile-edit-btn" id="editprofile">
               Edit Profile
-            </button></a>
+            </button>
 
             <button
               class="btn profile-settings-btn"
@@ -415,53 +416,42 @@ Remove or comment-out the code block below to see how the browser will fall-back
           <div class="profile-stats">
             <ul>
               <li>
-             
                 <a href="index.html"
                   ><span class="profile-stat-count">164</span> 내 게시물</a
                 >
-               
               </li>
-              
               <li>
-<%--       <c:forEach var=j items=${myfollowerdto }>         --%>
-                <a href="/member/follower"
-                  ><span class="profile-stat-count">164${myfollowerdto.follower }</span> 팔로워</a
+                <a href="www.naver.com"
+                  ><span class="profile-stat-count">164</span> 팔로워</a
                 >
-<%--       </c:forEach>          
- --%>              </li>
+              </li>
               <li>
-<%--       <c:forEach var=j items=${myfollowingrdto }>        
- --%>                <a href="/member/following"
-                  ><span class="profile-stat-count">164${myfollowingrdto.following }</span> 팔로우</a
+                <a href="www.naver.com"
+                  ><span class="profile-stat-count">164</span> 팔로우</a
                 >
-<%--       </c:forEach>          
- --%>              </li>
+              </li>
               <li>
-<%--       <c:forEach var=j items=${storedto }>        
- --%>                <a href="/member/store"
-                  ><span class="profile-stat-count">164${storedto.storepost }</span> 저장한 게시물</a
+                <a href="www.naver.com"
+                  ><span class="profile-stat-count">164</span> 저장한 게시물</a
                 >
-<%--       </c:forEach>          
- --%>              </li>
+              </li>
             </ul>
           </div>
-        <!-- End of profile section -->
-
-
+          <!-- End of profile section -->
 
           <div class="profile-bio">
-<%--       <c:forEach var=i items=${mypagedto }>    
- --%>            <p>
-              <span class="profile-real-name">${mypagedto.mem_name }</span> Lorem ipsum
-              dolor sit, amet consectetur adipisicing elit 📷✈️🏕️ ${mypagedto.intro }
+            <p>
+              <span class="profile-real-name"></span> Lorem ipsum
+              dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
             </p>
-<%--       </c:forEach>      
- --%>          </div>
+          </div>
         </div>
         <!-- End of profile section -->
       </div>
       <!-- End of container -->
     </header>
+    
+<!-- ---------------사진 출력되는 부분---------------------- -->
 
     <main>
       <div class="container">
@@ -525,10 +515,8 @@ Remove or comment-out the code block below to see how the browser will fall-back
               <span class="visually-hidden">Gallery</span
               ><i class="fas fa-clone" aria-hidden="true"></i>
             </div>
-
           </div>
         </div>
-        
         <!-- End of gallery -->
 
         <!-- <div class="loader"></div> -->
@@ -537,8 +525,9 @@ Remove or comment-out the code block below to see how the browser will fall-back
     </main>
 
     <script>
-     
-      
+    	$("#editprofile").on("click",function(){
+    		location.href = "/mypage/mypageEdit";
+    	})
     </script>
   </body>
 </html>

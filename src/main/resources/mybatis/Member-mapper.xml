@@ -27,7 +27,7 @@
 
 	<!-- 회원가입 처리 -->
 	<insert id="joinAction">
-		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},0,0,'',#{mem_ceocheckimg},sysdate,'','')
+		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},#{mem_level},#{mem_status},'',#{mem_ceocheckimg},sysdate,'',#{mem_oriname})
 	</insert>
 	
 	<!-- 로그인 -->
@@ -42,7 +42,7 @@
 	
 	<!-- 카카오 계정 생성 -->
 	<insert id="kakaoJoinAction">
-		insert into member (mem_seq,mem_id,mem_name,mem_email) values(mem_seq.nextval,#{mem_id},#{mem_name},#{mem_email})
+		insert into member (mem_seq,mem_id,mem_name,mem_email,mem_level) values(mem_seq.nextval,#{mem_id},#{mem_name},#{mem_email},0)
 	</insert>
 	
 	<!-- 아이디 및 패스워드 찾기 -->
@@ -68,5 +68,9 @@
 	<!-- 이메일 가져오기 -->
 	<select id="memberemail" resultType="String">
 	select mem_email from member where mem_id=#{mem_id}
+	</select>
+	<!-- 이메일로 값가져오기 -->
+	<select id="email_member" resultType="kh.spring.dto.MemberDTO">
+	select *from member where mem_email=#{mem_email}
 	</select>
 </mapper> 

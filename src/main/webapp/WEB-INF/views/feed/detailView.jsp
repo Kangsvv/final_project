@@ -188,6 +188,7 @@ nav button:hover{
         .contentsBox{
            padding:20px;
            font-size: 16px;
+            word-wrap: break-word;      /* IE 5.5-7 */
 /*            margin-top:20px;  */
         }
         #maincon{
@@ -212,7 +213,7 @@ nav button:hover{
            padding-right:30px;
         }
         
-        .editBtn, .deleteBtn, .fa-bookmark, .likecount{
+        .editBtn, .deleteBtn, .backBtn ,.fa-bookmark, .likecount{
            cursor:pointer;
         }
         /* -------------댓글 관련 스타일 -----------------*/
@@ -386,7 +387,6 @@ nav button:hover{
            
            contentsEdit.text(resp[i].contents);
 
-           if(${loginIsAdmin == 'Y'} || resp[i].id=='${loginID}' ){
            
            let modifyBtn = $("<button>");
            modifyBtn.attr("type","button");
@@ -410,8 +410,8 @@ nav button:hover{
            left.append(contents);
            
 
-           right.append(modifyBtn);
-           right.append(delBtn);
+//            right.append(modifyBtn);
+//            right.append(delBtn);
 
            container.append(left);
            container.append(right);
@@ -423,6 +423,14 @@ nav button:hover{
            container.fadeIn(800);
 //            $("#replyContents").val("");
 //            $("#replyContents").focus();
+
+
+			if(resp[i].id=='${loginID}' ){
+			
+				right.append(modifyBtn);
+		        right.append(delBtn);
+		        
+			}
 
             delBtn.on("click", function(){
                let del = confirm("댓글을 삭제하시겠습니까?");
@@ -526,8 +534,8 @@ nav button:hover{
                            <fmt:formatDate pattern="yy-MM-dd HH:mm:ss" value="${dto.write_date}" />
                         </div>
                         <c:if test="${loginID == dto.id }">
-                           <div class="col-6 col-md-3 mdbtns" style="text-align:center;"><i class="fa-solid fa-xl fa-pen-to-square editBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-regular fa-xl fa-trash-can deleteBtn" style="color:white;"></i></div>
-                  </c:if>
+                           <div class="col-6 col-md-3 mdbtns" style="text-align:center;"><i class="fa-solid fa-xl fa-rotate-left backBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-xl fa-pen-to-square editBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-regular fa-xl fa-trash-can deleteBtn" style="color:white;"></i></div>
+                  		</c:if>
                      </div>
                 </div>
 
@@ -535,6 +543,8 @@ nav button:hover{
       <div class="row">
       <!-- Main Contents Container -->
          <div class="col-12 contents-container">
+         <div class="row">
+         <div class="col-12 col-md-7">
          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -556,15 +566,20 @@ nav button:hover{
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
+            </div>
+            
+            <div class="col-12 col-md-5 contentsBox">
+               ${dto.contents }
+            </div>
+            </div>
             <div id="mainfoot">
                <div class="row">
                   <div class="col-6">
                      <span class="marginSet">
                         <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count }
                      </span>
-                     
                      <span>
-                        <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;54
+                        <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;${rCnt }
                      </span>
                   </div>
                   <div class="col-6" id="bookmark">
@@ -573,12 +588,17 @@ nav button:hover{
                      </span>
                   </div>
                </div>
-              
-
-            </div>
-            <div class="contentsBox">
-<!--              style="margin-left:5%; -->
-               ${dto.contents }
+               <script>
+               		$(".fa-bookmark").on("click",function(){
+               			$.ajax({
+               				url:"/feed/clickBook",
+               				data:{cafefeed_seq:${dto.cafefeed_seq}},
+               				dataType:"json"
+               			}).done(function(resp){
+               				console.log(resp);
+               			})
+               		})
+               </script>
 
             </div>
             <div class="replyWriteBox">
@@ -605,8 +625,13 @@ nav button:hover{
                              <div class="col-12 replycontents2"><div class="editBox">${i.contents}</div></div>
                           </div>
                           <div class="col-12 replyright">
-                             <button type="button" class="replybmodify2 btn btn-secondary">수정</button>
+                          
+                          <c:if test="${loginID == i.id }">
+                          	 <button type="button" class="replybmodify2 btn btn-secondary">수정</button>
                              <button type="button" class="replydelBtn2 btn btn-secondary">삭제</button>
+                          </c:if>
+<!--                              <button type="button" class="replybmodify2 btn btn-secondary">수정</button> -->
+<!--                              <button type="button" class="replydelBtn2 btn btn-secondary">삭제</button> -->
                           </div>
                       </div>
                </c:forEach>
@@ -667,7 +692,15 @@ nav button:hover{
                         $(this).siblings(".replybmodify2").css("display","inline");
                         $(this).siblings(".replydelBtn2").css("display","inline");
                         
+						$.ajax({
+                        	url:"/feed/replyInfo",
+                        	data: {seq:seq}
+                        }).done(function(resp){
+                    		
+                    	})
+                        
                         editDiv.attr("contenteditable", "false");
+                        
                      })
                   })
              </script>
@@ -679,7 +712,27 @@ nav button:hover{
    <script>
       $("#replyWriteBtn").on("click", function(){
         let article = $("#replyContents").val();
-        if(article==""){
+        if(${loginID == null}){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'center-center',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+             
+            Toast.fire({
+                icon: 'error',
+                title: '로그인을 하셔야 댓글 입력이 가능합니다.'
+            })
+            return false;
+        }
+        
+        else if(article==""){
           const Toast = Swal.mixin({
               toast: true,
               position: 'center-center',
@@ -876,7 +929,12 @@ nav button:hover{
               alert('삭제가 취소되었습니다.');
             }
         })
-        
+        $(".editBtn").on("click", function(){
+        	location.href = "/feed/goUpdate?cafefeed_seq=${dto.cafefeed_seq}";
+        })
+        $(".backBtn").on("click", function(){
+        	location.href = "/feed/goFeed?page=1";
+        })
         
     </script>
     

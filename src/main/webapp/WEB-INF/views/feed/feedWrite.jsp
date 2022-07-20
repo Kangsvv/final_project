@@ -275,7 +275,7 @@ nav button:hover{
 			</div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
                 <a href="/feed/goFeed?page=1"><button class="btn" type="button">뒤로</button></a>
-                <button type="submit" class="btn" style="margin-left:10px;">작성</button>
+                <button type="submit" class="btn" id="writeBtn" style="margin-left:10px;">작성</button>
             </div>
         </div>
     </form>
@@ -295,16 +295,20 @@ nav button:hover{
   </div>
 </div>
 <script>
-	$(".writeBtn").on("click",function(){
+	$("#writeBtn").on("click",function(){
 		 if($("#title").val() == ''){
 			 alert("제목을 입력해주세요");
-			 $("#contents").focus();
+			 $("#title").focus();
 			 return false;
 		 }
 		 else if($("#contents").val() == ''){
 			 alert("내용를 입력해주세요.");
 			 $("#contents").focus();
 			 return false;
+		}
+		else if(!$("#ex_file").val()){
+			alert("사진을 넣어주세요.");
+			return false;
 		}
 	 	// file
 	    let fileVal = $("#ex_file").val();

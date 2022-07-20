@@ -66,4 +66,16 @@ public class ReplyService {
 		
 		dao.ModifyReply(dto);
 	}
+	public List<ReplyDTO> selectBySeqOne(int seq) throws Exception {
+		List<ReplyDTO> list = dao.selectBySeqOne(seq);
+
+		System.out.println(list);
+		
+		return list;
+	}
+	public void replyCount(Model model, int cafefeed_seq) throws Exception {
+		int replyCnt = dao.replyCount(cafefeed_seq);
+		
+		model.addAttribute("rCnt", replyCnt);
+	}
 }
