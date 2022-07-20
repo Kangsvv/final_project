@@ -164,6 +164,16 @@ public class FeedController {
 		System.out.println("댓글 리스트 가져오는 중");
 		return rServ.selectBySeq(model, cafefeed_seq, page);
 	}
+	@RequestMapping("clickBook")
+	public String clickBook(Model model, int cafefeed_seq) throws Exception{
+		System.out.println("책 눌렀음");
+		
+		serv.bookmarkInsert(cafefeed_seq);
+		
+		
+		return "1";
+//		return rServ.selectBySeq(model, cafefeed_seq, page);
+	}
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
 		e.printStackTrace();

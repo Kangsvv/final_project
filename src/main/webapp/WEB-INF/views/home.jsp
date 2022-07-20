@@ -280,7 +280,7 @@ h5 {
 
 <div id="btn"> 
 	<c:choose>
-		<c:when test="${empty loginMember}">
+		<c:when test="${empty loginID}">
 		    <button type="button" onclick="location.href='/member/login' ">login</button>
 		    <button type="button" onclick="location.href='/member/signUp' ">signUp</button>
 	    </c:when>

@@ -98,4 +98,11 @@
 	<select id="feed-replyCount" resultType="int">
 		select count(*) from cafefeedReply where cafefeed_seq=#{cafefeed_seq}
 	</select>
+	<!-- 북마크 추가, 삭제 -->
+	<insert id="bookmarkInsert">
+		insert into bookmark values(#{cafefeed_seq}, #{id})
+	</insert>
+	<delete id="bookmarkDelete">
+		delete
+	</delete>
 </mapper>
