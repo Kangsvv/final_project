@@ -491,41 +491,6 @@ nav button:hover{
        });
        
     }
-    let book = true;
-    if(${isBookOk!=null}){
-        if(${isBookOk==true}){
-           alert("이미 좋아요가 눌려있습니다.")
-           book=false;
-        }
-     }
-    let bUpDown = 0;
-    $(".fa-bookmark").on("click", function () {
-        if(${loginID == null}){
-           alert("로그인이 필요합니다.");
-           return false;
-        }
-       
-        if (book) {
-        	book=false;
-            alert("좋아요가 눌렸습니다.");
-        } else {
-        	book=true;
-            alert("좋아요가 취소되었습니다.");
-        }
-        if(book == false){
-           bUpDown = 1;
-        }else{
-           bUpDown = 0;
-        }
-        $.ajax({
-				url:"/feed/clickBook",
-				data:{cafefeed_seq:${dto.cafefeed_seq},
-					upDown:bUpDown},
-				dataType:"json"
-		}).done(function(resp){
-				console.log(resp);
-		})
-    })
    </script>
 
     <!------------------------------------------------------------header----------------------------------------------------->
@@ -610,10 +575,10 @@ nav button:hover{
             <div id="mainfoot">
                <div class="row">
                   <div class="col-6">
-                     <span class="marginSet">
-                        <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count }
-                     </span>
-                     <span>
+<!--                      <span class="marginSet"> -->
+<%--                         <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count } --%>
+<!--                      </span> -->
+                     <span style="padding-left:10px;">
                         <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;${rCnt }
                      </span>
                   </div>

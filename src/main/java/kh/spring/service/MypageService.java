@@ -55,7 +55,7 @@ public class MypageService {
 				dto.setmem_img(sysName);
 				dto.setmem_name(memName);
 				dto.setmem_phone(memPhone);
-				dto.setMem_oriname(oriName);
+				dto.setmem_oriname(oriName);
 				dto.setmem_id(loginID);
 				pDAO.mypageUpdate(dto);
 

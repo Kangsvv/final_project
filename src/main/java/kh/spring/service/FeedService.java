@@ -53,7 +53,7 @@ public class FeedService {
 		}
 		
 	// 피드 검색결과 출력
-		public List<FeedDTO> feedSearchResult(Model model,String search, int cpage) throws Exception{
+		public List<Feed_imgDTO> feedSearchResult(Model model,String search, int cpage) throws Exception{
 			
 			return dao.feedSearchResult(search, cpage);
 		}
@@ -129,11 +129,11 @@ public class FeedService {
 				System.out.println(cafefeed_seq + " : " + id);
 				bdto.setCafefeed_seq(cafefeed_seq);
 				bdto.setId(id);
-				boolean isBookOk = dao.isDetailBook(bdto);
+				BookmarkDTO isBookOk = dao.isDetailBook(bdto);
 				int bookCheck = dao.isBookChecking(bdto);
-				if(bookCheck != 0) {
+				
 				model.addAttribute("isBookOk", isBookOk);// 해당 게시글에 찜 했는지 정보
-				}
+				
 			}
 			
 			

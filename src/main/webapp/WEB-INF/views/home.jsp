@@ -273,7 +273,7 @@ h5 {
   자신의 커피취향을 알아보세요~~
 </div>
 <div id="notice" class="text">
- 궁금하면 드루와~
+  궁금한신점 있으시면 들어오세요~~
 </div>
 </div>
 
@@ -290,8 +290,10 @@ h5 {
 	    </c:otherwise>
     </c:choose>
 </div>
-<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
-<button type="button" onclick="location.href='/manager/test' " id="test">test</button>
+
+ 	<c:if test="loginMember.memLevel == 2}">
+		<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
+	</c:if>
 </body>
 <script>
   $("#box1").hover(function(){
