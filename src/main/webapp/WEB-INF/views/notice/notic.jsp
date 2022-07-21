@@ -178,20 +178,9 @@ display: none;
         </tbody>
     </table>
 
-			<c:choose>
-				<c:when test="${loginID == admin} ">
-					<div class="row">
-						<div class="col-12 create">
-							<input type="button" class="cbtn" value="작성하기">
-						</div>
-					</div>
-			</c:when>
-
-				<c:otherwise>
-			
-				</c:otherwise>
-				
-			</c:choose>
+			<c:if test="${loginID == 'admin'}">
+				<input type="button" class="cbtn" value="작성하기">
+			</c:if>
 			
 		</div>
 </div>
