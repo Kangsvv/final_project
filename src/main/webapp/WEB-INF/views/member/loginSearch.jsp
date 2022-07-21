@@ -128,7 +128,6 @@
 				alert("인증번호를 입력해주세요.");
 				return false;
 			}
-			alert(num);
 			$.ajax({
 				url : "idSearch",
 				type : "post",
