@@ -248,8 +248,8 @@ nav button:hover{
 							<th style="text-align: center;">${i.mem_name }</th>
 							<th style="text-align: center;"><fmt:formatDate pattern="yy-MM-dd" value="${i.mem_joindate}" /></th>
 							<th style="text-align: center;">
-								<button id="delete" class="btn btn-primary" type="button">탈퇴</button>
-								<button id="leveldown" type="button" class="btn btn-primary">강등</button>
+								<button class="btn btn-primary delete" type="button">탈퇴</button>
+								<button type="button" class="btn btn-primary leveldown">강등</button>
 							</th>
 						</tr>
 					</c:forEach>
@@ -303,7 +303,7 @@ $(document).ready(function() {
 		});
 	});
 	
-$("#delete").on("click",function(){
+$(".delete").on("click",function(){
 	
 	var id = $("#modalID").val();
 	
@@ -317,7 +317,7 @@ $("#delete").on("click",function(){
 	})
 })
 
-$("#leveldown").on("click",function(){
+$(".leveldown").on("click",function(){
 	
 	var id = $("#idid").val();
 	
