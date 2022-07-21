@@ -156,19 +156,20 @@ border-bottom : 1px solid black;
       margin-top: 10px;
       
     }
+  
 
 /*-----------------------------------------Footer부분----------------------------*/
 
 </style>
 
 <body>
- <div id="header"><jsp:include page="header.jsp"/> </div>
+ <jsp:include page="header.jsp"/> 
           
-    <div class="container" style="height:800px;">
+    <div class="container" style="height:700px;">
         <div class="row">
 
             <div class="col-12">
-                <h3 style="text-align: center; padding-top: 50px;color: white;">쪽지함</h3>
+                <h3 style="text-align: center;font-size:45px; padding-top: 50px;color: white;">쪽지함</h3>
             </div>
         <div class="col-12" >
             <button class="btn btn-primary" id="btn-all-close">모든쪽지닫기</button>
@@ -261,7 +262,7 @@ border-bottom : 1px solid black;
    </div>
    
     <!-------------------------------------------------------Footer------------------------------------------------->
- <div id="footer"><jsp:include page="footer.jsp"/> </div>
+ 
 </body>
 
 

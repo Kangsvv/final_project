@@ -188,7 +188,7 @@ li .dropdown-item:hover {
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">HOME</a>
+          <a class="nav-link" aria-current="page" href="/">HOME</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/feed/goFeed?page=1">FEED</a>
