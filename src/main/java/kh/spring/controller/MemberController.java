@@ -141,8 +141,6 @@ public class MemberController {
 			}
 			
 			member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
-			// 회원가입 처리
-			System.out.println(member);
 			int result = memberService.joinAction(member);
 			member.setmem_pw(null);
 			if(result > 0 && member.getmem_level() == 0) {
@@ -244,11 +242,20 @@ public class MemberController {
 		}else {
 			member.setmem_seq(-1);
 		}
-		if(id != null || id != "" || member != null) {
-			if(!member.getmem_id().equals(id)) {
-				member.setmem_seq(-2);
+		if(id != null && id != "") {
+			// 패스워드 찾기에 들어온후 조회한 아이디가 없을경우 
+			if(member.getmem_id() != null) {
+				// 또는 아이디는 있지만 해당 이메일과 아이다가 일치하지 않을경우
+				if(!member.getmem_id().equals(id)) {
+					// 아이디와 이메일이 일치하지 않다고 출력
+					member.setmem_seq(-2);
+				}
+			}else {
+				// 인증번호가 일치하지않다고 출력
+				member.setmem_seq(-1);
 			}
 		}
+
 		return member;
 	}
 	
