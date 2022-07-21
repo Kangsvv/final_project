@@ -405,7 +405,8 @@ Remove or comment-out the code block below to see how the browser will fall-back
             <button class="btn profile-edit-btn" id="editprofile">
               Edit Profile
             </button>
-            <button onclick="location.href='/cafein/messagebox' ">message</button>
+            <button class="btn profile-edit-btn"
+            	onclick="location.href='/cafein/messagebox' ">message</button>
 
             <button
               class="btn profile-settings-btn"

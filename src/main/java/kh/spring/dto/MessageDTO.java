@@ -2,7 +2,6 @@ package kh.spring.dto;
 
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 public class MessageDTO {
    

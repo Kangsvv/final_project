@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="selectfeedimg" resultType="kh.spring.dto.Feedin_imgDTO">
-		select * from cafein join cafein_img on cafein.SEQ = cafein_seq where cafein.id = #{value }
+		select * from cafefeed join feed_img on cafefeed.cafefeed_seq = feed_img.cafefeed_seq where cafefeed.id = #{value }	
 	</select>
 	
 	<update id="mypageUpdate" >
