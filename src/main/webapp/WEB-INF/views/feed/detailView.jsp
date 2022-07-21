@@ -576,9 +576,9 @@ nav button:hover{
             <div id="mainfoot">
                <div class="row">
                   <div class="col-6">
-<!--                      <span class="marginSet"> -->
-<%--                         <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count } --%>
-<!--                      </span> -->
+                     <span class="marginSet">
+                        <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count }
+                     </span>
                      <span style="padding-left:10px;">
                         <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;${rCnt }
                      </span>
@@ -587,15 +587,11 @@ nav button:hover{
                   <div class="col-6" id="bookmark">
                   <!-------------------- 작성자와 로그인아이디 다를시 북마크생성 ---------------------------->
                   <c:if test="${loginID !=null && loginID != dto.id && loginID == bdto.id}">
-                     <span class="bookmarkArea">
-                        <i class="fa-solid fa-xl fa-bookmark"></i>
-                     </span>
+                     <span class="bookmarkArea"><i class="fa-solid fa-xl fa-bookmark"></i></span>
                      <!--------------------로그인아이디가 그전 좋아요 눌렀을시 활성화버튼 ---------------------------->
                   </c:if>
                   <c:if test="${loginID !=null && loginID != dto.id && loginID != bdto.id}">
-                     <span class="bookmarkArea">
-                        <i class="fa-regular fa-xl fa-bookmark"></i>
-                     </span>
+                     <span class="bookmarkArea"><i class="fa-regular fa-xl fa-bookmark"></i></span>
                   </c:if>
                   <!---------------------- 비로그인시 버튼 없음 ------------------------------------->
                   <c:if test="${loginID !=null}">
@@ -603,7 +599,7 @@ nav button:hover{
                   </div>
                </div>
 			<script>
-	        $(".fa-bookmark").on("click",function() {
+	        $(".bookmarkArea").on("click",function() {
 	        	   if(${loginID == null}){
 	        		   Swal.fire({
 	        	             icon: 'warning',
@@ -612,25 +608,25 @@ nav button:hover{
 	        	         });
 	                   return false;
 	                }else{
-	   			$.ajax({
-	   				url:"/feed/book",
-	   				data:{cafefeed_seq:${dto.cafefeed_seq}},
-	   				dataType:"json"
-	   			}).done(function(resp){
-	   			if($(".bookmarkArea").val() == '<i class="fa-regular fa-xl fa-bookmark"></i>') {
-
-	   			 	$(".bookmarkArea").val('<i class="fa-solid fa-xl fa-bookmark"></i>');
-	   			} else if($(".bookmarkArea").val() =='<i class="fa-solid fa-xl fa-bookmark"></i>'){
+	   			if($(".bookmarkArea").html() == '<i class="fa-regular fa-xl fa-bookmark"></i>') {
+	   				$.ajax({
+		   				url:"/feed/book",
+		   				data:{cafefeed_seq:${dto.cafefeed_seq}},
+		   				dataType:"json"
+		   			}).done(function(resp){
+	   			 		$(".bookmarkArea").html('<i class="fa-solid fa-xl fa-bookmark"></i>');
+	   				})
+	   			} else if($(".bookmarkArea").html() == '<i class="fa-solid fa-xl fa-bookmark"></i>'){
 	            	$.ajax({
 	       				url:"/feed/book-cancel",
 	       				data:{cafefeed_seq:${dto.cafefeed_seq}},
 	       				dataType:"json"
 	       				
 	       			}).done(function(resp){
-	               		$(".bookmarkArea").val('<i class="fa-regular fa-xl fa-bookmark"></i>');
+	       				
+	               		$(".bookmarkArea").html('<i class="fa-regular fa-xl fa-bookmark"></i>');
 	       			})
 	   			}
-	   			})
 	            }
 	        });
 			</script>
