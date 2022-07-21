@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CAFE-UPLOAD</title>
     <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <!-- Bootstrap ver 5.1  -->
@@ -150,7 +150,7 @@ label{
 
 
 <div class="row" id="contents">
-  <div class="col-12" id="text">카페 등록</div>
+  <div class="col-12" id="text">CAFE-UPLOAD</div>
 </div>
 <div class="row" style="margin-top: 5%;margin-bottom: 5%;">
   <div class="col-12 col-sm-6" id="file"><img id="preview" />

@@ -8,20 +8,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link
-   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-   rel="stylesheet"
-   integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-   crossorigin="anonymous">
-<script
-   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-   integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-   crossorigin="anonymous"></script>
-<script
-   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-   crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap ver 5.1  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
 
@@ -42,6 +33,86 @@ body {
 
 /*---------------------기능 구현 후 Hover 예정------------------*/
 
+#Box {
+  text-align: center;
+  height: 900px;
+  margin-left:15%;
+  margin-right:15%;
+  margin-bottom:3%;
+  padding: 2%;
+}
+
+#Noticecontainer {
+	margin: auto;
+	background-color: white;
+	width: 100%;
+	height: 800px;
+	padding: 5%;
+	border-radius: 10%;
+}
+
+.titlebox {
+	border: none;
+	padding: 0%;
+	margin: auto;
+	text-align: center;
+}
+
+.title_head {
+	color: white;
+	background-color: black;
+	border: none;
+	text-align: center;
+	height: 30px;
+	padding-top: 0.25%;
+}
+
+.nbtn {
+	color: black;
+	font-size: 30px;
+	text-decoration:none;
+}
+
+.cbtn {
+	background-color: #760c0c;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 90%;
+	width: 80px;
+	height: 35px;
+	margin-top: 1%;
+	padding: 0.5%;
+}
+
+.noticbox {
+	background-color: white;
+	border-bottom: 1px solid #222;
+	text-align: center;
+	height: 30px;
+	padding-top: 0.25%;
+	margin: auto;
+}
+
+.notice1 {
+	text-align: left;
+}
+
+.create {
+	margin-top: 1%;
+	text-align: right;
+}
+
+.constyle{
+    color: black;
+    text-decoration: none;
+}
+
+.constyle:hover{
+	color: #760c0c;
+	font-weight : bold;
+}
+
 #example_length,#example_info{
 display: none;
 }
@@ -58,7 +129,6 @@ display: none;
 #Noticecontainer::-webkit-scrollbar-track {
     background: none;  /*스크롤바 뒷 배경 색상*/
 }
-
 </style>
 
 </head>

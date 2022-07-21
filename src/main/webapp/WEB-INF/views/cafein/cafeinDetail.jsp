@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<title>Insert title here</title>
+<title>${dto.name}</title>
 <!-- jstl  -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <!-----------------------J쿼리-->
@@ -22,7 +22,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <style>
+   
 
+/*board UI출력부분----------------------------*/
 
 
 /*---------------------기능 구현 후 Hover 예정------------------*/
@@ -40,10 +42,7 @@
   margin-top: 100px;
   margin: auto;
 }
-table{
-margin-right:auto;
-margin-left:auto;
-}
+
 #file{
   border-radius: 5px;
   color: white;
@@ -66,7 +65,7 @@ border-radius: 5px;
   color: white;
   margin: auto;
   min-width: 450px;
-
+  margin-left: 16%;
 }
 input[type=text] {
 	width: 300px;
@@ -183,15 +182,35 @@ table td{
     }
 
 /*-------------------------------------------------------------*/
+/*----------------------캐러셀----------------------------------*/
+#caru img{
+    width: 100%;
+    height: 400px;
+}
+/* footer 부분 */
+#foot{
+    border-top: 1px solid gray;
+    background-color: rgba(32, 31, 31, 0.532);
+    
+}
+/* rgba(32, 31, 31, 0.532) */
 
+.footer2{
+    line-height: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px ;
+    font-family: 'Noto Sans KR';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 14px;
+   line-height: 20px;
+   color: #FFFFFF;
+}
 </style>
 <body>
-     <!------------------------------------------------------------header----------------------------------------------------->
     <div id="header"><jsp:include page="header.jsp"/> </div>
-    
-          
-<!---------------------------------------------------------------------------------------------------------------------->
- <div class="container">
+
+<div class="container">    
 <div class="row" id="contents">
   <div class="col-12" id="text">${dto.name}</div>
   <!-------------------- 작성자 로그인시 수정/삭제버튼 생성 ---------------------------->
@@ -280,26 +299,32 @@ table td{
   
 
 
+
 </div> 
+
+<!-------------------------------------------------------Footer----------------------------------------------- -->
+     <div id="footer"><jsp:include page="footer.jsp"/> </div>
 
 
  <!--------------------------쪽지모달창------------------------->
  <form action="/cafein/message" id="send">
  <div class="modal fade send" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" style="background-color:#222">
+    <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel" style="color: white;">Message</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
         <div  class="modal-body" id = "box">
           <div id = "top">
+            
+  
               제목:&nbsp; <br>  
             <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요" required/><br><br>
               받는사람:&nbsp;  ${dto.writer}&nbsp;(카페:&nbsp;${dto.name}) 
              <br>  
              <br>
-              <textarea placeholder = "내용을 입력해주세요" name="contents" class="contents" required /></textarea><br>
+              <textarea placeholder = "내용을 입력해주세요" name="contents" required /></textarea><br>
             <input type="hidden" name="receiver" value="${dto.writer}">
             <input type="hidden" name="receiver_email" value="${dto.email}">
             <input type="hidden" name="seq" value="${dto.seq} ">
@@ -317,7 +342,7 @@ table td{
 <!--       </div> -->
     </div>
   </div>
-<div id="footer"><jsp:include page="footer.jsp"/> </div>
+
       <script>
       //--------------------쪽지-------------------------
       $("#message").on("click",function(){
@@ -334,23 +359,8 @@ table td{
             let myInput = document.getElementById("my-input");
             myInput.click();
         }
-     //------------------모달 초기화-----------------------------  
-     
-        // ______________모달 종료 시 입력값 초기화
-      $('.modal').on('hidden.bs.modal', function(e) { // 모달 클래스에 .modal이 있는지 꼭 확인
-          console.log('modal close'); // 'hidden.bs.modal' => 부트스트랩 모달 이벤트, 모달이 사라지면 작동함
-
-          // 초기화 로직 : 아래에 초기화할 대상을 모두 적으면 됨.
-          
-          // 전체 텍스트 인풋 초기화
-        $("#title").val("")
-       	$(".contents").val("")
-    
-          // 셀렉트 초기화 - 선택된 거 초기화
-          $('.select2').val(0).trigger('change.select2');
-
-          console.log('모달 초기화', inputValue)
-      });
+     //------------------좋아요알림(토스트 스크립트)-----------------------------  
+  
 	//---------------------------------------------------------------------
         $("#like").click("on",function() {
         	   if(${loginID == null}){

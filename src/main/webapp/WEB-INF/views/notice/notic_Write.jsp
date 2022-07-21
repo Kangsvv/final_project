@@ -14,27 +14,46 @@
 <style>
 /*board UI출력부분----------------------------*/
 .tz-gallery {
-    padding: 40px;
-    padding-top:0px;
+	padding: 40px;
+	padding-top: 0px;
 }
 
 /* Override bootstrap column paddings */
-   .tz-gallery .row > div {
-       padding: 2px;
-   }
-   
-   .tz-gallery .lightbox img {
-       width: 100%;
-       border-radius: 0;
-       position: relative;
-   }
-      .container h1 {
-          text-align: center;
-          margin-top: 50px;
-          font-family: 'Droid Sans', sans-serif;
-          font-weight: bold;
-      }
+.tz-gallery .row>div {
+	padding: 2px;
+}
 
+.tz-gallery .lightbox img {
+	width: 100%;
+	border-radius: 0;
+	position: relative;
+}
+
+.container h1 {
+	text-align: center;
+	margin-top: 50px;
+	font-family: 'Droid Sans', sans-serif;
+	font-weight: bold;
+}
+
+button {
+	border: none;
+}
+
+#row4 .btn {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 700;
+	height: 45px;
+	line-height: 30px;
+	font-weight: bold;
+	background-color: #760c0c;
+	color: #FFFFFF;
+	border-radius: 12px;
+	width: 120px;
+	border: none;
+	margin-left: 10px;
+}
 </style>
 <body>
 <!--  ------------------------------------------------------------header-----------------------------------------------------  -->

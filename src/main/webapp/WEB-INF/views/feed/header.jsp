@@ -182,7 +182,7 @@ li .dropdown-item:hover {
      
      <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
       <div class="container-fluid">
-         <a href="/"><img src="/img/logo4.png" class="logo"></a>
+        <a href="/"><img src="/img/logo4.png" class="logo"></a>
         <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon">▼</span>
         </button>
@@ -212,7 +212,7 @@ li .dropdown-item:hover {
 				<c:when test="${empty loginID}">
 		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
-        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Join</a></li>
+        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
           </ul>
           </c:when>
          <c:otherwise>
@@ -229,7 +229,7 @@ li .dropdown-item:hover {
 		     <button id="login" type="button"
               class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/login' ">Login</button>
         	 <button id="signup" type="button"
-              class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/signUp' ">Join</button>
+              class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/signUp' ">Signup</button>
 	    </c:when>
 	    <c:otherwise>
 	    	 <button id="login" type="button"
@@ -240,7 +240,6 @@ li .dropdown-item:hover {
     </c:choose>
         
         
-      </div>
     </nav> 
 </body>
 <script>

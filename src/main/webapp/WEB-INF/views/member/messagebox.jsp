@@ -17,7 +17,7 @@
  <!--  sweet alert  -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
  
-<title>Insert title here</title>
+<title>쪽지함</title>
 </head>
 <style>
 /*HEADer부분----------------------------*/
