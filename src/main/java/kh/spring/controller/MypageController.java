@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.dao.MypageDAO;
 import kh.spring.dto.Cafein_imgDTO;
+import kh.spring.dto.Feed_imgDTO;
 import kh.spring.dto.MemberDTO;
 import kh.spring.service.MypageService;
 
@@ -44,7 +45,7 @@ public class MypageController {
 		System.out.println(loginID);
 
 		MemberDTO dto = pdao.selectID(loginID);
-		List<Cafein_imgDTO> imglist = pdao.selectimg(loginID);
+		List<Feed_imgDTO> imglist = pdao.selectfeedimg(loginID);
 		model.addAttribute("dto", dto);
 		model.addAttribute("imglist", imglist);
 		System.out.println(dto.getmem_level());
@@ -58,7 +59,7 @@ public class MypageController {
 		System.out.println(loginID);
 
 		MemberDTO dto = pdao.selectID(loginID);
-		List<Cafein_imgDTO> imglist = pdao.selectimg(loginID);
+		List<Cafein_imgDTO> imglist = pdao.selectcafeinimg(loginID);
 		model.addAttribute("dto", dto);
 		model.addAttribute("imglist", imglist);
 		System.out.println(dto.getmem_level());

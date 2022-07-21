@@ -9,11 +9,11 @@
 		select * from member where mem_id = #{value } order by 1 desc
 	</select>
 	
-	<select id="selectimg" resultType="kh.spring.dto.Cafein_imgDTO">
+	<select id="selectcafeinimg" resultType="kh.spring.dto.Cafein_imgDTO">
 		select * from cafein join cafein_img on cafein.SEQ = cafein_seq where cafein.id = #{value }
 	</select>
 	
-	<select id="selectfeedimg" resultType="kh.spring.dto.Feedin_imgDTO">
+	<select id="selectfeedimg" resultType="kh.spring.dto.Feed_imgDTO">
 		select * from cafefeed join feed_img on cafefeed.cafefeed_seq = feed_img.cafefeed_seq where cafefeed.id = #{value }	
 	</select>
 	
@@ -24,5 +24,13 @@
 	<delete id="memberout" >
 		delete from member where mem_id = #{value }
 	</delete>
+	
+	<!-- <select id="mycount">
+		select count(*) count from cafefeed join feed_img on cafefeed.cafefeed_seq = feed_img.cafefeed_seq where cafefeed.id = ${value };
+	</select>
+	
+	<select id="cafeincount">		
+		select count(*) count from cafefeed join feed_img on cafefeed.cafefeed_seq = feed_img.cafefeed_seq where cafefeed.id = ${value };
+	</select> -->
 
 </mapper>

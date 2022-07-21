@@ -22,8 +22,8 @@ public class MypageDAO {
 		return mybatis.selectOne("mypage.selectID",loginID) ;
 	}
 	
-	public List<Cafein_imgDTO> selectimg(String loginID) throws Exception {
-		return mybatis.selectList("mypage.selectimg", loginID) ;
+	public List<Cafein_imgDTO> selectcafeinimg(String loginID) throws Exception {
+		return mybatis.selectList("mypage.selectcafeinimg", loginID) ;
 	}
 	
 	public List<Feed_imgDTO> selectfeedimg(String loginID) throws Exception {
