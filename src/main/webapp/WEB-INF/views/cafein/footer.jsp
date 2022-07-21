@@ -40,7 +40,7 @@
     <div id="foot" align=center>
        <div class="container">
           <div class="row">
-            <div class="col-4" id="footicon"> </div>
+              <div class="col-4 footer2" style="font-size:20px;">CAFEIN</div>
              <div class="col-2 footer2">회사소개</div>
              <div class="col-2 footer2">이용약관</div>
              <div class="col-2 footer2">1:1 문의</div>
