@@ -17,6 +17,7 @@ public class ManagerService {
 	
 	public void selectNomal(Model model) throws Exception {
 		List<MemberDTO> list = dao.selectNomal();
+		
 		model.addAttribute("list",list);
 	}
 	
