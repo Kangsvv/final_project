@@ -12,48 +12,6 @@
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 </head>
 <style>
-  /*HEADer부분----------------------------*/
- body{
-    background-color: #222;
-  }
-    nav {
-   background-color: black;
-   color: white;
-   padding-left:10%;
-   padding-right:10%;
-   border-bottom: 1px solid gray;
-}
-nav a{
-    color: white;
-}
-.navbar-nav{
-   min-width:450px;
-}
-.navbar-nav a{
-    color: white;
-    border-radius: 5px;
-    margin-right: 20px;
-}
-.navbar-nav a:hover{
-    color: black;
-    background-color: white;
-    border-radius: 5px;
-    text-decoration-line: none;
-}
-#btn{
-    text-align: right;
-}
-nav button{
-    background-color: rgba(0, 0, 0, 0.128);
-    border-radius: 5px;
-    color: white;
-}
-
-nav button:hover{
-    border-radius: 5px;
-    color: black;
-    background-color: white;
-}
 /*board UI출력부분----------------------------*/
 .tz-gallery {
     padding: 40px;
@@ -76,103 +34,6 @@ nav button:hover{
           font-family: 'Droid Sans', sans-serif;
           font-weight: bold;
       }
-     /* footer 부분 */
-
-#foot{
-    border-top: 1px solid gray;
-    background-color: black;
-    
-}
-
-
-.footer2{
-    line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px ;
-    font-family: 'Noto Sans KR';
-   font-style: normal;
-   font-weight: 700;
-   font-size: 14px;
-   line-height: 20px;
-   color: #FFFFFF;
-}
-.footer2 a{
-   text-decoration : none;
-   color:white;
-   }
-
-/*------------------------ 헤더 부분 스타일 ------------------------ */
-      .search{
-         color:black;
-         background-color: gray;
-         border-radius: 8px;
-         height:50px;
-         padding:5px;
-         padding-left:15px;
-         font-weight : bold;
-         border:0 solid black;
-         display:block;
-         width:100%;
-         
-      }
-      input:focus {outline:none;}
-      input::placeholder {
-      color: #ccc;
-      }
-      .write{
-         width:40px;
-      }
-      .search2{
-         width:40px;
-         bottom:30px;
-         float: left;
-      }
-      .writebtn{
-          background-color:transparent;
-         float: right;
-         margin-right:5%;
-         margin-bottom:2%;
-      }
-      .searchbtn{
-         background-color:transparent;
-      }
-      .select option, #select{
-         color:black;
-         background-color:#ccc;
-      }
-      .select{
-         height:30px;
-         margin-left:5%;
-         border-radius: 8px;
-         margin-top:10px;
-         width:100px;
-      }
-      
-      button{
-        border:none;
-      }
-       #row4 .btn{
-         font-family: 'Noto Sans KR';
-         font-style: normal;
-         font-weight: 700;
-            height: 45px;
-            line-height: 30px;
-            font-weight: bold;
-            background-color: #760c0c;
-            color: #FFFFFF;
-            border-radius: 12px;
-            width:120px;
-            border: none;
-            margin-left:10px;
-         }
-         #title,#contents{
-            background-color:#222;
-            border:none;
-         }
-         
-         textarea:focus {
-    outline: none;
-}
 
 /* 드록 박스 관련 스타일 */
 .que:first-child {
@@ -233,32 +94,6 @@ li a:hover, .dropdown:hover .dropbtn {
 li.dropdown {
     display: inline-block;
 }
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border-radius: 4%;
-}
-
-.dropdown-content a {
-    font-size :13px;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    margin: 0%;
-}
-
-.dropdown-content a:hover {
-   background-color: #760c0c;
-   color: white;
-}
-
-.show {display:block;}
 
 </style>
 <body>
@@ -333,28 +168,6 @@ li.dropdown {
 </div>
 
 <script>
-$(".que").click(function() {
-   $(this).next(".anw").stop().slideToggle(300);
-   $(this).toggleClass('on').siblings().removeClass('on');
-   $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
-});
-
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-window.onclick = function(e) {
-     if (!e.target.matches('.dropbtn')) {
-
-       var dropdowns = document.getElementsByClassName("dropdown-content");
-       for (var d = 0; d < dropdowns.length; d++) {
-         var openDropdown = dropdowns[d];
-         if (openDropdown.classList.contains('show')) {
-           openDropdown.classList.remove('show');
-         }
-      }
-   }         
-}
 
 //글 입력시
 $("#contents").keyup(function(e) {
