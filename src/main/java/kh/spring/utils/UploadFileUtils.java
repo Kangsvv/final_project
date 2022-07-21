@@ -32,7 +32,7 @@ public class UploadFileUtils {
 	
 	  if (image.exists()) {
 	   thumbnail.getParentFile().mkdirs();
-	   Thumbnails.of(image).size(THUMB_WIDTH, THUMB_HEIGHT).toFile(thumbnail);
+	   //Thumbnails.of(image).size(THUMB_WIDTH, THUMB_HEIGHT).toFile(thumbnail);
 	  }
 	  return newFileName;
 	 }

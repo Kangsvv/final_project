@@ -290,8 +290,10 @@ h5 {
 	    </c:otherwise>
     </c:choose>
 </div>
-<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
-<button type="button" onclick="location.href='/manager/test' " id="test">test</button>
+
+ 	<c:if test="loginMember.memLevel == 2}">
+		<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
+	</c:if>
 </body>
 <script>
   $("#box1").hover(function(){

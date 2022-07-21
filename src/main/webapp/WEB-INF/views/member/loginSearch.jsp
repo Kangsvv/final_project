@@ -116,7 +116,7 @@
 			var num = $("#emailNum").val();
 			var id = $("#mem_id").val();
 			var check = $("#idPwCheck").val();
-			
+			$("#emailNum").val('');
 			if(check == 1) {
 				if(id.length == 0){
 					alert("아이디를 입력하셔야합니다");
@@ -129,6 +129,7 @@
 				type : "post",
 				data : {"num":num,"email":emailset,"id":id},
 				success : function(result){
+					console.log(result);
 					if(result.mem_seq == -1){
 						alert("인증번호를 확인해주세요. 3분이 초과된경우 다시 전송 후 인증해주세요.");
 						return false;

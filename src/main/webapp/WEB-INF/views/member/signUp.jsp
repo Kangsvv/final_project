@@ -222,11 +222,6 @@
 				alert("이메일 인증을 진행해주세요.");
 				return false;
 			}
-			
-			if($("#mem_ceocheckimg_file").val() != '' && $("#mem_ceocheckimg_file").val() != null){
-				$("#mem_status").val(0);
-				$("#mem_level").val(2);
-			}
 		});
 		
 		$("#emailcheck").on("click",function(){
