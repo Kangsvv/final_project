@@ -22,60 +22,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <style>
-  /*------------------------ 헤더 부분 스타일 ------------------------ */
-
-
-      #login,#signup{
-         color:white;
-      }
-      #login:hover,#signup:hover{
-         color:black;
-      }
-/* container */
-
-
- body{
-    background-color: #222;
-  }
-    nav {
-   background-color: #222;
-   color: white;
-
-   border-bottom: 1px solid gray;
-}
-nav a{
-    color: white;
-}
-.navbar-nav{
-   min-width:450px;
-}
-.navbar-nav a{
-    color: white;
-    border-radius: 5px;
-    margin-right: 20px;
-}
-.navbar-nav a:hover{
-    color: black;
-    background-color: white;
-    border-radius: 5px;
-    text-decoration-line: none;
-}
-#btn{
-    text-align: right;
-}
-nav button{
-    background-color: rgba(0, 0, 0, 0.128);
-    border-radius: 5px;
-    color: white;
-}
-
-nav button:hover{
-    border-radius: 5px;
-    color: black;
-    background-color: white;
-}
-/*board UI출력부분----------------------------*/
-
+  
 
 /*---------------------기능 구현 후 Hover 예정------------------*/
 
@@ -172,73 +119,33 @@ label{
 .tableTitle{
   min-width: 76px;
 }
-#btn{
-  text-align: center;
-  margin-bottom: 5%;
-}
+
 #btn button{
   width: 150px;
   height: 50px;
   background-color: #760c0c;
   color: white;
+  border-radius:5px;
 }
 #btn button:hover{
+	opacity: 0.8;
   background-color: #760c0c;
   color: white;
 }
 
-/*-------------------------------------------------------------*/
-/* footer 부분 */
-#foot{
-    border-top: 1px solid gray;
-    background-color: rgba(32, 31, 31, 0.532);
-    
-}
-/* rgba(32, 31, 31, 0.532) */
-
-.footer2{
-    line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px ;
-    font-family: 'Noto Sans KR';
-   font-style: normal;
-   font-weight: 700;
-   font-size: 14px;
-   line-height: 20px;
-   color: #FFFFFF;
-}
 .parkingRaido{
   line-height: 70px;
 }
+/*-------------------------------------------------------------*/
+
 </style>
 <body>
      <!------------------------------------------------------------header----------------------------------------------------->
+    <div id="header"><jsp:include page="header.jsp"/> </div>
+
     
-     <div class="container">
-      <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">CAFEIN</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon">▼</span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link" href="#">HOME</a>
-              <a class="nav-link" href="#">FEED</a>
-              <a class="nav-link" href="#">CAFE-IN</a>
-              <a class="nav-link" href="#">NOTICE</a>
-              <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
-          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
-            </div>
-          </div>
-          <button id="login" type="button"
-                class="mx-1 d-none d-lg-inline btn navbar-btn">Login</button>
-                <button id="signup" type="button"
-                class="mx-1 d-none d-lg-inline btn navbar-btn">Signup</button>
-        </div>
-      </nav>
-          
 <!---------------------------------------------------------------------------------------------------------------------->
+<div class="container">
 <form action="/cafein/cafein_insert" method="post" enctype="multipart/form-data" >
 
 
@@ -380,10 +287,13 @@ label{
 
 
 <div class="row">
-  <div class="col-12" id="btn"><button id="add">등록</button>
+  <div class="col-12" id="btn" style="  text-align: center;margin-bottom: 5%;"><button id="add">등록</button>
   <a href="/cafein/goCafein?page=1"><button type="button">취소</button></a></div>
 </div>
        </form>
+       </div>
+<div id="footer"><jsp:include page="footer.jsp"/> </div>
+       
    <!----------------------------------------------------- script------------------------------------------------ -->
    <script>
  //---------------------------------------우편번호-------------------------------
@@ -512,22 +422,7 @@ $("#allnot").change(function(){
    </script>
    
    
-    <!-------------------------------------------------------Footer------------------------------------------------->
- 
-    <div class="col-12 d-none d-md-block">
-  <div id="foot" align=center>
-     <div class="container">
-        <div class="row">
-          <div class="col-4" id="footicon"> </div>
-           <div class="col-2 footer2">회사소개</div>
-           <div class="col-2 footer2">이용약관</div>
-           <div class="col-2 footer2">1:1 문의</div>
-           <div class="col-2 footer2">©2022 CAFEIN</div>
-        </div>
-     </div>
-  </div>
-</div>
-</div>
+
 
       <script>
        function onClickUpload() {
