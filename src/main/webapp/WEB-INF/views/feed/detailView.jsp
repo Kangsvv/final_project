@@ -198,7 +198,7 @@ nav button:hover{
            
         }
         .contentsBox{
-           padding:20px;
+           padding:30px;
            font-size: 16px;
             word-wrap: break-word;      /* IE 5.5-7 */
 /*            margin-top:20px;  */
@@ -556,31 +556,32 @@ nav button:hover{
       <!-- Main Contents Container -->
          <div class="col-12 contents-container">
          <div class="row">
-         <div class="col-12 col-md-7">
-         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="/resources/feed/${fdto.sys_name }" class="d-block">
-                </div>
-                <div class="carousel-item">
-                  <img src="/resources/img/cafe2.jpg" class="d-block">
-                </div>
-                <div class="carousel-item">
-                  <img src="/resources/img/cafe3.jpg" class="d-block" >
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
+         <div class="col-12 col-xxl-7">
+<!--          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"> -->
+<!--               <div class="carousel-inner"> -->
+<!--                 <div class="carousel-item active"> -->
+<%--                   <img src="/resources/feed/${fdto.sys_name }" class="d-block"> --%>
+<!--                 </div> -->
+<!--                 <div class="carousel-item"> -->
+<!--                   <img src="/resources/img/cafe2.jpg" class="d-block"> -->
+<!--                 </div> -->
+<!--                 <div class="carousel-item"> -->
+<!--                   <img src="/resources/img/cafe3.jpg" class="d-block" > -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev"> -->
+<!--                 <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+<!--                 <span class="visually-hidden">Previous</span> -->
+<!--               </button> -->
+<!--               <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next"> -->
+<!--                 <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+<!--                 <span class="visually-hidden">Next</span> -->
+<!--               </button> -->
+<!--             </div> -->
+			<img src="/resources/feed/${fdto.sys_name }" class="d-block" style="padding-top:10%; margin:auto; width:75%; height:90%;">
             </div>
             
-            <div class="col-12 col-md-5 contentsBox">
+            <div class="col-12 col-xxl-5 contentsBox">
                ${dto.contents }
             </div>
             </div>
