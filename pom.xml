@@ -192,6 +192,13 @@
 		    <version>0.4.8</version>
 		</dependency>
 		
+		<!-- 파일 업로드 에러 패치 (썸네일) -->
+		<dependency>
+		   <groupId>org.apache.httpcomponents</groupId>
+		   <artifactId>httpclient</artifactId>
+		   <version>4.5.2</version>
+		   <scope>runtime</scope>
+		 </dependency>
 		
 		<!-- 첨부파일 END -->       
 	</dependencies>

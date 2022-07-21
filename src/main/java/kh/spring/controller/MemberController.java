@@ -3,7 +3,6 @@ package kh.spring.controller;
 import java.io.File;
 import java.util.Random;
 
-import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +35,7 @@ public class MemberController {
 	// Autowired를 이용해서 service를 이름을 정의하고 호출
 	@Autowired private MemberService memberService;
 	@Autowired JavaMailSender mailSender;
-	@Resource(name="uploadPath")
+//	@Resource(name="uploadPath")
 	private String uploadPath;
 	
 	@Autowired
@@ -137,8 +136,11 @@ public class MemberController {
 					fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 				}
 				
-				member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+			}else {
+				fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 			}
+			
+			member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 			// 회원가입 처리
 			System.out.println(member);
 			int result = memberService.joinAction(member);
@@ -237,6 +239,7 @@ public class MemberController {
 		MemberDTO member = new MemberDTO();
 		int checkNum = memberService.emailNumCheck(email,num);
 		if(checkNum == num) {
+			memberService.emailNumDelete(email,num);
 			member = memberService.idSearch(email);
 		}else {
 			member.setmem_seq(-1);

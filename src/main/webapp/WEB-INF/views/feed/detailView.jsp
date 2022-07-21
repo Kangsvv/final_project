@@ -491,8 +491,8 @@ nav button:hover{
        });
        
     }
-   
    </script>
+
     <!------------------------------------------------------------header----------------------------------------------------->
      
         <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
@@ -575,10 +575,10 @@ nav button:hover{
             <div id="mainfoot">
                <div class="row">
                   <div class="col-6">
-                     <span class="marginSet">
-                        <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count }
-                     </span>
-                     <span>
+<!--                      <span class="marginSet"> -->
+<%--                         <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count } --%>
+<!--                      </span> -->
+                     <span style="padding-left:10px;">
                         <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;${rCnt }
                      </span>
                   </div>
@@ -588,17 +588,7 @@ nav button:hover{
                      </span>
                   </div>
                </div>
-               <script>
-               		$(".fa-bookmark").on("click",function(){
-               			$.ajax({
-               				url:"/feed/clickBook",
-               				data:{cafefeed_seq:${dto.cafefeed_seq}},
-               				dataType:"json"
-               			}).done(function(resp){
-               				console.log(resp);
-               			})
-               		})
-               </script>
+
 
             </div>
             <div class="replyWriteBox">

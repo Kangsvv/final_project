@@ -27,13 +27,13 @@
 
 	<!-- 회원가입 처리 -->
 	<insert id="joinAction">
-		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},#{mem_level},#{mem_status},'',#{mem_ceocheckimg},sysdate,'',#{mem_oriname})
+		insert into member values(mem_seq.nextVal,#{mem_id},#{mem_pw},#{mem_name},#{mem_email},#{mem_phone},0,0,'',#{mem_ceocheckimg},sysdate,'',#{mem_oriname})
 	</insert>
 	
 	<!-- 로그인 -->
 	<select id="login" resultType="kh.spring.dto.MemberDTO">
-		select * from member where mem_Id = #{mem_id}
-	</select>
+		select * from member where (mem_Id = #{mem_id}) and (mem_status = 0)
+	</select> 
 	
 	<!-- 카카오 계정 생성 확인 -->
 	<select id="kakaoLoginCheck" resultType="kh.spring.dto.MemberDTO">
