@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <title>My page</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    
     <style>
-    :root {
+    :root{
         font-size: 10px;
-      }
+      } 
       * {
         color: white;
       }
@@ -34,6 +37,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         max-width: 93.5rem;
         margin: 0 auto;
         padding: 0 2rem;
+        
       }
 
       .btn {
@@ -391,8 +395,14 @@ Remove or comment-out the code block below to see how the browser will fall-back
       } 
     </style>
   </head>
+  
+   
   <body background-color="#222">
-	
+  
+  <!-- header -->
+  <%@ include file="header.jsp"%>
+  <!-- header -->
+<div class="container2">
     <header>
       <div class="container">
         <div class="profile">
@@ -460,30 +470,22 @@ Remove or comment-out the code block below to see how the browser will fall-back
           
 	<!-- -------------------------------------------------- -->
 	
+	
+	
 	<c:forEach var="i" items="${imglist }">
+	
+	<%-- <c:if test="${i.cagfefeed_seq == null}">
+		<div class="emptycan">
+			게시물이 없습니다.
+		</div>
+	</c:if> --%>
+	
           <div class="gallery-item" tabindex="0">
            
-            <a href="/cafein/selectBySeq?cafein_seq=${i.cafefeed_seq }">
+            <a href="/cafein/selectBySeq?cafein_seq=${i.cafefeed_seq }" style="witdh:100%; height:100%;">
             <img src="/cafein/${i.sys_name }" class="gallery-image"/>
             </a>
 
-            <div class="gallery-item-type">
-              <span class="visually-hidden">Gallery</span
-              ><i class="fas fa-clone" aria-hidden="true"></i>
-            </div>
-
-            <div class="gallery-item-info">
-             <!--  <ul>
-                <li class="gallery-item-likes">
-                  <span class="visually-hidden">Likes:</span
-                  ><i class="fas fa-heart" aria-hidden="true"></i> 42
-                </li>
-                <li class="gallery-item-comments">
-                  <span class="visually-hidden">Comments:</span
-                  ><i class="fas fa-comment" aria-hidden="true"></i> 1
-                </li>
-              </ul> -->
-            </div>
           </div>
     </c:forEach>
    
@@ -495,6 +497,8 @@ Remove or comment-out the code block below to see how the browser will fall-back
       </div>
       <!-- End of container -->
     </main>
+</div>    
+
 
     <script>
     	$("#editprofile").on("click",function(){

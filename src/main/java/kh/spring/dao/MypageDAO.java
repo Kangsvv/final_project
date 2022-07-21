@@ -55,4 +55,16 @@ public class MypageDAO {
 		return mybatis.delete("mypage.memberout",loginID);
 	}
 
+	public int memberout2(String loginID)throws Exception{
+		return mybatis.delete("mypage.memberout2",loginID);
+	}
+	
+	public int memberout3(String loginID)throws Exception{
+		return mybatis.delete("mypage.memberout3",loginID);
+	}
+	
+	public int memberout4(String loginID)throws Exception{
+		return mybatis.delete("mypage.memberout4",loginID);
+	}
+
 }

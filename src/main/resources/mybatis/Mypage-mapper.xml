@@ -25,6 +25,18 @@
 		delete from member where mem_id = #{value }
 	</delete>
 	
+	<delete id="memberout2" >
+		delete from cafein where mem_id = #{value }
+	</delete>
+	
+	<delete id="memberout3" >
+		delete from cafefeed where mem_id = #{value }
+	</delete>
+	
+	<delete id="memberout4" >
+		delete from message where mem_id = #{value }
+	</delete>
+	
 	<select id="countfeed" resultType="int">
 		select count(*) from cafefeed where id=#{id}
 	</select>

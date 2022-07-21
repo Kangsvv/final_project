@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.spring.dao.CafeinDAO;
 import kh.spring.dao.MypageDAO;
 import kh.spring.dto.Cafein_imgDTO;
 import kh.spring.dto.Feed_imgDTO;
@@ -28,7 +29,10 @@ public class MypageController {
 
 	@Autowired
 	private MypageDAO pdao;
-
+	
+	@Autowired
+	private CafeinDAO cdao;
+	
 	@Autowired
 	private MypageService pser;
 
@@ -102,6 +106,9 @@ public class MypageController {
 	public String memberout() throws Exception {
 		String loginID = (String) session.getAttribute("loginID");
 		pdao.memberout(loginID);
+		pdao.memberout2(loginID);
+		pdao.memberout3(loginID);
+		pdao.memberout4(loginID);
 		session.invalidate();
 		System.out.println(loginID + "<- 세션이 있나 확인하려고 만든겨");
 		return "redirect:/";
