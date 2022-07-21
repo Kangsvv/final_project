@@ -165,6 +165,7 @@ li .dropdown-item {
 	color: black;
 	margin-bottom: 14px;
 	text-align: left;
+	padding-left:5px;
 }
 
 
@@ -201,9 +202,9 @@ li .dropdown-item:hover {
             NOTICE
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="/notice/FAQ">FAQ</a></li>
-            <li><a class="dropdown-item" href="/notice/event_selectAll">이벤트 및 공지사항</a></li>
-            <li><a class="dropdown-item" href="/question/question_list">1:1문의</a></li>
+            <li style="margin:0px;"><a class="dropdown-item" href="/notice/FAQ">FAQ</a></li>
+            <li style="margin:0px;"><a class="dropdown-item" href="/notice/event_selectAll">이벤트 및 공지사항</a></li>
+            <li style="margin:0px;"><a class="dropdown-item" href="/question/question_list">1:1문의</a></li>
           </ul>
         </li>
       </ul>
