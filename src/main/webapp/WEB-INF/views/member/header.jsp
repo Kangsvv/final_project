@@ -8,19 +8,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- Bootstrap ver 5.1  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-
-
 
 
 </head>
-<style>
-  <style>
-  /*HEADer부분----------------------------*/
+<style type="text/css">
 
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+ font-family: 'GmarketSansMedium';
+}
 /*------------------------ 헤더 부분 스타일 ------------------------ */
    .loginbox{
       flex:auto;
@@ -92,15 +95,16 @@
    margin-right: 12%;
 }
 
-    nav {
-   background-color: black;
-   color: white;
-   padding-left:10%;
-   padding-right:10%;
-   border-bottom: 1px solid gray;
+nav {
+ background-color: black;
+ color: white;
+ padding-left:10%;
+ padding-right:10%;
+ border-bottom: 1px solid gray;
 }
 nav a{
     color: white;
+    line-height:5px;
 }
 .navbar-nav{
    min-width:450px;
@@ -109,8 +113,12 @@ nav a{
 .navbar-nav a{
     color: white;
     border-radius: 5px;
-    margin-right: 10%;
+    margin-left:5%;
 }
+.navbar-nav li{
+margin-left:5%;
+}
+
 .navbar-nav a:hover{
     color: black;
     background-color: white;
@@ -141,11 +149,12 @@ width:100px;
      <!------------------------------------------------------------header----------------------------------------------------->
      
      <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
-            <div class="container-fluid">
-              <img src="/img/logo4.png" class="logo">
-              <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">▼</span>
-              </button>
+     <div class="container">
+      <div class="container-fluid">
+        <img src="/img/logo4.png" class="logo">
+        <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">▼</span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-link" href="/">HOME</a>
@@ -179,8 +188,7 @@ width:100px;
 	    </c:otherwise>
     </c:choose>
         
-        
-      </div>
+        </div>
       </div>
     </nav> 
 </body>

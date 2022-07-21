@@ -104,6 +104,7 @@
 }
 nav a{
     color: white;
+    line-height:5px;
 }
 .navbar-nav{
    min-width:450px;
@@ -112,8 +113,12 @@ nav a{
 .navbar-nav a{
     color: white;
     border-radius: 5px;
-    margin-right: 10%;
+    margin-left:5%;
 }
+.navbar-nav li{
+margin-left:5%;
+}
+
 .navbar-nav a:hover{
     color: black;
     background-color: white;

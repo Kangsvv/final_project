@@ -125,8 +125,10 @@ label{
   height: 50px;
   background-color: #760c0c;
   color: white;
+  border-radius:5px;
 }
 #btn button:hover{
+	opacity: 0.8;
   background-color: #760c0c;
   color: white;
 }

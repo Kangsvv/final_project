@@ -53,6 +53,9 @@
 #answer{
 	margin-right:1%;
 }
+#answer:hover{
+	opacity: 0.8;
+}
 #btn-all-close:hover {
   background-color: #760c0c;
   color: #fff;
