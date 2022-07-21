@@ -273,11 +273,11 @@ nav button:hover{
 
             <div class="contents">
              	<div class="row">
-12
 					<c:choose>
 					
-						<c:when test="${list} == null">
-						<h1 style="color:white; margin:auto;">검색결과가 없습니다.</h1>
+						<c:when test="${list[0] == null}">
+
+						<h1 style="color:white; margin-top:100px; text-align:center;">검색결과가 없습니다.</h1>
 						</c:when>
 
 						<c:otherwise>
