@@ -179,7 +179,16 @@ button {
 }
 
 .noticbtn {
-	margin-bottom: 1%;
+
+ background-color: #760c0c;
+   border: none;
+   border-radius: 5px;
+   color: white;
+   font-size: 90%;
+   width: 80px;
+   height: 35px;
+   margin-top: 1%;
+   padding: 0.5%;
 }
 
 .nbtn {
@@ -190,10 +199,10 @@ button {
 .cbtn {
 	background-color: #760c0c;
 	border: none;
-	border-radius: 15%;
+	border-radius: 5px;
 	color: white;
 	font-size: smaller;
-	width: 9%;
+	width: 60px;
 	height: 35px;
 	margin-top: 1%;
 	padding: 0.5%;
@@ -401,16 +410,25 @@ display: none;
 				</c:choose>
 
 		
+
+				<c:choose>
+				<c:when test="${loginID != null}"> 
+					<div class="row">
+						<div class="col-12 create">
+							<input type="button" class="cbtn" value="작성하기">
+						</div>
+					</div>
+			   </c:when>
          
+         		<c:otherwise>
+					<div>로그인이 필요합니다</div>
+				</c:otherwise>
+				
+			</c:choose>
          
-         <div class="row">
-            <div class="col-12 create">
-               <input type="button" class="cbtn" value="작성하기">
-            </div>
-         </div>
          </div>
       </div>
-<
+
 
 <!-------------------------------------------------------Footer------------------------------------------------->
 	<div class="col-12 d-none d-md-block">
@@ -462,6 +480,8 @@ window.onclick = function(e) {
       }
    }         
 }
+
+
 
 $(".cbtn").click(function() {
 	location.href = "/question/question_write";

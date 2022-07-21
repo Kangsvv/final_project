@@ -28,118 +28,118 @@
 
 <style>
 body {
-	background-color: #222;
+   background-color: #222;
 }
 
 .container h1 {
-	text-align: center;
-	margin-top: 50px;
-	font-family: 'Droid Sans', sans-serif;
-	font-weight: bold;
-	color: white;
+   text-align: center;
+   margin-top: 50px;
+   font-family: 'Droid Sans', sans-serif;
+   font-weight: bold;
+   color: white;
 }
 
 /*---------------------기능 구현 후 Hover 예정------------------*/
 
 /*------------------------ 헤더 부분 스타일 ------------------------ */
 nav {
-	background-color: black;
-	padding-left: 10%;
-	padding-right: 10%;
-	border-bottom: 1px solid gray;
+   background-color: black;
+   padding-left: 10%;
+   padding-right: 10%;
+   border-bottom: 1px solid gray;
 }
 
 nav a {
-	color: white;
+   color: white;
 }
 
 .navbar-nav {
-	min-width: 450px;
+   min-width: 450px;
 }
 
 .navbar-nav a {
-	color: white;
-	border-radius: 5px;
-	margin-right: 20px;
+   color: white;
+   border-radius: 5px;
+   margin-right: 20px;
 }
 
 .navbar-nav a:hover {
-	color: black;
-	background-color: white;
-	border-radius: 5px;
-	text-decoration-line: none;
+   color: black;
+   background-color: white;
+   border-radius: 5px;
+   text-decoration-line: none;
 }
 
 #btn {
-	text-align: right;
+   text-align: right;
 }
 
 nav button {
-	background-color: rgba(0, 0, 0, 0.128);
-	border-radius: 5px;
-	color: white;
+   background-color: rgba(0, 0, 0, 0.128);
+   border-radius: 5px;
+   color: white;
 }
 
 nav button:hover {
-	border-radius: 5px;
-	color: black;
-	background-color: white;
+   border-radius: 5px;
+   color: black;
+   background-color: white;
 }
 
 .loginbox {
-	flex: auto;
-	float: left;
-	min-width: 150px;
-	text-align: right;
+   flex: auto;
+   float: left;
+   min-width: 150px;
+   text-align: right;
 }
 
 input:focus {
-	outline: none;
+   outline: none;
 }
 
 input::placeholder {
-	color: #ccc;
+   color: #ccc;
 }
 
 .write {
-	width: 40px;
+   width: 40px;
 }
 
 button {
-	border: none;
+   border: none;
 }
 
 #login, #signup {
-	color: white;
+   color: white;
 }
 
 #login:hover, #signup:hover {
-	color: black;
+   color: black;
 }
 
 /*-----------------------------------------Footer부분----------------------------*/
 /* footer 부분 */
 #foot {
-	border-top: 1px solid gray;
-	background-color: black;
-	margin-bottom: 0px;
+   border-top: 1px solid gray;
+   background-color: black;
+   margin-bottom: 0px;
 }
 
 .footer2 {
-	line-height: 20px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	font-family: 'Noto Sans KR';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 14px;
-	line-height: 20px;
-	color: #FFFFFF;
+   line-height: 20px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   font-family: 'Noto Sans KR';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 14px;
+   line-height: 20px;
+   color: #FFFFFF;
 }
 
 .footer2 a {
-	text-decoration: none;
-	color: white;
+   text-decoration: none;
+   color: white;
 }
 /* 헤더 푸터 완료 */
 
@@ -153,72 +153,72 @@ button {
 }
 
 #Noticecontainer {
-	margin: auto;
-	background-color: white;
-	width: 100%;
-	height: 800px;
-	padding: 5%;
-	border-radius: 10%;
-	margin-bottom: 3%;
+   margin: auto;
+   background-color: white;
+   width: 100%;
+   height: 800px;
+   padding: 5%;
+   border-radius: 10%;
+   margin-bottom: 3%;
 }
 
 .titlebox {
-	border: none;
-	padding: 0%;
-	margin: auto;
-	text-align: center;
+   border: none;
+   padding: 0%;
+   margin: auto;
+   text-align: center;
 }
 
 .title_head {
-	color: white;
-	background-color: black;
-	border: none;
-	text-align: center;
-	height: 30px;
-	padding-top: 0.25%;
+   color: white;
+   background-color: black;
+   border: none;
+   text-align: center;
+   height: 30px;
+   padding-top: 0.25%;
 }
 
 .noticbtn {
-	margin-bottom: 1%;
+   margin-bottom: 1%;
 }
 
 .nbtn {
-	color: black;
-	font-size: 20px;
+   color: black;
+   font-size: 20px;
 }
 
 .cbtn {
-	background-color: #760c0c;
-	border: none;
-	border-radius: 15%;
-	color: white;
-	font-size: smaller;
-	width: 9%;
-	height: 35px;
-	margin-top: 1%;
-	padding: 0.5%;
+   background-color: #760c0c;
+   border: none;
+   border-radius: 15%;
+   color: white;
+   font-size: smaller;
+   width: 9%;
+   height: 35px;
+   margin-top: 1%;
+   padding: 0.5%;
 }
 
 .eventbox {
-	background-color: white;
-	border-bottom: 1px solid #222;
-	text-align: center;
-	height: 650px;
-	padding-top: 0.25%;
-	margin: auto;
-	width: 100%;
+   background-color: white;
+   border-bottom: 1px solid #222;
+   text-align: center;
+   height: 650px;
+   padding-top: 0.25%;
+   margin: auto;
+   width: 100%;
     border: none;
     resize: none;
 }
 
 
 .notice1 {
-	text-align: left;
+   text-align: left;
 }
 
 .create {
-	margin-top: 1%;
-	text-align: right;
+   margin-top: 1%;
+   text-align: right;
 }
 
 /* 드록 박스 관련 스타일 */
@@ -308,61 +308,61 @@ li.dropdown {
 .show {display:block;}
 
 .con_head {
-	color: white;
-	background-color: black;
-	border: none;
-	text-align: center;
-	height: 30px;
-	padding-top: 0.25%;
+   color: white;
+   background-color: black;
+   border: none;
+   text-align: center;
+   height: 30px;
+   padding-top: 0.25%;
 }
 
 .conbox {
-	margin: auto;
+   margin: auto;
 }
 
 .main{
-	background-color: #222;
-	color: white;
-	border: none;
-	text-align: center;
-	padding: auto;
+   background-color: #222;
+   color: white;
+   border: none;
+   text-align: center;
+   padding: auto;
 }
 
 #modifyBtn{
-	background-color: #760c0c;
-	color: white;
-	border: none;
-	border-radius: 15%;
-	margin: 1%;
+   background-color: #760c0c;
+   color: white;
+   border: none;
+   border-radius: 15%;
+   margin: 1%;
 }
 
 #cancelBtn{
-	background-color: #760c0c;
-	color: white;
-	border: none;
-	border-radius: 15%;
-	margin: 1%;
+   background-color: #760c0c;
+   color: white;
+   border: none;
+   border-radius: 15%;
+   margin: 1%;
 }
 
 .backbtn{
-	background-color: #760c0c;
-	color: white;
-	border: none;
-	border-radius: 15%;
+   background-color: #760c0c;
+   color: white;
+   border: none;
+   border-radius: 15%;
 }
 
 .delbtn{
-	background-color: #760c0c;
-	color: white;
-	border: none;
-	border-radius: 15%;
+   background-color: #760c0c;
+   color: white;
+   border: none;
+   border-radius: 15%;
 }
 
 .upbtn{
-	background-color: #760c0c;
-	color: white;
-	border: none;
-	border-radius: 15%;
+   background-color: #760c0c;
+   color: white;
+   border: none;
+   border-radius: 15%;
 }
 
 
@@ -372,7 +372,7 @@ li.dropdown {
 	}
 
  .replyWriteBox{
-/*  			width: 1000px; */
+/*  		width: 1000px; */
          	padding:20px;
         	border-top: 2px solid white;
 			border-bottom: 2px solid white;
@@ -381,19 +381,20 @@ li.dropdown {
  .replyModifyWriteBox{
 /*  			width: 1000px; */
          	padding:20px;
-        	margin:auto;
+        	
         }
        
          #replyContentsBox{ 
             display: flex;
   			justify-content : center;
-/*          width:87%; */
+/*   		margin-right:10px; */
+  			width:1250px;
          	height:100%; 
          	float:left;
          } 
         #replyWriteBtnBox{
        		float: left;
-/*         	width:10%; */
+			width:100px;
         	height:100px;
         }
         #replyWriteBtn{
@@ -428,12 +429,61 @@ li.dropdown {
             padding-left: 10px;
         }
 
+	.replyModifyContentsBox{
+	width:1250px;
+         	
+	}
 
-@media ( max-width :767px) {
-	#replyWriteBtn {
+
+
+@media ( max-width :1900px) {
+	#replyContentsBox {
+	 width:1200px;
+	
 	
 	}
 }
+
+@media ( max-width :1850px) {
+	#replyContentsBox {
+	 width:1050px;
+	
+	
+	}
+}
+
+@media ( max-width :1616px) {
+	#replyContentsBox {
+	 width:800px;
+	
+	
+	}
+}
+
+@media ( max-width :1350px) {
+	#replyContentsBox {
+	 width:600px;
+	
+	
+	}
+}
+
+@media ( max-width :1100px) {
+	#replyContentsBox {
+	 width:400px;
+	 
+	
+	}
+}
+
+@media ( max-width :805px) {
+	#replyContentsBox {
+	 width:210px;
+	 
+	
+	}
+}
+
         
 </style>
 
@@ -475,143 +525,150 @@ li.dropdown {
 <!-- ------------------------------------------------------------Main----------------------------------------------------- -->
 
 <br>
- 	<div class="row col-12 titlebox">
+    <div class="row col-12 titlebox">
       <input type="text" class="main" style="color:white; text-align: center; margin: auto;" value="${dto.title }" disabled>
     </div>
       <div style="border-bottom: 3px solid white; width: 50%; margin: auto; padding-top: 1%; margin-bottom: 2%;"></div>
 
-	<div id="Box">
+   <div id="Box">
 
-		<div id="Noticecontainer">
+      <div id="Noticecontainer">
 
-			<div class="row col-12 conbox">
-				<div class="col-3 con_head">${dto.writer }</div>
-				<div class="col-6 con_head">
-					<fmt:formatDate pattern="yy-MM-dd" value="${dto.write_date}" />
-				</div>
-				<div class="col-3 con_head">
-					조회수 :
-					<%--  추후 가능하면 넣을 예정 ${dto.count } --%>
-				</div>
-			</div>
+         <div class="row col-12 conbox">
+            <div class="col-3 con_head">${dto.writer }</div>
+            <div class="col-6 con_head">
+               <fmt:formatDate pattern="yy-MM-dd" value="${dto.write_date}" />
+            </div>
+            <div class="col-3 con_head">
+               조회수 :
+               <%--  추후 가능하면 넣을 예정 ${dto.count } --%>
+            </div>
+         </div>
 
-		    <div> 
-			<textarea class="row col-12 eventbox"
-				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled
-				maxlength="1301">${dto.contents }</textarea>
+          <div> 
+         <textarea class="row col-12 eventbox"
+            style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled
+            maxlength="1301">${dto.contents }</textarea>
 
-			<div class="col-12 create">
-				<input type="button" class="upbtn" value="수정"> 
-				<input type="button" class="delbtn" value="삭제">
-				<input type="button" class="backbtn" value="뒤로">
-			</div> 	
-		</div>
+         
+         <div class="col-12 create">
+         <c:if test="${loginID eq dto.writer }">
+            <input type="button" class="upbtn" value="수정"> 
+            <input type="button" class="delbtn" value="삭제">   
+         </c:if>
+        	 <input type="button" class="backbtn" value="뒤로">  
+         </div>
+        
+          
+      </div>
 
 
-	
-	</div>
+   
+   </div>
 
 </div>
 
  <div class="row" id="reply_box">
 
-<div class="col-12">		
-	        <div class="col-9 replyWriteBox" style="margin:auto;">
-            	<div class="col-12" style="font-size : 15px; height: 100px; overflow: hidden;" >
-	            	
-	            	<div class="col-10" id="replyContentsBox">
-	            		<textarea name="replyContents" id="replyContents"  
-	            		style="width: 100%;  height: 100px;"
-	            		rows="30" placeholder="내용" maxlength="251"></textarea> 
-	            	</div>
-	            	
-	            	<div class="col-2" id="replyWriteBtnBox">
-	            		<input type="button" id="replyWriteBtn" value="작성" style="width:100%;">
-	            	</div>
-	            	
-            	</div>
+<div class="col-12">      
+           <div class="col-9 replyWriteBox" style="margin:auto;">
+               <div class="col-12" style="font-size : 15px; height: 100px; overflow: hidden;" >
+                  
+                  <div class="col-10" id="replyContentsBox">
+                     <textarea name="replyContents" id="replyContents"  
+                     style="width: 100%;  height: 100px;"
+                     rows="30" placeholder="내용" maxlength="251"></textarea> 
+                  </div>
+                  
+                  <div class="col-2" id="replyWriteBtnBox" style="text-align: center;">
+                     <input type="button" id="replyWriteBtn" value="작성" style="width:80px; margin: auto;">
+                  </div>
+                  
+               </div>
             </div>
-	</div>
+   </div>
 
 
-		<div class="col-12" style="margin-bottom:100px;">
-		
-	 		<div class="col-12 replyList">
-				<c:forEach var="i" items="${rlist }">
-					<div class="col-9" style="margin: auto;">
-						<div class="readcontainer">
-							<div style="color: white; text-align:right;">
-								
-								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
-								(작성됨)
-							</div>
-							<div class="readContnets" style="color: white; word-break: break-all; white-space: pre-line;">${i.contents }</div>
+      <div class="col-12" style="margin-bottom:100px;">
+      
+          <div class="col-12 replyList">
+            <c:forEach var="i" items="${rlist }">
+               <div class="col-9" style="margin: auto; border-bottom: 1px solid #CCC;">
+                  <div class="readcontainer">
+                     <div style="color: white; text-align: right; margin-bottom: 30px;">
 
 
+								<span>작성자: ${i.writer } / </span> 
+								<span>작성일:<fmt:formatDate
+										pattern="yy-MM-dd" value="${i.write_date}" /></span>
 
-							<div class="replyModifyBox" style="display:none;">
-								<div class="replyModifyWriteBox">
-									<div class="col-12 sizebox" style="font-size: 15px; height: 100px; overflow: hidden;">
-									
-									
-										<div class="col-10" id="replyModifyBox" style="float:left; margin:0px;">
-											<textarea name="replyContents" id="replyModifyContents"
-												style="width:100%; height: 100px;" rows="30"
-												placeholder="내용" maxlength="251"></textarea>
-											
-										</div>
-
-										<div class="col-2" class="replyModifyBtnBox">
-											<input type="button" class="replyModifyBtn" value="완료">
-										</div>
-
-									</div>
-								</div>
 							</div>
 
+                     <div class="readContnets" style="color: white; word-break: break-all; white-space: pre-line;  margin-bottom: 10px;">${i.contents }</div>
 
-							
-							<input type="hidden" class="reply_seq" value="${i.reply_seq}">
-								<div  class="col-12 replyreadbox">
-									<button class="replyUpdate">수정</button>
-									<button class="replyDelete">삭제</button>
-								</div>
-							</div>
-						</div>
-						</c:forEach>
 
-	 		</div>	
-	 	
-	 	
-	 </div>	
-	 </div>
-	 	
 
-	<!-------------------------------------------------------Footer------------------------------------------------->
-	<div class="col-12 d-none d-md-block">
-		<div id="foot" align=center>
-			<div class="container">
-				<div class="row">
-					<div class="col-4" id="footicon">
-						<a href="#"
-							style="color: white; padding-top: 20px; text-decoration-line: none;">CAFEIN</a>
-					</div>
-					<div class="col-2 footer2">
-						<a href="#">회사소개</a>
-					</div>
-					<div class="col-2 footer2">
-						<a href="#">이용약관</a>
-					</div>
-					<div class="col-2 footer2">
-						<a href="#">1:1 문의</a>
-					</div>
-					<div class="col-2 footer2">
-						<a href="#">©2022 CAFEIN</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                     <div class="replyModifyBox" style="display:none;">
+                        <div class="replyModifyWriteBox">
+                           <div class="col-12 sizebox" style="font-size: 15px; height: 100px;">
+                           
+                              <div class="col-7" id="replyModifyBox" style="margin:auto;">
+                                 <textarea name="replyContents" id="replyModifyContents"
+                                    style="width:100%; height: 100px;" rows="30"
+                                    placeholder="수정할 내용을 입력" maxlength="251"></textarea>
+                                 
+                              </div>
+
+                           </div>
+                        </div>
+                     </div>
+
+
+                     
+                     <input type="hidden" class="reply_seq" value="${i.reply_seq}">
+                        
+                       <c:if test="${loginID eq i.writer}"> 
+                        <div  class="col-12 replyreadbox"  style="text-align: right; margin-bottom:20px">
+                           <button class="replyUpdate">수정</button>
+                           <button class="replyDelete">삭제</button>
+                        </div>
+                        </c:if>
+                     </div>
+                  </div>
+                  </c:forEach>
+
+          </div>   
+       
+       
+    </div>   
+    </div>
+       
+
+   <!-------------------------------------------------------Footer------------------------------------------------->
+   <div class="col-12 d-none d-md-block">
+      <div id="foot" align=center>
+         <div class="container">
+            <div class="row">
+               <div class="col-4" id="footicon">
+                  <a href="#"
+                     style="color: white; padding-top: 20px; text-decoration-line: none;">CAFEIN</a>
+               </div>
+               <div class="col-2 footer2">
+                  <a href="#">회사소개</a>
+               </div>
+               <div class="col-2 footer2">
+                  <a href="#">이용약관</a>
+               </div>
+               <div class="col-2 footer2">
+                  <a href="#">1:1 문의</a>
+               </div>
+               <div class="col-2 footer2">
+                  <a href="#">©2022 CAFEIN</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 <!-------------------------------------------------------Footer------------------------------------------------->
 
 </body>
@@ -642,66 +699,73 @@ window.onclick = function(e) {
 }
 
 $(".delbtn").click(function(){
-	let result = confirm("정말 삭제하시겠습니까?")
-	if(result){
-		alert("삭제가 완료되었습니다.")
-		location.href = "/question/question_delete?question_seq=${dto.question_seq}";
-	}else{
-		
-	}
+   let result = confirm("정말 삭제하시겠습니까?")
+   if(result){
+      alert("삭제가 완료되었습니다.")
+      location.href = "/question/question_delete?question_seq=${dto.question_seq}";
+   }else{
+      
+   }
 })
 
 $(".backbtn").on("click", function(){
-	location.href = "/question/question_list";
+   location.href = "/question/question_list";
 })
 
 
 $(".upbtn").on("click",function(){
-	$(".main").removeAttr("disabled");
-	$(".eventbox").removeAttr("disabled");
-	
-	$(".upbtn").css("display","none"); // 수정 버튼 감추기
-	$(".delbtn").css("display","none"); // 삭제 버튼 감추기
-	
-		let ok = $("<button>");//수정완료 버튼
-			ok.text("완료");
-			ok.attr("id","modifyBtn")
-		
-			let cancel = $("<button>");//취소 버튼
-			cancel.text("취소");
-			cancel.attr("id", "cancelBtn")
-	
-	$(".create").prepend(cancel); //취소 버튼 추가
-	$(".create").prepend(ok); // 수정완료 버튼 추가
-	
-	$("#cancelBtn").on("click", function(){
-		location.reload();
-	})
+   $(".main").removeAttr("disabled");
+   $(".eventbox").removeAttr("disabled");
+   
+   $(".upbtn").css("display","none"); // 수정 버튼 감추기
+   $(".delbtn").css("display","none"); // 삭제 버튼 감추기
+   
+      let ok = $("<button>");//수정완료 버튼
+         ok.text("완료");
+         ok.attr("id","modifyBtn")
+      
+         let cancel = $("<button>");//취소 버튼
+         cancel.text("취소");
+         cancel.attr("id", "cancelBtn")
+   
+   $(".create").prepend(cancel); //취소 버튼 추가
+   $(".create").prepend(ok); // 수정완료 버튼 추가
+   
+   $("#cancelBtn").on("click", function(){
+      location.reload();
+   })
 });
 
 // 수정완료 버튼
 $(".create").on("click", "#modifyBtn",function(){
 	
-	let question_seq = "${dto.question_seq}"; // 게시글 고유 넘버
-	let title = $(".main").val();
-	let contents = $(".eventbox").val(); // 게시글 내용
+	if ($(".main").val() == "" || $(".eventbox").val() ==""){
+		alert("수정할 제목/내용을 입력해주세요");
+		return false;
+	}else{
 	
-	$.ajax({
-		url : "/question/question_modify",
-		type : "post",
-		data : {question_seq:question_seq, title:title , contents:contents},
-	}).done(function(resp){
-		if(resp == "true"){
-			location.reload();//새로 고침	
-		}
+	
+   let question_seq = "${dto.question_seq}"; // 게시글 고유 넘버
+   let title = $(".main").val();
+   let contents = $(".eventbox").val(); // 게시글 내용
+   
+   $.ajax({
+      url : "/question/question_modify",
+      type : "post",
+      data : {question_seq:question_seq, title:title , contents:contents},
+   }).done(function(resp){
+      if(resp == "true"){
+         location.reload();//새로 고침   
+      }
 
-	})
+   })
+  }
 })
 
-	
+   
 
-	
-// 댓글	
+   
+// 댓글   
  $(function(){
             $("#replyWriteBtn").on("click", function(){
                 
@@ -709,112 +773,112 @@ $(".create").on("click", "#modifyBtn",function(){
 
                 if(article == ""){
 
-					alret('내용을 입력해주세요')
-//                 	$("#replyContents").focus();
-                	return false;
-                	
+               alret('내용을 입력해주세요')
+//                    $("#replyContents").focus();
+                   return false;
+                   
                 }else{
-                	$.ajax({
-                		url:"/question/reply_insert",
-                		data:{
-                			question_seq:${dto.question_seq},
-                			contents:article
+                   $.ajax({
+                      url:"/question/reply_insert",
+                      data:{
+                         question_seq:${dto.question_seq},
+                         contents:article
       
-                		},
-                		async:false
-                		
-                	}).done(function(resp){
-                		console.log(resp);
-                		location.reload();
-                		
+                      },
+                      async:false
+                      
+                   }).done(function(resp){
+                      console.log(resp);
+                      location.reload();
+                      
                        });
-             	}
+                }
              })          
      });
 
 
 $(".replyDelete").on("click", function() {
-	
-	let result = confirm("댓글을 삭제하시겠습니까?");
-	
-	let reply_seq = $(this).parent().siblings(".reply_seq").val();
+   
+   let result = confirm("댓글을 삭제하시겠습니까?");
+   
+   let reply_seq = $(this).parent().siblings(".reply_seq").val();
 
-	console.log(reply_seq);
-	if(result){
-		$.ajax({
- 		url:"/question/reply_delete",
- 		data:{reply_seq:reply_seq, question_seq:${dto.question_seq}}
- 		
-	  }).done(function(resp){
-		location.reload();  
-	  });
-	}
+   console.log(reply_seq);
+   if(result){
+      $.ajax({
+       url:"/question/reply_delete",
+       data:{reply_seq:reply_seq, question_seq:${dto.question_seq}}
+       
+     }).done(function(resp){
+      location.reload();  
+     });
+   }
 })
-		
-		
+      
+      
   $(".replyUpdate").on("click", function() {
-	  
+     
    
     $(this).css("display", "none");
     
-    		let Rupdate = $("<button>");
-//     		Rupdate.text("완료");
-//        		Rupdate.attr("class","Rupdate");
-//        		Rupdate.css("margin-right", "5px");
-   		
-       		let Rcancel = $("<button>");
-       		Rcancel.text("취소");
-       		Rcancel.attr("class", "Rcancel");
-       		
-       		$(this).parent().prepend(Rcancel);
-//        		$(this).parent().prepend(Rupdate);
-    	
-    	
-    	$(".Rcancel").on("click", function(){
-    		location.reload();
-    	})
-    	
-    	
-//     	let readDiv = $(this).parent().siblings(".readContnets");
-    	
-//     	readDiv.attr("contenteditable", "true");
-//     	readDiv.focus();
-		let Rcontents = $(this).parent().siblings(".replyModifyBox");
-		Rcontents.css("display","block");
-    	
+          let Rupdate = $("<button>");
+          Rupdate.text("완료");
+             Rupdate.attr("class","Rupdate");
+             Rupdate.css("margin-right", "5px");
+         
+             let Rcancel = $("<button>");
+             Rcancel.text("취소");
+             Rcancel.attr("class", "Rcancel");
+             
+             $(this).parent().prepend(Rcancel);
+             $(this).parent().prepend(Rupdate);
+       
+       
+       $(".Rcancel").on("click", function(){
+          location.reload();
+       })
+       
+       
+//        let readDiv = $(this).parent().siblings(".readContnets");
+       
+//        readDiv.attr("contenteditable", "true");
+//        readDiv.focus();
+      let Rcontents = $(this).parent().siblings(".replyModifyBox");
+      Rcontents.css("display","block");
+       
   });
                     
 
 $(".replyreadbox").on("click", ".Rupdate", function() {
-	
-	let reply_seq = $(this).parent().siblings(".reply_seq").val();
-	let contents = $(this).parent().siblings().children().children().children().children("#replyModifyContents").val();
-	
-	$.ajax({
-		url : "/question/reply_update",
-		data: {reply_seq:reply_seq, question_seq:${dto.question_seq}, contents:contents }
-			
-	}).done(function(resp){
-		location.reload();
-	})
+   
+   let reply_seq = $(this).parent().siblings(".reply_seq").val();
+   let contents = $(this).parent().siblings().children().children().children().children("#replyModifyContents").val();
+   
+   $.ajax({
+      url : "/question/reply_update",
+      data: {reply_seq:reply_seq, question_seq:${dto.question_seq}, contents:contents }
+         
+   }).done(function(resp){
+      location.reload();
+   })
 })
 
 $(".eventbox").keyup(function(e) {
-	let content = $(this).val();
-	
-	// 글자수 계산
-	if (content.length == 0 || content == ''){
-		$(".textCount").text("0자 /1300자");
-	} else {
-		$(".textCount").text(content.length + "자 /1300자");
-		
-	}
-	
-	// 글자수 제한
-	 	if($(this).val().length > 1300) {
-    	$(this).val($(this).val().substring(0, 1300));
-    	alert("1300자까지 입력 가능합니다")
-		 }
+   let content = $(this).val();
+   
+   // 글자수 계산
+   if (content.length == 0 || content == ''){
+      $(".textCount").text("0자 /1300자");
+   } else {
+      $(".textCount").text(content.length + "자 /1300자");
+      
+   }
+   
+   // 글자수 제한
+       if($(this).val().length > 1300) {
+       $(this).val($(this).val().substring(0, 1300));
+       alert("1300자까지 입력 가능합니다")
+       }
 });
 
 $("#replyContents").keyup(function(e) {

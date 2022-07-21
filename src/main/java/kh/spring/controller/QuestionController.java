@@ -36,8 +36,10 @@ import kh.spring.service.QuestionService;
 		@RequestMapping("question_list")
 		public String question(Model model) throws Exception {
 			
+		
 			List<QuestionDTO> dto = Qservice.selectAll();
 			model.addAttribute("qlist",dto);
+			
 			
 		
 			return "/question/question_list";
@@ -53,7 +55,7 @@ import kh.spring.service.QuestionService;
 		//---------------------- 작성---------------------
 		@RequestMapping("question_insert")
 		public String question_insert(QuestionDTO dto) throws Exception{
-//			dto.setWriter((String)session.getAttribute("loginID"));
+			dto.setWriter((String)session.getAttribute("loginID"));
 			Qservice.insert(dto);
 			
 			return "redirect:/question/question_list";
@@ -109,6 +111,7 @@ import kh.spring.service.QuestionService;
 		@RequestMapping("reply_insert")
 		public String reply_insert(QreplyDTO dto, int question_seq) throws Exception{
 			
+			dto.setWriter((String)session.getAttribute("loginID"));
 			Rservice.insert(dto);
 		
 			return "question/question_detail";
