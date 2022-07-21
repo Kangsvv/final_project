@@ -100,7 +100,7 @@
 	<delete id="bookmarkDelete">
 		delete from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
 	</delete>
-	<select id="isDetailBook" resultType="boolean">
+	<select id="isDetailBook" resultType="kh.spring.dto.BookmarkDTO">
 		select * from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
 	</select>
 	<select id="isBookChecking" resultType="int">

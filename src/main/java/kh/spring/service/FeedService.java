@@ -129,11 +129,11 @@ public class FeedService {
 				System.out.println(cafefeed_seq + " : " + id);
 				bdto.setCafefeed_seq(cafefeed_seq);
 				bdto.setId(id);
-				boolean isBookOk = dao.isDetailBook(bdto);
+				BookmarkDTO isBookOk = dao.isDetailBook(bdto);
 				int bookCheck = dao.isBookChecking(bdto);
-				if(bookCheck != 0) {
+				
 				model.addAttribute("isBookOk", isBookOk);// 해당 게시글에 찜 했는지 정보
-				}
+				
 			}
 			
 			

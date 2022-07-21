@@ -32,7 +32,7 @@
 	
 	<!-- 로그인 -->
 	<select id="login" resultType="kh.spring.dto.MemberDTO">
-		select * from member where mem_Id = #{mem_id} where mem_status = 0
+		select * from member where (mem_Id = #{mem_id}) and (mem_status = 0)
 	</select> 
 	
 	<!-- 카카오 계정 생성 확인 -->

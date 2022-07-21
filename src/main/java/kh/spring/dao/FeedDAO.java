@@ -80,7 +80,7 @@ public class FeedDAO {
 		
 		mybatis.delete("Feed.bookmarkDelete", dto);
 	}
-	public boolean isDetailBook(BookmarkDTO dto) throws Exception {
+	public BookmarkDTO isDetailBook(BookmarkDTO dto) throws Exception {
 		
 		return mybatis.selectOne("Feed.isDetailBook", dto);
 	}
