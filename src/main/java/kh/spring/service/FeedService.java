@@ -53,7 +53,7 @@ public class FeedService {
 		}
 		
 	// 피드 검색결과 출력
-		public List<FeedDTO> feedSearchResult(Model model,String search, int cpage) throws Exception{
+		public List<Feed_imgDTO> feedSearchResult(Model model,String search, int cpage) throws Exception{
 			
 			return dao.feedSearchResult(search, cpage);
 		}

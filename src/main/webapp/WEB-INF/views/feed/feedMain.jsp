@@ -249,11 +249,23 @@ width:80px;
 					</c:choose>
 				</div>
               </div>
-              <button id="login" type="button"
-                    class="mx-1 d-none d-lg-inline btn navbar-btn">Login</button>
-                    <button id="signup" type="button"
-                    class="mx-1 d-none d-lg-inline btn navbar-btn">Signup</button>
-            </div>
+			<c:choose>
+				<c:when test="">
+					<button id="login" type="button"
+						class="mx-1 d-none d-lg-inline btn navbar-btn">Login</button>
+					<button id="signup" type="button"
+						class="mx-1 d-none d-lg-inline btn navbar-btn">Signup</button>
+				</c:when>
+
+				<c:otherwise>
+					<button id="login" type="button"
+						class="mx-1 d-none d-lg-inline btn navbar-btn">Logout</button>
+					<button id="signup" type="button"
+						class="mx-1 d-none d-lg-inline btn navbar-btn">Mypage</button>
+				</c:otherwise>
+
+			</c:choose>
+		</div>
           </nav>
 <!-----------------------------------------------검색 DIV------------------------------------------->
  <div id="con1">
@@ -274,11 +286,11 @@ width:80px;
       </form>
        <div class="row">
            <div class="col-6">
-              <select class="select">
-                <option>최신순</option>
-                <option>조회순</option>
-                <option>추천순</option>
-              </select>
+<!--               <select class="select"> -->
+<!--                 <option>최신순</option> -->
+<!--                 <option>조회순</option> -->
+<!--                 <option>추천순</option> -->
+<!--               </select> -->
            </div>
           
 <%--           <c:if test="${loginMember.memLevel == 0 || loginMember.memLevel == 2 }"> --%>
