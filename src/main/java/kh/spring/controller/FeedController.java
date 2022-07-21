@@ -101,9 +101,11 @@ public class FeedController {
 		System.out.println(search);
 		String what = search.replaceAll(" ","");
 		System.out.println(what);
-		List<FeedDTO> list = serv.feedSearchResult(model,what,cpage);
-		model.addAttribute("list", list);
-		return "/feed/feedSearchResult";
+		List<Feed_imgDTO> list = serv.feedSearchResult(model,what,cpage);
+		
+			model.addAttribute("list", list);
+			return "/feed/feedSearchResult";
+
 	}
 	// 리뷰 게시글 업데이트 
 	@RequestMapping(value="feed_update",produces="application/text;charset=utf-8")
