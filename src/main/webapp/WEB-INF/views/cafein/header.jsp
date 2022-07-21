@@ -182,7 +182,7 @@ li .dropdown-item:hover {
      
      <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
       <div class="container-fluid">
-        <img src="/img/logo4.png" class="logo">
+         <a href="/"><img src="/img/logo4.png" class="logo"></a>
         <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon">▼</span>
         </button>
