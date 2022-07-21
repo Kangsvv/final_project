@@ -137,8 +137,11 @@ public class MemberController {
 					fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 				}
 				
-				member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+			}else {
+				fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
 			}
+			
+			member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 			// 회원가입 처리
 			System.out.println(member);
 			int result = memberService.joinAction(member);
@@ -237,6 +240,7 @@ public class MemberController {
 		MemberDTO member = new MemberDTO();
 		int checkNum = memberService.emailNumCheck(email,num);
 		if(checkNum == num) {
+			memberService.emailNumDelete(email,num);
 			member = memberService.idSearch(email);
 		}else {
 			member.setmem_seq(-1);
