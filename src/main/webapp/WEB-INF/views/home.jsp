@@ -297,13 +297,14 @@ margin-top:10px;
 	    <c:otherwise>
 	    	<button type="button" onclick="location.href='/mypage/mypage' ">MyPage</button>
 	    	<button type="button" onclick="location.href='/member/logout' ">Logout</button>
+	    <c:if test="${loginID == 'admin'}">
+			<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">Manage</button>
+		</c:if>
 	    </c:otherwise>
     </c:choose>
 </div>
 
- 	<c:if test="${loginID == admin}">
-		<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
-	</c:if>
+ 	
 </body>
 <script>
   $("#box1").hover(function(){
