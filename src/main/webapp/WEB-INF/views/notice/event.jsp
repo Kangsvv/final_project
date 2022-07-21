@@ -152,7 +152,7 @@ display: none;
 			<div class="row col-12 noticbtn" style="margin-bottom: 15px;">
 				<div class="col-12" style="padding: 0%; text-align: left; margin-left: 3%;">
 					<a href="/notice/event_selectAll" class="nbtn" style="color: #760c0c; font-weight: bold">Event</a>
-					<a href="/notice/notic_selectAll" class="nbtn">Notice</a>
+					<a href="/notice/notic_selectAll" class="nbtn">Notic</a>
 				</div>
 			</div>
 
@@ -180,7 +180,7 @@ display: none;
     </table>
 
 			<c:choose>
-				<c:when test="${loginID = gkswnd128} ">
+				<c:when test="${loginID == admin} ">
 					<div class="row">
 						<div class="col-12 create">
 							<input type="button" class="cbtn" value="작성하기">
