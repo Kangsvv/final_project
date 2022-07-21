@@ -16,7 +16,19 @@
    <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
-<style>
+<style type="text/css">
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	font-family: 'GmarketSansMedium';
+}
    *{box-sizing: border-box;}
       body {
             background-color: #222;
@@ -204,10 +216,6 @@ nav button:hover{
         #conMenu>div{
            margin-left:5%;
         }
-        .marginSet{
-           padding-left:20px;
-           padding-right:20px;
-        }
         #bookmark{
            text-align:right;
            padding-right:30px;
@@ -302,6 +310,9 @@ nav button:hover{
          }
          .replyWrite_date{
             font-size:14px;
+         }
+         .lcnt{
+         	padding:15px;
          }
         /*-----------------------모달 창 스타일 -----------------------------*/
       
@@ -575,13 +586,58 @@ nav button:hover{
             </div>
             <div id="mainfoot">
                <div class="row">
-                  <div class="col-6">
-                     <span class="marginSet">
-                        <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count }
-                     </span>
+                  <div class="col-6" style="padding-left:30px;">
+	                  <!-------------------- 작성자와 로그인아이디 다를시 북마크생성 ---------------------------->
+	                  <c:if test="${loginID !=null && loginID != dto.id && loginID == ldto.id}">
+	                     <span class="marginSet"><i class="fa-solid fa-xl fa-heart likecount"></i></span><span class="lcnt">${lcnt }</span><!-- &nbsp;&nbsp;${lcnt } -->
+	                     <!--------------------로그인아이디가 그전 좋아요 눌렀을시 활성화버튼 ---------------------------->
+	                  </c:if>
+	                  <c:if test="${loginID !=null && loginID != dto.id && loginID != ldto.id}">
+	                     <span class="marginSet"><i class="fa-regular fa-xl fa-heart likecount"></i></span><span class="lcnt">${lcnt }</span>
+	                  </c:if>
+	                  <!---------------------- 비로그인시 버튼 없음 ------------------------------------->
+	                  <c:if test="${loginID !=null}">
+	                  </c:if>
                      <span style="padding-left:10px;">
                         <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;${rCnt }
                      </span>
+                     
+                     <script>
+                     $(".marginSet").on("click",function() {
+      	        	   if(${loginID == null}){
+      	        		   Swal.fire({
+      	        	             icon: 'warning',
+      	        	             title: '확인해주세요.',
+      	        	             text: '로그인시 가능합니다.',
+      	        	         });
+      	                   return false;
+      	                }else{
+      	   			if($(".marginSet").html() == '<i class="fa-regular fa-xl fa-heart likecount"></i>') {
+      	   				$.ajax({
+      		   				url:"/feed/like",
+      		   				data:{cafefeed_seq:${dto.cafefeed_seq}},
+      		   				dataType:"json"
+      		   			}).done(function(resp){
+      		   				console.log(resp);
+      	   			 		$(".marginSet").html('<i class="fa-solid fa-xl fa-heart likecount"></i>');
+      	   			 		$(".lcnt").html(resp);
+      	   				})
+      	   			} else if($(".marginSet").html() == '<i class="fa-solid fa-xl fa-heart likecount"></i>'){
+      	            	$.ajax({
+      	       				url:"/feed/like-cancel",
+      	       				data:{cafefeed_seq:${dto.cafefeed_seq}},
+      	       				dataType:"json"
+      	       			}).done(function(resp){
+      	       				console.log(resp);
+      	               		$(".marginSet").html('<i class="fa-regular fa-xl fa-heart likecount"></i>');
+      	               		$(".lcnt").html(resp);
+      	       			})
+      	   			}
+      	            }
+      	        });
+                     </script>
+                     
+                     
                   </div>
                   
                   <div class="col-6" id="bookmark">
@@ -621,9 +677,7 @@ nav button:hover{
 	       				url:"/feed/book-cancel",
 	       				data:{cafefeed_seq:${dto.cafefeed_seq}},
 	       				dataType:"json"
-	       				
 	       			}).done(function(resp){
-	       				
 	               		$(".bookmarkArea").html('<i class="fa-regular fa-xl fa-bookmark"></i>');
 	       			})
 	   			}

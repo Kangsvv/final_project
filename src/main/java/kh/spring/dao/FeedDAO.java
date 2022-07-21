@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import kh.spring.dto.BookmarkDTO;
 import kh.spring.dto.FeedDTO;
 import kh.spring.dto.Feed_imgDTO;
+import kh.spring.dto.Feed_likeDTO;
 
 @Repository
 public class FeedDAO {
@@ -86,5 +87,21 @@ public class FeedDAO {
 	}
 	public int isBookChecking(BookmarkDTO dto) throws Exception {
 		return mybatis.selectOne("Feed.isBookChecking", dto);
+	}
+	//------------------------------- 좋아요 부분--------------------------------
+	public int likeInsert(Feed_likeDTO dto) throws Exception {
+		
+		return mybatis.insert("Feed.likeInsert", dto);
+	}
+	public int likeDelete(Feed_likeDTO dto) throws Exception {
+		
+		return mybatis.delete("Feed.likeDelete", dto);
+	}
+	public Feed_likeDTO islikeOk(Feed_likeDTO dto) throws Exception {
+		
+		return mybatis.selectOne("Feed.isLikeOk", dto);
+	}
+	public int islikeCnt(Feed_likeDTO dto) throws Exception {
+		return mybatis.selectOne("Feed.isLikeCnt", dto);
 	}
 }

@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 
-import kh.spring.dto.FeedDTO;
 import kh.spring.dto.Feed_imgDTO;
 import kh.spring.dto.ReplyDTO;
 import kh.spring.service.FeedService;
@@ -183,25 +182,51 @@ public class FeedController {
 //	}
 	@ResponseBody
 	@RequestMapping("book")
-	public int cafein_like(int cafefeed_seq) throws Exception {
+	public int book(int cafefeed_seq) throws Exception {
 		System.out.println("북마크 추가");
 		return serv.bookmarkInsert(cafefeed_seq);// 북마크 테이블에 게시글 정보(해당 게시글seq, 내 id) 추가
 	}
 	//----------------------좋아요 취소----------------------------------
 	@ResponseBody
 	@RequestMapping("book-cancel")
-	public int like_cancel(int cafefeed_seq) throws Exception {
+	public int book_cancel(int cafefeed_seq) throws Exception {
 		
 		System.out.println("북마크 삭제");
 		
 		return serv.bookmarkDelete(cafefeed_seq);// 좋아요 테이블에서 게시글 정보 삭제
 		
 	}
+	@ResponseBody
+	@RequestMapping("like")
+	public int cafefeed_like(Model model, int cafefeed_seq) throws Exception {
+		System.out.println("좋아요 추가");
+		
+		
+		return serv.likeInsert(model, cafefeed_seq);
+	}
+	//----------------------좋아요 취소----------------------------------
+	@ResponseBody
+	@RequestMapping("like-cancel")
+	public int like_cancel(Model model, int cafefeed_seq) throws Exception {
+		
+		System.out.println("좋아요 삭제");
+		
+		
+		return serv.likeDelete(model, cafefeed_seq);// 좋아요 테이블에서 게시글 정보 삭제
+		
+	}
+	
+	
+	
+	
+	
+	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
 		e.printStackTrace();
 		return "error";
 	}
+	
+	
+	
 }
-
-
