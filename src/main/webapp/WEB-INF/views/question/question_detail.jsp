@@ -379,7 +379,7 @@ li.dropdown {
         }
         
  .replyModifyWriteBox{
- 			width: 1000px;
+/*  			width: 1000px; */
          	padding:20px;
         	margin:auto;
         }
@@ -404,18 +404,19 @@ li.dropdown {
         	height:100%;
         }
         
-        #replyModifyBtnBox{
+        .replyModifyBtnBox{
        		float: left;
-        	width:10%;
+/*         	width:10%; */
         	height:100px;
         }
         
-        #replyModifyBtnWriteBtn{
+        .replyModifyBtn{
         	background-color:#760c0c;
         	color:white;
         	border-radius:10px;
         	width:100%;
         	height:100%;
+        	
         }
         
         .replywriterName{
@@ -427,6 +428,12 @@ li.dropdown {
             padding-left: 10px;
         }
 
+
+@media ( max-width :767px) {
+	#replyWriteBtn {
+	
+	}
+}
         
 </style>
 
@@ -509,7 +516,7 @@ li.dropdown {
  <div class="row" id="reply_box">
 
 <div class="col-12">		
-	        <div class="col-12 replyWriteBox" style="margin:auto;">
+	        <div class="col-9 replyWriteBox" style="margin:auto;">
             	<div class="col-12" style="font-size : 15px; height: 100px; overflow: hidden;" >
 	            	
 	            	<div class="col-10" id="replyContentsBox">
@@ -519,7 +526,7 @@ li.dropdown {
 	            	</div>
 	            	
 	            	<div class="col-2" id="replyWriteBtnBox">
-	            		<input type="button" id="replyWriteBtn" value="작성하기" style="width:100%;">
+	            		<input type="button" id="replyWriteBtn" value="작성" style="width:100%;">
 	            	</div>
 	            	
             	</div>
@@ -527,15 +534,16 @@ li.dropdown {
 	</div>
 
 
-		<div style="margin-bottom:100px;">
+		<div class="col-12" style="margin-bottom:100px;">
 		
-	 		<div class="replyList">
+	 		<div class="col-12 replyList">
 				<c:forEach var="i" items="${rlist }">
-					<div class="col-12">
-						<div class="readcontainer" style="margin: auto; width: 1000px;">
-							<div style="color: white">
-								작성 날짜 :
+					<div class="col-9" style="margin: auto;">
+						<div class="readcontainer">
+							<div style="color: white; text-align:right;">
+								
 								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
+								(작성됨)
 							</div>
 							<div class="readContnets" style="color: white; word-break: break-all; white-space: pre-line;">${i.contents }</div>
 
@@ -543,16 +551,18 @@ li.dropdown {
 
 							<div class="replyModifyBox" style="display:none;">
 								<div class="replyModifyWriteBox">
-									<div class="sizebox" style="font-size: 15px; height: 100px; overflow: hidden;">
-										<div id="replyModifyBox" style="width:90%; float:left;">
+									<div class="col-12 sizebox" style="font-size: 15px; height: 100px; overflow: hidden;">
+									
+									
+										<div class="col-10" id="replyModifyBox" style="float:left; margin:0px;">
 											<textarea name="replyContents" id="replyModifyContents"
 												style="width:100%; height: 100px;" rows="30"
 												placeholder="내용" maxlength="251"></textarea>
 											
 										</div>
 
-										<div id="replyModifyBtnBox">
-											<input type="button" id="replyModifyBtnWriteBtn" value="수정완료">
+										<div class="col-2" class="replyModifyBtnBox">
+											<input type="button" class="replyModifyBtn" value="완료">
 										</div>
 
 									</div>
@@ -700,7 +710,7 @@ $(".create").on("click", "#modifyBtn",function(){
                 if(article == ""){
 
 					alret('내용을 입력해주세요')
-                	$("#replyContents").focus();
+//                 	$("#replyContents").focus();
                 	return false;
                 	
                 }else{
@@ -748,16 +758,16 @@ $(".replyDelete").on("click", function() {
     $(this).css("display", "none");
     
     		let Rupdate = $("<button>");
-    		Rupdate.text("완료");
-       		Rupdate.attr("class","Rupdate");
-       		Rupdate.css("margin-right", "5px");
+//     		Rupdate.text("완료");
+//        		Rupdate.attr("class","Rupdate");
+//        		Rupdate.css("margin-right", "5px");
    		
        		let Rcancel = $("<button>");
        		Rcancel.text("취소");
        		Rcancel.attr("class", "Rcancel");
        		
        		$(this).parent().prepend(Rcancel);
-       		$(this).parent().prepend(Rupdate);
+//        		$(this).parent().prepend(Rupdate);
     	
     	
     	$(".Rcancel").on("click", function(){
