@@ -306,6 +306,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
         .profile-stat-count {
           display: block;
+          margin:5px;
         }
       }
 
@@ -385,9 +386,9 @@ Remove or comment-out the code block below to see how the browser will fall-back
           }
         }
       }
-      /* a {
+      a {
         text-decoration-line: none;
-      } */
+      } 
     </style>
   </head>
   <body background-color="#222">
@@ -395,19 +396,27 @@ Remove or comment-out the code block below to see how the browser will fall-back
     <header>
       <div class="container">
         <div class="profile">
+    <c:if test="${dto.mem_img != null}">     <!-- 만약에 이미지값이 null 경우 그냥 뿌리기 -->
           <div class="profile-image" >
            <img src="/resources/mypage/${dto.mem_img }" />
           </div>
-
+	</c:if>
+	<c:if test="${dto.mem_img == null}">     <!-- 만약에 이미지값이 null이 아니면 저장된 이미지 뿌리기 -->
+          <div class="profile-image" >
+           <img src="https://cdn-icons-png.flaticon.com/512/76/76769.png" />
+          </div>
+	</c:if>
           <div class="profile-user-settings">
             <h1 class="profile-user-name">${dto.mem_name }</h1>
-	<c:if test="${dto.mem_id == loginID}"> 
+            
+	<c:if test="${dto.mem_id == loginID}"> <!-- 본인만 수정가능한 버튼 생성 -->
             <button class="btn profile-edit-btn" id="editprofile">
               Edit Profile
             </button>
-	</c:if>
+
             <button class="btn profile-edit-btn"
             	onclick="location.href='/cafein/messagebox' ">message</button>
+    </c:if>        	
 
             <button
               class="btn profile-settings-btn"
@@ -421,32 +430,22 @@ Remove or comment-out the code block below to see how the browser will fall-back
             <ul>
               <li>
                 <a href="/mypage/mypage"
-                  ><span class="profile-stat-count">${dto.mem_level }</span> 내 게시물</a>
+                  ><span style="color:#123456;" class="profile-stat-count"></span> MY FEED ${countfeed }</a>
               </li>
    <c:if test="${dto.mem_level == 1}"> 
               <li>
                 <a href="/mypage/mycafe"
-                  ><span class="profile-stat-count">164</span> 내 가게 게시물</a>
+                  ><span class="profile-stat-count"></span> MY CAFE-IN ${countcafein }</a>
               </li>
    </c:if>           
-              <!-- <li>
-                <a href="/mypage/follow">
-                  <span class="profile-stat-count">164</span> 팔로우</a>
-              </li> -->
               <li>
                 <a href="/mypage/like"
-                  ><span class="profile-stat-count">164</span> 좋아요 한 게시물</a>
+                  ><span class="profile-stat-count"></span> LIKED FEED ${likefeed }</a>
               </li>
             </ul>
           </div>
           <!-- End of profile section -->
 
-          <!-- <div class="profile-bio">
-            <p>
-              <span class="profile-real-name"></span> Lorem ipsum
-              dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
-            </p>
-          </div> -->
         </div>
         <!-- End of profile section -->
       </div>
@@ -464,7 +463,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 	<c:forEach var="i" items="${imglist }">
           <div class="gallery-item" tabindex="0">
            
-            <a href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
+            <a href="/cafein/selectBySeq?cafein_seq=${i.cafefeed_seq }">
             <img src="/cafein/${i.sys_name }" class="gallery-image"/>
             </a>
 
@@ -493,8 +492,6 @@ Remove or comment-out the code block below to see how the browser will fall-back
           
         </div>
         <!-- End of gallery -->
-
-        <!-- <div class="loader"></div> -->
       </div>
       <!-- End of container -->
     </main>

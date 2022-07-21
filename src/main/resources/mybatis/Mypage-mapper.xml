@@ -25,12 +25,14 @@
 		delete from member where mem_id = #{value }
 	</delete>
 	
-	<!-- <select id="mycount">
-		select count(*) count from cafefeed join feed_img on cafefeed.cafefeed_seq = feed_img.cafefeed_seq where cafefeed.id = ${value };
+	<select id="countfeed" resultType="int">
+		select count(*) from cafefeed where id=#{id}
+	</select>
+
+	<select id="countcafein" resultType="int">		
+		select count(*)from cafein where id=#{id}
 	</select>
 	
-	<select id="cafeincount">		
-		select count(*) count from cafefeed join feed_img on cafefeed.cafefeed_seq = feed_img.cafefeed_seq where cafefeed.id = ${value };
-	</select> -->
+
 
 </mapper>

@@ -185,18 +185,7 @@
             />
           </li>
           <!-- 자기소개 하실건가여? -->
-          <li>
-            <span style="color: white">자기소개</span>
-            <input
-              class="form_main"
-              class="change"
-              id="phone_center"
-              value=""
-              maxlength="12"
-              type="text"
-              class="editable"
-            />
-          </li>
+          
         </ul>
         <div id="btns">
           <button type="submit" class="btn_main bt_1" id="modify">수정</button>
