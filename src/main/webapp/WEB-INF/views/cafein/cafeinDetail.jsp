@@ -65,7 +65,10 @@ border-radius: 5px;
   color: white;
   margin: auto;
   min-width: 450px;
-  margin-left: 16%;
+  
+}
+table{
+margin:auto;
 }
 input[type=text] {
 	width: 300px;
