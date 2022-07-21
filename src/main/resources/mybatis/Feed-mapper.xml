@@ -103,7 +103,7 @@
 	<select id="isDetailBook" resultType="kh.spring.dto.BookmarkDTO">
 		select * from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
 	</select>
-	<select id="isBookChecking" resultType="int">
-		select count(*) from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
-	</select>
+<!-- 	<select id="isBookChecking" resultType="int"> -->
+<!-- 		select count(*) from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id}) -->
+<!-- 	</select> -->
 </mapper>

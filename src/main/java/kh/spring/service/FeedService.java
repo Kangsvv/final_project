@@ -72,9 +72,9 @@ public class FeedService {
 			file.transferTo(new File(realPath + "/"+sysName)); // 서버 경로 저장하기
 
 			// 영구적으로 로컬 환경에도 옮겨야됨.
-//			String  localPath ="C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
+			String  localPath ="C:/SpringWorkspace/final_project/src/main/webapp/resources/feed"; //insert 경로
 //			String  localPath ="A:/springWorkspace/final_project/src/main/webapp/resources/feed";
-			String localPath= "C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
+//			String localPath= "C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
 			File realFile = new File(realPath + "/"+sysName); // 파일 객체를 만든거예요 - 파일 데이터가 들어가 있음
 			File localFile = new File(localPath + "/"+sysName); // 파일 객체를 만든거고 - 빈 껍데기
 			// 실제 메모리상에 이 파일 객체 있는 거임.
@@ -130,9 +130,9 @@ public class FeedService {
 				bdto.setCafefeed_seq(cafefeed_seq);
 				bdto.setId(id);
 				BookmarkDTO isBookOk = dao.isDetailBook(bdto);
-				int bookCheck = dao.isBookChecking(bdto);
+//				int bookCheck = dao.isBookChecking(bdto);
 				
-				model.addAttribute("isBookOk", isBookOk);// 해당 게시글에 찜 했는지 정보
+				model.addAttribute("bdto", isBookOk);// 해당 게시글에 찜 했는지 정보
 				
 			}
 			
@@ -162,9 +162,9 @@ public class FeedService {
 			String sysName = UUID.randomUUID() + "_"+oriName; //UUID.randomUUID()중복되지 임의값을 만들어 리턴 oriname 
 			file.transferTo(new File(realPath + "/"+sysName)); // 서버 경로 저장하기
 			// 영구적으로 로컬 환경에도 옮겨야됨.
-//			String  localPath ="C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
-//			String  localPath ="A:/springWorkspace/final_project/src/main/webapp/resources/feed";
-			String localPath= "C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
+			String localPath ="C:/SpringWorkspace/final_project/src/main/webapp/resources/feed"; //석원 경로
+//			String localPath ="A:/springWorkspace/final_project/src/main/webapp/resources/feed";
+//			String localPath= "C:/SpringWorkspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/final_project/resources/feed";
 			File realFile = new File(realPath + "/"+sysName); // 파일 객체를 만든거예요 - 파일 데이터가 들어가 있음
 			File localFile = new File(localPath + "/"+sysName); // 파일 객체를 만든거고 - 빈 껍데기
 			// 실제 메모리상에 이 파일 객체 있는 거임.
@@ -181,22 +181,22 @@ public class FeedService {
 			fdao.update(oriName,sysName,cafefeed_seq);
 			
 		}
-		public void bookmarkInsert(int cafefeed_seq) throws Exception{
+		public int bookmarkInsert(int cafefeed_seq) throws Exception{
 			String id = (String)session.getAttribute("loginID");
 			
 			BookmarkDTO dto = new BookmarkDTO();
 			dto.setCafefeed_seq(cafefeed_seq);
 			dto.setId(id);
 			
-			dao.bookmarkInsert(dto);
+			return dao.bookmarkInsert(dto);
 		}
-		public void bookmarkDelete(int cafefeed_seq) throws Exception{
+		public int bookmarkDelete(int cafefeed_seq) throws Exception{
 			String id = (String)session.getAttribute("loginID");
 			
 			BookmarkDTO dto = new BookmarkDTO();
 			dto.setCafefeed_seq(cafefeed_seq);
 			dto.setId(id);
 			
-			dao.bookmarkDelete(dto);
+			return dao.bookmarkDelete(dto);
 		}
 }
