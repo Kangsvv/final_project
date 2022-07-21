@@ -16,6 +16,11 @@
 <body>
 <style>
 /*------------------------ 헤더 부분 스타일 ------------------------ */
+   
+   li{
+   margin: 0px;
+   }
+   
    .loginbox{
       flex:auto;
       float:left;
