@@ -261,6 +261,27 @@
 		    document.getElementById('preview').src = "";
 		  }
 		}
+		
+		//-----글자 수 제한------
+		$("#contents").keyup(function(e) {
+            let content = $(this).val();
+            
+            // 글자수 계산
+            if (content.length == 0 || content == ''){
+               $(".textCount").text("0자");
+            } else {
+               $(".textCount").text(content.length + "자");
+               
+            }
+            
+            // 글자수 제한
+                 if($(this).val().length > 250) {
+                  $(this).val($(this).val().substring(0, 250));
+                  alert("250자까지만 입력가능합니다")
+                 }
+            
+            
+         });
       </script>  
           
 </body>

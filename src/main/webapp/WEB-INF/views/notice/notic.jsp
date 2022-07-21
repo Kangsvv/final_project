@@ -179,7 +179,7 @@ display: none;
     </table>
 
 			<c:choose>
-				<c:when test="${loginID = admin} "> --%>
+				<c:when test="${loginID == admin} ">
 					<div class="row">
 						<div class="col-12 create">
 							<input type="button" class="cbtn" value="작성하기">

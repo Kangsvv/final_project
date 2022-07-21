@@ -2,6 +2,8 @@ package kh.spring.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -14,7 +16,8 @@ public class NoticService {
 
 	@Autowired
 	private NoticDAO dao; 
-
+	@Autowired
+	private HttpSession session;
 	public void insert (NoticDTO dto) throws Exception{
 
 		int seq = dao.insert(dto);
@@ -22,6 +25,9 @@ public class NoticService {
 	}
 
 public List<NoticDTO> notic_selectAll() throws Exception {
+	
+	String id = (String)session.getAttribute("loginID");
+	System.out.println(id);
 	 return dao.notic_selectAll(); 
 }
 
