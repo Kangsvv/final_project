@@ -20,6 +20,7 @@ import kh.spring.dao.MemberDAO;
 import kh.spring.dto.BookmarkDTO;
 import kh.spring.dto.FeedDTO;
 import kh.spring.dto.Feed_imgDTO;
+import kh.spring.dto.Feed_likeDTO;
 
 @Service
 public class FeedService {
@@ -106,7 +107,7 @@ public class FeedService {
 		// 카페 상세 페이지 출력 detailView
 		@Transactional
 		public void selectBySeq(Model model,int cafefeed_seq) throws Exception {
-			
+			String id = (String)session.getAttribute("loginID");// 로그인 id
 			//-------------조회수업----------------------
 			dao.countUp(cafefeed_seq);
 
@@ -121,12 +122,11 @@ public class FeedService {
 			
 			
 			//-------------------- 북마크 ---------------------
-			if ((String)session.getAttribute("loginID") != null) {
-				String id = (String)session.getAttribute("loginID");// 로그인 id
+			if (id != null) {
+				
 				
 				BookmarkDTO bdto = new BookmarkDTO();
 				
-				System.out.println(cafefeed_seq + " : " + id);
 				bdto.setCafefeed_seq(cafefeed_seq);
 				bdto.setId(id);
 				BookmarkDTO isBookOk = dao.isDetailBook(bdto);
@@ -135,7 +135,18 @@ public class FeedService {
 				model.addAttribute("bdto", isBookOk);// 해당 게시글에 찜 했는지 정보
 				
 			}
+			if (id != null) {
+			System.out.println("좋아요 : " + cafefeed_seq + " : " + id);
 			
+			Feed_likeDTO ldto = new Feed_likeDTO();
+			
+			ldto.setCafefeed_seq(cafefeed_seq);
+			ldto.setId(id);
+			Feed_likeDTO isLikeOk = dao.islikeOk(ldto);
+			int likeCnt = dao.islikeCnt(ldto);
+			model.addAttribute("lcnt", likeCnt);// 해당 게시글에 좋아요 개수
+			model.addAttribute("ldto", isLikeOk);// 해당 게시글에 좋아요 했는지 정보
+			}
 			
 			
 		}
@@ -198,5 +209,29 @@ public class FeedService {
 			dto.setId(id);
 			
 			return dao.bookmarkDelete(dto);
+		}
+		public int likeInsert(Model model, int cafefeed_seq) throws Exception{
+			String id = (String)session.getAttribute("loginID");
+			
+			Feed_likeDTO dto = new Feed_likeDTO();
+			dto.setCafefeed_seq(cafefeed_seq);
+			dto.setId(id);
+			dao.likeInsert(dto);
+//			int likeCnt = dao.islikeCnt(dto);
+//			model.addAttribute("lcnt", likeCnt);// 해당 게시글에 좋아요 개수
+			
+			return dao.islikeCnt(dto);
+		}
+		public int likeDelete(Model model, int cafefeed_seq) throws Exception{
+			String id = (String)session.getAttribute("loginID");
+			
+			Feed_likeDTO dto = new Feed_likeDTO();
+			dto.setCafefeed_seq(cafefeed_seq);
+			dto.setId(id);
+			dao.likeDelete(dto);
+//			int likeCnt = dao.islikeCnt(dto);
+//			model.addAttribute("lcnt", likeCnt);// 해당 게시글에 좋아요 개수
+			
+			return dao.islikeCnt(dto);
 		}
 }

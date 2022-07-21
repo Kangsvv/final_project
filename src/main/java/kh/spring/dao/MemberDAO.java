@@ -89,5 +89,9 @@ public class MemberDAO {
 	public MemberDTO email_member(String email) {
 		return mybatis.selectOne("Member.email_member",email);
 	}
+	//아이디로 dto 가져오기
+	public MemberDTO idmember(String id) {
+		return mybatis.selectOne("Member.idval",id);
+	}
 
 }

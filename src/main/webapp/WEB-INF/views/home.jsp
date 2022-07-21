@@ -301,7 +301,7 @@ margin-top:10px;
     </c:choose>
 </div>
 
- 	<c:if test="{loginMember.mem_level == 2}">
+ 	<c:if test="${loginID == admin}">
 		<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
 	</c:if>
 </body>

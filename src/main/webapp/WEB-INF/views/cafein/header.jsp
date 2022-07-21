@@ -182,7 +182,7 @@ li .dropdown-item:hover {
      
      <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
       <div class="container-fluid">
-        <img src="/img/logo4.png" class="logo">
+         <a href="/"><img src="/img/logo4.png" class="logo"></a>
         <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon">▼</span>
         </button>
@@ -212,13 +212,13 @@ li .dropdown-item:hover {
 				<c:when test="${empty loginID}">
 		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
-        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Signup</a></li>
+        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Join</a></li>
           </ul>
           </c:when>
          <c:otherwise>
          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/mypage/mypage" id="board">myPage</a></li>
-          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/logout" id="board">logout</a></li>
+          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/mypage/mypage" id="board">MyPage</a></li>
+          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/logout" id="board">Logout</a></li>
          </ul>
          </c:otherwise>          
           </c:choose>
@@ -229,13 +229,13 @@ li .dropdown-item:hover {
 		     <button id="login" type="button"
               class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/login' ">Login</button>
         	 <button id="signup" type="button"
-              class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/signUp' ">Signup</button>
+              class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/signUp' ">Join</button>
 	    </c:when>
 	    <c:otherwise>
 	    	 <button id="login" type="button"
-              class="mx-1 d-none d-lg-inline btn navbar-btn"  onclick="location.href='/mypage/mypage' ">myPage</button>
+              class="mx-1 d-none d-lg-inline btn navbar-btn"  onclick="location.href='/mypage/mypage' ">MyPage</button>
 	    	 <button id="login" type="button"
-              class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/logout' ">logout</button>
+              class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/logout' ">Logout</button>
 	    </c:otherwise>
     </c:choose>
         
