@@ -13,6 +13,10 @@
 		select * from cafein join cafein_img on cafein.SEQ = cafein_seq where cafein.id = #{value }
 	</select>
 	
+	<select id="selectfeedimg" resultType="kh.spring.dto.Feedin_imgDTO">
+		select * from cafein join cafein_img on cafein.SEQ = cafein_seq where cafein.id = #{value }
+	</select>
+	
 	<update id="mypageUpdate" >
 		update member set mem_img = #{mem_img }, mem_name=#{mem_name }, mem_phone=#{mem_phone}, mem_oriname = #{mem_oriname} where mem_id = #{mem_id}  
 	</update>

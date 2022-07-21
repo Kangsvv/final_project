@@ -89,5 +89,7 @@ public class MypageController {
 		System.out.println(loginID + "<- 세션이 있나 확인하려고 만든겨");
 		return "redirect:/";
 	}
+	
+	
 
 }
