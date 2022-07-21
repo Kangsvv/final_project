@@ -149,10 +149,10 @@ body {
 }
 </style>
 <body>
-  <a href="#"><div class="cup">
+  <a href="javascript:window.history.back();"><div class="cup">
   <div class="coffee"></div>
 </div></a>
-<a href="#"><div class="smoke"></div></a>
+<a href="javascript:window.history.back();"><div class="smoke"></div></a>
 <div style="color: white; font-size: 50px;">커피 제조중</div>
 
 </body>
