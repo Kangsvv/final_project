@@ -373,7 +373,8 @@ li.dropdown {
 
  .replyWriteBox{
 /*  			width: 1000px; */
-         	padding:20px;
+         	padding-bottom:10px;
+         	padding-top:10px;
         	border-top: 2px solid white;
 			border-bottom: 2px solid white;
         }
@@ -525,8 +526,8 @@ li.dropdown {
 	            		rows="30" placeholder="내용" maxlength="251"></textarea> 
 	            	</div>
 	            	
-	            	<div class="col-2" id="replyWriteBtnBox">
-	            		<input type="button" id="replyWriteBtn" value="작성" style="width:100%;">
+	            	<div class="col-2" id="replyWriteBtnBox" style="text-align: center;">
+	            		<input type="button" id="replyWriteBtn" value="작성" style="width:80px; margin: auto;">
 	            	</div>
 	            	
             	</div>
@@ -541,9 +542,8 @@ li.dropdown {
 					<div class="col-9" style="margin: auto;">
 						<div class="readcontainer">
 							<div style="color: white; text-align:right;">
-								
-								<fmt:formatDate pattern="yy-MM-dd" value="${i.write_date}" />
-								(작성됨)
+								작성일 : 
+								<fmt:formatDate pattern="yy-MM-dd" value= "${i.write_date}" />
 							</div>
 							<div class="readContnets" style="color: white; word-break: break-all; white-space: pre-line;">${i.contents }</div>
 
@@ -552,7 +552,6 @@ li.dropdown {
 							<div class="replyModifyBox" style="display:none;">
 								<div class="replyModifyWriteBox">
 									<div class="col-12 sizebox" style="font-size: 15px; height: 100px; overflow: hidden;">
-									
 									
 										<div class="col-10" id="replyModifyBox" style="float:left; margin:0px;">
 											<textarea name="replyContents" id="replyModifyContents"
