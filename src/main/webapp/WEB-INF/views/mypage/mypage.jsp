@@ -400,11 +400,12 @@ Remove or comment-out the code block below to see how the browser will fall-back
           </div>
 
           <div class="profile-user-settings">
-            <h1 class="profile-user-name">${dto.mem_name }, ${dto.mem_level }</h1>
-
+            <h1 class="profile-user-name">${dto.mem_name }</h1>
+	<c:if test="${dto.mem_id == loginID}"> 
             <button class="btn profile-edit-btn" id="editprofile">
               Edit Profile
             </button>
+	</c:if>
             <button class="btn profile-edit-btn"
             	onclick="location.href='/cafein/messagebox' ">message</button>
 
@@ -440,12 +441,12 @@ Remove or comment-out the code block below to see how the browser will fall-back
           </div>
           <!-- End of profile section -->
 
-          <div class="profile-bio">
+          <!-- <div class="profile-bio">
             <p>
               <span class="profile-real-name"></span> Lorem ipsum
               dolor sit, amet consectetur adipisicing elit 📷✈️🏕️
             </p>
-          </div>
+          </div> -->
         </div>
         <!-- End of profile section -->
       </div>
