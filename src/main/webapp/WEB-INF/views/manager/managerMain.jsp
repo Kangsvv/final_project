@@ -268,7 +268,7 @@ nav button:hover{
       </div>
       <div class="modal-footer">
            <button type="button" class="btn btn-primary okBtn">등업승인</button>
-           <button type="button" class="btn btn-primary noBtn">미승인</button>
+<!--            <button type="button" class="btn btn-primary noBtn">미승인</button> -->
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
       </div>
     </div>
@@ -343,10 +343,10 @@ $(".okBtn").on("click",function(){
 	})
 })
 
-$(".noBtn").on("click",function(){
-	// 	메세지 보내기
-	alert("메세지가 발송되었습니다.");
-})
+// $(".noBtn").on("click",function(){
+// 	// 	메세지 보내기
+// 	alert("메세지가 발송되었습니다.");
+// })
 
 $(".deleteBtn").on("click",function(){
 	
