@@ -42,6 +42,86 @@ body {
 
 /*---------------------기능 구현 후 Hover 예정------------------*/
 
+#Box {
+  text-align: center;
+  height: 900px;
+  margin-left:15%;
+  margin-right:15%;
+  margin-bottom:3%;
+  padding: 2%;
+}
+
+#Noticecontainer {
+	margin: auto;
+	background-color: white;
+	width: 100%;
+	height: 800px;
+	padding: 5%;
+	border-radius: 10%;
+}
+
+.titlebox {
+	border: none;
+	padding: 0%;
+	margin: auto;
+	text-align: center;
+}
+
+.title_head {
+	color: white;
+	background-color: black;
+	border: none;
+	text-align: center;
+	height: 30px;
+	padding-top: 0.25%;
+}
+
+.nbtn {
+	color: black;
+	font-size: 30px;
+	text-decoration:none;
+}
+
+.cbtn {
+	background-color: #760c0c;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-size: 90%;
+	width: 80px;
+	height: 35px;
+	margin-top: 1%;
+	padding: 0.5%;
+}
+
+.noticbox {
+	background-color: white;
+	border-bottom: 1px solid #222;
+	text-align: center;
+	height: 30px;
+	padding-top: 0.25%;
+	margin: auto;
+}
+
+.notice1 {
+	text-align: left;
+}
+
+.create {
+	margin-top: 1%;
+	text-align: right;
+}
+
+.constyle{
+    color: black;
+    text-decoration: none;
+}
+
+.constyle:hover{
+	color: #760c0c;
+	font-weight : bold;
+}
+
 #example_length,#example_info{
 display: none;
 }
@@ -58,7 +138,6 @@ display: none;
 #Noticecontainer::-webkit-scrollbar-track {
     background: none;  /*스크롤바 뒷 배경 색상*/
 }
-
 </style>
 
 </head>
