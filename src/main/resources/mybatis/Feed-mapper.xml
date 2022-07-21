@@ -93,6 +93,9 @@
 	<select id="feed-replyCount" resultType="int">
 		select count(*) from cafefeedReply where cafefeed_seq=#{cafefeed_seq}
 	</select>
+	<select id="feed-replyInfo" resultType="String">
+		select contents from cafefeedReply where seq=#{seq}
+	</select>
 	<!-- 북마크 추가, 삭제 -->
 	<insert id="bookmarkInsert">
 		insert into bookmark values(#{cafefeed_seq}, #{id})
@@ -119,4 +122,5 @@
 	<select id="isLikeCnt" resultType="int">
 		select count(*) from feed_like where cafefeed_seq = #{cafefeed_seq}
 	</select>
+	
 </mapper>
