@@ -491,6 +491,7 @@ nav button:hover{
        });
        
     }
+    
    </script>
 
     <!------------------------------------------------------------header----------------------------------------------------->
@@ -582,13 +583,57 @@ nav button:hover{
                         <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;${rCnt }
                      </span>
                   </div>
+                  
                   <div class="col-6" id="bookmark">
-                     <span>
+                  <!-------------------- 작성자와 로그인아이디 다를시 북마크생성 ---------------------------->
+                  <c:if test="${loginID !=null && loginID != dto.id && loginID == bdto.id}">
+                     <span class="bookmarkArea">
+                        <i class="fa-solid fa-xl fa-bookmark"></i>
+                     </span>
+                     <!--------------------로그인아이디가 그전 좋아요 눌렀을시 활성화버튼 ---------------------------->
+                  </c:if>
+                  <c:if test="${loginID !=null && loginID != dto.id && loginID != bdto.id}">
+                     <span class="bookmarkArea">
                         <i class="fa-regular fa-xl fa-bookmark"></i>
                      </span>
+                  </c:if>
+                  <!---------------------- 비로그인시 버튼 없음 ------------------------------------->
+                  <c:if test="${loginID !=null}">
+                  </c:if>
                   </div>
                </div>
+			<script>
+	        $(".fa-bookmark").on("click",function() {
+	        	   if(${loginID == null}){
+	        		   Swal.fire({
+	        	             icon: 'warning',
+	        	             title: '확인해주세요.',
+	        	             text: '로그인시 가능합니다.',
+	        	         });
+	                   return false;
+	                }else{
+	   			$.ajax({
+	   				url:"/feed/book",
+	   				data:{cafefeed_seq:${dto.cafefeed_seq}},
+	   				dataType:"json"
+	   			}).done(function(resp){
+	   			if($(".bookmarkArea").val() == '<i class="fa-regular fa-xl fa-bookmark"></i>') {
 
+	   			 	$(".bookmarkArea").val('<i class="fa-solid fa-xl fa-bookmark"></i>');
+	   			} else if($(".bookmarkArea").val() =='<i class="fa-solid fa-xl fa-bookmark"></i>'){
+	            	$.ajax({
+	       				url:"/feed/book-cancel",
+	       				data:{cafefeed_seq:${dto.cafefeed_seq}},
+	       				dataType:"json"
+	       				
+	       			}).done(function(resp){
+	               		$(".bookmarkArea").val('<i class="fa-regular fa-xl fa-bookmark"></i>');
+	       			})
+	   			}
+	   			})
+	            }
+	        });
+			</script>
 
             </div>
             <div class="replyWriteBox">

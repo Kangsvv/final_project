@@ -14,13 +14,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
-<style>
+<style type="text/css">
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
   @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
 
 * {
   margin:0px;
   padding:0px;
   text-align:center;
+  font-family: 'GmarketSansMedium';
 }
 
 
@@ -205,7 +215,9 @@ h5 {
   overflow: hidden;
   margin-bottom: 60px;
 }
-
+h3{
+margin-top:10px;
+}
 </style>
 <body>
   <c:if test="${!empty msg}">
@@ -245,7 +257,7 @@ h5 {
     <figure class="flip">
      <a href="https://gangsofguro.com/cafedrink/" target="_blank"><img src="https://1.bp.blogspot.com/-BfbEpyEtmgk/Uh9GGNwLN6I/AAAAAAAAA6k/gxHsPPGjIcc/s1600/cake.jpg" /></a>
       <figcaption class="bar">
-        <h3>COFFEE TEST</h3>
+        <h3>CAFE TEST</h3>
        </figcaption>
     </figure>
   </section>

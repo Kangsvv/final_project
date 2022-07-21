@@ -72,13 +72,13 @@ public class FeedDAO {
 	public void countUp(int cafefeed_seq) {
 		mybatis.update("Feed.countUp",cafefeed_seq);
 	}
-	public void bookmarkInsert(BookmarkDTO dto) throws Exception {
+	public int bookmarkInsert(BookmarkDTO dto) throws Exception {
 		
-		mybatis.insert("Feed.bookmarkInsert", dto);
+		return mybatis.insert("Feed.bookmarkInsert", dto);
 	}
-	public void bookmarkDelete(BookmarkDTO dto) throws Exception {
+	public int bookmarkDelete(BookmarkDTO dto) throws Exception {
 		
-		mybatis.delete("Feed.bookmarkDelete", dto);
+		return mybatis.delete("Feed.bookmarkDelete", dto);
 	}
 	public BookmarkDTO isDetailBook(BookmarkDTO dto) throws Exception {
 		
