@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import kh.spring.dao.CafeinDAO;
 import kh.spring.dao.MypageDAO;
 import kh.spring.dto.Cafein_imgDTO;
 import kh.spring.dto.Feed_imgDTO;
@@ -28,7 +29,10 @@ public class MypageController {
 
 	@Autowired
 	private MypageDAO pdao;
-
+	
+	@Autowired
+	private CafeinDAO cdao;
+	
 	@Autowired
 	private MypageService pser;
 
@@ -38,7 +42,7 @@ public class MypageController {
 		return "error";
 	}
 
-	@RequestMapping("mypage")
+	@RequestMapping("mypage") // 일반 회원 + 사장님 feed출력
 	public String mypage_select(Model model) throws Exception {
 
 		String loginID = (String) session.getAttribute("loginID");
@@ -46,25 +50,41 @@ public class MypageController {
 
 		MemberDTO dto = pdao.selectID(loginID);
 		List<Feed_imgDTO> imglist = pdao.selectfeedimg(loginID);
+
 		model.addAttribute("dto", dto);
 		model.addAttribute("imglist", imglist);
-		System.out.println(dto.getmem_level());
+
+		int countcafein = pdao.countcafein(loginID);
+		model.addAttribute("countcafein",countcafein);
+		
+		int countfeed = pdao.countfeed(loginID); 
+		model.addAttribute("countfeed",countfeed);
+		
 		return "/mypage/mypage";
 	}
 
-	@RequestMapping("mycafe")
+	// 사장님 내 cafein 출력
+	@RequestMapping("mycafe") 
 	public String mypage_mycafe(Model model) throws Exception {
 
 		String loginID = (String) session.getAttribute("loginID");
 		System.out.println(loginID);
 
 		MemberDTO dto = pdao.selectID(loginID);
-		List<Cafein_imgDTO> imglist = pdao.selectcafeinimg(loginID);
 		model.addAttribute("dto", dto);
+		
+		List<Cafein_imgDTO> imglist = pdao.selectcafeinimg(loginID);
 		model.addAttribute("imglist", imglist);
-		System.out.println(dto.getmem_level());
+		
+		int countcafein = pdao.countcafein(loginID);
+		model.addAttribute("countcafein",countcafein);
+		
+		int countfeed = pdao.countfeed(loginID); 
+		model.addAttribute("countfeed",countfeed);
+
 		return "/mypage/mycafe";
 	}
+	
 
 	@RequestMapping("mypageEdit")
 	public String mypageEdit(Model model) throws Exception {
@@ -86,11 +106,12 @@ public class MypageController {
 	public String memberout() throws Exception {
 		String loginID = (String) session.getAttribute("loginID");
 		pdao.memberout(loginID);
+		pdao.memberout2(loginID);
+		pdao.memberout3(loginID);
+		pdao.memberout4(loginID);
 		session.invalidate();
 		System.out.println(loginID + "<- 세션이 있나 확인하려고 만든겨");
 		return "redirect:/";
 	}
-	
-	
 
 }
