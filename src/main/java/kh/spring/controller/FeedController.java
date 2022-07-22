@@ -217,10 +217,10 @@ public class FeedController {
 	}
 	// ------------------------ 댓글 정보 가져오기 -------------------------------------
 	@ResponseBody
-	@RequestMapping("replyInfo")
-	public int replyInfo(int seq) throws Exception {
-		
-		System.out.println("댓글 내용 가져오는중");
+	@RequestMapping(value="replyInfo", produces="application/text;charset=utf8")
+	public String replyInfo(int seq) throws Exception {
+		String contents = rServ.replyInfo(seq);
+		System.out.println("댓글 내용 가져오는중 : " + contents);
 		
 		
 		return rServ.replyInfo(seq);// 댓글 정보 가져오기

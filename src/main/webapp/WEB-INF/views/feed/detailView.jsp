@@ -782,7 +782,9 @@ nav button:hover{
                         	url:"/feed/replyInfo",
                         	data: {seq:seq}
                         }).done(function(resp){
-                    		
+                        	console.log(resp);
+                        	
+                    		editDiv.text(resp);
                     	})
                         
                         editDiv.attr("contenteditable", "false");
