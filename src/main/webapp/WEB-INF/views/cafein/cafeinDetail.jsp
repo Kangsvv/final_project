@@ -323,11 +323,11 @@ table td{
             
   
               제목:&nbsp; <br>  
-            <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요" required/><br><br>
+            <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요" /><br><br>
               받는사람:&nbsp;  ${dto.writer}&nbsp;(카페:&nbsp;${dto.name}) 
              <br>  
              <br>
-              <textarea placeholder = "내용을 입력해주세요" name="contents" required /></textarea><br>
+              <textarea placeholder = "내용을 입력해주세요" name="contents" class="contents" /></textarea><br>
             <input type="hidden" name="receiver" value="${dto.writer}">
             <input type="hidden" name="receiver_email" value="${dto.email}">
             <input type="hidden" name="seq" value="${dto.seq} ">
@@ -348,15 +348,30 @@ table td{
 
       <script>
       //--------------------쪽지-------------------------
-      $("#message").on("click",function(){
-    	  Swal.fire({
-    		  position: 'top-end',
-    		  icon: 'success',
-    		  title: '쪽지가 전달되었습니다.',
-    		  showConfirmButton: false,
-    		  timer: 7000
-    		})
-      })
+$("#message").on("click",function(){
+	if($("#title").val().trim()=='' || $(".contents").val().trim()=='' ){
+		alert("쪽지를 채워주세요.");
+		return false;
+	}
+})
+ //------------------모달 초기화-----------------------------  
+     
+        // ______________모달 종료 시 입력값 초기화
+      $('.modal').on('hidden.bs.modal', function(e) { // 모달 클래스에 .modal이 있는지 꼭 확인
+          console.log('modal close'); // 'hidden.bs.modal' => 부트스트랩 모달 이벤트, 모달이 사라지면 작동함
+
+          // 초기화 로직 : 아래에 초기화할 대상을 모두 적으면 됨.
+          
+          // 전체 텍스트 인풋 초기화
+        $("#title").val("")
+       	$(".contents").val("")
+   
+          $('.select2').val(0).trigger('change.select2');
+
+          console.log('모달 초기화', inputValue)
+      });
+
+
       //--------------------파일업로드시 이미지 미리보기------------------------------
        function onClickUpload() {
             let myInput = document.getElementById("my-input");
