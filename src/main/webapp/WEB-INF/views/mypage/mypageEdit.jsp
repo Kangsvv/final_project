@@ -117,6 +117,11 @@
       }
     </style>
   </head>
+  
+  <!-- header -->
+  <%@ include file="header.jsp"%>
+  <!-- header -->
+  
   <body style="background-color: #222">
   <form action="/mypage/update" method="post" enctype="multipart/form-data">
   
@@ -182,21 +187,14 @@
               value="${dto.mem_phone}"
               name="memPhone"
               maxlength="12"
+              required="required"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+              placeholder="-없이 번호만 적어주세요."
+              
             />
           </li>
           <!-- 자기소개 하실건가여? -->
-          <li>
-            <span style="color: white">자기소개</span>
-            <input
-              class="form_main"
-              class="change"
-              id="phone_center"
-              value=""
-              maxlength="12"
-              type="text"
-              class="editable"
-            />
-          </li>
+          
         </ul>
         <div id="btns">
           <button type="submit" class="btn_main bt_1" id="modify">수정</button>
@@ -206,6 +204,9 @@
       
     </div>
     </form>
+    
+    <!-- footer -->
+    <%@ include file="footer.jsp"%>
 	
     <script>
       

@@ -34,7 +34,7 @@ public class ManagerController {
 	@RequestMapping("delete")
 	public String managerCEO(String id) throws Exception{
 		
-		System.out.println(id);
+		System.out.println("삭제할 아이디 : " + id);
 		
 		serv.delete(id);
 		return "true";

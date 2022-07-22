@@ -12,6 +12,7 @@ import kh.spring.dto.BookmarkDTO;
 import kh.spring.dto.FeedDTO;
 import kh.spring.dto.Feed_imgDTO;
 import kh.spring.dto.Feed_likeDTO;
+import kh.spring.dto.SeqDTO;
 
 @Repository
 public class FeedDAO {
@@ -103,5 +104,23 @@ public class FeedDAO {
 	}
 	public int islikeCnt(Feed_likeDTO dto) throws Exception {
 		return mybatis.selectOne("Feed.isLikeCnt", dto);
+	}
+	
+	public List<SeqDTO> SearchByTitle(String title) throws Exception {
+		return mybatis.selectList("Feed.SearchByTitle", title);
+	}
+	public List<Feed_imgDTO> feedSearchBySeq(List<SeqDTO> flist_seq, int cpage){
+		int start = (cpage-1)*18+1;
+		int end = (cpage)*18;
+		List<SeqDTO> list = flist_seq;
+		
+		System.out.println(list);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("list", list);
+		map.put("start", start);
+		map.put("end", end);
+		return mybatis.selectList("Feed.feedSearchBySeq", map);
 	}
 }

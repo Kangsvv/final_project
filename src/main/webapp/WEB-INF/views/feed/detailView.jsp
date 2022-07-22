@@ -685,12 +685,34 @@
                      let mCancel = $(this).siblings(".modifyCancel");
                      
                      mFinish.on("click", function(){
-                        $.ajax({
-                           url:"/feed/replyModify",
-                           data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq},contents:editDiv.text()}
-                        }).done(function(resp){
-                           location.reload();
-                        });
+                    	 
+                    	if(editDiv.text().trim() == "") {
+                    		const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'center-center',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+                             
+                            Toast.fire({
+                                icon: 'error',
+                                title: '댓글을 입력해주세요.'
+                            })
+                           
+                            return false
+                        }else{
+                        	$.ajax({
+                                url:"/feed/replyModify",
+                                data: {seq:seq,cafefeed_seq:${dto.cafefeed_seq},contents:editDiv.text()}
+                             }).done(function(resp){
+                                location.reload();
+                             });
+                        }
                      })
                      mCancel.on("click",function(){
                         mFinish.css("display","none");
@@ -760,6 +782,25 @@
           })
           $("#replyContents").focus();
           return false;
+       }else if(article.trim() == "") {
+    	   const Toast = Swal.mixin({
+               toast: true,
+               position: 'center-center',
+               showConfirmButton: false,
+               timer: 3000,
+               timerProgressBar: true,
+               didOpen: (toast) => {
+                   toast.addEventListener('mouseenter', Swal.stopTimer)
+                   toast.addEventListener('mouseleave', Swal.resumeTimer)
+               }
+           })
+            
+           Toast.fire({
+               icon: 'error',
+               title: '빈칸은 안됩니다!'
+           })
+          
+           return false
        }else{
           $.ajax({
              url:"/feed/replyWrite",

@@ -21,6 +21,7 @@ import kh.spring.dto.BookmarkDTO;
 import kh.spring.dto.FeedDTO;
 import kh.spring.dto.Feed_imgDTO;
 import kh.spring.dto.Feed_likeDTO;
+import kh.spring.dto.SeqDTO;
 
 @Service
 public class FeedService {
@@ -233,5 +234,14 @@ public class FeedService {
 //			model.addAttribute("lcnt", likeCnt);// 해당 게시글에 좋아요 개수
 			
 			return dao.islikeCnt(dto);
+		}
+		
+		public List<Feed_imgDTO> SearchByTitle(Model model,String title, int cpage) throws Exception{
+			
+			List<SeqDTO> flist_seq = dao.SearchByTitle(title);
+			
+			System.out.println("시퀀스는 " + flist_seq);
+			
+			return dao.feedSearchBySeq(flist_seq, cpage);
 		}
 }
