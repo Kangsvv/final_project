@@ -6,7 +6,15 @@
 <mapper namespace="mypage">
 
 	<select id="selectID" resultType="kh.spring.dto.MemberDTO">
-		select * from member where mem_id = #{value }
+		select * from member where mem_id = #{value } order by 1 desc
+	</select>
+	
+	<select id="selectcafeinimg" resultType="kh.spring.dto.Cafein_imgDTO">
+		select * from cafein join cafein_img on cafein.SEQ = cafein_seq where cafein.id = #{value }
+	</select>
+	
+	<select id="selectfeedimg" resultType="kh.spring.dto.Feed_imgDTO">
+		select * from cafefeed join feed_img on cafefeed.cafefeed_seq = feed_img.cafefeed_seq where cafefeed.id = #{value }	
 	</select>
 	
 	<update id="mypageUpdate" >
@@ -14,7 +22,15 @@
 	</update>
 	
 	<delete id="memberout" >
-		delete from member where mem_id = #{mem_id}
+		delete from member where mem_id = #{value }
 	</delete>
+	
+	<!-- <select id="mycount">
+		select count(*) count from cafefeed join feed_img on cafefeed.cafefeed_seq = feed_img.cafefeed_seq where cafefeed.id = ${value };
+	</select>
+	
+	<select id="cafeincount">		
+		select count(*) count from cafefeed join feed_img on cafefeed.cafefeed_seq = feed_img.cafefeed_seq where cafefeed.id = ${value };
+	</select> -->
 
 </mapper>

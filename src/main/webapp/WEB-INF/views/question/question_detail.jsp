@@ -627,7 +627,7 @@ li.dropdown {
                      
                      <input type="hidden" class="reply_seq" value="${i.reply_seq}">
                         
-                       <c:if test="${loginID eq i.writer}"> 
+                       <c:if test="${loginID == 'admin'}"> 
                         <div  class="col-12 replyreadbox"  style="text-align: right; margin-bottom:20px">
                            <button class="replyUpdate">수정</button>
                            <button class="replyDelete">삭제</button>
@@ -738,11 +738,11 @@ $(".upbtn").on("click",function(){
 
 // 수정완료 버튼
 $(".create").on("click", "#modifyBtn",function(){
-	
 	if ($(".main").val() == "" || $(".eventbox").val() ==""){
 		alert("수정할 제목/내용을 입력해주세요");
 		return false;
 	}else{
+	
 	
 	
    let question_seq = "${dto.question_seq}"; // 게시글 고유 넘버
@@ -773,8 +773,8 @@ $(".create").on("click", "#modifyBtn",function(){
 
                 if(article == ""){
 
-               alret('내용을 입력해주세요')
-//                    $("#replyContents").focus();
+                	alert('내용을 입력해주세요')
+                    $("#replyContents").focus();
                    return false;
                    
                 }else{

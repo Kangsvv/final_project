@@ -246,16 +246,16 @@ nav button:hover{
                 <th style="text-align: center;">${i.mem_name }</th>
                 <th style="text-align: center;"><fmt:formatDate pattern="yy-MM-dd" value="${i.mem_joindate}" /></th>
                 <th style="text-align: center;">
-						<button id="delete" class="btn btn-primary" type="button">탈퇴</button>
+						<button class="btn btn-primary deleteBtn" type="button">탈퇴</button>
 						
 			 <c:if test="${i.mem_ceocheckimg != null}">
-					<button id="levelup" type="button" class="btn btn-primary levelup" data-bs-toggle="modal" data-bs-target="#exampleModal">등업</button>
+					<button type="button" class="btn btn-primary levelup" data-bs-toggle="modal" data-bs-target="#exampleModal${i.mem_seq}">등업</button>
 			 </c:if>	
 				</th>
             </tr>
             
             <!-------------------------------------------------------Modal------------------------------------------------->
-<div class="modal fade row" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade row" id="exampleModal${i.mem_seq}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog col-12" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header">
@@ -267,8 +267,8 @@ nav button:hover{
       	<img src="${i.mem_ceocheckimg}" style="width:100%;">
       </div>
       <div class="modal-footer">
-           <button id="ok" type="button" class="btn btn-primary">등업승인</button>
-           <button id="no" type="button" class="btn btn-primary">미승인</button>
+           <button type="button" class="btn btn-primary okBtn">등업승인</button>
+           <button type="button" class="btn btn-primary noBtn">미승인</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
       </div>
     </div>
@@ -330,7 +330,7 @@ $(document).ready(function() {
 		});
 	});
 
-$("#ok").on("click",function(){
+$(".okBtn").on("click",function(){
 	var id = $("#modalID").val();
 	
 	$.ajax({
@@ -343,12 +343,12 @@ $("#ok").on("click",function(){
 	})
 })
 
-$("#no").on("click",function(){
+$(".noBtn").on("click",function(){
 	// 	메세지 보내기
 	alert("메세지가 발송되었습니다.");
 })
 
-$("#delete").on("click",function(){
+$(".deleteBtn").on("click",function(){
 	
 	var id = $("#modalID").val();
 	

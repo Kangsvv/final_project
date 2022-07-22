@@ -50,4 +50,7 @@ public class ReplyDAO {
 	public int replyCount(int cafefeed_seq)throws Exception{
 		return mybatis.selectOne("Feed.feed-replyCount", cafefeed_seq);
 	}
+	public String replyInfo(int seq) throws Exception {
+		return mybatis.selectOne("Feed.feed-replyInfo", seq);
+	}
 }

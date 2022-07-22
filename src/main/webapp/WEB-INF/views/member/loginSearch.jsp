@@ -124,6 +124,10 @@
 				}
 			}
 			
+			if(num == null || num == ''){
+				alert("인증번호를 입력해주세요.");
+				return false;
+			}
 			$.ajax({
 				url : "idSearch",
 				type : "post",

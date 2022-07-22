@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 
-import kh.spring.dto.FeedDTO;
 import kh.spring.dto.Feed_imgDTO;
 import kh.spring.dto.ReplyDTO;
 import kh.spring.service.FeedService;
@@ -69,7 +68,7 @@ public class FeedController {
 	}
 	//---------------------리뷰 상세페이지로 넘어가기 ----------------------
 	@RequestMapping("selectBySeq")
-	public String detailView(Model model, int cafefeed_seq) throws Exception{
+	public String selectBySeq(Model model, int cafefeed_seq) throws Exception{
 		
 		int page = 1;
 //		System.out.println("Controller CS : " + cafefeed_seq);
@@ -166,26 +165,74 @@ public class FeedController {
 		System.out.println("댓글 리스트 가져오는 중");
 		return rServ.selectBySeq(model, cafefeed_seq, page);
 	}
-	@RequestMapping("clickBook")
-	public String clickBook(Model model,int upDown, int cafefeed_seq) throws Exception{
-		
-		if (upDown == 1) {
-			serv.bookmarkInsert(cafefeed_seq);// 북마크 테이블에 게시글 정보(해당 게시글seq, 내 id) 추가
-			System.out.println("북마크 추가");
-		} else if (upDown == 0) {
-			serv.bookmarkDelete(cafefeed_seq);// 좋아요 테이블에서 게시글 정보 삭제
-			System.out.println("북마크 삭제");
-		}
-		
-		
-		return "1";
-//		return rServ.selectBySeq(model, cafefeed_seq, page);
+//	@RequestMapping("clickBook")
+//	public String clickBook(Model model,int upDown, int cafefeed_seq) throws Exception{
+//		
+//		if (upDown == 1) {
+//			serv.bookmarkInsert(cafefeed_seq);// 북마크 테이블에 게시글 정보(해당 게시글seq, 내 id) 추가
+//			System.out.println("북마크 추가");
+//		} else if (upDown == 0) {
+//			serv.bookmarkDelete(cafefeed_seq);// 좋아요 테이블에서 게시글 정보 삭제
+//			System.out.println("북마크 삭제");
+//		}
+//		
+//		
+//		return "1";
+////		return rServ.selectBySeq(model, cafefeed_seq, page);
+//	}
+	@ResponseBody
+	@RequestMapping("book")
+	public int book(int cafefeed_seq) throws Exception {
+		System.out.println("북마크 추가");
+		return serv.bookmarkInsert(cafefeed_seq);// 북마크 테이블에 게시글 정보(해당 게시글seq, 내 id) 추가
 	}
+	//----------------------좋아요 취소----------------------------------
+	@ResponseBody
+	@RequestMapping("book-cancel")
+	public int book_cancel(int cafefeed_seq) throws Exception {
+		
+		System.out.println("북마크 삭제");
+		
+		return serv.bookmarkDelete(cafefeed_seq);// 좋아요 테이블에서 게시글 정보 삭제
+		
+	}
+	@ResponseBody
+	@RequestMapping("like")
+	public int cafefeed_like(Model model, int cafefeed_seq) throws Exception {
+		System.out.println("좋아요 추가");
+		
+		
+		return serv.likeInsert(model, cafefeed_seq);
+	}
+	//----------------------좋아요 취소----------------------------------
+	@ResponseBody
+	@RequestMapping("like-cancel")
+	public int like_cancel(Model model, int cafefeed_seq) throws Exception {
+		
+		System.out.println("좋아요 삭제");
+		
+		
+		return serv.likeDelete(model, cafefeed_seq);// 좋아요 테이블에서 게시글 정보 삭제
+		
+	}
+	// ------------------------ 댓글 정보 가져오기 -------------------------------------
+	@ResponseBody
+	@RequestMapping("replyInfo")
+	public int replyInfo(int seq) throws Exception {
+		
+		System.out.println("댓글 내용 가져오는중");
+		
+		
+		return rServ.replyInfo(seq);// 댓글 정보 가져오기
+		
+	}
+	
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
 		e.printStackTrace();
 		return "error";
 	}
+	
+	
+	
 }
-
-

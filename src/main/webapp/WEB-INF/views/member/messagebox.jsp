@@ -17,213 +17,12 @@
  <!--  sweet alert  -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
  
-<title>Insert title here</title>
+<title>쪽지함</title>
 </head>
 <style>
-    nav{
-  
-  width: 100%;
-  background-color: #131418;
-  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
-  /* display: flex; */
-  /* position: fixed; */
-  z-index: 10;
-}
-#btn{
-  
-  background-color: #131418;
-  
-}
-/*Styling logo*/
-.logo {
-  padding: 1vh 1vw;
-  text-align: center;
-  font-size: 40px;
-  margin-bottom: 2%;
-}
-#logo img{
- height: 100px;
- width: 100px;
-}
-.logo img {
-  height: 5rem;
-  width: 5rem;
-}
-
-/*Styling Links*/
-.nav-links{
-  display: flex;
-  list-style: none; 
-  /* width: 88vw; */
-  height: 80px;
-  padding: 0 0.7vw;
-  justify-content: space-evenly;
-  align-items: center;
-  text-transform: uppercase;
-}
-.nav-links li a{
-  text-decoration: none;
-  margin: 0 0.7vw;
-  font-size: 20px;
-  color: white;
-}
-.nav-links li a:hover {
-  color: white;
-}
-
-.nav-links li {
-  position: relative;
-  color: white;
-  opacity: 1;
-}
-.nav-links li a::before {
-  content: "";
-  display: block;
-  height: 3px;
-  width: 0%;
-  background-color: #760c0c;
-  position: absolute;
-  transition: all ease-in-out 250ms;
-  margin: 0 0 0 10%;
-}
-.nav-links li a:hover::before{
-  width: 80%;
-  opacity: 1;
-}
-
-/*Styling Buttons*/
-#btn button{
-  color: white;
-  background-color: #222;
-  border-radius: 2em;
-  padding: 0.1rem 0.8rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-#btn button:hover {
-   color: #131418;
-  background-color: #f2f5f7;
-  border:1.5px solid #f2f5f7;
-  transition: all ease-in-out 350ms;
-}
-.fade:not(.show) {
-  opacity: 1;
-}
-/*Styling Hamburger Icon*/
-.hamburger div{
-  width: 30px;
-  height:3px;
-  background: #f2f5f7;
-  margin: 5px;
-  transition: all 0.3s ease;
+/*HEADer부분----------------------------*/
  
-}
-.hamburger{
-
-  display: none;
-}
-
-/*Stying for small screens*/
-@media screen and (max-width: 800px){
-  nav{
-      position: fixed;
-      z-index: 3;
-      opacity: 1;
-      height: 70px;
-  }
-  .hamburger{
-      display:block;
-      position: absolute;
-      cursor: pointer;
-      right: 5%;
-      top: 50%;
-      transform: translate(-5%, -50%);
-      z-index: 2;
-      transition: all 0.7s ease;
-      opacity: 1;
-  }
-  .nav-links{
-      position: fixed;
-      background: #131418;
-      color: white;
-      height: 100vh;
-      width: 100%;
-      flex-direction: column;
-      clip-path: circle(50px at 90% -20%);
-      -webkit-clip-path: circle(50px at 90% -10%);
-      transition: all 1s ease-out;
-      pointer-events: none;
-      opacity: 1;
-  }
-  .nav-links.open{
-      clip-path: circle(1000px at 90% -10%);
-      -webkit-clip-path: circle(1000px at 90% -10%);
-      pointer-events: all;
-      color: white;
-      opacity: 1;
-  }
-  .nav-links li{
-      opacity: 1;
-  }
-  .nav-links li:nth-child(1){
-      transition: all 0.5s ease 0.2s;
-      opacity: 1;
-  }
- .nav-links li:nth-child(2){
-      transition: all 0.5s ease 0.4s;
-      opacity: 1;
-  }
-  .nav-links li:nth-child(3){
-      transition: all 0.5s ease 0.6s;
-      opacity: 1;
-  }
-  .nav-links li:nth-child(4){
-      transition: all 0.5s ease 0.7s;
-      opacity: 1;
-  }
-  .nav-links li:nth-child(5){
-      transition: all 0.5s ease 0.8s;
-      opacity: 1;
-  }
-  .nav-links li:nth-child(6){
-      transition: all 0.5s ease 0.9s;
-      opacity: 1;
-      margin: 0;
-  }
-  .nav-links li:nth-child(7){
-      transition: all 0.5s ease 1s;
-      opacity: 1;
-      margin: 0;
-  }
-
-  li.fade{
-      opacity: 1;
-  }
-
-}
-.container{
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-/*Animating Hamburger Icon on Click*/
-.toggle .line1{
-  transform: rotate(-45deg) translate(-5px,6px);
-}
-.toggle .line2{
-  transition: all 0.7s ease;
-  width:0;
-}
-.toggle .line3{
-  transform: rotate(45deg) translate(-5px,-6px);
-
-}
-body{
-    background-color: #222;
-}
-html,body {
-  font-family: Helvetica, Arial, sans-serif;
-  margin: 0;
-}
+/*---------------쪽지붑 */
 .panel-faq-container {
   margin-bottom: -16px;
   text-align:center;
@@ -253,6 +52,9 @@ html,body {
 }
 #answer{
 	margin-right:1%;
+}
+#answer:hover{
+	opacity: 0.8;
 }
 #btn-all-close:hover {
   background-color: #760c0c;
@@ -316,7 +118,7 @@ border-bottom : 1px solid black;
       padding-bottom:5px;
       
     }
-    
+  
     #form {
       
       text-align:center;
@@ -354,61 +156,20 @@ border-bottom : 1px solid black;
       margin-top: 10px;
       
     }
+  
 
 /*-----------------------------------------Footer부분----------------------------*/
-/* footer 부분 */
-#foot{
-  position: absolute;
-  height: 60px;
-  width: 100%;
-  padding: 0 25px;
-  line-height: 60px;
-  background-color: #222;
-  color: white;
- 
-/* rgba(32, 31, 31, 0.532) */
-}
-.footer2{
-    line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px ;
-    font-family: 'Noto Sans KR';
-   font-style: normal;
-   font-weight: 700;
-   font-size: 14px;
-   line-height: 20px;
-   color: #FFFFFF;
-}
+
 </style>
 
 <body>
-  <div id="btn" style="text-align: right;">
-    <button class="button" id="login">Login</button>
-        <button class="button" id="join">Join</button>
-</div>
-<nav>
-  
-    <div class="hamburger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
-    <ul class="nav-links" style="color: white;">
-        <li id="logo"><img src="logo.png"></li>
-        <li><a  href="#">Home</a></li>
-        <li><a href="#">FEED</a></li>
-        <li><a href="#">CAFE-IN</a></li>
-        <li><a href="#">NOTICE</a></li>
-    </ul>
-
-    
-</nav>
-<script src="nav.js"></script>
-    <div class="container">
+ <jsp:include page="header.jsp"/> 
+          
+    <div class="container" style="height:700px;">
         <div class="row">
 
             <div class="col-12">
-                <h3 style="text-align: center; padding-top: 50px;color: white;">쪽지함</h3>
+                <h3 style="text-align: center;font-size:45px; padding-top: 50px;color: white;">쪽지함</h3>
             </div>
         <div class="col-12" >
             <button class="btn btn-primary" id="btn-all-close">모든쪽지닫기</button>
@@ -461,12 +222,12 @@ border-bottom : 1px solid black;
       </div>
     </div>
       </div>
-    </div>
+   
    <!--------------------------쪽지모달창------------------------->
  <form action="/cafein/message2" id="send">
- <div class="modal fade send" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade send" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" style="background-color:#222;">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel" style="color: white;">Message</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -477,11 +238,12 @@ border-bottom : 1px solid black;
   
               제목:&nbsp; <br>  
             <input type = "text" name="title" id = "title" placeholder = "제목을 입력해주세요" required/><br><br>
-              받는사람:<input type = "text" name="receiver_email" id = "mem_email" placeholder = "상대방 이메일을 입력해주세요" required/>
+              받는사람:<br>
+              <input type = "text" name="receiver_email" id = "mem_email" placeholder = "상대방 이메일을 입력해주세요" required/>
              <br>
              <div id="checkEmail"></div>  
              <br>
-              <textarea placeholder = "내용을 입력해주세요" name="contents" required /></textarea><br>
+              <textarea placeholder = "내용을 입력해주세요" name="contents" class="contents" required /></textarea><br>
           	  <input type="hidden" name="sender_email" value="${memdto.mem_email} ">
           	  <input type="hidden" name="sender" value="${memdto.mem_name} ">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
@@ -497,22 +259,10 @@ border-bottom : 1px solid black;
 <!--       </div> -->
     </div>
   </div>
+   </div>
+   
     <!-------------------------------------------------------Footer------------------------------------------------->
  
-    <div class="col-12 d-none d-md-block" >
-      <div id="foot" align=center>
-         
-            <div id="footer" class="row" style=" border-top: 1px solid gray;">
-              <div class="col-4" id="footicon"> </div>
-               <div class="col-2 footer2">회사소개</div>
-               <div class="col-2 footer2">이용약관</div>
-               <div class="col-2 footer2">1:1 문의</div>
-               <div class="col-2 footer2">©2022 CAFEIN</div>
-            </div>
-         
-      </div>
-    </div>
-
 </body>
 
 
@@ -569,49 +319,26 @@ $("#send").submit(function(){
 	}
 })
 
-//-------------모달-----------------------------
- // ______________모달 종료 시 입력값 초기화
+  //------------------모달 초기화-----------------------------  
+     
+        // ______________모달 종료 시 입력값 초기화
       $('.modal').on('hidden.bs.modal', function(e) { // 모달 클래스에 .modal이 있는지 꼭 확인
           console.log('modal close'); // 'hidden.bs.modal' => 부트스트랩 모달 이벤트, 모달이 사라지면 작동함
 
           // 초기화 로직 : 아래에 초기화할 대상을 모두 적으면 됨.
           
           // 전체 텍스트 인풋 초기화
-          if($(this).find('form').length >0){
-             $(this).find('form')[0].reset();
-               var inputValue = $(this).find('select:eq(0) option:eq(0)');
-          }
-          
-          // CSS 초기화
-         $(".msg1").text("");
-         $(".msg2").text("");
-         $(".msg3").text("");
-         $(".msg4").text("");
-         
+        $("#title").val("")
+       	$(".contents").val("")
+    	$("#mem_email").val("")
+    	$("#checkEmail").text("")
           // 셀렉트 초기화 - 선택된 거 초기화
           $('.select2').val(0).trigger('change.select2');
 
           console.log('모달 초기화', inputValue)
       });
-//----------------------------------------------
 
-
-  const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-const links = document.querySelectorAll(".nav-links li");
-
-hamburger.addEventListener('click', ()=>{
-   //Animate Links
-    navLinks.classList.toggle("open");
-
-    links.forEach(link => {
-        link.classList.toggle("fade");
-    });
-  
-    //Hamburger Animation
-    hamburger.classList.toggle("toggle");
-});
-
+//------------------------------------------------------------
     window.onload = () => {
   // panel-faq-container
   const panelFaqContainer = document.querySelectorAll(".panel-faq-container"); // NodeList 객체

@@ -93,6 +93,9 @@
 	<select id="feed-replyCount" resultType="int">
 		select count(*) from cafefeedReply where cafefeed_seq=#{cafefeed_seq}
 	</select>
+	<select id="feed-replyInfo" resultType="String">
+		select contents from cafefeedReply where seq=#{seq}
+	</select>
 	<!-- 북마크 추가, 삭제 -->
 	<insert id="bookmarkInsert">
 		insert into bookmark values(#{cafefeed_seq}, #{id})
@@ -103,7 +106,21 @@
 	<select id="isDetailBook" resultType="kh.spring.dto.BookmarkDTO">
 		select * from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
 	</select>
-	<select id="isBookChecking" resultType="int">
-		select count(*) from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
+<!-- 	<select id="isBookChecking" resultType="int"> -->
+<!-- 		select count(*) from bookmark where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id}) -->
+<!-- 	</select> -->
+	<!-- 좋아요 추가, 삭제 -->
+	<insert id="likeInsert">
+		insert into feed_like values(#{cafefeed_seq}, #{id})
+	</insert>
+	<delete id="likeDelete">
+		delete from feed_like where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
+	</delete>
+	<select id="isLikeOk" resultType="kh.spring.dto.Feed_likeDTO">
+		select * from feed_like where (cafefeed_seq = #{cafefeed_seq}) and (id = #{id})
 	</select>
+	<select id="isLikeCnt" resultType="int">
+		select count(*) from feed_like where cafefeed_seq = #{cafefeed_seq}
+	</select>
+	
 </mapper>

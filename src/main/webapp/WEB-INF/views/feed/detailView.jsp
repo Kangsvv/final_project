@@ -16,7 +16,19 @@
    <script src="https://kit.fontawesome.com/247b201f79.js" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
-<style>
+<style type="text/css">
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	font-family: 'GmarketSansMedium';
+}
    *{box-sizing: border-box;}
       body {
             background-color: #222;
@@ -186,7 +198,7 @@ nav button:hover{
            
         }
         .contentsBox{
-           padding:20px;
+           padding:30px;
            font-size: 16px;
             word-wrap: break-word;      /* IE 5.5-7 */
 /*            margin-top:20px;  */
@@ -203,10 +215,6 @@ nav button:hover{
         }
         #conMenu>div{
            margin-left:5%;
-        }
-        .marginSet{
-           padding-left:20px;
-           padding-right:20px;
         }
         #bookmark{
            text-align:right;
@@ -302,6 +310,9 @@ nav button:hover{
          }
          .replyWrite_date{
             font-size:14px;
+         }
+         .lcnt{
+         	padding:15px;
          }
         /*-----------------------모달 창 스타일 -----------------------------*/
       
@@ -491,6 +502,7 @@ nav button:hover{
        });
        
     }
+    
    </script>
 
     <!------------------------------------------------------------header----------------------------------------------------->
@@ -544,51 +556,135 @@ nav button:hover{
       <!-- Main Contents Container -->
          <div class="col-12 contents-container">
          <div class="row">
-         <div class="col-12 col-md-7">
-         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="/resources/feed/${fdto.sys_name }" class="d-block">
-                </div>
-                <div class="carousel-item">
-                  <img src="/resources/img/cafe2.jpg" class="d-block">
-                </div>
-                <div class="carousel-item">
-                  <img src="/resources/img/cafe3.jpg" class="d-block" >
-                </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
+         <div class="col-12 col-xxl-7">
+<!--          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"> -->
+<!--               <div class="carousel-inner"> -->
+<!--                 <div class="carousel-item active"> -->
+<%--                   <img src="/resources/feed/${fdto.sys_name }" class="d-block"> --%>
+<!--                 </div> -->
+<!--                 <div class="carousel-item"> -->
+<!--                   <img src="/resources/img/cafe2.jpg" class="d-block"> -->
+<!--                 </div> -->
+<!--                 <div class="carousel-item"> -->
+<!--                   <img src="/resources/img/cafe3.jpg" class="d-block" > -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev"> -->
+<!--                 <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+<!--                 <span class="visually-hidden">Previous</span> -->
+<!--               </button> -->
+<!--               <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next"> -->
+<!--                 <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+<!--                 <span class="visually-hidden">Next</span> -->
+<!--               </button> -->
+<!--             </div> -->
+			<img src="/resources/feed/${fdto.sys_name }" class="d-block" style="padding-top:10%; margin:auto; width:75%; height:90%;">
             </div>
             
-            <div class="col-12 col-md-5 contentsBox">
+            <div class="col-12 col-xxl-5 contentsBox">
                ${dto.contents }
             </div>
             </div>
             <div id="mainfoot">
                <div class="row">
-                  <div class="col-6">
-<!--                      <span class="marginSet"> -->
-<%--                         <i class="fa-regular fa-xl fa-heart likecount"></i>&nbsp;&nbsp;${dto.like_count } --%>
-<!--                      </span> -->
+                  <div class="col-6" style="padding-left:30px;">
+	                  <!-------------------- 작성자와 로그인아이디 다를시 북마크생성 ---------------------------->
+	                  <c:if test="${loginID !=null && loginID != dto.id && loginID == ldto.id}">
+	                     <span class="marginSet"><i class="fa-solid fa-xl fa-heart likecount"></i></span><span class="lcnt">${lcnt }</span><!-- &nbsp;&nbsp;${lcnt } -->
+	                     <!--------------------로그인아이디가 그전 좋아요 눌렀을시 활성화버튼 ---------------------------->
+	                  </c:if>
+	                  <c:if test="${loginID !=null && loginID != dto.id && loginID != ldto.id}">
+	                     <span class="marginSet"><i class="fa-regular fa-xl fa-heart likecount"></i></span><span class="lcnt">${lcnt }</span>
+	                  </c:if>
+	                  <!---------------------- 비로그인시 버튼 없음 ------------------------------------->
+	                  <c:if test="${loginID !=null}">
+	                  </c:if>
                      <span style="padding-left:10px;">
                         <i class="fa-regular fa-xl fa-comment"></i>&nbsp;&nbsp;${rCnt }
                      </span>
+                     
+                     <script>
+                     $(".marginSet").on("click",function() {
+      	        	   if(${loginID == null}){
+      	        		   Swal.fire({
+      	        	             icon: 'warning',
+      	        	             title: '확인해주세요.',
+      	        	             text: '로그인시 가능합니다.',
+      	        	         });
+      	                   return false;
+      	                }else{
+      	   			if($(".marginSet").html() == '<i class="fa-regular fa-xl fa-heart likecount"></i>') {
+      	   				$.ajax({
+      		   				url:"/feed/like",
+      		   				data:{cafefeed_seq:${dto.cafefeed_seq}},
+      		   				dataType:"json"
+      		   			}).done(function(resp){
+      		   				console.log(resp);
+      	   			 		$(".marginSet").html('<i class="fa-solid fa-xl fa-heart likecount"></i>');
+      	   			 		$(".lcnt").html(resp);
+      	   				})
+      	   			} else if($(".marginSet").html() == '<i class="fa-solid fa-xl fa-heart likecount"></i>'){
+      	            	$.ajax({
+      	       				url:"/feed/like-cancel",
+      	       				data:{cafefeed_seq:${dto.cafefeed_seq}},
+      	       				dataType:"json"
+      	       			}).done(function(resp){
+      	       				console.log(resp);
+      	               		$(".marginSet").html('<i class="fa-regular fa-xl fa-heart likecount"></i>');
+      	               		$(".lcnt").html(resp);
+      	       			})
+      	   			}
+      	            }
+      	        });
+                     </script>
+                     
+                     
                   </div>
+                  
                   <div class="col-6" id="bookmark">
-                     <span>
-                        <i class="fa-regular fa-xl fa-bookmark"></i>
-                     </span>
+                  <!-------------------- 작성자와 로그인아이디 다를시 북마크생성 ---------------------------->
+                  <c:if test="${loginID !=null && loginID != dto.id && loginID == bdto.id}">
+                     <span class="bookmarkArea"><i class="fa-solid fa-xl fa-bookmark"></i></span>
+                     <!--------------------로그인아이디가 그전 좋아요 눌렀을시 활성화버튼 ---------------------------->
+                  </c:if>
+                  <c:if test="${loginID !=null && loginID != dto.id && loginID != bdto.id}">
+                     <span class="bookmarkArea"><i class="fa-regular fa-xl fa-bookmark"></i></span>
+                  </c:if>
+                  <!---------------------- 비로그인시 버튼 없음 ------------------------------------->
+                  <c:if test="${loginID !=null}">
+                  </c:if>
                   </div>
                </div>
-
+			<script>
+	        $(".bookmarkArea").on("click",function() {
+	        	   if(${loginID == null}){
+	        		   Swal.fire({
+	        	             icon: 'warning',
+	        	             title: '확인해주세요.',
+	        	             text: '로그인시 가능합니다.',
+	        	         });
+	                   return false;
+	                }else{
+	   			if($(".bookmarkArea").html() == '<i class="fa-regular fa-xl fa-bookmark"></i>') {
+	   				$.ajax({
+		   				url:"/feed/book",
+		   				data:{cafefeed_seq:${dto.cafefeed_seq}},
+		   				dataType:"json"
+		   			}).done(function(resp){
+	   			 		$(".bookmarkArea").html('<i class="fa-solid fa-xl fa-bookmark"></i>');
+	   				})
+	   			} else if($(".bookmarkArea").html() == '<i class="fa-solid fa-xl fa-bookmark"></i>'){
+	            	$.ajax({
+	       				url:"/feed/book-cancel",
+	       				data:{cafefeed_seq:${dto.cafefeed_seq}},
+	       				dataType:"json"
+	       			}).done(function(resp){
+	               		$(".bookmarkArea").html('<i class="fa-regular fa-xl fa-bookmark"></i>');
+	       			})
+	   			}
+	            }
+	        });
+			</script>
 
             </div>
             <div class="replyWriteBox">

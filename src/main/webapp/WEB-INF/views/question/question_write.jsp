@@ -302,7 +302,7 @@ li.dropdown {
    <div class="col-12" style="margin-bottom:40px;">
       <a style="color: white; font-size: 40px;">Question</a>
     </div>
-    <form action="question_insert">
+    <form action="question_insert" onsubmit="return checform()">
 			<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
             <input type=text name=title id=title placeholder="제목 (최대 33자)" style="width:97%;"maxlength="33">
@@ -356,6 +356,25 @@ window.onclick = function(e) {
       }
    }         
 }
+
+$(function(){
+    $(".btn").on("click", function(){
+    	let title = $("#title").val()
+    	let contents = $("#contents").val()
+    	
+    	if(title == "") {
+    		 alert('제목을 입력하세요')
+    		 return false
+    	}else if(contents == "") {
+    		alert('내용을 입력하세요')
+    		return false
+    		
+    	}else{
+    		return true
+    	}
+    	
+    })
+    })
 
 //글 입력시
 $("#contents").keyup(function(e) {

@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CAFE-IN</title>
 
 
 <!-- jstl  -->
@@ -18,115 +18,7 @@
 </head>
 <body>
 <style>
-/*------------------------ 헤더 부분 스타일 ------------------------ */
-	.loginbox{
-		flex:auto;
-		float:left;
-		min-width:150px;
-		text-align:right;
-	}
-      .search{
-         color:black;
-         background-color: gray;
-         border-radius: 8px;
-         height:50px;
-         padding:5px;
-         padding-left:15px;
-         font-weight : bold;
-         border:0 solid black;
-         display:block;
-         width:100%;
-         
-      }
-      input:focus {outline:none;}
-      input::placeholder {
-      color: #ccc;
-      }
-      .write{
-         width:40px;
-      }
-      .search2{
-         width:40px;
-         bottom:30px;
-         float: left;
-      }
-      .writebtn{
-          background-color:transparent;
-         float: right;
-         margin-right:5%;
-         margin-bottom:2%;
-      }
-      .searchbtn{
-         background-color:transparent;
-      }
-      .select option, #select{
-         color:black;
-         background-color:#ccc;
-      }
-      .select{
-         height:30px;
-         margin-left:5%;
-         border-radius: 8px;
-         margin-top:10px;
-         width:100px;
-      }
-      
-      button{
-        border:none;
-      }
-      #login,#signup{
-      	color:white;
-      }
-      #login:hover,#signup:hover{
-      	color:black;
-      }
-/* container */
 
-#con1{
-	margin-left: 12%;
-	margin-right: 12%;
-}
- body{
-    background-color: #222;
-  }
-    nav {
-   background-color: black;
-   color: white;
-   padding-left:10%;
-   padding-right:10%;
-   border-bottom: 1px solid gray;
-}
-nav a{
-    color: white;
-}
-.navbar-nav{
-	min-width:450px;
-}
-.navbar-nav a{
-    color: white;
-    border-radius: 5px;
-    margin-right: 20px;
-}
-.navbar-nav a:hover{
-    color: black;
-    background-color: white;
-    border-radius: 5px;
-    text-decoration-line: none;
-}
-#btn{
-    text-align: right;
-}
-nav button{
-    background-color: rgba(0, 0, 0, 0.128);
-    border-radius: 5px;
-    color: white;
-}
-
-nav button:hover{
-    border-radius: 5px;
-    color: black;
-    background-color: white;
-}
 /*board UI출력부분----------------------------*/
 .tz-gallery {
     padding: 40px;
@@ -151,11 +43,11 @@ nav button:hover{
       }
       
       .cafeinimg{
-      	height:300px;
+      	height:350px;
       	overflow: hidden;
       }
       .cafeinimg img{
-      width: 100%;
+      width: auto;
       height: 100%;
       -webkit-transform:scale(1);
 	-moz-transform:scale(1);
@@ -177,82 +69,12 @@ nav button:hover{
 	opacity:0.7;
 
       }
-/*---------------------기능 구현 후 Hover 예정------------------*/
-
-
-/* footer 부분 */
-
-#foot{
-    border-top: 1px solid gray;
-    background-color: black;
-    
-}
-
-
-.footer2{
-    line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px ;
-    font-family: 'Noto Sans KR';
-   font-style: normal;
-   font-weight: 700;
-   font-size: 14px;
-   line-height: 20px;
-   color: #FFFFFF;
-}
-.footer2 a{
-   text-decoration : none;
-   color:white;
-   }
-
 
 </style>
-<body>
+<body style="background-color:#222;">
      <!------------------------------------------------------------header----------------------------------------------------->
-     
-   
-   
-        <nav class="navbar navbar-expand-lg" style="margin-bottom:50px;">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">CAFEIN</a>
-              <button style="border:2px solid white;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">▼</span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link" href="#">HOME</a>
-                  <a class="nav-link" href="#">FEED</a>
-                  <a class="nav-link" href="#">CAFE-IN</a>
-                  <a class="nav-link" href="#">NOTICE</a>
-                
-                <c:choose>
-						<c:when test="${mdto==null}">
-							<li class="nav-item d-lg-none"><a
-								class="nav-link mx-0 mx-md-0 mx-lg-3"
-								href="/Member/loginView.jsp" id="board">Login</a></li>
-							<li class="nav-item d-lg-none"><a
-								class="nav-link mx-0 mx-md-0 mx-lg-3"
-								href="/Member/joinView.jsp" id="board">Signup</a></li>
-						</c:when>
-						
-						<c:otherwise>
-							<li class="nav-item d-lg-none"><a
-								class="nav-link mx-0 mx-md-0 mx-lg-3"
-								href="#" id="board">Logout</a></li>
-							<li class="nav-item d-lg-none"><a
-								class="nav-link mx-0 mx-md-0 mx-lg-3"
-								href="#" id="board">Mypage</a></li>
-						</c:otherwise>
-					</c:choose>
-                
-                </div>
-              </div>
-              <button id="login" type="button"
-                    class="mx-1 d-none d-lg-inline btn navbar-btn">Login</button>
-                    <button id="signup" type="button"
-                    class="mx-1 d-none d-lg-inline btn navbar-btn">Signup</button>
-            </div>
-          </nav>
+<%@ include file="header.jsp"%>
+
 <!-----------------------------------------------검색 DIV------------------------------------------->
  <div id="con1">
      
@@ -290,6 +112,8 @@ nav button:hover{
           
       
          </div>
+         </div>
+         
           <script>
           $(".writebtn").on("click",function(){
         	  location.href="/cafein/writeCafein";
@@ -334,21 +158,8 @@ nav button:hover{
     }
           </script>
 
- 
-         <!-------------------------------------------------------Footer------------------------------------------------->
-    <div class="col-12 d-none d-md-block">
-  <div id="foot" align=center>
-     <div class="container">
-        <div class="row">
-          <div class="col-4" id="footicon"> </div>
-           <div class="col-2 footer2"><a href="#">회사소개</a></div>
-           <div class="col-2 footer2"><a href="#">이용약관</a></div>
-           <div class="col-2 footer2"><a href="#">1:1 문의</a></div>
-           <div class="col-2 footer2"><a href="#">©2022 CAFEIN</a></div>
-        </div>
-     </div>
-  </div>
-</div>
+ <%@ include file="footer.jsp"%>
+
 
           
 </body>

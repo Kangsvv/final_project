@@ -41,6 +41,8 @@ public class NoticeController {
 	//----------------FAQ 연결----------------//
 	@RequestMapping("FAQ")
 	public String FAQ() {
+		String id = (String)session.getAttribute("loginID");
+		System.out.println(id);	
 		return "/notice/noticeMain";
 	}
 	
@@ -48,7 +50,8 @@ public class NoticeController {
 
 	@RequestMapping("event")
 	public String event() {
-		
+		String id = (String)session.getAttribute("loginID");
+		System.out.println(id);
 		return "/notice/event";
 	}
 	
@@ -68,6 +71,9 @@ public class NoticeController {
 	
 	@RequestMapping("event_selectAll")
 	public String selectAll(Model model) throws Exception{
+		
+		String id = (String)session.getAttribute("loginID");
+		System.out.println(id);
 		List<EventDTO> dto = Eservice.event_selectAll();
 		model.addAttribute("elist", dto);
 		return "/notice/event";
@@ -98,7 +104,8 @@ public class NoticeController {
 	
 	@RequestMapping("notic")
 	public String notic() {
-		
+		String id = (String)session.getAttribute("loginID");
+		System.out.println(id);
 		return "/notice/notic";
 	}
 	
@@ -117,6 +124,10 @@ public class NoticeController {
 	
 	@RequestMapping("notic_selectAll")
 	public String nselectAll(Model model) throws Exception{
+		
+		String id = (String)session.getAttribute("loginID");
+		System.out.println(id);
+		
 		List<NoticDTO> dto = Nservice.notic_selectAll();
 		model.addAttribute("nlist", dto);
 		System.out.println(dto);

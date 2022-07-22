@@ -14,13 +14,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
-<style>
+<style type="text/css">
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
   @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700');
 
 * {
   margin:0px;
   padding:0px;
   text-align:center;
+  font-family: 'GmarketSansMedium';
 }
 
 
@@ -51,7 +61,7 @@ h2 {
 
 h4 {
   font-weight:300;
-  padding:2em;
+  padding:1em;
   color: #CCC;
 }
 
@@ -187,27 +197,27 @@ h5 {
   border-radius: 5px;
   border: 1px solid  #222 ;
   font-size: 25px;
-  transition: all ease 1s;
+  transition: all ease 0.5s;
   margin-right: 20px;
  
 }
 #btn button:hover{
-  background-color: white;
-  color: black;
-  transform: rotateX( 360deg );
-  border-radius: 5px;
+  color: #808080;
   cursor: pointer;
+  font-size: 180%;
 }
 
 
 .container{
   text-align: center;
   overflow: hidden;
-  margin-bottom: 60px;
 }
-
+h3{
+margin-top:10px;
+}
 </style>
 <body>
+<br><br>
   <c:if test="${!empty msg}">
 		<script>
 			swal({icon : "${status}",
@@ -217,7 +227,7 @@ h5 {
 		<c:remove var="msg"/>
 	</c:if>
   <h2> CAFEIN </h2>
-<h4>감성카페를 손쉽게 찾아보세요~ </h4>
+<h4>나에게 맞는 감성카페를 찾아보세요~ </h4>
 <div class="container">
 <article class="range">
   
@@ -245,7 +255,7 @@ h5 {
     <figure class="flip">
      <a href="https://gangsofguro.com/cafedrink/" target="_blank"><img src="https://1.bp.blogspot.com/-BfbEpyEtmgk/Uh9GGNwLN6I/AAAAAAAAA6k/gxHsPPGjIcc/s1600/cake.jpg" /></a>
       <figcaption class="bar">
-        <h3>COFFEE TEST</h3>
+        <h3>CAFE TEST</h3>
        </figcaption>
     </figure>
   </section>
@@ -262,59 +272,68 @@ h5 {
 </div>
 
 
-<div style="height: 100px;">
+<div id="con" style="height: 76px; display:block;">
+</div>
 <div id="feed" class="text">
-  나의 FEED를 올려 예쁜카페를 다같이 공유해보세요~~ 
+  예쁜카페를 공유해보세요~ 
 </div>
 <div id="cafein" class="text">
-  사장님들의 카페를 둘러보세요~~
+  감성카페를 찾아보세요~
 </div>
 <div id="test" class="text">
-  자신의 커피취향을 알아보세요~~
+  나의 음료취향을 알아보세요~
 </div>
 <div id="notice" class="text">
- 궁금하면 드루와~
-</div>
+  무엇을 도와드릴까요?
 </div>
 
 
 <div id="btn"> 
 	<c:choose>
 		<c:when test="${empty loginID}">
-		    <button type="button" onclick="location.href='/member/login' ">login</button>
-		    <button type="button" onclick="location.href='/member/signUp' ">signUp</button>
+		    <button type="button" onclick="location.href='/member/login' ">Login</button>
+		    <button type="button" onclick="location.href='/member/signUp' ">Join</button>
 	    </c:when>
 	    <c:otherwise>
-	    	<button type="button" onclick="location.href='/mypage/mypage' ">myPage</button>
-	    	<button type="button" onclick="location.href='/member/logout' ">logout</button>
+	    	<button type="button" onclick="location.href='/mypage/mypage' ">MyPage</button>
+	    	<button type="button" onclick="location.href='/member/logout' ">Logout</button>
+	    <c:if test="${loginID == 'admin'}">
+			<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">Manage</button>
+		</c:if>
 	    </c:otherwise>
     </c:choose>
 </div>
 
- 	<c:if test="loginMember.memLevel == 2}">
-		<button type="button" onclick="location.href='/manager/goAdmin' " id="adminbtn">회원관리</button>
-	</c:if>
+ 	
 </body>
 <script>
   $("#box1").hover(function(){
     $("#feed").css("display","block");
+    $("#con").css("display","none");
   },function(){
     $("#feed").css("display","none");
+    $("#con").css("display","block");
   })
   $("#box2").hover(function(){
     $("#cafein").css("display","block");
+    $("#con").css("display","none");
   },function(){
     $("#cafein").css("display","none");
+    $("#con").css("display","block");
   })
   $("#box3").hover(function(){
     $("#test").css("display","block");
+    $("#con").css("display","none");
   },function(){
     $("#test").css("display","none");
+    $("#con").css("display","block");
   })
   $("#box4").hover(function(){
     $("#notice").css("display","block");
+    $("#con").css("display","none");
   },function(){
     $("#notice").css("display","none");
+    $("#con").css("display","block");
   })
     
 </script>

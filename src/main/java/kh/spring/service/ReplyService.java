@@ -78,4 +78,9 @@ public class ReplyService {
 		
 		model.addAttribute("rCnt", replyCnt);
 	}
+	public String replyInfo(int seq) throws Exception {
+		
+		return dao.replyInfo(seq);
+	}
+	
 }
