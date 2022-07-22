@@ -242,7 +242,7 @@ nav button:hover{
             <c:forEach var="i" items="${list}">
              <tr>
                 <th style="text-align: center;">${i.mem_seq}</th>
-                <th style="text-align: center;" class="deleteID">${i.mem_id }</th>      
+                <th style="text-align: center;" class="deleteID">${i.mem_id }</th>
                 <th style="text-align: center;">${i.mem_name }</th>
                 <th style="text-align: center;"><fmt:formatDate pattern="yy-MM-dd" value="${i.mem_joindate}" /></th>
                 <th style="text-align: center;">
@@ -356,7 +356,7 @@ $(document).ready(function() {
 	
 				$(".deleteBtn").on("click",function(){
 					
-					var id = $(this).parent().siblings(".deleteID").val();
+					var id = $(this).parent().siblings(".deleteID").text();
 					console.log(id);
 					$.ajax({
 						url:"/manager/delete",

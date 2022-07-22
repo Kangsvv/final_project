@@ -242,9 +242,7 @@ nav button:hover{
 					<c:forEach var="i" items="${list}">
 						<tr>
 							<th style="text-align: center;">${i.mem_seq}</th>
-							<th style="text-align: center;">${i.mem_id }
-							<input id="idid" type="hidden" value="${i.mem_id }">
-							</th>
+							<th style="text-align: center;" class="updownID">${i.mem_id }</th>
 							<th style="text-align: center;">${i.mem_name }</th>
 							<th style="text-align: center;"><fmt:formatDate pattern="yy-MM-dd" value="${i.mem_joindate}" /></th>
 							<th style="text-align: center;">
@@ -305,7 +303,7 @@ $(document).ready(function() {
 	
 $(".delete").on("click",function(){
 	
-	var id = $("#modalID").val();
+	var id = $(this).parent().siblings(".updownID").text();
 	
 	$.ajax({
 		url:"/manager/delete",
@@ -319,7 +317,7 @@ $(".delete").on("click",function(){
 
 $(".leveldown").on("click",function(){
 	
-	var id = $("#idid").val();
+	var id = $(this).parent().siblings(".updownID").text();
 	
 	$.ajax({
 		url:"/manager/leveldown",
