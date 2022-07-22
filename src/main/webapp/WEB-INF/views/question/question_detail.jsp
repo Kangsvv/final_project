@@ -352,13 +352,11 @@ body {
 
          
          <div class="col-12 create">
-         <c:if test="${loginID eq dto.writer }">
+         <c:if test="${loginID eq dto.writer || loginID == 'admin' }">
             <input type="button" class="upbtn" value="수정"> 
             <input type="button" class="delbtn" value="삭제">   
          </c:if>
-         <c:if test="${loginID == 'admin'}"> 
-         <input type="button" class="delbtn" value="삭제">  
-         </c:if>
+         
         	 <input type="button" class="backbtn" value="뒤로">  
          </div>
         
