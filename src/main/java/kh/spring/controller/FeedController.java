@@ -215,12 +215,29 @@ public class FeedController {
 		return serv.likeDelete(model, cafefeed_seq);// 좋아요 테이블에서 게시글 정보 삭제
 		
 	}
-	
-	
-	
-	
-	
-	
+	// ------------------------ 댓글 정보 가져오기 -------------------------------------
+	@ResponseBody
+	@RequestMapping(value="replyInfo", produces="application/text;charset=utf8")
+	public String replyInfo(int seq) throws Exception {
+		String contents = rServ.replyInfo(seq);
+		System.out.println("댓글 내용 가져오는중 : " + contents);
+		
+		
+		return rServ.replyInfo(seq);// 댓글 정보 가져오기
+		
+	}
+	@RequestMapping("SearchByTitle")
+	public String SearchByTitle(Model model,String title) throws Exception{
+		int cpage = 1;
+		System.out.println(title);
+		String what = title.replaceAll(" ","");
+		System.out.println(what);
+		List<Feed_imgDTO> list = serv.SearchByTitle(model,what,cpage);
+		
+		model.addAttribute("list", list);
+		return "/feed/feedSearchResult";
+
+	}
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
 		e.printStackTrace();

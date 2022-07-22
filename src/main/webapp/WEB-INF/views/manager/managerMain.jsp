@@ -242,20 +242,20 @@ nav button:hover{
             <c:forEach var="i" items="${list}">
              <tr>
                 <th style="text-align: center;">${i.mem_seq}</th>
-                <th style="text-align: center;">${i.mem_id }</th>      
+                <th style="text-align: center;" class="deleteID">${i.mem_id }</th>
                 <th style="text-align: center;">${i.mem_name }</th>
                 <th style="text-align: center;"><fmt:formatDate pattern="yy-MM-dd" value="${i.mem_joindate}" /></th>
                 <th style="text-align: center;">
-						<button id="delete" class="btn btn-primary" type="button">탈퇴</button>
+						<button class="btn btn-primary deleteBtn" type="button">탈퇴</button>
 						
 			 <c:if test="${i.mem_ceocheckimg != null}">
-					<button id="levelup" type="button" class="btn btn-primary levelup" data-bs-toggle="modal" data-bs-target="#exampleModal">등업</button>
+					<button type="button" class="btn btn-primary levelup" data-bs-toggle="modal" data-bs-target="#exampleModal${i.mem_seq}">등업</button>
 			 </c:if>	
 				</th>
             </tr>
             
             <!-------------------------------------------------------Modal------------------------------------------------->
-<div class="modal fade row" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade row" id="exampleModal${i.mem_seq}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog col-12" style="max-width:1000px;">
     <div class="modal-content">
       <div class="modal-header">
@@ -263,19 +263,21 @@ nav button:hover{
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-     	 <input id="modalID" type="hidden" value="${i.mem_id}">
+     	 <input class="modalID" type="hidden" value="${i.mem_id}">
       	<img src="${i.mem_ceocheckimg}" style="width:100%;">
       </div>
       <div class="modal-footer">
-           <button id="ok" type="button" class="btn btn-primary">등업승인</button>
-           <button id="no" type="button" class="btn btn-primary">미승인</button>
+           <button type="button" class="btn btn-primary okBtn">등업승인</button>
+<!--            <button type="button" class="btn btn-primary noBtn">미승인</button> -->
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
       </div>
     </div>
   </div>
 </div>
 <!--  --------------------------------------------------------------------------------------------- -->
+
             </c:forEach>
+           
         </tbody>
         
     </table>
@@ -330,38 +332,41 @@ $(document).ready(function() {
 		});
 	});
 
-$("#ok").on("click",function(){
-	var id = $("#modalID").val();
-	
-	$.ajax({
-		url:"/manager/CEOok",
-		data:{id : id},
-		dateType:"json"
-	}).done(function(resp){
-		alert("승인되었습니다.")
-		location.reload()
-	})
-})
 
-$("#no").on("click",function(){
-	// 	메세지 보내기
-	alert("메세지가 발송되었습니다.");
-})
-
-$("#delete").on("click",function(){
-	
-	var id = $("#modalID").val();
-	
-	$.ajax({
-		url:"/manager/delete",
-		data:{id : id},
-		dateType:"json"
-	}).done(function(resp){
-		alert("삭제되었습니다.")
-		location.reload()
-	})
-})
 
 </script>
+ <script>
+				$(".okBtn").on("click",function(){
+					var id = $(this).parent().siblings().children(".modalID").val();
+					console.log(id);
+					$.ajax({
+						url:"/manager/CEOok",
+						data:{id : id},
+						dateType:"json"
+					}).done(function(resp){
+						alert("승인되었습니다.")
+						location.reload()
+					})
+				})
+	
+				// $(".noBtn").on("click",function(){
+	//			 	// 	메세지 보내기
+	//			 	alert("메세지가 발송되었습니다.");
+				// })
+	
+				$(".deleteBtn").on("click",function(){
+					
+					var id = $(this).parent().siblings(".deleteID").text();
+					console.log(id);
+					$.ajax({
+						url:"/manager/delete",
+						data:{id : id},
+						dateType:"json"
+					}).done(function(resp){
+						alert("삭제되었습니다.")
+						location.reload()
+					})
+				})
+			</script>
 </body>
 </html>

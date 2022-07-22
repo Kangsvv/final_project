@@ -146,7 +146,7 @@
     	let cDiv = $("<div class='row'>");
     	for(let i=0; i < resp.length; i++){
     		 
-    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4 cafeinimg'><a class='lightbox' href='/cafein/selectBySeq?cafein_seq="+resp[i].cafein_seq+"'><img src='/cafein/"+ resp[i].sys_name +"'>");
+    	 	let contentsDiv = $("<div class='col-sm-6 col-lg-4 cafeinimg'><a class='lightbox' href='/cafein/selectBySeq?cafein_seq="+resp[i].cafein_seq+"'><img src='/cafein/"+ resp[i].sys_name +"'>");
     	 
     	 	cDiv.append(contentsDiv);
     	 }

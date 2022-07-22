@@ -14,6 +14,19 @@
 	<select id="feedSearchResult" resultType="kh.spring.dto.Feed_imgDTO">
 		select * from (select row_number() over(order by cafefeed_seq desc) as line, CafeFeed.* from CafeFeed) where (REPLACE(title,' ','') like '%'||#{title}||'%') and (line between #{start} and #{end})
 	</select>
+	<select id="SearchByTitle" resultType="kh.spring.dto.SeqDTO">
+		select cafefeed_seq from cafefeed where (REPLACE(title,' ','') like '%'||#{title}||'%')
+	</select>
+	<select id="feedSearchBySeq" resultType="kh.spring.dto.Feed_imgDTO">
+		select * 
+		from (select row_number() over(order by seq) as line, feed_img.* from feed_img 
+		where (cafefeed_seq in 
+		<foreach collection="list" item="arr" open="(" close=")" separator=",">
+		#{arr.cafefeed_seq}
+		</foreach>
+		)) where (line between #{start} and #{end})
+	</select>
+	
 	<!-- 피드 insert 기능 -->
 	<insert id="feed-insert">
 		insert into cafefeed values(cafefeed_seq.nextval,#{title},#{id},#{contents},default,default,default)
@@ -93,6 +106,9 @@
 	<select id="feed-replyCount" resultType="int">
 		select count(*) from cafefeedReply where cafefeed_seq=#{cafefeed_seq}
 	</select>
+	<select id="feed-replyInfo" resultType="String">
+		select contents from cafefeedReply where seq=#{seq}
+	</select>
 	<!-- 북마크 추가, 삭제 -->
 	<insert id="bookmarkInsert">
 		insert into bookmark values(#{cafefeed_seq}, #{id})
@@ -119,4 +135,5 @@
 	<select id="isLikeCnt" resultType="int">
 		select count(*) from feed_like where cafefeed_seq = #{cafefeed_seq}
 	</select>
+	
 </mapper>
