@@ -33,6 +33,9 @@ public class ManagerController {
 	@ResponseBody
 	@RequestMapping("delete")
 	public String managerCEO(String id) throws Exception{
+		
+		System.out.println(id);
+		
 		serv.delete(id);
 		return "true";
 	}
