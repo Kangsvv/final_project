@@ -60,6 +60,21 @@
             border: none;
             margin-left:10px;
          }
+.backbtn{
+         font-family: 'Noto Sans KR';
+         font-style: normal;
+         font-weight: 700;
+            height: 45px;
+            line-height: 30px;
+            font-weight: bold;
+            background-color: #760c0c;
+            color: #FFFFFF;
+            border-radius: 12px;
+            width:120px;
+            border: none;
+            margin-left:10px;
+         }         
+         
 </style>
 <body>
 <!--  ------------------------------------------------------------header-----------------------------------------------------  -->
@@ -81,7 +96,7 @@
             </div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
                 <p class="textCount"><span>0</span> / 1300</p>
-                <a href="/notice/event"><button class="btn" type="button">뒤로</button></a>
+                <a href="/notice/event_selectAll"><button class="backbtn" type="button">뒤로</button></a>
                 <button type="submit" class="btn" style="margin-left:10px;">작성</button>
             </div>
         </div>
@@ -113,6 +128,24 @@ $("#contents").keyup(function(e) {
     	alert("1300자까지 입력 가능합니다")
 		 }
 });
+
+$(function(){
+    $(".btn").on("click", function(){
+       
+       if($("#title").val().trim() == "") {
+           alert('제목을 두 글자 이상 입력하세요')
+           return false
+  
+       }else if($("#contents").val().trim() == "") {
+          alert('내용을 입력하세요')
+          return false
+          
+       }else{
+          return true
+       }
+       
+    })
+    })
 
 $(".cbtn").click(function() {
 	location.href = "/notice/event";

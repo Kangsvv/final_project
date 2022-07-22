@@ -297,7 +297,7 @@ body {
 
 		// 수정완료 버튼 
 		$("#modifyBtn").on("click", function() {
-			if ($("#main").val() == "" || $("#eventbox").val() == "") {
+			if ($("#main").val().trim() == "" || $("#eventbox").val().trim() == "") {
 				alert("수정할 제목/내용을 입력해주세요");
 				return false;
 			} else {

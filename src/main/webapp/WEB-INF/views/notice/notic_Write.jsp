@@ -118,6 +118,24 @@ $(".cbtn").click(function() {
        		 }
 		});
 
+$(function(){
+    $(".btn").on("click", function(){
+       
+       if($("#title").val().trim() == "") {
+           alert('제목을 두 글자 이상 입력하세요')
+           return false
+  
+       }else if($("#contents").val().trim() == "") {
+          alert('내용을 입력하세요')
+          return false
+          
+       }else{
+          return true
+       }
+       
+    })
+    })
+
 </script>
           
 </body>
