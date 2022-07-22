@@ -131,10 +131,10 @@ border-bottom : 1px solid black;
 }
     textarea {
       
-      height:300px;
+      height:280px;
       width: 300px;
       border-radius: 20px;
-      min-height: 300px;
+      min-height: 280px;
       max-height: 300px;
       text-align:center;
       
@@ -163,9 +163,9 @@ border-bottom : 1px solid black;
 </style>
 
 <body>
- <jsp:include page="header.jsp"/> 
+ <jsp:include page="/WEB-INF/views/cafein/header.jsp"/> 
           
-    <div class="container" style="height:700px;">
+    <div class="container" style="min-height:1000px;">
         <div class="row">
 
             <div class="col-12">
@@ -262,7 +262,7 @@ border-bottom : 1px solid black;
    </div>
    
     <!-------------------------------------------------------Footer------------------------------------------------->
- 
+ <jsp:include page="footer.jsp"/> 
 </body>
 
 

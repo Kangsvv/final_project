@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,7 +121,10 @@
 <body>
 
 <!------------------------------------------------------------header----------------------------------------------------->
-       <%@ include file="header.jsp"%>
+            <jsp:include page="header.jsp"/>
+<c:if test="${loginID != null}" >
+<%@ include file="/WEB-INF/views/letter.jsp"%>
+</c:if>
 <!-----------------------------------------------검색 DIV------------------------------------------->
  <div id="con1">
  	 <form action="/feed/search">

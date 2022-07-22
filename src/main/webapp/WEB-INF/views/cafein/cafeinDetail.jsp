@@ -211,7 +211,10 @@ table td{
 }
 </style>
 <body>
-    <div id="header"><jsp:include page="header.jsp"/> </div>
+      <jsp:include page="header.jsp"/>
+<c:if test="${loginID != null}" >
+<%@ include file="/WEB-INF/views/letter.jsp"%>
+</c:if>
 
 <div class="container">    
 <div class="row" id="contents">
