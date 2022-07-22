@@ -336,15 +336,13 @@ body {
 
          <div class="row col-12 conbox">
           
-          	<div class="col-3 con_head bluck2">${dto.writer }</div>
+          	<div class="col-6 con_head bluck2">작성자 : ${dto.writer }</div>
             <div class="col-12 con_head bluck1">${dto.writer }</div>
             <div class="col-6 con_head bluck2">
+            작성일 : 
                <fmt:formatDate pattern="yy-MM-dd" value="${dto.write_date}" />
             </div>
-            <div class="col-3 con_head bluck2">
-               조회수 :
-<%--                 추후 가능하면 넣을 예정 ${dto.count } --%>
-            </div>
+
          </div>
 
           <div> 
@@ -377,7 +375,7 @@ body {
  <div class="row" id="reply_box">
 
 <div class="col-12">
-		  <c:if test="${loginID == 'admin'}">       
+		  <c:if test="${loginID == 'admin' || loginID == dto.writer}">       
            <div class="col-9 replyWriteBox" style="margin:auto;">
                <div class="col-12" style="font-size : 15px; height: 100px; overflow: hidden;" >
                     
@@ -435,7 +433,7 @@ body {
                      
                      <input type="hidden" class="reply_seq" value="${i.reply_seq}">
                         
-                       <c:if test="${loginID == 'admin'}"> 
+                       <c:if test="${loginID == i.writer || loginID == 'admin'}"> 
                         <div  class="col-12 replyreadbox"  style="text-align: right; margin-bottom:20px">
                        
                            <button class="replyUpdate">수정</button>
@@ -443,6 +441,8 @@ body {
                         
                        </div>
                         </c:if>
+                        
+            
                      </div>
                   </div>
                   </c:forEach>
