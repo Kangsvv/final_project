@@ -306,7 +306,8 @@ $("#mem_email").on("input",function(){
 });
 
 $("#send").submit(function(){
-	if(!email){
+	if(!email || $("#title").val().trim()=='' || $(".contents").val().trim()=='' ){
+		alert("입력란을 다시 확인해주세요");
 		return false;
 	}else{
 		 Swal.fire({
