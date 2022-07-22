@@ -147,7 +147,7 @@
    }
 
      .feedImg{
-      	height:300px;
+      	height:350px;
       	overflow: hidden;
       }
   .feedImg img{
@@ -227,7 +227,7 @@
 
 						<c:otherwise>
 							<c:forEach var="i" items="${list}">
-								<div class="col-sm-6 col-md-4  feedImg">
+								<div class="col-sm-6 col-lg-4  feedImg">
 									<a class="lightbox"
 										href="/feed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
 										<img src="/feed/${i.sys_name }">
@@ -279,7 +279,7 @@
     	let cDiv = $("<div class='row'>");
     	for(let i=0; i < resp.length; i++){
     		 
-    	 	let contentsDiv = $("<div class='col-sm-6 col-md-4'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
+    	 	let contentsDiv = $("<div class='col-sm-6 col-lg-4'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
     	 
     	 	cDiv.append(contentsDiv);
     	 }

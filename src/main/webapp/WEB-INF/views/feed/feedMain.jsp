@@ -121,7 +121,7 @@
           font-weight: bold;
       }
             .feedImg{
-      	height:300px;
+      	height:350px;
       	overflow: hidden;
       }
       .feedImg img{
@@ -156,11 +156,11 @@
    <%@ include file="header.jsp"%>
 <!-----------------------------------------------검색 DIV------------------------------------------->
  <div id="con1">
- 	 <form action="/feed/search">
+ 	 <form action="/feed/SearchByTitle">
        <div class="row">
           <div class="col-3"></div>
           <div class="col-6 d-none d-md-block searchdiv"style="padding:0px;">
-             <input class="search" type="text" name="search" placeholder="제목으로 검색해보세요.">
+             <input class="search" type="text" name="title" placeholder="제목으로 검색해보세요.">
           </div>
           <div class="col-6 d-md-none searchdiv"style="padding:0px;">
              <input class="search" type="text" name="search2" placeholder="제목으로 검색">
@@ -195,7 +195,7 @@
             <div class="contents">
              	<div class="row">
 		 		    <c:forEach var="i" items="${imgList }">
-		                <div class="col-sm-6 col-md-4  feedImg">
+		                <div class="col-sm-6 col-lg-4  feedImg">
 		                    <a class="lightbox" href="/feed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
 		                        <img src="/feed/${i.sys_name }">
 		                    </a>
