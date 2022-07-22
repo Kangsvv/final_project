@@ -205,12 +205,12 @@
 <%@ include file="footer.jsp"%>
 <script>
 	$("#writeBtn").on("click",function(){
-		if($("#title").val() == ''){
+		if($("#title").val() == '' || $("#title").val().trim() == ""){
 			 alert("제목을 입력해주세요");
 			 $("#title").focus();
 			 return false;
 		 }
-		 else if($("#contents").val() == ''){
+		 else if($("#contents").val() == '' || $("#contents").val().trim() == ""){
 			 alert("내용를 입력해주세요.");
 			 $("#contents").focus();
 			 return false;
