@@ -230,7 +230,7 @@ body {
 				style="word-break: break-all; white-space: pre-line; padding: 2%; overflow: auto;" disabled maxlength="1300">${dto.contents } </textarea>
 
 				<c:choose>
-					<c:when test="${loginID == admin }">
+					<c:when test="${loginID eq 'admin' }">
 						<div class="col-12 create">
 							<input type="button" class="upbtn" value="수정"> 
 							<input type="button" class="delbtn" value="삭제"> 
@@ -290,6 +290,10 @@ body {
 		$(".create").prepend(cancel); //취소 버튼 추가
 		$(".create").prepend(ok); // 수정완료 버튼 추가
 
+		//취소 버튼 동작
+		$("#cancelBtn").on("click", function() {
+			location.reload();
+		})
 		// 수정완료 버튼 
 		$("#modifyBtn").on("click", function() {
 			if ($("#main").val() == "" || $("#eventbox").val() == "") {
@@ -319,9 +323,7 @@ body {
 		});
 	})
 
-	$("#cancelBtn").on("click", function() {
-		location.reload();
-	})
+	
 	
 </script>
 </body>
