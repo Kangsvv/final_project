@@ -320,7 +320,7 @@ label{
 
  $("#add").on("click",function(){
 	 $("#address1").removeAttr("disabled");
-	 if($("#name").val() == ''){
+	 if($("#name").val().trim() == ''){
 		 Swal.fire({
              icon: 'warning',
              title: '확인해주세요.',
@@ -328,7 +328,7 @@ label{
          });
 		 return false;
 	 }
-	 else if($("#address1").val() == '' || $("#address2").val() == ''){
+	 else if($("#address1").val().trim() == '' || $("#address2").val().trim() == ''){
 		 Swal.fire({
              icon: 'warning',
              title: '확인해주세요.',
