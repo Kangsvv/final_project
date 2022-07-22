@@ -10,7 +10,7 @@
 	</select> 
 	
 	<insert id="insert">
-		insert into question values(question_seq.nextval, #{title}, #{contents},'1234', sysdate) 
+		insert into question values(question_seq.nextval, #{title}, #{contents},#{writer}, sysdate) 
 	</insert>
 
 	
@@ -35,7 +35,7 @@
   
   
   <insert id = "reply_insert">
-    insert into reply values(reply_seq.nextval, #{question_seq}, #{contents}, 123, sysdate)
+    insert into reply values(reply_seq.nextval, #{question_seq}, #{contents}, #{writer}, sysdate)
   </insert>
 	
 	
