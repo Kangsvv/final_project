@@ -55,10 +55,10 @@
             border: none;
             margin-left:10px;
          }
-         #title,#contents{
-            background-color:#222;
-            border:none;
-         }
+/*          #title,#contents{ */
+/*             background-color:#222; */
+/*             border:none; */
+/*          } */
          
         
 
