@@ -358,6 +358,9 @@ body {
             <input type="button" class="upbtn" value="수정"> 
             <input type="button" class="delbtn" value="삭제">   
          </c:if>
+         <c:if test="${loginID == 'admin'}"> 
+         <input type="button" class="delbtn" value="삭제">  
+         </c:if>
         	 <input type="button" class="backbtn" value="뒤로">  
          </div>
         
@@ -434,9 +437,11 @@ body {
                         
                        <c:if test="${loginID == 'admin'}"> 
                         <div  class="col-12 replyreadbox"  style="text-align: right; margin-bottom:20px">
+                       
                            <button class="replyUpdate">수정</button>
                            <button class="replyDelete">삭제</button>
-                        </div>
+                        
+                       </div>
                         </c:if>
                      </div>
                   </div>
@@ -444,10 +449,10 @@ body {
 
           </div>   
        
-       
+  
     </div>   
     </div>
-       
+      
 
    <!-------------------------------------------------------Footer------------------------------------------------->
     
@@ -606,7 +611,7 @@ $(".replyDelete").on("click", function() {
     $(this).css("display", "none");
     
           let Rupdate = $("<button>");
-          Rupdate.text("완료");
+         	 Rupdate.text("완료");
              Rupdate.attr("class","Rupdate");
              Rupdate.css("margin-right", "5px");
          
@@ -623,10 +628,7 @@ $(".replyDelete").on("click", function() {
        })
        
        
-//        let readDiv = $(this).parent().siblings(".readContnets");
-       
-//        readDiv.attr("contenteditable", "true");
-//        readDiv.focus();
+
       let Rcontents = $(this).parent().siblings(".replyModifyBox");
       Rcontents.css("display","block");
        
@@ -687,6 +689,31 @@ $("#replyContents").keyup(function(e) {
 
 
 
+
 </script>
 
+
+ <style>
+       .replyUpdate{
+         background-color: #760c0c;
+   color: white;
+   
+       
+       }
+       .replyDelete{
+         background-color: #760c0c;
+   color: white;
+   
+       }
+       .Rupdate{
+         background-color: #760c0c;
+         color: white;
+   
+       }
+       .Rcancel{
+         background-color: #760c0c;
+         color: white;
+       }
+       
+       </style>
 </html>
