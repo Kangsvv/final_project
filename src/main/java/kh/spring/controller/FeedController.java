@@ -226,7 +226,18 @@ public class FeedController {
 		return rServ.replyInfo(seq);// 댓글 정보 가져오기
 		
 	}
-	
+	@RequestMapping("SearchByTitle")
+	public String SearchByTitle(Model model,String title) throws Exception{
+		int cpage = 1;
+		System.out.println(title);
+		String what = title.replaceAll(" ","");
+		System.out.println(what);
+		List<Feed_imgDTO> list = serv.SearchByTitle(model,what,cpage);
+		
+		model.addAttribute("list", list);
+		return "/feed/feedSearchResult";
+
+	}
 	@ExceptionHandler //예외 공동 처리
 	public String exceptionHandler(Exception e) {//NumberFormatException.class, SQLException.class
 		e.printStackTrace();
