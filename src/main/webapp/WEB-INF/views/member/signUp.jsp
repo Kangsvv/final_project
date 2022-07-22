@@ -302,7 +302,7 @@
 				   console.log(this.files[0]);
 				   $("#ceoCheck").prop("checked", true);
 				   
-				   alert("승인되기까지 하루정도 소요됩니다　　　　　　　　　　　　　　　　승인 후 사장회원으로 이용가능합니다.");
+				   alert("승인되기까지 하루정도 소요됩니다\n승인 후 사장회원으로 이용가능합니다.");
 				}
 			}
 		});
