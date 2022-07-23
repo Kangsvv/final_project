@@ -164,8 +164,17 @@
        <div class="row">
           <div class="col-3"></div>
           <div class="col-6 d-none d-md-block searchdiv"style="padding:0px;">
-             <input class="search" type="text" name="title" placeholder="제목으로 검색해보세요.">
+             <input class="SearchTitle" type="text" name="title" placeholder="제목으로 검색해보세요.">
           </div>
+          <script>
+          	$("#searchbtn").on("click",function(){
+     			if($("#SearchTitle").val() == '' || $("#SearchTitle").val().trim() == ""){
+     				 alert("제목을 입력해주세요");
+     				 $("#SearchTitle").focus();
+     			 return false;
+     		 }
+          </script>
+          
           <div class="col-6 d-md-none searchdiv"style="padding:0px;">
              <input class="search" type="text" name="search2" placeholder="제목으로 검색">
           </div>
