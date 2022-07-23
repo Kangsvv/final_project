@@ -155,6 +155,7 @@ display: none;
 			<div class="row col-12 noticbtn" style="margin-bottom: 15px;">
 				<div class="col-12" style="padding: 0%; text-align: left; margin-left: 3%;">
 					<a href="/notice/event_selectAll" class="nbtn">Event</a>
+					<a href="javascript:void(0)" class="nbtn" style="cursor: default; color: black; padding-left: 10px; padding-right: 10px;"> | </a>
 					<a href="/notice/notic_selectAll" class="nbtn" style="color: #760c0c; font-weight: bold">Notice</a>
 				</div>
 			</div>
