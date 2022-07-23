@@ -214,6 +214,11 @@
 	             <button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
 	          </div>
       	  </c:if>
+      	   <c:if test="${loginID == null}">
+	          <div class="col-6" style="height: 50px;">
+	             
+	          </div>
+      	  </c:if>
          </div>
          <script>
           	$("#searchbtn").on("click",function(){
