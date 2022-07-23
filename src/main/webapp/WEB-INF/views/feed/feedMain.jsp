@@ -124,6 +124,8 @@
             .feedImg{
       	height:350px;
       	overflow: hidden;
+      	border : 1px solid #222;
+      	border-radius: 3px;
       }
       .feedImg img{
       width: 100%;
