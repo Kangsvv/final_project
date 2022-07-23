@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.dao.CafeinDAO;
 import kh.spring.dao.MypageDAO;
+import kh.spring.dto.BookmarkDTO;
 import kh.spring.dto.Cafein_imgDTO;
 import kh.spring.dto.Feed_imgDTO;
 import kh.spring.dto.MemberDTO;
@@ -60,6 +61,9 @@ public class MypageController {
 		int countfeed = pdao.countfeed(loginID); 
 		model.addAttribute("countfeed",countfeed);
 		
+		int countbookmark = pdao.countbookmark(loginID);
+		model.addAttribute("countbookmark",countbookmark);
+		
 		return "/mypage/mypage";
 	}
 
@@ -81,6 +85,9 @@ public class MypageController {
 		
 		int countfeed = pdao.countfeed(loginID); 
 		model.addAttribute("countfeed",countfeed);
+		
+		int countbookmark = pdao.countbookmark(loginID);
+		model.addAttribute("countbookmark",countbookmark);
 
 		return "/mypage/mycafe";
 	}
@@ -112,6 +119,28 @@ public class MypageController {
 		session.invalidate();
 		System.out.println(loginID + "<- 세션이 있나 확인하려고 만든겨");
 		return "redirect:/";
+	}
+	
+	@RequestMapping("bookmark")
+	public String bookmark(Model model) throws Exception {
+		String loginID = (String) session.getAttribute("loginID");
+		
+		MemberDTO dto = pdao.selectID(loginID);
+		model.addAttribute("dto", dto);
+		
+		List<BookmarkDTO> imglist = pdao.bookmark(loginID);
+		model.addAttribute("imglist", imglist);
+				
+		int countcafein = pdao.countcafein(loginID);
+		model.addAttribute("countcafein",countcafein);
+		
+		int countfeed = pdao.countfeed(loginID); 
+		model.addAttribute("countfeed",countfeed);
+		
+		int countbookmark = pdao.countbookmark(loginID);
+		model.addAttribute("countbookmark",countbookmark);
+		
+		return "/mypage/bookmark";
 	}
 
 }

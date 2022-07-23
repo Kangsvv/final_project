@@ -42,9 +42,19 @@
 	</select>
 
 	<select id="countcafein" resultType="int">		
-		select count(*)from cafein where id=#{id}
+		select count(*) from cafein where id=#{id}
 	</select>
 	
+	<select id="bookmark" resultType="kh.spring.dto.BookmarkDTO">		
+		select a.cafefeed_seq 
+			from bookmark a join cafefeed c
+			on a.CAFEFEED_SEQ = c.CAFEFEED_SEQ
+			where c.id=#{value }
+	</select>
+	
+	<select id="countbookmark" resultType="int">		
+		select count(*) from bookmark where id=#{id}
+	</select>
 
 
 </mapper>

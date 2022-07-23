@@ -390,7 +390,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
           }
         }
       }
-      a {
+      a {color:white;
         text-decoration-line: none;
         width:100%;
         height:100%;
@@ -441,17 +441,17 @@ Remove or comment-out the code block below to see how the browser will fall-back
             <ul>
               <li>
                 <a href="/mypage/mypage"
-                  ><span class="profile-stat-count"></span> MY FEED ${countfeed }</a>
+                  ><span class="profile-stat-count"> MY FEED ${countfeed }</span></a>
               </li>
    <c:if test="${dto.mem_level == 1}"> <!-- 사장일 경우만 가게 게시물 출력 -->
-              <li style="background-color:#123456;">
+              <li>
                 <a href="/mypage/mycafe"
-                  ><span class="profile-stat-count"></span> MY CAFE-IN : ${countcafein }</a>
+                  ><span class="profile-stat-count" style=" text-decoration: underline; text-underline-position: under;"> MY CAFE-IN : ${countcafein }</span></a>
               </li>
    </c:if>           
               <li>
-                <a href="/mypage/like"
-                  ><span class="profile-stat-count"></span> LIKED FEED ${likefeed }</a>
+                <a href="/mypage/bookmark"
+                  ><span class="profile-stat-count"> MARK FEED ${countbookmark }</span> </a>
               </li>
             </ul>
           </div>
@@ -472,9 +472,9 @@ Remove or comment-out the code block below to see how the browser will fall-back
 	<!-- -------------------------------------------------- -->
 	
 	<c:forEach var="i" items="${imglist }">
-	
+	<a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
           <div class="gallery-item" tabindex="0">
-          <a href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
+          
           <div class="gogo">
            
             
@@ -485,7 +485,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
               <span class="visually-hidden">Gallery</span
               ><i class="fas fa-clone" aria-hidden="true"></i>
             </div>
-
+			
             <div class="gallery-item-info">
              <!--  <ul>
                 <li class="gallery-item-likes">
@@ -499,9 +499,9 @@ Remove or comment-out the code block below to see how the browser will fall-back
               </ul> -->
             </div>
             </div>
-            </a>
+            
           </div>
-      
+      </a>
     </c:forEach>
    
 	<!-- -------------------------------------------------- -->
