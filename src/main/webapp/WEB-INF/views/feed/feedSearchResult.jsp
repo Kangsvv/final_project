@@ -119,34 +119,6 @@
 /*---------------------기능 구현 후 Hover 예정------------------*/
 
 
-/* footer 부분 */
-
-#foot{
-    border-top: 1px solid gray;
-    background-color: black;
-    position : absolute;
-    width:100%;
-	bottom : 0;
-    
-}
-
-
-.footer2{
-    line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px ;
-    font-family: 'Noto Sans KR';
-   font-style: normal;
-   font-weight: 700;
-   font-size: 14px;
-   line-height: 20px;
-   color: #FFFFFF;
-}
-.footer2 a{
-   text-decoration : none;
-   color:white;
-   }
-
      .feedImg{
       	height:350px;
       	overflow: hidden;
