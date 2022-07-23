@@ -152,7 +152,7 @@
 <!--               </select> -->
            </div>
           
-          <c:if test="${loginMember.memLevel == 0 || loginMember.memLevel == 2 }">
+          <c:if test="${loginID != null}">
 	          <div class="col-6">
 	             <button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
 	          </div>
