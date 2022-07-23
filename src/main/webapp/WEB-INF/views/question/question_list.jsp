@@ -67,18 +67,6 @@ body {
 	padding-top: 0.25%;
 }
 
-/* .noticbtn { */
-
-/*  background-color: #760c0c; */
-/*    border: none; */
-/*    border-radius: 5px; */
-/*    color: white; */
-/*    font-size: 90%; */
-/*    width: 80px; */
-/*    height: 35px; */
-/*    margin-top: 1%; */
-/*    padding: 0.5%; */
-/* } */
 
 .cbtn {
 	background-color: #760c0c;
@@ -135,9 +123,9 @@ display: none;
 <!--  ------------------------------------------------------------header-----------------------------------------------------  -->
 
      <jsp:include page="header.jsp"/>
-<c:if test="${loginID != null}" >
-<%@ include file="/WEB-INF/views/letter.jsp"%>
-</c:if>
+<%-- <c:if test="${loginID != null}" > --%>
+<%-- <%@ include file="/WEB-INF/views/letter.jsp"%> --%>
+<%-- </c:if> --%>
 
 <!-- ------------------------------------------------------------header----------------------------------------------------- -->
 

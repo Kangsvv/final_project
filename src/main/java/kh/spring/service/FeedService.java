@@ -241,7 +241,12 @@ public class FeedService {
 			List<SeqDTO> flist_seq = dao.SearchByTitle(title);
 			
 			System.out.println("시퀀스는 " + flist_seq);
-			
-			return dao.feedSearchBySeq(flist_seq, cpage);
-		}
+			if(flist_seq.isEmpty()) {
+				List<Feed_imgDTO> list = null;
+				
+				return list;
+			}else {
+				return dao.feedSearchBySeq(flist_seq, cpage);
+			}
+		}	
 }

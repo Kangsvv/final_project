@@ -124,6 +124,8 @@
             .feedImg{
       	height:350px;
       	overflow: hidden;
+      	border : 1px solid #222;
+      	border-radius: 3px;
       }
       .feedImg img{
       width: 100%;
@@ -162,15 +164,17 @@
  <div id="con1">
  	 <form action="/feed/SearchByTitle">
        <div class="row">
-          <div class="col-3"></div>
-          <div class="col-6 d-none d-md-block searchdiv"style="padding:0px;">
-             <input class="search" type="text" name="title" placeholder="제목으로 검색해보세요.">
+          <div class="col-2 col-md-3"></div>
+          <div class="col-8 col-md-6 searchdiv"style="padding:0px;">
+             <input class="search" type="text" name="title" id="SearchTitle" placeholder="제목으로 검색해보세요.">
           </div>
-          <div class="col-6 d-md-none searchdiv"style="padding:0px;">
-             <input class="search" type="text" name="search2" placeholder="제목으로 검색">
-          </div>
+
           
-          <div class="col-3">
+<!--           <div class="col-6 d-md-none searchdiv"style="padding:0px;"> -->
+<!--              <input class="search" type="text" name="search2" placeholder="제목으로 검색"> -->
+<!--           </div> -->
+          
+          <div class="col-2">
           <button class="searchbtn" type="submit" style="padding:0px;"><img class="search2" style="padding:0px; margin-top:5px;"src="/resources/img/search.png"></button>
           </div>
       </div>
@@ -184,14 +188,27 @@
 <!--               </select> -->
            </div>
           
-<%--           <c:if test="${loginMember.memLevel == 0 || loginMember.memLevel == 2 }"> --%>
+          <c:if test="${loginID != null}">
 	          <div class="col-6">
 	             <button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
 	          </div>
-<%--       	  </c:if> --%>
+      	  </c:if>
+      	  
+      	  <c:if test="${loginID == null}">
+	          <div class="col-6" style="height: 50px;">
+	             
+	          </div>
+      	  </c:if>
          </div>
           
-
+	     <script>
+          	$("#searchbtn").on("click",function(){
+     			if($("#SearchTitle").val() == '' || $("#SearchTitle").val().trim() == ""){
+     				 alert("제목을 입력해주세요");
+     				 $("#SearchTitle").focus();
+     			 return false;
+     		 }
+          </script>
   <!-------------------------------------------------------인스타 Board------------------------------------------------->
 
           <div class="tz-gallery">

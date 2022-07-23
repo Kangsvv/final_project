@@ -15,7 +15,7 @@
 color:white;
 position:fixed;
 z-index:1;
-top:90%;
+top:80%;
 left:89%;
 }
 </style>

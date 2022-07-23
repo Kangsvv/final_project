@@ -469,7 +469,7 @@
                         <div class="col-6 col-md-3"><i class="fa-solid fa-calendar"></i>&nbsp;
                            <fmt:formatDate pattern="yy-MM-dd HH:mm:ss" value="${dto.write_date}" />
                         </div>
-                        <c:if test="${loginID == dto.id }">
+                        <c:if test="${loginID == dto.id || loginID == admin}">
                            <div class="col-6 col-md-3 mdbtns" style="text-align:center;"><i class="fa-solid fa-xl fa-rotate-left backBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-xl fa-pen-to-square editBtn"></i>&nbsp;&nbsp;&nbsp;<i class="fa-regular fa-xl fa-trash-can deleteBtn" style="color:white;"></i></div>
                   		</c:if>
                      </div>

@@ -45,6 +45,9 @@
       .cafeinimg{
       	height:350px;
       	overflow: hidden;
+      	border : 1px solid #222;
+      	border-radius: 3px;
+      	
       }
       .cafeinimg img{
       width: auto;

@@ -38,4 +38,32 @@
 	
 	<!-- 일반 파일 업로드 경로 -->
 	<resources mapping="/imgUpload/**" location="/member/file/" />
+	
+	<!-- 인터셉터 -->
+<!-- 	<interceptors> -->
+<!-- 		<interceptor> -->
+<!-- 			<mapping path="/**"/> -->
+<!-- 			<exclude-mapping path="/"/> -->
+<!-- 			<exclude-mapping path="/home"/> -->
+<!-- 			<exclude-mapping path="/cafein/cafeinDetail"/> -->
+<!-- 			<exclude-mapping path="/cafein/cafeinMain"/> -->
+<!-- 			<exclude-mapping path="/feed/detailView"/> -->
+<!-- 			<exclude-mapping path="/feed/feedMain"/> -->
+<!-- 			<exclude-mapping path="/feed/feedSearchResult"/> -->
+<!-- 			<exclude-mapping path="/member/login"/> -->
+<!-- 			<exclude-mapping path="/member/loginSearch"/> -->
+<!-- 			<exclude-mapping path="/member/signUp"/> -->
+<!-- 			<exclude-mapping path="/notice/event_Detail"/> -->
+<!-- 			<exclude-mapping path="/notice/event"/> -->
+<!-- 			<exclude-mapping path="/notice/notic_Detail"/> -->
+<!-- 			<exclude-mapping path="/notice/notic"/> -->
+<!-- 			<exclude-mapping path="/notice/noticMain"/> -->
+<!-- 			<exclude-mapping path="/question/question_detail"/> -->
+<!-- 			<exclude-mapping path="/question/question_list"/> -->
+<!-- 			<exclude-mapping path="/error"/> -->
+<!-- 			<exclude-mapping path="/interceptor"/> -->
+<!-- 			<beans:bean class="kh.spring.interceptor.LoginValidator"/> -->
+<!-- 		</interceptor> -->
+<!-- 	</interceptors> -->
+	
 </beans:beans>
