@@ -390,11 +390,77 @@ Remove or comment-out the code block below to see how the browser will fall-back
           }
         }
       }
-      a {color:white;
+      a {
+      color:white;
         text-decoration-line: none;
-        width:100%;
-        height:100%;
+        
       } 
+      
+      .gallery-item{
+      	min-height:300px;
+      	height: 300px;
+      	overflow: hidden;
+      }
+      
+      .lightbox img {
+       width: 100%;
+       height:100%;
+       border-radius: 0;
+       position: relative;
+   }
+      /* 일단 다른곳에서 가져온 style */
+      
+      .tz-gallery {
+    padding: 40px;
+    padding-top:0px;
+}
+
+/* Override bootstrap column paddings */
+   .tz-gallery .row > div {
+       padding: 2px;
+   }
+   
+   .tz-gallery .lightbox img {
+       width: 100%;
+       border-radius: 0;
+       position: relative;
+   }
+      .container h1 {
+          text-align: center;
+          margin-top: 50px;
+          font-family: 'Droid Sans', sans-serif;
+          font-weight: bold;
+      }
+            .feedImg{
+      	height:350px;
+      	overflow: hidden;
+      	border : 1px solid #222;
+      	border-radius: 3px;
+      }
+      .feedImg img{
+      width: 100%;
+      height: 100%;
+      -webkit-transform:scale(1);
+	-moz-transform:scale(1);
+	-ms-transform:scale(1);	
+	-o-transform:scale(1);	
+	transform:scale(1);
+	-webkit-transition:.3s;
+	-moz-transition:.3s;
+	-ms-transition:.3s;
+	-o-transition:.3s;
+	transition:.3s;
+      }
+      .feedImg:hover img{
+      -webkit-transform:scale(1.2);
+	-moz-transform:scale(1.2);
+	-ms-transform:scale(1.2);	
+	-o-transform:scale(1.2);
+	transform:scale(1.2);
+	opacity:0.7;
+
+      }
+      
     </style>
   </head>
   
@@ -446,7 +512,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
    <c:if test="${dto.mem_level == 1}"> <!-- 사장일 경우만 가게 게시물 출력 -->
               <li>
                 <a href="/mypage/mycafe"
-                  ><span class="profile-stat-count" style=" text-decoration: underline; text-underline-position: under;"> MY CAFE-IN : ${countcafein }</span></a>
+                  ><span class="profile-stat-count" style=" text-decoration: underline; text-underline-position: under;"> MY CAFE-IN ${countcafein }</span></a>
               </li>
    </c:if>           
               <li>
@@ -471,38 +537,21 @@ Remove or comment-out the code block below to see how the browser will fall-back
           
 	<!-- -------------------------------------------------- -->
 	
-	<c:forEach var="i" items="${imglist }">
-	<a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
-          <div class="gallery-item" tabindex="0">
-          
-          <div class="gogo">
-           
-            
-            <img src="/cafein/${i.sys_name }" class="gallery-image"/>
-            
-			
-            <div class="gallery-item-type">
-              <span class="visually-hidden">Gallery</span
-              ><i class="fas fa-clone" aria-hidden="true"></i>
+	<div class="tz-gallery">
+
+            <div class="contents">
+             	<div class="row">
+		 		    <c:forEach var="i" items="${imglist }">
+		                <div class="col-sm-6 col-lg-4  feedImg">
+		                    <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
+		                        <img src="/cafein/${i.sys_name }">
+		                    </a>
+		                </div>
+		            </c:forEach>
+				</div>
             </div>
-			
-            <div class="gallery-item-info">
-             <!--  <ul>
-                <li class="gallery-item-likes">
-                  <span class="visually-hidden">Likes:</span
-                  ><i class="fas fa-heart" aria-hidden="true"></i> 42
-                </li>
-                <li class="gallery-item-comments">
-                  <span class="visually-hidden">Comments:</span
-                  ><i class="fas fa-comment" aria-hidden="true"></i> 1
-                </li>
-              </ul> -->
-            </div>
-            </div>
-            
-          </div>
-      </a>
-    </c:forEach>
+    
+        </div>
    
 	<!-- -------------------------------------------------- -->
 

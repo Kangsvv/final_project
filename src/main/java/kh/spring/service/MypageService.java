@@ -3,6 +3,7 @@ package kh.spring.service;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -10,11 +11,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import kh.spring.dao.MemberDAO;
 import kh.spring.dao.MypageDAO;
+import kh.spring.dto.Feed_imgDTO;
 import kh.spring.dto.MemberDTO;
+import kh.spring.dto.SeqDTO;
 
 @Service
 public class MypageService {
@@ -61,6 +65,21 @@ public class MypageService {
 
 	}
 	
+	
+	public List<Feed_imgDTO> bookmark(Model model) throws Exception{
+		String loginID = (String) session.getAttribute("loginID");
+		System.out.println(loginID+"북맠");
+        List<SeqDTO> flist_seq = pDAO.bookmark(loginID);
+        
+        System.out.println("시퀀스는 " + flist_seq);
+        if(flist_seq.isEmpty()) {
+            List<Feed_imgDTO> list = null;
+
+            return list;
+        }else {
+            return pDAO.feedSearchBySeq(flist_seq);
+        }
+    }
 	
 
 }
