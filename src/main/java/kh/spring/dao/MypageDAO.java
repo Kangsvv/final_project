@@ -1,6 +1,8 @@
 package kh.spring.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import kh.spring.dto.BookmarkDTO;
 import kh.spring.dto.Cafein_imgDTO;
 import kh.spring.dto.Feed_imgDTO;
 import kh.spring.dto.MemberDTO;
+import kh.spring.dto.SeqDTO;
 
 @SessionAttributes({"loginMember"})
 @Repository
@@ -67,9 +70,18 @@ public class MypageDAO {
 		return mybatis.delete("mypage.memberout4",loginID);
 	}
 	
-	public List<BookmarkDTO> bookmark(String loginID) throws Exception{
+	public List<SeqDTO> bookmark(String loginID) throws Exception{
 		return mybatis.selectList("mypage.bookmark",loginID);	
 	}
+	
+	
+	public List<Feed_imgDTO> feedSearchBySeq(List<SeqDTO> flist_seq){
+		List<SeqDTO> list = flist_seq;
+		System.out.println(list);
+		return mybatis.selectList("mypage.feedSearchBySeq", list);
+	}
+	
+
 	
 	public int countbookmark(String loginID)throws Exception{
 		return mybatis.selectOne("mypage.countbookmark",loginID);	
