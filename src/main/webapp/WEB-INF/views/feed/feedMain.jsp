@@ -199,7 +199,7 @@
       	  </c:if>
          </div>
           
-	          <script>
+	     <script>
           	$("#searchbtn").on("click",function(){
      			if($("#SearchTitle").val() == '' || $("#SearchTitle").val().trim() == ""){
      				 alert("제목을 입력해주세요");

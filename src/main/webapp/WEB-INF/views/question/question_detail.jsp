@@ -321,7 +321,7 @@ body {
 <!--  ------------------------------------------------------------header-----------------------------------------------------  -->
 
           <jsp:include page="header.jsp"/>
-<c:if test="${loginID != null}" >
+          <c:if test="${loginID != null}" >
 <%@ include file="/WEB-INF/views/letter.jsp"%>
 </c:if>
       
@@ -528,7 +528,7 @@ $(".upbtn").on("click",function(){
 
 // 수정완료 버튼
 $(".create").on("click", "#modifyBtn",function(){
-	if ($(".main").val() == "" || $(".eventbox").val() ==""){
+	if ($(".main").val().trim() == "" || $(".eventbox").val().trim() ==""){
 		alert("수정할 제목/내용을 입력해주세요");
 		return false;
 	}else{
@@ -561,7 +561,7 @@ $(".create").on("click", "#modifyBtn",function(){
                 
                 let article = $("#replyContents").val();
 
-                if(article == ""){
+                if($("#replyContents").val().trim() == ""){
 
                 	alert('내용을 입력해주세요')
                     $("#replyContents").focus();
@@ -641,15 +641,25 @@ $(".replyreadbox").on("click", ".Rupdate", function() {
    let reply_seq = $(this).parent().siblings(".reply_seq").val();
    let contents = $(this).parent().siblings().children().children().children().children("#replyModifyContents").val();
    
-   $.ajax({
-      url : "/question/reply_update",
-      data: {reply_seq:reply_seq, question_seq:${dto.question_seq}, contents:contents }
-         
-   }).done(function(resp){
-      location.reload();
-   })
-})
+           if($(this).parent().siblings().children().children().children().children("#replyModifyContents").val().trim() == ""){
 
+           	alert('내용을 입력해주세요')
+               
+              return false;
+              
+           }else{
+        	 
+        	   $.ajax({
+        		      url : "/question/reply_update",
+        		      data: {reply_seq:reply_seq, question_seq:${dto.question_seq}, contents:contents }
+        	          
+        		   }).done(function(resp){
+        		      location.reload();
+        		   })
+              }
+           })
+                
+   
 $(".eventbox").keyup(function(e) {
    let content = $(this).val();
    
