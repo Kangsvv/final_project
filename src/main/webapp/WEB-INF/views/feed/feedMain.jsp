@@ -213,7 +213,7 @@
 
           <div class="tz-gallery">
 
-            <div class="contents">
+            <div class="contents ">
              	<div class="row">
 		 		    <c:forEach var="i" items="${imgList }">
 		                <div class="col-sm-6 col-lg-4  feedImg">
