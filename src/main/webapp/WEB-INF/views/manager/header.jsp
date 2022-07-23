@@ -211,8 +211,8 @@ li .dropdown-item:hover {
              <c:choose>
 				<c:when test="${empty loginID}">
 		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/loginView.jsp" id="board">Login</a></li>
-        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/Member/joinView.jsp" id="board">Join</a></li>
+            <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/login" id="board">Login</a></li>
+        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/signUp" id="board">Join</a></li>
           </ul>
           </c:when>
          <c:otherwise>

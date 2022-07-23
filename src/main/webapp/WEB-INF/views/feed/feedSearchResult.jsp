@@ -119,34 +119,6 @@
 /*---------------------기능 구현 후 Hover 예정------------------*/
 
 
-/* footer 부분 */
-
-#foot{
-    border-top: 1px solid gray;
-    background-color: black;
-    position : absolute;
-    width:100%;
-	bottom : 0;
-    
-}
-
-
-.footer2{
-    line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px ;
-    font-family: 'Noto Sans KR';
-   font-style: normal;
-   font-weight: 700;
-   font-size: 14px;
-   line-height: 20px;
-   color: #FFFFFF;
-}
-.footer2 a{
-   text-decoration : none;
-   color:white;
-   }
-
      .feedImg{
       	height:350px;
       	overflow: hidden;
@@ -298,10 +270,10 @@
     	let cDiv = $("<div class='row'>");
     	for(let i=0; i < resp.length; i++){
     		 
-    	 	let contentsDiv = $("<div class='col-sm-6 col-lg-4'><a class='lightbox' href='#'><img src='"+ resp[i].img +"'>"); 
+    		let contentsDiv = $("<div class='col-sm-6 col-md-4 feedImg'><a class='lightbox' href='/feed/selectBySeq?cafefeed_seq="+resp[i].cafefeed_seq+"'><img src='/feed/"+ resp[i].sys_name +"'>"); 
     	 
     	 	cDiv.append(contentsDiv);
-    	 }
+    	}
     	$(".contents").append(cDiv);
 	 	cDiv.hide();
 	 	cDiv.fadeIn(800);

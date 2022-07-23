@@ -44,7 +44,7 @@ public class MypageService {
 				file.transferTo(new File(realPath + "/"+sysName)); // 서버 경로 저장하기
 
 				// 영구적으로 로컬 환경에도 옮겨야됨.
-				String  localPath ="C:/Users/LG PC/Desktop/kh/springWorkspace/final_project/src/main/webapp/resources/mypage";
+				String  localPath ="C:/SpringWorkspace/final_project/src/main/webapp/resources/mypage";
 				File realFile = new File(realPath + "/"+sysName); // 파일 객체를 만든거예요 - 파일 데이터가 들어가 있음
 				File localFile = new File(localPath + "/"+sysName); // 파일 객체를 만든거고 - 빈 껍데기
 				// 실제 메모리상에 이 파일 객체 있는 거임.
