@@ -188,7 +188,7 @@
        <div class="row">
           <div class="col-3"></div>
           <div class="col-6 d-none d-md-block searchdiv"style="padding:0px;">
-             <input class="SearchTitle" type="text" name="search" placeholder="제목으로 검색해보세요.">
+             <input class="search" type="text" name="search" id="SearchTitle" placeholder="제목으로 검색해보세요.">
           </div>
           <script>
           	$("#searchbtn").on("click",function(){
