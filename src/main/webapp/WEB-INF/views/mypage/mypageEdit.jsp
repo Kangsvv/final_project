@@ -187,9 +187,8 @@
               value="${dto.mem_phone}"
               name="memPhone"
               maxlength="12"
-              required="required"
               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-              placeholder="-없이 번호만 적어주세요."
+              placeholder="-없이 숫자만 적어주세요."
               
             />
           </li>
@@ -215,7 +214,8 @@
 
       $('#modify').on('click', function () {
     	  if(confirm("정말 등록하시겠습니까 ?") == true){        
-    		  alert("등록되었습니다");    }
+    		  alert("등록되었습니다");    
+    		 }
     	      else{        
     		  	return false;    
     		  	}
@@ -226,7 +226,7 @@
       });
       
       $('#memberout').on('click',function(){
-    	  if(confirm("정말 탈퇴?") == true){        
+    	  if(confirm("정말 탈퇴하시겠습니까 ? ") == true){        
     		  location.href = '/mypage/memberout';
     		}else{        
     		  	return false;    

@@ -390,7 +390,8 @@ Remove or comment-out the code block below to see how the browser will fall-back
           }
         }
       }
-      a {color:white;
+      a {
+      	color:white;
         text-decoration-line: none;
         width:100%;
         height:100%;
@@ -440,18 +441,19 @@ Remove or comment-out the code block below to see how the browser will fall-back
           <div class="profile-stats">
             <ul>
               <li>
-                <a href="/mypage/mypage"
-                  ><span class="profile-stat-count"> MY FEED ${countfeed }</span></a>
+                <a href="/mypage/mypage">
+                <span class="profile-stat-count"> MY FEED ${countfeed }</span>      
+                </a>
               </li>
    <c:if test="${dto.mem_level == 1}"> <!-- 사장일 경우만 가게 게시물 출력 -->
               <li>
                 <a href="/mypage/mycafe"
-                  ><span class="profile-stat-count" style=" text-decoration: underline; text-underline-position: under;"> MY CAFE-IN : ${countcafein }</span></a>
+                  ><span class="profile-stat-count"> MY CAFE-IN ${countcafein }</span></a>
               </li>
    </c:if>           
               <li>
                 <a href="/mypage/bookmark"
-                  ><span class="profile-stat-count"> MARK FEED ${countbookmark }</span> </a>
+                  ><span class="profile-stat-count" style=" text-decoration: underline; text-underline-position: under;">MARK FEED ${countbookmark }</span> </a>
               </li>
             </ul>
           </div>
@@ -474,16 +476,28 @@ Remove or comment-out the code block below to see how the browser will fall-back
 	<c:forEach var="i" items="${imglist }">
 	
           <div class="gallery-item" tabindex="0">
-            
+          
+          <div class="gogo">
+            <a href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">           
             <img src="/cafein/${i.sys_name }" class="gallery-image"/>
-			
+            			
             <div class="gallery-item-type">
               <span class="visually-hidden">Gallery</span
               ><i class="fas fa-clone" aria-hidden="true"></i>
             </div>
-			
+			</a>
             <div class="gallery-item-info">
-             
+             <!--  <ul>
+                <li class="gallery-item-likes">
+                  <span class="visually-hidden">Likes:</span
+                  ><i class="fas fa-heart" aria-hidden="true"></i> 42
+                </li>
+                <li class="gallery-item-comments">
+                  <span class="visually-hidden">Comments:</span
+                  ><i class="fas fa-comment" aria-hidden="true"></i> 1
+                </li>
+              </ul> -->
+            </div>
             </div>
             
           </div>

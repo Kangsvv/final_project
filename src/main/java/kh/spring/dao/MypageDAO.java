@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import kh.spring.dto.BookmarkDTO;
 import kh.spring.dto.Cafein_imgDTO;
 import kh.spring.dto.Feed_imgDTO;
 import kh.spring.dto.MemberDTO;
@@ -43,7 +44,6 @@ public class MypageDAO {
 	public int countcafein(String loginID) throws Exception {  
 		  return mybatis.selectOne("mypage.countcafein", loginID) ; 
 	}
-	  
 	 
 	//내 정보 수정
 	public int mypageUpdate(MemberDTO dto)throws Exception{
@@ -66,5 +66,13 @@ public class MypageDAO {
 	public int memberout4(String loginID)throws Exception{
 		return mybatis.delete("mypage.memberout4",loginID);
 	}
-
+	
+	public List<BookmarkDTO> bookmark(String loginID) throws Exception{
+		return mybatis.selectList("mypage.bookmark",loginID);	
+	}
+	
+	public int countbookmark(String loginID)throws Exception{
+		return mybatis.selectOne("mypage.countbookmark",loginID);	
+	}
+	
 }
