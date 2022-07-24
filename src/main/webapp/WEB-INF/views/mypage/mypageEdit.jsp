@@ -213,6 +213,11 @@
       //여기서 탈퇴하는 기능, 탈퇴하면 모든 본인 게시물 삭제?
 
       $('#modify').on('click', function () {
+    	  if(!$("#imgmodify").val()){
+              alert("사진을 넣어주세요.");
+              return false;
+          }
+        
     	  if(confirm("정말 등록하시겠습니까 ?") == true){        
     		  alert("등록되었습니다");    
     		 }
@@ -233,6 +238,7 @@
     		  	}
     	  
       })
+      
       
     </script>
   </body>
