@@ -16,6 +16,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/cafein/**" location="/resources/cafein/" />
 	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
+	<resources mapping="/member/**" location="/resources/member/" />
 	<resources mapping="/css/**" location="/resources/css/" />
 	<resources mapping="/feed/**" location="/resources/feed/" />
    	<resources mapping="/img/**" location="/resources/img/" />

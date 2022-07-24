@@ -26,7 +26,7 @@
 					</ul>
 					<button class='btn_main bt_1'>로그인</button>
 					<div class='kakaoLoginDiv'>
-						<img src="/member/kakaoLogin.png">
+						<img src="/resources/member/kakaoLogin.png">
 					</div>
 				</form>
 				
