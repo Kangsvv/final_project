@@ -43,7 +43,7 @@
 		$(document).on("click",".kakaoLoginDiv",function(){
 			if(confirm("카카오 로그인시 사장 회원등록이 불가능합니다. 유저 회원으로 가입하시겠습니까?")){
 				// 카카오 로그인 처리
-				window.Kakao.init('8432d40d3d8cc65b701b5c4c48252a64');
+				window.Kakao.init('92a2e3a66980786ef6c0f9cfa867b4f4');
 	            window.Kakao.Auth.login({
 	                scope: 'profile_nickname, account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
 	                success: function(response) {
