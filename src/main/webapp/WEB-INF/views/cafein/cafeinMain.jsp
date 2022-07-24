@@ -102,7 +102,7 @@
                 <c:forEach var="i" items="${list}">
                 <div class="col-sm-6 col-md-4 cafeinimg">
                     <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
-                        <img src="/cafein/${i.sys_name }">
+                        <img src="/resources/cafein/${i.sys_name }">
                    
                     </a>
                 </div>

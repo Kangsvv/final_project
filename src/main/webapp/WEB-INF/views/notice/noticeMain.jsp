@@ -201,7 +201,7 @@ li.dropdown {
                <span>ID/PW를 잊어버렸는데 찾을 방법이 있을까요?</span>
             </div>
             <div class="anw">
-               <span><a href="http://localhost/member/loginSearch">ID/PW 찾기</a>를 통해 가능합니다.</span>
+               <span><a href="/member/loginSearch">ID/PW 찾기</a>를 통해 가능합니다.</span>
             </div>
          </div>
       </div>

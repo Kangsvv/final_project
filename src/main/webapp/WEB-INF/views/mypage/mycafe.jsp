@@ -543,7 +543,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
              	<div class="row">
 		 		    <c:forEach var="i" items="${imglist }">
 		                <div class="col-sm-6 col-lg-4  feedImg">
-		                    <a class="lightbox" href="/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
+		                    <a class="lightbox" href="/resources/cafein/selectBySeq?cafein_seq=${i.cafein_seq }">
 		                        <img src="/cafein/${i.sys_name }">
 		                    </a>
 		                </div>

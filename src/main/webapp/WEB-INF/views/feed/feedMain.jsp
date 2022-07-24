@@ -201,14 +201,6 @@
       	  </c:if>
          </div>
           
-	     <script>
-          	$("#searchbtn").on("click",function(){
-     			if($("#SearchTitle").val() == '' || $("#SearchTitle").val().trim() == ""){
-     				 alert("제목을 입력해주세요");
-     				 $("#SearchTitle").focus();
-     			 return false;
-     		 }
-          </script>
   <!-------------------------------------------------------인스타 Board------------------------------------------------->
 
           <div class="tz-gallery">
@@ -218,7 +210,7 @@
 		 		    <c:forEach var="i" items="${imgList }">
 		                <div class="col-sm-6 col-lg-4  feedImg">
 		                    <a class="lightbox" href="/feed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
-		                        <img src="/feed/${i.sys_name }">
+		                        <img src="/resources/feed/${i.sys_name }">
 		                    </a>
 		                </div>
 		            </c:forEach>
