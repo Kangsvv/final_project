@@ -480,7 +480,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 	</c:if>
 	<c:if test="${dto.mem_img == null}">      <!-- 만약에 이미지값이 null이 아니면 저장된 이미지 뿌리기 -->
           <div class="profile-image" >
-           <img src="https://cdn-icons-png.flaticon.com/512/76/76769.png" />
+           <img src="http://www.kcgf.kr/common/img/default_profile.png" />
           </div>
 	</c:if>
           <div class="profile-user-settings">
