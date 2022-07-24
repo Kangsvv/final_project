@@ -42,7 +42,7 @@
 	
 	<!-- 카카오 계정 생성 -->
 	<insert id="kakaoJoinAction">
-		insert into member (mem_seq,mem_id,mem_name,mem_email,mem_level) values(mem_seq.nextval,#{mem_id},#{mem_name},#{mem_email},0)
+		insert into member (mem_seq,mem_id,mem_name,mem_email,mem_level) values(mem_seq.nextval,#{mem_id},#{mem_name},#{mem_email},default)
 	</insert>
 	
 	<!-- 아이디 및 패스워드 찾기 -->
