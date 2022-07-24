@@ -130,7 +130,9 @@ public class MemberController {
 		String ymdPath = UploadFileUtils.calcPath(fileUpload);
 		String fileName = null;
 			if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
-				fileName =  UploadFileUtils.fileUpload(fileUpload, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+				fileName =  UploadFileUtils.fileUpload(fileUpload, file.getOriginalFilename(), file.getBytes(), ymdPath);
+				String realPath = session.getServletContext().getRealPath("/resources");
+				file.transferTo(new File(realPath + "/"+"imgUpload" + ymdPath + File.separator + fileName));
 				member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 			}
 			
