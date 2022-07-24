@@ -19,7 +19,7 @@ public class LoginValidator implements HandlerInterceptor{
 		String loginID = (String)session.getAttribute("loginID");
 		if(loginID != null) return true;
 		
-		response.sendRedirect("/interceptor");
+		response.sendRedirect("/error");
 		
 		return false;
 	}
