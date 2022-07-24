@@ -75,9 +75,9 @@
 <body>
 <!--  ------------------------------------------------------------header-----------------------------------------------------  -->
      <jsp:include page="header.jsp"/>
-<c:if test="${loginID != null}" >
-<%@ include file="/WEB-INF/views/letter.jsp"%>
-</c:if>
+<%-- <c:if test="${loginID != null}" > --%>
+<%-- <%@ include file="/WEB-INF/views/letter.jsp"%> --%>
+<%-- </c:if> --%>
       
 <!-------------------------------------------------------Main------------------------------------------------->
 <div class="container" id="main">
