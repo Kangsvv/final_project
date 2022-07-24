@@ -189,8 +189,8 @@
             <input type=text name=title id=title placeholder="제목" style="width:97%; color:white;" value="${dto.title }">
             <input type="hidden" value="${dto.cafefeed_seq}" name="cafefeed_seq" class="cafefeed_seq">
             </div>
-            <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
-            <textarea name="contents" id="contents" style="width: 98%; color:white;" rows="30" placeholder="내용">${dto.contents }</textarea>
+            <div id="row3" style="font-size : 15px; width: 100%; height: 450px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
+            <textarea name="contents" id="contents" style="width: 98%; height:100%; min-height:100%; max-height:100%; color:white;" rows="30" placeholder="내용">${dto.contents }</textarea>
             </div>
             <div class="row" style="margin-top: 5%; margin-bottom: 5%;">
 				<div class="col-12 col-sm-6" id="file"><img id="preview" />

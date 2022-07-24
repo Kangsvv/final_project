@@ -220,7 +220,7 @@
 							<c:forEach var="i" items="${list}">
 								<div class="col-sm-6 col-lg-4  feedImg">
 									<a class="lightbox"
-										href="/feed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
+										href="/resources/feed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
 										<img src="/resources/feed/${i.sys_name }">
 									</a>
 								</div>
