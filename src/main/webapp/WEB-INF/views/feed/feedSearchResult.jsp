@@ -159,17 +159,18 @@
 <!-----------------------------------------------검색 DIV------------------------------------------->
  <div id="con1">
  	 <form action="/feed/SearchByTitle">
-       <div class="row">
-          <div class="col-3"></div>
-          <div class="col-6 d-none d-md-block searchdiv"style="padding:0px;">
+        <div class="row">
+          <div class="col-2 col-md-3"></div>
+          <div class="col-8 col-md-6 searchdiv"style="padding:0px;">
              <input class="search" type="text" name="title" id="SearchTitle" placeholder="제목으로 검색해보세요.">
           </div>
 
-          <div class="col-6 d-md-none searchdiv"style="padding:0px;">
-             <input class="search" type="text" name="search2" placeholder="제목으로 검색">
-          </div>
           
-          <div class="col-3">
+<!--           <div class="col-6 d-md-none searchdiv"style="padding:0px;"> -->
+<!--              <input class="search" type="text" name="search2" placeholder="제목으로 검색"> -->
+<!--           </div> -->
+          
+          <div class="col-2">
           <button class="searchbtn" type="submit" style="padding:0px;"><img class="search2" style="padding:0px; margin-top:5px;"src="/resources/img/search.png"></button>
           </div>
       </div>
@@ -220,7 +221,7 @@
 							<c:forEach var="i" items="${list}">
 								<div class="col-sm-6 col-lg-4  feedImg">
 									<a class="lightbox"
-										href="/resources/feed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
+										href="/feed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
 										<img src="/resources/feed/${i.sys_name }">
 									</a>
 								</div>
@@ -270,7 +271,7 @@
     	let cDiv = $("<div class='row'>");
     	for(let i=0; i < resp.length; i++){
     		 
-    		let contentsDiv = $("<div class='col-sm-6 col-md-4 feedImg'><a class='lightbox' href='/feed/selectBySeq?cafefeed_seq="+resp[i].cafefeed_seq+"'><img src='/feed/"+ resp[i].sys_name +"'>"); 
+    		let contentsDiv = $("<div class='col-sm-6 col-md-4 feedImg'><a class='lightbox' href='/feed/selectBySeq?cafefeed_seq="+resp[i].cafefeed_seq+"'><img src='/resources/feed/"+ resp[i].sys_name +"'>"); 
     	 
     	 	cDiv.append(contentsDiv);
     	}
