@@ -507,17 +507,17 @@ Remove or comment-out the code block below to see how the browser will fall-back
             <ul>
               <li>
                 <a href="/mypage/mypage"
-                  ><span class="profile-stat-count"> MY FEED ${countfeed }</span></a>
+                  ><span class="profile-stat-count"> MY FEED </span></a><!-- ${countfeed } -->
               </li>
    <c:if test="${dto.mem_level == 1}"> <!-- 사장일 경우만 가게 게시물 출력 -->
               <li>
                 <a href="/mypage/mycafe"
-                  ><span class="profile-stat-count" style=" text-decoration: underline; text-underline-position: under;"> MY CAFE-IN ${countcafein }</span></a>
+                  ><span class="profile-stat-count" style=" text-decoration: underline; text-underline-position: under;"> MY CAFE-IN </span></a><!-- ${countcafein } -->
               </li>
    </c:if>           
               <li>
                 <a href="/mypage/bookmark"
-                  ><span class="profile-stat-count"> MARK FEED ${countbookmark }</span> </a>
+                  ><span class="profile-stat-count"> MARK FEED </span> </a><!-- ${countbookmark } -->
               </li>
             </ul>
           </div>
