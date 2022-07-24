@@ -58,12 +58,6 @@
 			<exclude-mapping path="/feed/replyInfo"/>
 			<exclude-mapping path="/feed/SearchByTitle"/>
 			<exclude-mapping path="/member/**"/>
-<!-- 			<exclude-mapping path="/member/memberIdCheck"/> -->
-<!-- 			<exclude-mapping path="/member/sendEmail"/> -->
-<!-- 			<exclude-mapping path="/member/login"/> -->
-<!-- 			<exclude-mapping path="/member/loginAction"/> -->
-<!-- 			<exclude-mapping path="/member/loginSearch"/> -->
-<!-- 			<exclude-mapping path="/member/signUp"/> -->
 			<exclude-mapping path="/notice/event_Detail"/>
 			<exclude-mapping path="/notice/FAQ"/>
 			<exclude-mapping path="/notice/event_selectAll"/>
@@ -77,11 +71,18 @@
 			<exclude-mapping path="/question/question_list"/>
 			<exclude-mapping path="/error"/>
 			<exclude-mapping path="/img/**"/>
-			<exclude-mapping path="/feed/*.jpg"/>
-			<exclude-mapping path="/feed/*.png"/>
-			<exclude-mapping path="/feed/*.jfif"/>
-			<exclude-mapping path="/feed/*.jpeg"/>
-			<exclude-mapping path="/feed/*.gif"/>
+			<exclude-mapping path="/resources/feed/**"/>
+			<exclude-mapping path="/resources/cafein/**"/>
+<!-- 			<exclude-mapping path="/feed/*.jpg"/> -->
+<!-- 			<exclude-mapping path="/feed/*.png"/> -->
+<!-- 			<exclude-mapping path="/feed/*.jfif"/> -->
+<!-- 			<exclude-mapping path="/feed/*.jpeg"/> -->
+<!-- 			<exclude-mapping path="/feed/*.gif"/> -->
+<!-- 			<exclude-mapping path="/cafein/*.jpg"/> -->
+<!-- 			<exclude-mapping path="/cafein/*.png"/> -->
+<!-- 			<exclude-mapping path="/cafein/*.jfif"/> -->
+<!-- 			<exclude-mapping path="/cafein/*.jpeg"/> -->
+<!-- 			<exclude-mapping path="/cafein/*.gif"/> -->
 			<exclude-mapping path="/**/*.css"/>
 			
 			<beans:bean class="kh.spring.interceptor.LoginValidator"/>
