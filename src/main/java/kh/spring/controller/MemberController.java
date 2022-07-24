@@ -3,7 +3,7 @@ package kh.spring.controller;
 import java.io.File;
 import java.util.Random;
 
-import javax.annotation.Resource;
+//import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +36,7 @@ public class MemberController {
    // Autowired를 이용해서 service를 이름을 정의하고 호출
    @Autowired private MemberService memberService;
    @Autowired JavaMailSender mailSender;
-   @Resource(name="uploadPath")
+//   @Resource(name="uploadPath")
    private String uploadPath;
    
    @Autowired
@@ -200,6 +200,8 @@ public class MemberController {
    @RequestMapping("kakaoLogin")
    public int kakaoLogin(String email, String name, Model model, RedirectAttributes rdAttr) {
       int result = 0;
+      System.out.println(email);
+      System.out.println(name);
       MemberDTO member = new MemberDTO();
       member.setmem_id(email.split("@")[0]);
       member.setmem_name(name);
