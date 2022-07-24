@@ -113,9 +113,10 @@ public class MypageController {
 	public String memberout() throws Exception {
 		String loginID = (String) session.getAttribute("loginID");
 		pdao.memberout(loginID);
-		pdao.memberout2(loginID);
-		pdao.memberout3(loginID);
-		pdao.memberout4(loginID);
+		System.out.println(loginID+"멤버아웃1");
+		/*
+		 * pdao.memberout2(loginID); pdao.memberout3(loginID); pdao.memberout4(loginID);
+		 */
 		session.invalidate();
 		System.out.println(loginID + "<- 세션이 있나 확인하려고 만든겨");
 		return "redirect:/";

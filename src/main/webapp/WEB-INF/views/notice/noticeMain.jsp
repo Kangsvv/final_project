@@ -35,7 +35,7 @@ body{
 
 #Box {
   text-align: center;
-  height: 632px;
+  height: 636px;
   margin-left:24%;
   margin-right:24%;
   margin-bottom:3%;

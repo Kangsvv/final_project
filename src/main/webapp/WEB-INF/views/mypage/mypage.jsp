@@ -480,7 +480,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 	</c:if>
 	<c:if test="${dto.mem_img == null}">      <!-- 만약에 이미지값이 null이 아니면 저장된 이미지 뿌리기 -->
           <div class="profile-image" >
-           <img src="https://cdn-icons-png.flaticon.com/512/76/76769.png" />
+           <img src="http://www.kcgf.kr/common/img/default_profile.png" />
           </div>
 	</c:if>
           <div class="profile-user-settings">
@@ -507,17 +507,17 @@ Remove or comment-out the code block below to see how the browser will fall-back
             <ul>
               <li>
                 <a href="/mypage/mypage"
-                  ><span class="profile-stat-count" style=" text-decoration: underline; text-underline-position: under;"> MY FEED ${countfeed }</span></a>
+                  ><span class="profile-stat-count" style=" text-decoration: underline; text-underline-position: under;"> MY FEED </span></a><!-- ${countfeed } -->
               </li>
    <c:if test="${dto.mem_level == 1}"> <!-- 사장일 경우만 가게 게시물 출력 -->
               <li>
                 <a href="/mypage/mycafe"
-                  ><span class="profile-stat-count" > MY CAFE-IN ${countcafein }</span></a>
+                  ><span class="profile-stat-count" > MY CAFE-IN </span></a> <!-- ${countcafein } -->
               </li>
    </c:if>           
               <li>
                 <a href="/mypage/bookmark"
-                  ><span class="profile-stat-count"> MARK FEED ${countbookmark }</span> </a>
+                  ><span class="profile-stat-count"> MARK FEED </span> </a> <!-- ${countbookmark } -->
               </li>
             </ul>
           </div>
@@ -543,7 +543,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
              	<div class="row">
 		 		    <c:forEach var="i" items="${imglist }">
 		                <div class="col-sm-6 col-lg-4  feedImg">
-		                    <a class="lightbox" href="/cafefeed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
+		                    <a class="lightbox" href="/feed/selectBySeq?cafefeed_seq=${i.cafefeed_seq }">
 		                        <img src="/feed/${i.sys_name }">
 		                    </a>
 		                </div>

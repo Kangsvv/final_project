@@ -238,7 +238,7 @@
         </div>
 </div>
          <!-------------------------------------------------------Footer------------------------------------------------->
-  <%@ include file="footer.jsp"%>
+<%--   <%@ include file="footer.jsp"%> --%>
 <script>
 	$(".writebtn").on("click", function(){
 		location.href = "/feed/goFeedWrite";
