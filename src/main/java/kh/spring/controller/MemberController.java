@@ -3,6 +3,7 @@ package kh.spring.controller;
 import java.io.File;
 import java.util.Random;
 
+import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,7 @@ public class MemberController {
 	// Autowired를 이용해서 service를 이름을 정의하고 호출
 	@Autowired private MemberService memberService;
 	@Autowired JavaMailSender mailSender;
-//	@Resource(name="uploadPath")
+	@Resource(name="uploadPath")
 	private String uploadPath;
 	
 	@Autowired
@@ -124,27 +125,25 @@ public class MemberController {
 
 	// 회원가입 처리
 	@RequestMapping("joinAction")
-	public String joinAction(MemberDTO member, Model model, @RequestParam(value = "file", required = false) MultipartFile file) throws Exception{
+	public String joinAction(MemberDTO member, Model model, @RequestParam(value = "file", required = false) MultipartFile file,RedirectAttributes rdAttr) throws Exception{
 		String fileUpload = uploadPath + File.separator + "imgUpload";
 		String ymdPath = UploadFileUtils.calcPath(fileUpload);
 		String fileName = null;
-		
-			if(member.getmem_level() == 1) {
-				if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
-					fileName =  UploadFileUtils.fileUpload(fileUpload, file.getOriginalFilename(), file.getBytes(), ymdPath); 
-				} else {
-					fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
-				}
-				
-			}else {
-				fileName = uploadPath + File.separator + "images" + File.separator + "none.png";
+			if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+				fileName =  UploadFileUtils.fileUpload(fileUpload, file.getOriginalFilename(), file.getBytes(), ymdPath); 
+				member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 			}
 			
-			member.setmem_ceocheckimg(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
 			int result = memberService.joinAction(member);
 			member.setmem_pw(null);
+			
+			rdAttr.addFlashAttribute("status", "success");
+			rdAttr.addFlashAttribute("msg", "알림");
+			rdAttr.addFlashAttribute("text", "회원가입 완료");
+			
 			if(result > 0 && member.getmem_level() == 0) {
 				model.addAttribute("loginMember", member);
+				session.setAttribute("loginID", member.getmem_id());
 			}
 			
 		
@@ -166,7 +165,6 @@ public class MemberController {
 			rdAttr.addFlashAttribute("msg", "알림");
 			rdAttr.addFlashAttribute("text", "로그인 성공");
 			model.addAttribute("loginMember", loginMember);
-			member.setmem_seq(loginMember.getmem_seq());
 			Cookie cookie = new Cookie("saveId", member.getmem_id()); 
 			session.setAttribute("loginID", member.getmem_id());
 			if(saveId != null) {
