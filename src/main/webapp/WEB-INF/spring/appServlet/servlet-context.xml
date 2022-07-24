@@ -74,6 +74,7 @@
 			<exclude-mapping path="/img/**"/>
 			<exclude-mapping path="/resources/feed/**"/>
 			<exclude-mapping path="/resources/cafein/**"/>
+			<exclude-mapping path="/resources/member/**"/>
 <!-- 			<exclude-mapping path="/feed/*.jpg"/> -->
 <!-- 			<exclude-mapping path="/feed/*.png"/> -->
 <!-- 			<exclude-mapping path="/feed/*.jfif"/> -->

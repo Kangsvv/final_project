@@ -195,14 +195,6 @@
 	          </div>
       	  </c:if>
          </div>
-         <script>
-          	$("#searchbtn").on("click",function(){
-     			if($("#SearchTitle").val() == '' || $("#SearchTitle").val().trim() == ""){
-     				 alert("제목을 입력해주세요");
-     				 $("#SearchTitle").focus();
-     			 return false;
-     		 }
-          </script>
 
   <!-------------------------------------------------------인스타 Board------------------------------------------------->
 
