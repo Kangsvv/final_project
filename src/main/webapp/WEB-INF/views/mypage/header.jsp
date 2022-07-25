@@ -112,6 +112,8 @@ nav {
 	padding-left: 10%;
 	padding-right: 10%;
 	border-bottom: 1px solid gray;
+	font-size: 17px;
+}
 }
 
 nav a {
@@ -175,7 +177,9 @@ li .dropdown-item:hover {
 	margin-bottom: 14px;
 	text-align: left;
 }
-
+#login,#mypage{
+	padding-right: 2%;
+}
 </style>
 <body style="background-color: #222;">
      <!------------------------------------------------------------header----------------------------------------------------->
@@ -211,14 +215,14 @@ li .dropdown-item:hover {
              <c:choose>
 				<c:when test="${empty loginID}">
 		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/login" id="board">Login</a></li>
-        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/signUp" id="board">Signup</a></li>
+            <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/login" id="login">Login</a></li>
+        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/signUp" id="signup">Signup</a></li>
           </ul>
           </c:when>
          <c:otherwise>
          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/mypage/mypage" id="board">MyPage</a></li>
-          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/logout" id="board">Logout</a></li>
+          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/mypage/mypage" id="mypage">MyPage</a></li>
+          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/logout" id="logout">Logout</a></li>
          </ul>
          </c:otherwise>          
           </c:choose>
