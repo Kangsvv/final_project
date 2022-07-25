@@ -16,9 +16,15 @@
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 </head>
-<body>
 <style>
-
+   .row {
+    --bs-gutter-x: 1.0rem;
+    }
+      .writebtn{
+          background-color:transparent;
+         float: right;
+         margin-bottom:2%;
+      }
 /*board UI출력부분----------------------------*/
 .tz-gallery {
     padding: 40px;
@@ -29,7 +35,7 @@
    .tz-gallery .row > div {
        padding: 2px;
    }
-   
+  
    .tz-gallery .lightbox img {
        width: 100%;
        border-radius: 0;
@@ -86,7 +92,9 @@
        <div class="row">
        	<c:choose>
             <c:when test="${ mdto.mem_level == 1 || mdto.mem_level == 2 }">
-          <div class="col-12">
+              <div class="col-6">
+           </div>
+          <div class="col-6">
              <button class="writebtn" type="button"><img class="write" src="/resources/img/write.png"></button>
           </div>
           </c:when>
