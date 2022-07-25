@@ -154,6 +154,7 @@ body {
 </div></a>
 <a href="javascript:window.history.back();"><div class="smoke"></div></a>
 <div style="color: white; font-size: 50px;">커피 제조중</div>
+<div style="color: white; font-size: 20px; margin-top:120px;">돌아가기</div>
 
 </body>
 </html>
