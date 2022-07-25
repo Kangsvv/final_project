@@ -72,6 +72,7 @@
 			<exclude-mapping path="/question/question_list"/>
 			<exclude-mapping path="/error"/>
 			<exclude-mapping path="/img/**"/>
+			<exclude-mapping path="/resources/img/**"/>
 			<exclude-mapping path="/resources/feed/**"/>
 			<exclude-mapping path="/resources/cafein/**"/>
 			<exclude-mapping path="/resources/member/**"/>
