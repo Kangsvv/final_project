@@ -44,7 +44,13 @@
 	display: block;
 	width: 100%;
 }
-
+.btn {
+    display: inline-block;
+    font: inherit;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
 input:focus {
 	outline: none;
 }
@@ -191,6 +197,9 @@ background-color: white;
 #logout{
 margin-right:2%;
 }
+#mypage{
+margin-right:2%;
+}
 
 </style>
 <body style="background-color: #222;">
@@ -249,9 +258,9 @@ margin-right:2%;
 	    </c:when>
 	    <c:otherwise>
 	    	 <button id="mypage" type="button"
-              class="mx-1 d-none d-lg-inline btn navbar-btn"  class="btn12"  onclick="location.href='/mypage/mypage' ">MyPage</button>
+              class="mx-1 d-none d-lg-inline btn navbar-btn btn12"    onclick="location.href='/mypage/mypage' ">MyPage</button>
 	    	 <button id="logout" type="button"
-              class="mx-1 d-none d-lg-inline btn navbar-btn"  class="btn12" onclick="location.href='/member/logout' ">Logout</button>
+              class="mx-1 d-none d-lg-inline btn navbar-btn btn12"   onclick="location.href='/member/logout' ">Logout</button>
 	    </c:otherwise>
     </c:choose>
         

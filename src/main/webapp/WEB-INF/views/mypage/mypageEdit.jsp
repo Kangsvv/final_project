@@ -20,6 +20,7 @@
         max-width: 1080px;
         margin: 0px auto;
         text-align: center;
+        min-height:800px;
       }
 
       li {
@@ -106,7 +107,7 @@
         float: left;
         width: 50%;
       }
-
+	
       #imgmodify {
         margin-top: 3%;
         width: 250px;
