@@ -95,7 +95,7 @@
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
                 <p class="textCount"><span>0</span> / 1300</p>
                 <a href="/notice/event_selectAll"><button class="backbtn" type="button">뒤로</button></a>
-                <button type="submit" class="btn" style="margin-left:10px;">작성</button>
+                <button type="submit" class="btn eWrite" style="margin-left:10px;">작성</button>
             </div>
         </div>
     </form>
@@ -128,7 +128,7 @@ $("#contents").keyup(function(e) {
 });
 
 $(function(){
-    $(".btn").on("click", function(){
+    $(".eWrite").on("click", function(){
        
        if($("#title").val().trim() == "") {
            alert('제목을 두 글자 이상 입력하세요')
