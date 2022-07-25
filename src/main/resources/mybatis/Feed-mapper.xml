@@ -26,6 +26,14 @@
 		</foreach>
 		)) where (line between #{start} and #{end})
 	</select>
+	<!-- 닉네임 검색 -->
+	<select id="selectByCafefeed_seq" resultType="String">
+		select id from cafefeed where cafefeed_seq=#{value}
+	</select>
+	
+	<select id="selectById" resultType="String">
+		select mem_name from member where mem_id=#{value}
+	</select>
 	
 	<!-- 피드 insert 기능 -->
 	<insert id="feed-insert">

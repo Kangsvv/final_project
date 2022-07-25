@@ -73,10 +73,15 @@ public class FeedController {
 		int page = 1;
 //		System.out.println("Controller CS : " + cafefeed_seq);
 		
+		
 		serv.selectBySeq(model, cafefeed_seq);
+		
+		serv.selectById(model, cafefeed_seq);
+		
 		System.out.println("selectBySeq 에 관한 페이지"+page);
 		rServ.selectBySeq(model, cafefeed_seq, page);
 		rServ.replyCount(model, cafefeed_seq);
+		
 		
 		return "/feed/detailView";
 	}
