@@ -177,9 +177,21 @@ li .dropdown-item:hover {
 	margin-bottom: 14px;
 	text-align: left;
 }
-#login,#mypage{
-	padding-right: 2%;
+.show li a{
+font-size: 15px;
 }
+.btn12{
+color:white;
+background-color:black;
+}
+.btn12:hover{
+color: black;
+background-color: white;
+}
+#logout{
+margin-right:2%;
+}
+
 </style>
 <body style="background-color: #222;">
      <!------------------------------------------------------------header----------------------------------------------------->
@@ -215,13 +227,13 @@ li .dropdown-item:hover {
              <c:choose>
 				<c:when test="${empty loginID}">
 		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/login" id="login">Login</a></li>
-        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/signUp" id="signup">Signup</a></li>
+            <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/login" id="login" >Login</a></li>
+        	<li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/signUp" id="signup" >Signup</a></li>
           </ul>
           </c:when>
          <c:otherwise>
          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/mypage/mypage" id="mypage">MyPage</a></li>
+          <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/mypage/mypage" id="mypage" >MyPage</a></li>
           <li class="nav-item d-lg-none"><a class="nav-link mx-0 mx-md-0 mx-lg-3" href="/member/logout" id="logout">Logout</a></li>
          </ul>
          </c:otherwise>          
@@ -236,10 +248,10 @@ li .dropdown-item:hover {
               class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/signUp' ">Signup</button>
 	    </c:when>
 	    <c:otherwise>
-	    	 <button id="login" type="button"
-              class="mx-1 d-none d-lg-inline btn navbar-btn"  onclick="location.href='/mypage/mypage' ">MyPage</button>
-	    	 <button id="login" type="button"
-              class="mx-1 d-none d-lg-inline btn navbar-btn" onclick="location.href='/member/logout' ">Logout</button>
+	    	 <button id="mypage" type="button"
+              class="mx-1 d-none d-lg-inline btn navbar-btn"  class="btn12"  onclick="location.href='/mypage/mypage' ">MyPage</button>
+	    	 <button id="logout" type="button"
+              class="mx-1 d-none d-lg-inline btn navbar-btn"  class="btn12" onclick="location.href='/member/logout' ">Logout</button>
 	    </c:otherwise>
     </c:choose>
         

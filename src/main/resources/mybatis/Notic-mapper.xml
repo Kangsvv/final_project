@@ -23,6 +23,10 @@
 		delete from Notic where seq=#{Notic_seq}
 	</delete>
 	
+	<update id="count"> 
+		update Notic set viewcount = viewcount +1 where seq=#{Notic_seq}
+	</update> 
+	
 	<update id="notic_modify">
 		update Notic set title = #{title}, contents= #{contents}, WRITE_DATE=sysdate where seq = #{seq}
 	</update>

@@ -173,7 +173,7 @@ display: none;
             <c:forEach var="i" items="${nlist}">
              <tr>
                 <th>${i.seq}</th>
-                <th><a href="/notice/selectBySeq?seq=${i.seq }" style="text-decoration: none; color: black;" >${i.title}</a></th>
+                <th><a href="/notice/nselectBySeq?seq=${i.seq }" style="text-decoration: none; color: black;" >${i.title}</a></th>
                 <th>${i.writer}</th>
                 <th><fmt:formatDate pattern="yy년 MM월 dd일 HH:mm" value="${i.write_date}"/></th>
             </tr>
