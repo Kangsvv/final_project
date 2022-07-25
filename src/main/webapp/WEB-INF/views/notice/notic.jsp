@@ -198,7 +198,7 @@ display: none;
 <script>
 
 $(".cbtn").click(function() {
-	location.href = "/notice/event_Write";
+	location.href = "/notice/notic_Write";
 })
 
 

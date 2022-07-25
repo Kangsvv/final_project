@@ -90,10 +90,10 @@
     <form action="question_insert" onsubmit="return checform()">
 			<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
-            <input type=text name=title id=title placeholder="제목 (최대 33자)" style="width:100%;"maxlength="33">
+            <input type=text name=title id=title placeholder="제목 (최대 33자)" style="width:100%;" oninput='handleOnInput(this, 33)'>
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
-            <textarea name="contents" id="contents" style="width: 100%;" rows="30" placeholder="내용" maxlength="1301"></textarea>
+            <textarea name="contents" id="contents" style="width: 100%;" rows="30" placeholder="내용" oninput='handleOnInput(this, 1333)'"></textarea>
             </div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
             	<p class="textCount"><span>0</span> / 1300</p>
@@ -173,7 +173,11 @@ $("#contents").keyup(function(e) {
     	alert("1300자까지 입력 가능합니다")
 		 }
 });
-
+function handleOnInput(el, maxlength) {
+	  if(el.value.length > maxlength)  {
+	    el.value = el.value.substr(0, maxlength);
+	  }
+	}
 
 </script>
           

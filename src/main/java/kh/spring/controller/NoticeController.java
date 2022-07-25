@@ -89,7 +89,7 @@ public class NoticeController {
 	@RequestMapping("event_delete")
 	public String event_delete (int seq) throws Exception {
 		Eservice.delete(seq);
-		return "/notice/event";
+		return "redirect:/notice/event";
 	}
 	
 	@ResponseBody
@@ -144,7 +144,7 @@ public class NoticeController {
 	@RequestMapping("notic_delete")
 	public String notic_delete (int seq) throws Exception {
 		Nservice.delete(seq);
-		return "/notice/notic";
+		return "redirect:/notice/notic";
 	}
 	
 	@ResponseBody

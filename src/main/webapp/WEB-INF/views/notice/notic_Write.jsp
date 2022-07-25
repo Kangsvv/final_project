@@ -75,14 +75,14 @@ button {
     <form action="notic_insert">
 			<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
-            <input type=text name=title id=title placeholder="제목 (최대 33자)" style="width:97%; maxlength="33"">
+            <input type=text name=title id=title placeholder="제목 (최대 33자)" style="width:97%;" oninput='handleOnInput(this, 33)'>
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 600px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
-            <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용 (최대 1300자)"></textarea>
+            <textarea name="contents" id="contents" style="width: 98%;" rows="30" placeholder="내용 (최대 1300자)" oninput='handleOnInput(this, 1333)'></textarea>
             </div>
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
                 <p class="textCount"><span>0</span> / 1300</p>
-                <a href="/notice/notic"><button class="btn" type="button">뒤로</button></a>
+                <a href="/notice/notic"><button class="btn" type="button">뒤로 </button></a>
                 <button type="submit" class="btn" style="margin-left:10px;">작성</button>
             </div>
         </div>
@@ -136,7 +136,12 @@ $(function(){
        
     })
     })
-
+	function handleOnInput(el, maxlength) {
+			  if(el.value.length > maxlength)  {
+			    el.value = el.value.substr(0, maxlength);
+			  }
+			}
+			
 </script>
           
 </body>

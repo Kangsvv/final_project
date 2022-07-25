@@ -272,7 +272,7 @@ $("#selectBox").on("change", function(){
     $("option:selected", this).text();
     $(this).find("option:selected").text();
 });
-function handleOnInput(el, maxlength) {
+	function handleOnInput(el, maxlength) {
 	  if(el.value.length > maxlength)  {
 	    el.value = el.value.substr(0, maxlength);
 	  }
