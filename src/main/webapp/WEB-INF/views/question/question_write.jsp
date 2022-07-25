@@ -98,7 +98,7 @@
             <div id="row4" style="width: 100%; margin-top: 25px; margin-bottom: 25px;" align=right>
             	<p class="textCount"><span>0</span> / 1300</p>
                 <a href="/question/question_list"><button class="backbtn" type="button">뒤로</button></a>
-                <button type="submit" class="btn" style="margin-left:10px;">작성</button>
+                <button type="submit" class="btn qWrite" style="margin-left:10px;">작성</button>
             </div>
         </div>
     </form>
@@ -134,7 +134,7 @@ window.onclick = function(e) {
 }
 
 $(function(){
-    $(".btn").on("click", function(){
+    $(".qWrite").on("click", function(){
     	let title = $("#title").val()
     	let contents = $("#contents").val()
 
