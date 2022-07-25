@@ -109,12 +109,38 @@
 
       #imgmodify {
         margin-top: 3%;
-        width: 200px;
+        width: 250px;
         height: 60px;
         background-color: #760c0c;
         color: white;
         border-radius: 5px;
       }
+      
+      #btns{
+      width:500px;
+      margin:auto;
+      }
+      
+      ul{
+      width:500px;
+      margin:auto;
+      }
+      
+      .imgbtncan{
+      width:500px;
+      margin:auto;
+      }
+      
+      #box{
+      width:500px;
+      margin:auto;
+      }
+      
+      .profile{
+      left-margin:10px;
+      }
+      
+      
     </style>
   </head>
   
