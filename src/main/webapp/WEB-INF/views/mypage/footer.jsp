@@ -45,7 +45,7 @@
     <div id="foot" align=center>
        <div class="container">
           <div class="row">
-             <div class="col-4 footer2" style="font-size:20px;"><a href="#">CAFEIN</a></div>
+             <div class="col-4 footer2" style="font-size:20px;">CAFEIN</div>
              <div class="col-2 footer2"><a href="#">회사소개</a></div>
              <div class="col-2 footer2"><a href="#">이용약관</a></div>
              <div class="col-2 footer2"><a href="#">1:1 문의</a></div>
