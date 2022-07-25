@@ -248,5 +248,14 @@ public class FeedService {
 			}else {
 				return dao.feedSearchBySeq(flist_seq, cpage);
 			}
-		}	
+		}
+		public void selectById(Model model, int cafefeed_seq) throws Exception{
+			
+			String id = dao.selectByCafefeed_seq(cafefeed_seq);
+			
+			String nickName = dao.selectById(id);
+			
+			model.addAttribute("nickName", nickName);
+			
+		}
 }

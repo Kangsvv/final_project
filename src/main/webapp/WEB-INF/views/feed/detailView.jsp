@@ -459,7 +459,7 @@
       <div class="row border-bottom border-2" id="conMenu" style="padding-bottom: 5px;">
                    <div class="col-12 col-md-12 ellipsis" style="padding-left:10px; font-size:28px;" id="title">${dto.title}</div>
                     <div class="row">
-                        <div class="col-12 ellipsis id" id="writerId" style="padding-left:8px;">${dto.id }
+                        <div class="col-12 ellipsis id" id="writerId" style="padding-left:8px;">${nickName }
                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"   style="background-color:#222; border:none">
                               <i class="fa-solid fa-user-group" style="color:white;"></i>
                            </button>

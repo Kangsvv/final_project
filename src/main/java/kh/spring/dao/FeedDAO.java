@@ -123,4 +123,13 @@ public class FeedDAO {
 		map.put("end", end);
 		return mybatis.selectList("Feed.feedSearchBySeq", map);
 	}
+	public String selectByCafefeed_seq(int cafefeed_seq) throws Exception{
+		System.out.println(cafefeed_seq);
+		return mybatis.selectOne("Feed.selectByCafefeed_seq", cafefeed_seq);
+	}
+	public String selectById(String id) throws Exception{
+		System.out.println(id);
+		return mybatis.selectOne("Feed.selectById", id);
+	}
+	
 }
