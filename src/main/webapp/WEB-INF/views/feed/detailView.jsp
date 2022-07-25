@@ -90,7 +90,6 @@
           display: block;
       }
       .carousel-item img {
-          height: 350px;
           object-fit: cover;
       }
 
@@ -502,7 +501,7 @@
 <!--                 <span class="visually-hidden">Next</span> -->
 <!--               </button> -->
 <!--             </div> -->
-			<img src="/resources/feed/${fdto.sys_name }" class="d-block" style="padding-top:10%; margin:auto; width:75%; height:90%;">
+			<img src="/resources/feed/${fdto.sys_name }" class="d-block mainimg" style="padding-top:5%; padding-bottom:5%; margin:auto; width:75%; height:90%; min-height:480px;">
             </div>
             
             <div class="col-12 col-xxl-5 contentsBox">
