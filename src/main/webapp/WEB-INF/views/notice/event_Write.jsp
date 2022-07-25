@@ -82,7 +82,7 @@
 <!-------------------------------------------------------Main------------------------------------------------->
 <div class="container" id="main">
    <div class="col-12" style="margin-bottom:40px;">
-      <a style="color: white; font-size: 40px;">Event</a>
+      <a style="color: white; font-size: 40px;">NOTICE</a>
     </div>
     <form action="event_insert">
 			<div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">

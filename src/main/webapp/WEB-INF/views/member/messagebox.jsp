@@ -163,7 +163,7 @@ border-bottom : 1px solid black;
 </style>
 
 <body>
- <jsp:include page="/WEB-INF/views/cafein/header.jsp"/> 
+ <jsp:include page="header.jsp"/> 
           
     <div class="container" style="min-height:1000px;">
         <div class="row">
