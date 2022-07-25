@@ -122,6 +122,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         border-radius: 0.3rem;
         padding: 0 2.4rem;
         margin-left: 2rem;
+        border: none;
       }
 
       .profile-settings-btn {

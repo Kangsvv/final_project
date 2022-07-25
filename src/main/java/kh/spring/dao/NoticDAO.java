@@ -36,7 +36,8 @@ public int modify(NoticDTO dto) throws Exception {
 }
 
 public void update(int seq) { 
-mybatis.update("event.count", seq); }
+mybatis.update("notic.count", seq); }
+
 
 
 

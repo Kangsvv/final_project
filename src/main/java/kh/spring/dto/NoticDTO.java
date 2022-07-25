@@ -15,7 +15,7 @@ public class NoticDTO {
 		super();
 	}
 
-	public NoticDTO(int seq, String title, String contents, String writer, Timestamp write_date, int count) {
+	public NoticDTO(int seq, String title, String contents, String writer, Timestamp write_date, int viewcount) {
 		super();
 		this.seq = seq;
 		this.title = title;
