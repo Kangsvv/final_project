@@ -188,7 +188,7 @@
     <form action="/feed/feed_insert" method="post" enctype="multipart/form-data">
        <div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
-            <input type=text name=title id=title placeholder="제목" style="width:97%; color:white;">
+            <input type=text name=title id=title placeholder="제목" style="width:97%; color:white;" oninput='handleOnInput(this, 33)'>
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 450px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
             <textarea name="contents" id="contents" style="width: 98%; height:100%; min-height:100%; max-height:100%; color:white;" rows="30" placeholder="내용"></textarea>
@@ -286,6 +286,11 @@
             
             
          });
+		function handleOnInput(el, maxlength) {
+			  if(el.value.length > maxlength)  {
+			    el.value  = el.value.substr(0, maxlength);
+			  }
+			}
       </script>  
           
 </body>

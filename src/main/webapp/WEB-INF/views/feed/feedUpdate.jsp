@@ -186,7 +186,7 @@
     <form action="/feed/feed_update" method="post" enctype="multipart/form-data">
        <div id="notice" align=center style="color: #ededed; width: 100%; height: 80%;">
             <div id="row1" style="font-size : 25px; width: 100%; padding-bottom: 1%; border-bottom: 2px solid gray;" align=left>
-            <input type=text name=title id=title placeholder="제목" style="width:97%; color:white;" value="${dto.title }">
+            <input type=text name=title id=title placeholder="제목" style="width:97%; color:white;" value="${dto.title } oninput='handleOnInput(this, 33)'">
             <input type="hidden" value="${dto.cafefeed_seq}" name="cafefeed_seq" class="cafefeed_seq">
             </div>
             <div id="row3" style="font-size : 15px; width: 100%; height: 450px; margin-top: 2%; border-bottom: 2px solid gray; overflow: hidden;" align=left>
@@ -283,6 +283,11 @@
                   alert("900자까지만 입력가능합니다")
                  }
          });
+			function handleOnInput(el, maxlength) {
+			  if(el.value.length > maxlength)  {
+			    el.value = el.value.substr(0, maxlength);
+			  }
+			}
       </script>  
           
 </body>

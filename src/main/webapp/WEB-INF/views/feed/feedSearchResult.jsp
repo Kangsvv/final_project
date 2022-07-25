@@ -162,7 +162,7 @@
         <div class="row">
           <div class="col-2 col-md-3"></div>
           <div class="col-8 col-md-6 searchdiv"style="padding:0px;">
-             <input class="search" type="text" name="title" id="SearchTitle" placeholder="제목으로 검색해보세요.">
+             <input class="search" type="text" name="title" id="SearchTitle" placeholder="제목으로 검색해보세요." oninput='handleOnInput(this, 33)'>
           </div>
 
           
@@ -273,6 +273,11 @@
     	 
     })
 };
+function handleOnInput(el, maxlength) {
+	  if(el.value.length > maxlength)  {
+	    el.value = el.value.substr(0, maxlength);
+	  }
+	}
 </script>
 </body>
 </html>
